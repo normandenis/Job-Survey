@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="jobtrends.job_aymax.SignInViewModel">
+
+	<data>
+		<variable name="vm"
+		          type="jobtrends.job_aymax.SignInViewModel"/>
+	</data>
+
+	<LinearLayout android:layout_width="match_parent"
+	              android:layout_height="match_parent"
+	              android:orientation="vertical">
+
+		<Space android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:layout_weight="1"/>
+
+		<TextView android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:layout_marginTop="16dp"
+		          android:layout_marginLeft="16dp"
+		          android:layout_marginRight="16dp"
+		          android:layout_marginBottom="8dp"
+		          android:gravity="center"
+		          android:text="@string/sign_in_view_txt_0"
+		          android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+		<Space android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:layout_weight="1"/>
+
+		<EditText android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:layout_marginTop="8dp"
+		          android:layout_marginLeft="16dp"
+		          android:layout_marginRight="16dp"
+		          android:layout_marginBottom="8dp"
+		          android:hint="@string/sign_in_view_txt_1"
+		          android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+		<EditText android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:inputType="textPassword"
+		          android:layout_marginTop="8dp"
+		          android:layout_marginLeft="16dp"
+		          android:layout_marginRight="16dp"
+		          android:layout_marginBottom="8dp"
+		          android:hint="@string/sign_in_view_txt_2"
+		          android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+		<Space android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:layout_weight="1"/>
+
+		<Button android:text="@string/sign_in_view_txt_3"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="8dp"
+		        android:layout_marginLeft="16dp"
+		        android:layout_marginRight="16dp"
+		        android:layout_marginBottom="8dp"
+		        android:paddingTop="16dp"
+		        android:paddingRight="16dp"
+		        android:paddingBottom="16dp"
+		        android:paddingLeft="16dp"
+		        android:background="@drawable/rounded_layout"
+		        android:textColor="@color/colorAccent"
+		        android:onClick="@{() -> vm.onClick()}"
+		        android:textAppearance="?android:attr/textAppearanceSmall"
+		        android:textStyle="bold"/>
+
+		<Space android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:layout_weight="1"/>
+
+		<Button android:text="@string/sign_in_view_txt_4"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="right"
+		        android:layout_marginTop="8dp"
+		        android:layout_marginLeft="16dp"
+		        android:layout_marginRight="16dp"
+		        android:layout_marginBottom="16dp"
+		        android:paddingTop="16dp"
+		        android:paddingRight="16dp"
+		        android:paddingBottom="16dp"
+		        android:paddingLeft="16dp"
+		        android:background="@drawable/rounded_layout"
+		        android:textColor="@color/colorAccent"
+		        android:onClick="@{() -> vm.onClick()}"
+		        android:textAppearance="?android:attr/textAppearanceSmall"
+		        android:textStyle="bold"/>
+	</LinearLayout>
+
+</layout>
