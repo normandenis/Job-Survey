@@ -1,9 +1,38 @@
 <resources>
+
 	<string name="app_name">Job_Aymax</string>
 
-	<string name="sign_in_view_txt_0">JOB-SURVEY</string>
+	<!--sign_in_view-->
+
+	<string name="sign_in_view_txt_0"><b>JOB-SURVEY</b></string>
+
 	<string name="sign_in_view_txt_1">Email</string>
+
 	<string name="sign_in_view_txt_2">Mot de passe</string>
-	<string name="sign_in_view_txt_3">SE CONNECTER</string>
-	<string name="sign_in_view_txt_4">S\'INSCRIRE</string>
+
+	<string name="sign_in_view_txt_3"><b>SE CONNECTER</b></string>
+
+	<string name="sign_in_view_txt_4"><b>S\'INSCRIRE</b></string>
+
+	<!--sign_up_view-->
+
+	<string name="sign_up_view_txt_0"><b>JOB-SURVEY</b></string>
+
+	<string name="sign_up_view_txt_1"><b>Créer un compte</b></string>
+
+	<string name="sign_up_view_txt_2">Nom complet</string>
+
+	<string name="sign_up_view_txt_3">Email</string>
+
+	<string name="sign_up_view_txt_4">Mot de passe</string>
+
+	<string name="sign_up_view_txt_5">Métier actuel</string>
+
+	<string name="sign_up_view_txt_6">En créant votre compte vous acceptez nos <b>Conditions d’Utilisation</b> et
+		notre
+		<b>Privacy Policy</b>
+	</string>
+
+	<string name="sign_up_view_txt_7">S\'INSCRIRE</string>
+
 </resources>

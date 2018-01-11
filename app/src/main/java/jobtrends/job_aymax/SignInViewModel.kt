@@ -1,5 +1,6 @@
 package jobtrends.job_aymax
 
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -17,6 +18,7 @@ class SignInViewModel : AppCompatActivity()
 
 	fun onClick()
 	{
-		println("Salut")
+		val intent = Intent(this, SignUpViewModel::class.java)
+		startActivity(intent)
 	}
 }

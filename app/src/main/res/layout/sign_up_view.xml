@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="jobtrends.job_aymax.SignUpViewModel">
+
+	<data>
+		<variable name="vm"
+		          type="jobtrends.job_aymax.SignUpViewModel"/>
+	</data>
+
+	<LinearLayout android:layout_width="match_parent"
+	              android:layout_height="match_parent"
+	              android:orientation="vertical">
+
+		<Space android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:layout_weight="1"/>
+
+		<TextView android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:layout_marginTop="16dp"
+		          android:layout_marginRight="16dp"
+		          android:layout_marginBottom="8dp"
+		          android:layout_marginLeft="16dp"
+		          android:gravity="center"
+		          android:textAppearance="?android:attr/textAppearanceLarge"
+		          android:text="@string/sign_up_view_txt_0"/>
+
+		<Space android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:layout_weight="1"/>
+
+		<LinearLayout android:layout_width="match_parent"
+		              android:layout_height="wrap_content"
+		              android:layout_marginTop="8dp"
+		              android:layout_marginRight="16dp"
+		              android:layout_marginBottom="8dp"
+		              android:layout_marginLeft="16dp"
+		              android:paddingTop="8dp"
+		              android:paddingRight="16dp"
+		              android:paddingBottom="8dp"
+		              android:paddingLeft="16dp"
+		              android:orientation="vertical"
+		              android:elevation="16dp"
+		              android:background="@drawable/shadow_rec">
+
+			<TextView android:layout_width="match_parent"
+			          android:layout_height="wrap_content"
+			          android:layout_marginTop="16dp"
+			          android:layout_marginRight="16dp"
+			          android:layout_marginBottom="8dp"
+			          android:layout_marginLeft="16dp"
+			          android:gravity="center"
+			          android:textAppearance="?android:attr/textAppearanceLarge"
+			          android:text="@string/sign_up_view_txt_1"/>
+
+			<EditText android:layout_width="match_parent"
+			          android:layout_height="wrap_content"
+			          android:layout_marginTop="8dp"
+			          android:layout_marginRight="16dp"
+			          android:layout_marginBottom="8dp"
+			          android:layout_marginLeft="16dp"
+			          android:inputType="textPersonName"
+			          android:textAppearance="?android:attr/textAppearanceSmall"
+			          android:hint="@string/sign_up_view_txt_2"/>
+
+			<EditText android:layout_width="match_parent"
+			          android:layout_height="wrap_content"
+			          android:layout_marginTop="8dp"
+			          android:layout_marginRight="16dp"
+			          android:layout_marginBottom="8dp"
+			          android:layout_marginLeft="16dp"
+			          android:inputType="textEmailAddress"
+			          android:textAppearance="?android:attr/textAppearanceSmall"
+			          android:hint="@string/sign_up_view_txt_3"/>
+
+			<EditText android:layout_width="match_parent"
+			          android:layout_height="wrap_content"
+			          android:layout_marginTop="8dp"
+			          android:layout_marginRight="16dp"
+			          android:layout_marginBottom="8dp"
+			          android:layout_marginLeft="16dp"
+			          android:inputType="textPassword"
+			          android:textAppearance="?android:attr/textAppearanceSmall"
+			          android:hint="@string/sign_up_view_txt_4"/>
+
+			<EditText android:layout_width="match_parent"
+			          android:layout_height="wrap_content"
+			          android:layout_marginTop="8dp"
+			          android:layout_marginRight="16dp"
+			          android:layout_marginBottom="8dp"
+			          android:layout_marginLeft="16dp"
+			          android:inputType="text"
+			          android:textAppearance="?android:attr/textAppearanceSmall"
+			          android:hint="@string/sign_up_view_txt_5"/>
+
+			<TextView android:layout_width="match_parent"
+			          android:layout_height="wrap_content"
+			          android:layout_marginTop="8dp"
+			          android:layout_marginRight="16dp"
+			          android:layout_marginBottom="16dp"
+			          android:layout_marginLeft="16dp"
+			          android:gravity="center"
+			          android:textAppearance="?android:attr/textAppearanceSmall"
+			          android:text="@string/sign_up_view_txt_6"/>
+
+		</LinearLayout>
+
+		<Space android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:layout_weight="1"/>
+
+		<Button android:text="@string/sign_up_view_txt_7"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center"
+		        android:layout_marginTop="8dp"
+		        android:layout_marginLeft="16dp"
+		        android:layout_marginRight="16dp"
+		        android:layout_marginBottom="16dp"
+		        android:paddingTop="16dp"
+		        android:paddingRight="16dp"
+		        android:paddingBottom="16dp"
+		        android:paddingLeft="16dp"
+		        android:background="@drawable/rounded_layout"
+		        android:textColor="@color/colorAccent"
+		        android:onClick="@{() -> vm.onClick()}"
+		        android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+		<Space android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:layout_weight="1"/>
+
+	</LinearLayout>
+
+</layout>

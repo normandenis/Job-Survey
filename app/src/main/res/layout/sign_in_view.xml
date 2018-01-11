@@ -67,8 +67,7 @@
 		        android:background="@drawable/rounded_layout"
 		        android:textColor="@color/colorAccent"
 		        android:onClick="@{() -> vm.onClick()}"
-		        android:textAppearance="?android:attr/textAppearanceSmall"
-		        android:textStyle="bold"/>
+		        android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 		<Space android:layout_width="match_parent"
 		       android:layout_height="wrap_content"
@@ -89,8 +88,12 @@
 		        android:background="@drawable/rounded_layout"
 		        android:textColor="@color/colorAccent"
 		        android:onClick="@{() -> vm.onClick()}"
-		        android:textAppearance="?android:attr/textAppearanceSmall"
-		        android:textStyle="bold"/>
+		        android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+		<Space android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:layout_weight="1"/>
+
 	</LinearLayout>
 
 </layout>
