@@ -15,9 +15,8 @@
 	<android.support.design.widget.NavigationView android:id="@+id/nav_view"
 	                                              android:layout_width="64dp"
 	                                              android:layout_height="match_parent"
-	                                              android:layout_gravity="start"
 	                                              android:fitsSystemWindows="true"
-	                                              android:padding="16dp"
+	                                              android:layout_gravity="start"
 	                                              app:menu="@menu/nav_drawer_menu"/>
 
 </android.support.v4.widget.DrawerLayout>

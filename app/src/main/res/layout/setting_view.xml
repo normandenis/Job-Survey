@@ -11,183 +11,255 @@
 
 	<android.support.v7.widget.GridLayout android:layout_width="match_parent"
 	                                      android:layout_height="wrap_content"
-	                                      android:padding="16dp"
+	                                      android:layout_gravity="bottom"
+	                                      android:layout_margin="16dp"
 	                                      app:columnCount="2"
 	                                      app:rowCount="3"
-	                                      app:alignmentMode="alignMargins"
-	                                      app:columnOrderPreserved="false">
+	                                      app:alignmentMode="alignMargins">
+
+		<!-- Row 0 -->
+		<!-- Column 0 -->
+		<android.support.v7.widget.CardView android:layout_width="wrap_content"
+		                                    android:layout_height="wrap_content"
+		                                    android:layout_marginTop="16dp"
+		                                    android:layout_marginRight="8dp"
+		                                    android:layout_marginBottom="8dp"
+		                                    android:layout_marginLeft="16dp"
+		                                    app:layout_gravity="fill"
+		                                    app:layout_rowWeight="1"
+		                                    app:layout_columnWeight="1"
+		                                    app:cardElevation="8dp"
+		                                    app:cardCornerRadius="8dp">
+
+			<LinearLayout android:layout_width="wrap_content"
+			              android:layout_height="wrap_content"
+			              android:orientation="vertical">
+
+				<ImageView android:src="@drawable/ic_edit_black_16dp"
+				           android:layout_width="wrap_content"
+				           android:layout_height="wrap_content"
+				           android:layout_marginTop="16dp"
+				           android:layout_marginRight="0dp"
+				           android:layout_marginBottom="4dp"
+				           android:layout_marginLeft="16dp"/>
+
+				<TextView android:layout_width="wrap_content"
+				          android:layout_height="wrap_content"
+				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@string/setting_view_txt_1"
+				          android:layout_marginTop="4dp"
+				          android:layout_marginRight="0dp"
+				          android:layout_marginBottom="4dp"
+				          android:layout_marginLeft="16dp"/>
+
+				<TextView android:layout_width="wrap_content"
+				          android:layout_height="wrap_content"
+				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@string/setting_view_txt_2"
+				          android:layout_marginTop="4dp"
+				          android:layout_marginRight="0dp"
+				          android:layout_marginBottom="16dp"
+				          android:layout_marginLeft="16dp"/>
+			</LinearLayout>
+
+		</android.support.v7.widget.CardView>
+
+		<Space android:layout_width="wrap_content"
+		       android:layout_height="wrap_content"
+		       android:layout_marginTop="16dp"
+		       android:layout_marginRight="8dp"
+		       android:layout_marginBottom="8dp"
+		       android:layout_marginLeft="16dp"
+		       app:layout_gravity="fill"
+		       app:layout_rowWeight="1"
+		       app:layout_columnWeight="1"/>
+
+		<!-- Row 0 -->
+		<!-- Column 1 -->
+		<android.support.v7.widget.CardView android:layout_width="wrap_content"
+		                                    android:layout_height="wrap_content"
+		                                    android:layout_marginTop="16dp"
+		                                    android:layout_marginRight="16dp"
+		                                    android:layout_marginBottom="8dp"
+		                                    android:layout_marginLeft="16dp"
+		                                    app:layout_gravity="fill"
+		                                    app:layout_rowWeight="1"
+		                                    app:layout_columnWeight="1"
+		                                    app:cardElevation="8dp"
+		                                    app:cardCornerRadius="8dp">
+
+			<LinearLayout android:layout_width="wrap_content"
+			              android:layout_height="wrap_content"
+			              android:orientation="vertical">
+
+				<ImageView android:src="@drawable/ic_person_black_16dp"
+				           android:layout_width="wrap_content"
+				           android:layout_height="wrap_content"
+				           android:layout_marginTop="16dp"
+				           android:layout_marginRight="0dp"
+				           android:layout_marginBottom="4dp"
+				           android:layout_marginLeft="16dp"/>
+
+				<TextView android:layout_width="wrap_content"
+				          android:layout_height="wrap_content"
+				          android:layout_marginTop="4dp"
+				          android:layout_marginRight="0dp"
+				          android:layout_marginBottom="4dp"
+				          android:layout_marginLeft="16dp"
+				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@string/setting_view_txt_3"/>
+
+				<TextView android:layout_width="wrap_content"
+				          android:layout_height="wrap_content"
+				          android:layout_marginTop="4dp"
+				          android:layout_marginRight="0dp"
+				          android:layout_marginBottom="16dp"
+				          android:layout_marginLeft="16dp"
+				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@string/setting_view_txt_4"/>
+			</LinearLayout>
+
+		</android.support.v7.widget.CardView>
 
 		<!-- Row 1 -->
-
-		<!-- Column 1 -->
+		<!-- Column 0 -->
 		<android.support.v7.widget.CardView android:layout_width="wrap_content"
 		                                    android:layout_height="wrap_content"
-		                                    android:layout_marginBottom="16dp"
-		                                    android:layout_marginLeft="16dp"
+		                                    android:layout_marginTop="16dp"
 		                                    android:layout_marginRight="16dp"
-		                                    app:layout_columnWeight="1"
+		                                    android:layout_marginBottom="8dp"
+		                                    android:layout_marginLeft="16dp"
+		                                    app:layout_gravity="fill"
 		                                    app:layout_rowWeight="1"
+		                                    app:layout_columnWeight="1"
 		                                    app:cardElevation="8dp"
 		                                    app:cardCornerRadius="8dp">
 
-			<LinearLayout android:layout_gravity="center_horizontal|center_vertical"
-			              android:layout_margin="16dp"
-			              android:orientation="vertical"
-			              android:layout_width="wrap_content"
-			              android:layout_height="wrap_content">
+			<LinearLayout android:layout_width="wrap_content"
+			              android:layout_height="wrap_content"
+			              android:orientation="vertical">
 
-				<ImageView android:src="@mipmap/profil_setting_img"
-				           android:layout_gravity="center_horizontal"
+				<ImageView android:src="@drawable/ic_notifications_black_16dp"
 				           android:layout_width="wrap_content"
-				           android:layout_height="wrap_content"/>
+				           android:layout_height="wrap_content"
+				           android:layout_marginTop="16dp"
+				           android:layout_marginRight="0dp"
+				           android:layout_marginBottom="4dp"
+				           android:layout_marginLeft="16dp"/>
 
-				<TextView android:text="Me"
-				          android:textAlignment="center"
-				          android:textColor="@android:color/black"
-				          android:textSize="18sp"
-				          android:textStyle="bold"
-				          android:layout_width="wrap_content"
-				          android:layout_height="wrap_content"/>
+				<TextView android:layout_width="wrap_content"
+				          android:layout_height="wrap_content"
+				          android:layout_marginTop="4dp"
+				          android:layout_marginRight="0dp"
+				          android:layout_marginBottom="4dp"
+				          android:layout_marginLeft="16dp"
+				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@string/setting_view_txt_5"/>
+
+				<TextView android:layout_width="wrap_content"
+				          android:layout_height="wrap_content"
+				          android:layout_marginTop="4dp"
+				          android:layout_marginRight="0dp"
+				          android:layout_marginBottom="16dp"
+				          android:layout_marginLeft="16dp"
+				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@string/setting_view_txt_6"/>
 
 			</LinearLayout>
 
 		</android.support.v7.widget.CardView>
 
-		<!-- Column 2 -->
+		<!-- Row 1 -->
+		<!-- Column 1 -->
 		<android.support.v7.widget.CardView android:layout_width="wrap_content"
 		                                    android:layout_height="wrap_content"
+		                                    android:layout_marginTop="16dp"
+		                                    android:layout_marginRight="16dp"
 		                                    android:layout_marginBottom="16dp"
 		                                    android:layout_marginLeft="16dp"
-		                                    android:layout_marginRight="16dp"
-		                                    app:layout_columnWeight="1"
+		                                    app:layout_gravity="fill"
 		                                    app:layout_rowWeight="1"
+		                                    app:layout_columnWeight="1"
 		                                    app:cardElevation="8dp"
 		                                    app:cardCornerRadius="8dp">
 
-			<LinearLayout android:layout_gravity="center_horizontal|center_vertical"
-			              android:layout_margin="16dp"
-			              android:orientation="vertical"
-			              android:layout_width="wrap_content"
-			              android:layout_height="wrap_content">
+			<LinearLayout android:layout_width="wrap_content"
+			              android:layout_height="wrap_content"
+			              android:orientation="vertical">
 
-				<ImageView android:src="@mipmap/account_setting_img"
-				           android:layout_gravity="center_horizontal"
+				<ImageView android:src="@drawable/ic_exit_to_app_black_16dp"
 				           android:layout_width="wrap_content"
-				           android:layout_height="wrap_content"/>
+				           android:layout_height="wrap_content"
+				           android:layout_marginTop="16dp"
+				           android:layout_marginRight="0dp"
+				           android:layout_marginBottom="4dp"
+				           android:layout_marginLeft="16dp"/>
 
-				<TextView android:text="Family"
-				          android:textAlignment="center"
-				          android:textColor="@android:color/black"
-				          android:textSize="18sp"
-				          android:textStyle="bold"
-				          android:layout_width="wrap_content"
-				          android:layout_height="wrap_content"/>
+				<TextView android:layout_width="wrap_content"
+				          android:layout_height="wrap_content"
+				          android:layout_marginTop="4dp"
+				          android:layout_marginRight="0dp"
+				          android:layout_marginBottom="4dp"
+				          android:layout_marginLeft="16dp"
+				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@string/setting_view_txt_7"/>
+
+				<TextView android:layout_width="wrap_content"
+				          android:layout_height="wrap_content"
+				          android:layout_marginTop="4dp"
+				          android:layout_marginRight="0dp"
+				          android:layout_marginBottom="16dp"
+				          android:layout_marginLeft="16dp"
+				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@string/setting_view_txt_8"/>
 
 			</LinearLayout>
 
 		</android.support.v7.widget.CardView>
 
 		<!-- Row 2 -->
-
-		<!-- Column 1 -->
+		<!-- Column 0 -->
 		<android.support.v7.widget.CardView android:layout_width="wrap_content"
 		                                    android:layout_height="wrap_content"
-		                                    app:layout_columnWeight="1"
-		                                    app:layout_rowWeight="1"
+		                                    android:layout_marginTop="16dp"
+		                                    android:layout_marginRight="16dp"
 		                                    android:layout_marginBottom="16dp"
 		                                    android:layout_marginLeft="16dp"
-		                                    android:layout_marginRight="16dp"
+		                                    app:layout_gravity="fill"
+		                                    app:layout_rowWeight="1"
+		                                    app:layout_columnWeight="1"
 		                                    app:cardElevation="8dp"
 		                                    app:cardCornerRadius="8dp">
 
-			<LinearLayout android:layout_gravity="center_horizontal|center_vertical"
-			              android:layout_margin="16dp"
-			              android:orientation="vertical"
-			              android:layout_width="wrap_content"
-			              android:layout_height="wrap_content">
+			<LinearLayout android:layout_width="wrap_content"
+			              android:layout_height="wrap_content"
+			              android:orientation="vertical">
 
-				<ImageView android:src="@mipmap/notification_setting_img"
-				           android:layout_gravity="center_horizontal"
+				<ImageView android:src="@drawable/ic_help_black_16dp"
 				           android:layout_width="wrap_content"
-				           android:layout_height="wrap_content"/>
+				           android:layout_height="wrap_content"
+				           android:layout_marginTop="16dp"
+				           android:layout_marginRight="0dp"
+				           android:layout_marginBottom="4dp"
+				           android:layout_marginLeft="16dp"/>
 
-				<TextView android:text="Lovely"
-				          android:textAlignment="center"
-				          android:textColor="@android:color/black"
-				          android:textSize="18sp"
-				          android:textStyle="bold"
-				          android:layout_width="wrap_content"
-				          android:layout_height="wrap_content"/>
+				<TextView android:layout_width="wrap_content"
+				          android:layout_height="wrap_content"
+				          android:layout_marginTop="4dp"
+				          android:layout_marginRight="0dp"
+				          android:layout_marginBottom="4dp"
+				          android:layout_marginLeft="16dp"
+				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@string/setting_view_txt_9"/>
 
-			</LinearLayout>
-
-		</android.support.v7.widget.CardView>
-
-		<!-- Column 2 -->
-		<android.support.v7.widget.CardView android:layout_width="wrap_content"
-		                                    android:layout_height="wrap_content"
-		                                    app:layout_columnWeight="1"
-		                                    app:layout_rowWeight="1"
-		                                    android:layout_marginBottom="16dp"
-		                                    android:layout_marginLeft="16dp"
-		                                    android:layout_marginRight="16dp"
-		                                    app:cardElevation="8dp"
-		                                    app:cardCornerRadius="8dp">
-
-			<LinearLayout android:layout_gravity="center_horizontal|center_vertical"
-			              android:layout_margin="16dp"
-			              android:orientation="vertical"
-			              android:layout_width="wrap_content"
-			              android:layout_height="wrap_content">
-
-				<ImageView android:src="@mipmap/sign_out_setting_img"
-				           android:layout_gravity="center_horizontal"
-				           android:layout_width="wrap_content"
-				           android:layout_height="wrap_content"/>
-
-				<TextView android:text="Team"
-				          android:textAlignment="center"
-				          android:textColor="@android:color/black"
-				          android:textSize="18sp"
-				          android:textStyle="bold"
-				          android:layout_width="wrap_content"
-				          android:layout_height="wrap_content"/>
-
-			</LinearLayout>
-
-		</android.support.v7.widget.CardView>
-
-		<!-- Row 2 -->
-
-		<!-- Column 1 -->
-		<android.support.v7.widget.CardView android:layout_width="wrap_content"
-		                                    android:layout_height="wrap_content"
-		                                    app:layout_columnWeight="1"
-		                                    app:layout_rowWeight="1"
-		                                    android:layout_marginBottom="16dp"
-		                                    android:layout_marginLeft="16dp"
-		                                    android:layout_marginRight="16dp"
-		                                    app:cardElevation="8dp"
-		                                    app:cardCornerRadius="8dp">
-
-			<LinearLayout android:layout_gravity="center_horizontal|center_vertical"
-			              android:layout_margin="16dp"
-			              android:orientation="vertical"
-			              android:layout_width="wrap_content"
-			              android:layout_height="wrap_content">
-
-				<ImageView android:src="@mipmap/help_setting_img"
-				           android:layout_gravity="center_horizontal"
-				           android:layout_width="wrap_content"
-				           android:layout_height="wrap_content"/>
-
-				<TextView android:text="Friends"
-				          android:textAlignment="center"
-				          android:textColor="@android:color/black"
-				          android:textSize="18sp"
-				          android:textStyle="bold"
-				          android:layout_width="wrap_content"
-				          android:layout_height="wrap_content"/>
+				<TextView android:layout_width="wrap_content"
+				          android:layout_height="wrap_content"
+				          android:layout_marginTop="4dp"
+				          android:layout_marginRight="0dp"
+				          android:layout_marginBottom="16dp"
+				          android:layout_marginLeft="16dp"
+				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@string/setting_view_txt_10"/>
 
 			</LinearLayout>
 
