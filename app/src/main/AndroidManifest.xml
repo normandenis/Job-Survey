@@ -31,6 +31,8 @@
 			android:label="@string/title_activity_survey_view_model"
 			android:theme="@style/AppTheme">
 		</activity>
+		<activity android:name=".SurveyContentViewModel">
+		</activity>
 	</application>
 
 </manifest>

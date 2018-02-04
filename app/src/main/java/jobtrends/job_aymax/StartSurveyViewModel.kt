@@ -1,23 +1,32 @@
 package jobtrends.job_aymax
 
-import android.content.Intent
 import android.databinding.DataBindingUtil
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import jobtrends.job_aymax.databinding.StartSurveyViewBinding
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentTransaction
 
-class StartSurveyViewModel : AppCompatActivity()
+
+class StartSurveyViewModel : Fragment()
 {
-	override fun onCreate(savedInstanceState : Bundle?)
+	override fun onCreateView(inflater : LayoutInflater, container : ViewGroup?, savedInstanceState : Bundle?) : View?
 	{
-		super.onCreate(savedInstanceState)
-		val binding : StartSurveyViewBinding = DataBindingUtil.setContentView(this, R.layout.start_survey_view)
+		val binding : StartSurveyViewBinding = DataBindingUtil.inflate(inflater, R.layout.start_survey_view, container, false)
+		val view = binding.root
 		binding.vm = this
+		return view
 	}
 
 	fun onClick()
 	{
-		val intent = Intent(this, SurveyViewModel::class.java)
-		startActivity(intent)
+		val fragment = SurveyViewModel()
+		val transaction = fragmentManager?.beginTransaction()
+		transaction?.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
+		transaction?.addToBackStack(null)
+		transaction?.commit()
 	}
 }

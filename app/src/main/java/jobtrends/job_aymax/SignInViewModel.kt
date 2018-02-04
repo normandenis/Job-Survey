@@ -3,11 +3,9 @@ package jobtrends.job_aymax
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.os.Debug
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import jobtrends.job_aymax.databinding.SignInViewBinding
-import java.io.Console
 
 class SignInViewModel : AppCompatActivity()
 {

@@ -7,8 +7,8 @@
               android:orientation="vertical"
               tools:context="jobtrends.job_aymax.NavDrawerViewModel">
 
-	<android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
-	                                            android:layout_width="match_parent"
+	<android.support.design.widget.AppBarLayout android:layout_width="match_parent"
+	                                            android:layout_height="wrap_content"
 	                                            android:theme="@style/AppTheme">
 
 		<android.support.v7.widget.Toolbar android:id="@+id/toolbar"
@@ -28,14 +28,17 @@
 			<TextView android:layout_width="match_parent"
 			          android:layout_height="match_parent"
 			          android:gravity="center"
+			          android:text="Sondage"
 			          android:textAppearance="?android:attr/textAppearanceLarge"
-			          android:text="Menu"
 			          android:textStyle="bold"/>
 
 		</android.support.v7.widget.Toolbar>
 
 	</android.support.design.widget.AppBarLayout>
 
-	<include layout="@layout/setting_view"/>
+	<FrameLayout android:id="@+id/fragment_app_bar_nav_drawer_0"
+	             android:layout_width="match_parent"
+	             android:layout_height="0dp"
+	             android:layout_weight="1"/>
 
 </LinearLayout>

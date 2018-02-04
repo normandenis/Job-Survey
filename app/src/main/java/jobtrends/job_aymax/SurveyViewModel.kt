@@ -1,131 +1,54 @@
 package jobtrends.job_aymax
 
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
-
+import android.databinding.DataBindingUtil
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.os.Bundle
+import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import jobtrends.job_aymax.databinding.SurveyViewBinding
+import java.util.*
 
-import kotlinx.android.synthetic.main.survey_view.*
-import kotlinx.android.synthetic.main.fragment_survey_view.view.*
-
-class SurveyViewModel : AppCompatActivity()
+class SurveyViewModel : Fragment()
 {
+	private var _pagerAdapterController : PagerAdapterController? = null
 
-	/**
-	 * The [android.support.v4.view.PagerAdapter] that will provide
-	 * fragments for each of the sections. We use a
-	 * {@link FragmentPagerAdapter} derivative, which will keep every
-	 * loaded fragment in memory. If this becomes too memory intensive, it
-	 * may be best to switch to a
-	 * [android.support.v4.app.FragmentStatePagerAdapter].
-	 */
-	private var mSectionsPagerAdapter : SectionsPagerAdapter? = null
-
-	override fun onCreate(savedInstanceState : Bundle?)
+	private fun newInstance(title : String) : Fragment
 	{
-		super.onCreate(savedInstanceState)
-		setContentView(R.layout.survey_view)
+		val fragment = SurveyContentViewModel()
 
-		setSupportActionBar(toolbar)
-		// Create the adapter that will return a fragment for each of the three
-		// primary sections of the activity.
-		mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
-
-		// Set up the ViewPager with the sections adapter.
-		container.adapter = mSectionsPagerAdapter
-
-		fab.setOnClickListener { view ->
-			Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show()
-		}
-
+		val bundle = Bundle()
+		bundle.putString("title", title)
+		fragment.arguments = bundle
+		return fragment
 	}
 
-
-	override fun onCreateOptionsMenu(menu : Menu) : Boolean
+	override fun onViewCreated(view : View, savedInstanceState : Bundle?)
 	{
-		// Inflate the menu; this adds items to the action bar if it is present.
-		menuInflater.inflate(R.menu.menu_survey_view, menu)
-		return true
+		super.onViewCreated(view, savedInstanceState)
+
+		val list : MutableList<Fragment> = mutableListOf()
+		var i = 0
+		list.add(newInstance("Sondage : $i"))
+		i++
+		list.add(newInstance("Sondage : $i"))
+		i++
+		list.add(newInstance("Sondage : $i"))
+
+		_pagerAdapterController = PagerAdapterController(fragmentManager, list)
+		val pager : ViewPager? = getView()?.findViewById(R.id.pager)
+		pager?.adapter = _pagerAdapterController
 	}
 
-	override fun onOptionsItemSelected(item : MenuItem) : Boolean
+	override fun onCreateView(inflater : LayoutInflater, container : ViewGroup?, savedInstanceState : Bundle?) : View?
 	{
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		val id = item.itemId
-
-		if (id == R.id.action_settings)
-		{
-			return true
-		}
-
-		return super.onOptionsItemSelected(item)
-	}
-
-
-	/**
-	 * A [FragmentPagerAdapter] that returns a fragment corresponding to
-	 * one of the sections/tabs/pages.
-	 */
-	inner class SectionsPagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm)
-	{
-
-		override fun getItem(position : Int) : Fragment
-		{
-			// getItem is called to instantiate the fragment for the given page.
-			// Return a PlaceholderFragment (defined as a static inner class below).
-			return PlaceholderFragment.newInstance(position + 1)
-		}
-
-		override fun getCount() : Int
-		{
-			// Show 3 total pages.
-			return 3
-		}
-	}
-
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	class PlaceholderFragment : Fragment()
-	{
-
-		override fun onCreateView(inflater : LayoutInflater, container : ViewGroup?, savedInstanceState : Bundle?) : View?
-		{
-			val rootView = inflater.inflate(R.layout.fragment_survey_view, container, false)
-			rootView.section_label.text = getString(R.string.section_format, arguments?.getInt(ARG_SECTION_NUMBER))
-			return rootView
-		}
-
-		companion object
-		{
-			/**
-			 * The fragment argument representing the section number for this
-			 * fragment.
-			 */
-			private const val ARG_SECTION_NUMBER = "section_number"
-
-			/**
-			 * Returns a new instance of this fragment for the given section
-			 * number.
-			 */
-			fun newInstance(sectionNumber : Int) : PlaceholderFragment
-			{
-				val fragment = PlaceholderFragment()
-				val args = Bundle()
-				args.putInt(ARG_SECTION_NUMBER, sectionNumber)
-				fragment.arguments = args
-				return fragment
-			}
-		}
+		val binding : SurveyViewBinding = DataBindingUtil.inflate(inflater, R.layout.survey_view, container, false)
+		val view = binding.root
+		binding.vm = this
+		return view
 	}
 }

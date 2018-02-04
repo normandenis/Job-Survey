@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
+import android.widget.FrameLayout
 
 class NavDrawerViewModel : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener
 {
@@ -19,20 +20,26 @@ class NavDrawerViewModel : AppCompatActivity(), NavigationView.OnNavigationItemS
 		val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
 		setSupportActionBar(toolbar)
 
-//		val fab = findViewById<View>(R.id.fab) as FloatingActionButton
-//		fab.setOnClickListener { view ->
-//			Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//					.setAction("Action", null).show()
-//		}
 
 		val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
-		val toggle = ActionBarDrawerToggle(
-				this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+		val toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
 		drawer.setDrawerListener(toggle)
 		toggle.syncState()
 
 		val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
 		navigationView.setNavigationItemSelectedListener(this)
+
+		if (findViewById<FrameLayout>(R.id.fragment_app_bar_nav_drawer_0) != null)
+		{
+			if (savedInstanceState != null)
+			{
+				return
+			}
+			val firstFragment = StartSurveyViewModel()
+			val transaction = supportFragmentManager.beginTransaction()
+			transaction.add(R.id.fragment_app_bar_nav_drawer_0, firstFragment)
+			transaction.commit()
+		}
 	}
 
 	override fun onBackPressed()
