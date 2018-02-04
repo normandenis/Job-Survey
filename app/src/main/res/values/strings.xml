@@ -2,7 +2,9 @@
 
 	<string name="app_name">Job_Aymax</string>
 
+
 	<!--sign_in_view-->
+
 
 	<string name="sign_in_view_txt_0">
 		<b>JOB-SURVEY</b>
@@ -20,7 +22,9 @@
 		<b>S\'INSCRIRE</b>
 	</string>
 
+
 	<!--sign_up_view-->
+
 
 	<string name="sign_up_view_txt_0">
 		<b>JOB-SURVEY</b>
@@ -38,7 +42,9 @@
 
 	<string name="sign_up_view_txt_5">Métier actuel</string>
 
-	<string name="sign_up_view_txt_6">En créant votre compte vous acceptez nos <b>Conditions d’Utilisation</b> et
+	<string name="sign_up_view_txt_6">En créant votre compte vous acceptez nos <b>Conditions
+		d’Utilisation
+	</b> et
 		notre
 		<b>Privacy Policy</b>
 	</string>
@@ -47,6 +53,10 @@
 
 	<string name="navigation_drawer_open">Open navigation drawer</string>
 	<string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+	<!--setting_view-->
+
 
 	<string name="setting_view_txt_0">
 		<b>PARAMÈTRES</b>
@@ -81,5 +91,28 @@
 	</string>
 
 	<string name="setting_view_txt_10">Questions?</string>
+
+
+	<!--profile_view-->
+
+
+	<string name="profile_view_0">SONDAGE</string>
+
+	<string name="profile_view_1">POINTS</string>
+
+	<string name="profile_view_2">CLASSEMENT</string>
+
+
+	<!--start_survey_view-->
+
+
+	<string name="start_survey_view_0">
+		<b>DÉMARRER LE SONDAGE ?</b>
+	</string>
+
+	<string name="start_survey_view_1">COMMENCER</string>
+	<string name="title_activity_survey_view_model">Survey</string>
+	<string name="action_settings">Settings</string>
+	<string name="section_format">Hello World from section: %1$d</string>
 
 </resources>

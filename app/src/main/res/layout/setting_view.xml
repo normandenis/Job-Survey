@@ -13,110 +13,115 @@
 	                                      android:layout_height="wrap_content"
 	                                      android:layout_gravity="bottom"
 	                                      android:layout_margin="16dp"
+	                                      app:alignmentMode="alignMargins"
 	                                      app:columnCount="2"
-	                                      app:rowCount="3"
-	                                      app:alignmentMode="alignMargins">
+	                                      app:rowCount="3">
 
 		<!-- Row 0 -->
 		<!-- Column 0 -->
 		<android.support.v7.widget.CardView android:layout_width="wrap_content"
 		                                    android:layout_height="wrap_content"
-		                                    android:layout_marginTop="16dp"
-		                                    android:layout_marginRight="8dp"
 		                                    android:layout_marginBottom="8dp"
 		                                    android:layout_marginLeft="16dp"
-		                                    app:layout_gravity="fill"
-		                                    app:layout_rowWeight="1"
-		                                    app:layout_columnWeight="1"
+		                                    android:layout_marginRight="8dp"
+		                                    android:layout_marginTop="16dp"
+		                                    android:clickable="true"
+		                                    android:focusable="true"
+		                                    android:onClick="onClick"
+		                                    app:cardCornerRadius="8dp"
 		                                    app:cardElevation="8dp"
-		                                    app:cardCornerRadius="8dp">
+		                                    app:layout_columnWeight="1"
+		                                    app:layout_gravity="fill"
+		                                    app:layout_rowWeight="1">
 
 			<LinearLayout android:layout_width="wrap_content"
 			              android:layout_height="wrap_content"
 			              android:orientation="vertical">
 
-				<ImageView android:src="@drawable/ic_edit_black_16dp"
-				           android:layout_width="wrap_content"
+				<ImageView android:layout_width="wrap_content"
 				           android:layout_height="wrap_content"
-				           android:layout_marginTop="16dp"
-				           android:layout_marginRight="0dp"
 				           android:layout_marginBottom="4dp"
-				           android:layout_marginLeft="16dp"/>
+				           android:layout_marginLeft="16dp"
+				           android:layout_marginRight="0dp"
+				           android:layout_marginTop="16dp"
+				           android:src="@drawable/ic_edit_black_16dp"/>
 
 				<TextView android:layout_width="wrap_content"
 				          android:layout_height="wrap_content"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:text="@string/setting_view_txt_1"
-				          android:layout_marginTop="4dp"
-				          android:layout_marginRight="0dp"
 				          android:layout_marginBottom="4dp"
-				          android:layout_marginLeft="16dp"/>
+				          android:layout_marginLeft="16dp"
+				          android:layout_marginRight="0dp"
+				          android:layout_marginTop="4dp"
+				          android:text="@string/setting_view_txt_1"
+				          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 				<TextView android:layout_width="wrap_content"
 				          android:layout_height="wrap_content"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:text="@string/setting_view_txt_2"
-				          android:layout_marginTop="4dp"
-				          android:layout_marginRight="0dp"
 				          android:layout_marginBottom="16dp"
-				          android:layout_marginLeft="16dp"/>
+				          android:layout_marginLeft="16dp"
+				          android:layout_marginRight="0dp"
+				          android:layout_marginTop="4dp"
+				          android:text="@string/setting_view_txt_2"
+				          android:textAppearance="?android:attr/textAppearanceSmall"/>
+
 			</LinearLayout>
 
 		</android.support.v7.widget.CardView>
 
 		<Space android:layout_width="wrap_content"
 		       android:layout_height="wrap_content"
-		       android:layout_marginTop="16dp"
-		       android:layout_marginRight="8dp"
 		       android:layout_marginBottom="8dp"
 		       android:layout_marginLeft="16dp"
+		       android:layout_marginRight="8dp"
+		       android:layout_marginTop="16dp"
+		       app:layout_columnWeight="1"
 		       app:layout_gravity="fill"
-		       app:layout_rowWeight="1"
-		       app:layout_columnWeight="1"/>
+		       app:layout_rowWeight="1"/>
 
 		<!-- Row 0 -->
 		<!-- Column 1 -->
 		<android.support.v7.widget.CardView android:layout_width="wrap_content"
 		                                    android:layout_height="wrap_content"
-		                                    android:layout_marginTop="16dp"
-		                                    android:layout_marginRight="16dp"
 		                                    android:layout_marginBottom="8dp"
 		                                    android:layout_marginLeft="16dp"
-		                                    app:layout_gravity="fill"
-		                                    app:layout_rowWeight="1"
-		                                    app:layout_columnWeight="1"
+		                                    android:layout_marginRight="16dp"
+		                                    android:layout_marginTop="16dp"
+		                                    app:cardCornerRadius="8dp"
 		                                    app:cardElevation="8dp"
-		                                    app:cardCornerRadius="8dp">
+		                                    app:layout_columnWeight="1"
+		                                    app:layout_gravity="fill"
+		                                    app:layout_rowWeight="1">
 
 			<LinearLayout android:layout_width="wrap_content"
 			              android:layout_height="wrap_content"
 			              android:orientation="vertical">
 
-				<ImageView android:src="@drawable/ic_person_black_16dp"
-				           android:layout_width="wrap_content"
+				<ImageView android:layout_width="wrap_content"
 				           android:layout_height="wrap_content"
-				           android:layout_marginTop="16dp"
-				           android:layout_marginRight="0dp"
 				           android:layout_marginBottom="4dp"
-				           android:layout_marginLeft="16dp"/>
+				           android:layout_marginLeft="16dp"
+				           android:layout_marginRight="0dp"
+				           android:layout_marginTop="16dp"
+				           android:src="@drawable/ic_person_black_16dp"/>
 
 				<TextView android:layout_width="wrap_content"
 				          android:layout_height="wrap_content"
-				          android:layout_marginTop="4dp"
-				          android:layout_marginRight="0dp"
 				          android:layout_marginBottom="4dp"
 				          android:layout_marginLeft="16dp"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:text="@string/setting_view_txt_3"/>
+				          android:layout_marginRight="0dp"
+				          android:layout_marginTop="4dp"
+				          android:text="@string/setting_view_txt_3"
+				          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 				<TextView android:layout_width="wrap_content"
 				          android:layout_height="wrap_content"
-				          android:layout_marginTop="4dp"
-				          android:layout_marginRight="0dp"
 				          android:layout_marginBottom="16dp"
 				          android:layout_marginLeft="16dp"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:text="@string/setting_view_txt_4"/>
+				          android:layout_marginRight="0dp"
+				          android:layout_marginTop="4dp"
+				          android:text="@string/setting_view_txt_4"
+				          android:textAppearance="?android:attr/textAppearanceSmall"/>
+
 			</LinearLayout>
 
 		</android.support.v7.widget.CardView>
@@ -125,45 +130,45 @@
 		<!-- Column 0 -->
 		<android.support.v7.widget.CardView android:layout_width="wrap_content"
 		                                    android:layout_height="wrap_content"
-		                                    android:layout_marginTop="16dp"
-		                                    android:layout_marginRight="16dp"
 		                                    android:layout_marginBottom="8dp"
 		                                    android:layout_marginLeft="16dp"
-		                                    app:layout_gravity="fill"
-		                                    app:layout_rowWeight="1"
-		                                    app:layout_columnWeight="1"
+		                                    android:layout_marginRight="16dp"
+		                                    android:layout_marginTop="16dp"
+		                                    app:cardCornerRadius="8dp"
 		                                    app:cardElevation="8dp"
-		                                    app:cardCornerRadius="8dp">
+		                                    app:layout_columnWeight="1"
+		                                    app:layout_gravity="fill"
+		                                    app:layout_rowWeight="1">
 
 			<LinearLayout android:layout_width="wrap_content"
 			              android:layout_height="wrap_content"
 			              android:orientation="vertical">
 
-				<ImageView android:src="@drawable/ic_notifications_black_16dp"
-				           android:layout_width="wrap_content"
+				<ImageView android:layout_width="wrap_content"
 				           android:layout_height="wrap_content"
-				           android:layout_marginTop="16dp"
-				           android:layout_marginRight="0dp"
 				           android:layout_marginBottom="4dp"
-				           android:layout_marginLeft="16dp"/>
+				           android:layout_marginLeft="16dp"
+				           android:layout_marginRight="0dp"
+				           android:layout_marginTop="16dp"
+				           android:src="@drawable/ic_notifications_black_16dp"/>
 
 				<TextView android:layout_width="wrap_content"
 				          android:layout_height="wrap_content"
-				          android:layout_marginTop="4dp"
-				          android:layout_marginRight="0dp"
 				          android:layout_marginBottom="4dp"
 				          android:layout_marginLeft="16dp"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:text="@string/setting_view_txt_5"/>
+				          android:layout_marginRight="0dp"
+				          android:layout_marginTop="4dp"
+				          android:text="@string/setting_view_txt_5"
+				          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 				<TextView android:layout_width="wrap_content"
 				          android:layout_height="wrap_content"
-				          android:layout_marginTop="4dp"
-				          android:layout_marginRight="0dp"
 				          android:layout_marginBottom="16dp"
 				          android:layout_marginLeft="16dp"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:text="@string/setting_view_txt_6"/>
+				          android:layout_marginRight="0dp"
+				          android:layout_marginTop="4dp"
+				          android:text="@string/setting_view_txt_6"
+				          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 			</LinearLayout>
 
@@ -173,45 +178,45 @@
 		<!-- Column 1 -->
 		<android.support.v7.widget.CardView android:layout_width="wrap_content"
 		                                    android:layout_height="wrap_content"
-		                                    android:layout_marginTop="16dp"
-		                                    android:layout_marginRight="16dp"
 		                                    android:layout_marginBottom="16dp"
 		                                    android:layout_marginLeft="16dp"
-		                                    app:layout_gravity="fill"
-		                                    app:layout_rowWeight="1"
-		                                    app:layout_columnWeight="1"
+		                                    android:layout_marginRight="16dp"
+		                                    android:layout_marginTop="16dp"
+		                                    app:cardCornerRadius="8dp"
 		                                    app:cardElevation="8dp"
-		                                    app:cardCornerRadius="8dp">
+		                                    app:layout_columnWeight="1"
+		                                    app:layout_gravity="fill"
+		                                    app:layout_rowWeight="1">
 
 			<LinearLayout android:layout_width="wrap_content"
 			              android:layout_height="wrap_content"
 			              android:orientation="vertical">
 
-				<ImageView android:src="@drawable/ic_exit_to_app_black_16dp"
-				           android:layout_width="wrap_content"
+				<ImageView android:layout_width="wrap_content"
 				           android:layout_height="wrap_content"
-				           android:layout_marginTop="16dp"
-				           android:layout_marginRight="0dp"
 				           android:layout_marginBottom="4dp"
-				           android:layout_marginLeft="16dp"/>
+				           android:layout_marginLeft="16dp"
+				           android:layout_marginRight="0dp"
+				           android:layout_marginTop="16dp"
+				           android:src="@drawable/ic_exit_to_app_black_16dp"/>
 
 				<TextView android:layout_width="wrap_content"
 				          android:layout_height="wrap_content"
-				          android:layout_marginTop="4dp"
-				          android:layout_marginRight="0dp"
 				          android:layout_marginBottom="4dp"
 				          android:layout_marginLeft="16dp"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:text="@string/setting_view_txt_7"/>
+				          android:layout_marginRight="0dp"
+				          android:layout_marginTop="4dp"
+				          android:text="@string/setting_view_txt_7"
+				          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 				<TextView android:layout_width="wrap_content"
 				          android:layout_height="wrap_content"
-				          android:layout_marginTop="4dp"
-				          android:layout_marginRight="0dp"
 				          android:layout_marginBottom="16dp"
 				          android:layout_marginLeft="16dp"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:text="@string/setting_view_txt_8"/>
+				          android:layout_marginRight="0dp"
+				          android:layout_marginTop="4dp"
+				          android:text="@string/setting_view_txt_8"
+				          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 			</LinearLayout>
 
@@ -221,45 +226,45 @@
 		<!-- Column 0 -->
 		<android.support.v7.widget.CardView android:layout_width="wrap_content"
 		                                    android:layout_height="wrap_content"
-		                                    android:layout_marginTop="16dp"
-		                                    android:layout_marginRight="16dp"
 		                                    android:layout_marginBottom="16dp"
 		                                    android:layout_marginLeft="16dp"
-		                                    app:layout_gravity="fill"
-		                                    app:layout_rowWeight="1"
-		                                    app:layout_columnWeight="1"
+		                                    android:layout_marginRight="16dp"
+		                                    android:layout_marginTop="16dp"
+		                                    app:cardCornerRadius="8dp"
 		                                    app:cardElevation="8dp"
-		                                    app:cardCornerRadius="8dp">
+		                                    app:layout_columnWeight="1"
+		                                    app:layout_gravity="fill"
+		                                    app:layout_rowWeight="1">
 
 			<LinearLayout android:layout_width="wrap_content"
 			              android:layout_height="wrap_content"
 			              android:orientation="vertical">
 
-				<ImageView android:src="@drawable/ic_help_black_16dp"
-				           android:layout_width="wrap_content"
+				<ImageView android:layout_width="wrap_content"
 				           android:layout_height="wrap_content"
-				           android:layout_marginTop="16dp"
-				           android:layout_marginRight="0dp"
 				           android:layout_marginBottom="4dp"
-				           android:layout_marginLeft="16dp"/>
+				           android:layout_marginLeft="16dp"
+				           android:layout_marginRight="0dp"
+				           android:layout_marginTop="16dp"
+				           android:src="@drawable/ic_help_black_16dp"/>
 
 				<TextView android:layout_width="wrap_content"
 				          android:layout_height="wrap_content"
-				          android:layout_marginTop="4dp"
-				          android:layout_marginRight="0dp"
 				          android:layout_marginBottom="4dp"
 				          android:layout_marginLeft="16dp"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:text="@string/setting_view_txt_9"/>
+				          android:layout_marginRight="0dp"
+				          android:layout_marginTop="4dp"
+				          android:text="@string/setting_view_txt_9"
+				          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 				<TextView android:layout_width="wrap_content"
 				          android:layout_height="wrap_content"
-				          android:layout_marginTop="4dp"
-				          android:layout_marginRight="0dp"
 				          android:layout_marginBottom="16dp"
 				          android:layout_marginLeft="16dp"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:text="@string/setting_view_txt_10"/>
+				          android:layout_marginRight="0dp"
+				          android:layout_marginTop="4dp"
+				          android:text="@string/setting_view_txt_10"
+				          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 			</LinearLayout>
 

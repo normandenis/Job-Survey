@@ -12,7 +12,6 @@ import android.view.View
 
 class NavDrawerViewModel : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener
 {
-
 	override fun onCreate(savedInstanceState : Bundle?)
 	{
 		super.onCreate(savedInstanceState)

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="jobtrends.job_aymax.ProfileViewModel">
+
+	<data>
+		<variable name="vm"
+		          type="jobtrends.job_aymax.ProfileViewModel"/>
+	</data>
+
+	<LinearLayout android:layout_width="match_parent"
+	              android:layout_height="match_parent"
+	              android:orientation="vertical">
+
+		<LinearLayout android:layout_width="match_parent"
+		              android:layout_height="136dp"
+		              android:background="@android:color/darker_gray"
+		              android:orientation="vertical">
+
+			<ImageView android:layout_width="96dp"
+			           android:layout_height="96dp"
+			           android:layout_gravity="center"
+			           android:layout_margin="16dp"
+			           android:src="@drawable/ic_person_white_96dp"/>
+
+		</LinearLayout>
+
+		<TextView android:layout_width="wrap_content"
+		          android:layout_height="wrap_content"
+		          android:layout_gravity="center"
+		          android:text="@{vm.userName}"
+		          android:textAppearance="?android:attr/textAppearanceLarge"
+		          android:textStyle="bold"/>
+
+		<TextView android:layout_width="wrap_content"
+		          android:layout_height="wrap_content"
+		          android:layout_gravity="center"
+		          android:text="@{vm.userJob}"
+		          android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+		<LinearLayout android:layout_width="match_parent"
+		              android:layout_height="wrap_content"
+		              android:orientation="horizontal"
+		              android:weightSum="3">
+
+			<android.support.v7.widget.CardView android:layout_width="match_parent"
+			                                    android:layout_height="wrap_content"
+			                                    android:layout_margin="8dp"
+			                                    android:layout_weight="1"
+			                                    android:padding="8dp"
+			                                    app:cardElevation="8dp">
+
+				<LinearLayout android:layout_width="wrap_content"
+				              android:layout_height="wrap_content"
+				              android:orientation="vertical">
+
+					<TextView android:layout_width="wrap_content"
+					          android:layout_height="wrap_content"
+					          android:layout_margin="8dp"
+					          android:padding="8dp"
+					          android:textAppearance="?android:attr/textAppearanceSmall"
+					          android:textStyle="bold"/>
+
+					<TextView android:layout_width="wrap_content"
+					          android:layout_height="wrap_content"
+					          android:layout_margin="8dp"
+					          android:padding="8dp"
+					          android:text="@string/profile_view_0"
+					          android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+				</LinearLayout>
+
+			</android.support.v7.widget.CardView>
+
+			<android.support.v7.widget.CardView android:layout_width="match_parent"
+			                                    android:layout_height="wrap_content"
+			                                    android:layout_margin="8dp"
+			                                    android:layout_weight="1"
+			                                    android:padding="8dp"
+			                                    app:cardElevation="8dp">
+
+				<LinearLayout android:layout_width="wrap_content"
+				              android:layout_height="wrap_content"
+				              android:orientation="vertical">
+
+					<TextView android:layout_width="wrap_content"
+					          android:layout_height="wrap_content"
+					          android:layout_margin="8dp"
+					          android:padding="8dp"
+					          android:textAppearance="?android:attr/textAppearanceSmall"
+					          android:textStyle="bold"/>
+
+					<TextView android:layout_width="wrap_content"
+					          android:layout_height="wrap_content"
+					          android:layout_margin="8dp"
+					          android:padding="8dp"
+					          android:text="@string/profile_view_1"
+					          android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+				</LinearLayout>
+
+			</android.support.v7.widget.CardView>
+
+			<android.support.v7.widget.CardView android:layout_width="match_parent"
+			                                    android:layout_height="wrap_content"
+			                                    android:layout_margin="8dp"
+			                                    android:layout_weight="1"
+			                                    android:padding="8dp"
+			                                    app:cardElevation="8dp">
+
+				<LinearLayout android:layout_width="wrap_content"
+				              android:layout_height="wrap_content"
+				              android:orientation="vertical">
+
+					<TextView android:layout_width="wrap_content"
+					          android:layout_height="wrap_content"
+					          android:layout_margin="8dp"
+					          android:padding="8dp"
+					          android:textAppearance="?android:attr/textAppearanceSmall"
+					          android:textStyle="bold"/>
+
+					<TextView android:layout_width="wrap_content"
+					          android:layout_height="wrap_content"
+					          android:layout_margin="8dp"
+					          android:padding="8dp"
+					          android:text="@string/profile_view_2"
+					          android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+				</LinearLayout>
+
+			</android.support.v7.widget.CardView>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</layout>

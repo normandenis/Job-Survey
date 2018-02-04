@@ -4,21 +4,20 @@ import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import jobtrends.job_aymax.databinding.SettingViewBinding
+import jobtrends.job_aymax.databinding.StartSurveyViewBinding
 
-class SettingViewModel : AppCompatActivity()
+class StartSurveyViewModel : AppCompatActivity()
 {
 	override fun onCreate(savedInstanceState : Bundle?)
 	{
 		super.onCreate(savedInstanceState)
-		val binding : SettingViewBinding = DataBindingUtil.setContentView(this, R.layout.setting_view)
+		val binding : StartSurveyViewBinding = DataBindingUtil.setContentView(this, R.layout.start_survey_view)
 		binding.vm = this
 	}
 
-	fun onClick(view : View)
+	fun onClick()
 	{
-		val intent = Intent(this, ProfileViewModel::class.java)
+		val intent = Intent(this, SurveyViewModel::class.java)
 		startActivity(intent)
 	}
 }

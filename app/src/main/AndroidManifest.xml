@@ -22,6 +22,15 @@
 		</activity>
 		<activity android:name=".SettingViewModel">
 		</activity>
+		<activity android:name=".ProfileViewModel">
+		</activity>
+		<activity android:name=".StartSurveyViewModel">
+		</activity>
+		<activity
+			android:name=".SurveyViewModel"
+			android:label="@string/title_activity_survey_view_model"
+			android:theme="@style/AppTheme">
+		</activity>
 	</application>
 
 </manifest>

@@ -17,8 +17,7 @@ android {
         release {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        debug {
-        }
+        debug {}
     }
     dataBinding {
         enabled = true
@@ -27,6 +26,8 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    testCompile 'junit:junit:4.12'
 
     // AndroidJUnitRunner and JUnit Rules
     androidTestCompile('com.android.support.test:runner:1.0.1', {
@@ -43,9 +44,7 @@ dependencies {
 
     // The following Espresso dependency can be either "compile"
     // or "androidTestCompile", depending on your app's implementation
-    androidTestCompile 'com.android.support.test.espresso:espresso-idling-resource:3.0.1'
 
-    testCompile 'junit:junit:4.12'
 
     kapt "com.android.databinding:compiler:$compiler_version"
 
@@ -57,10 +56,12 @@ dependencies {
     compile 'com.android.support:cardview-v7:27.0.2'
     compile 'com.android.support:gridlayout-v7:27.0.2'
     compile 'com.android.support:appcompat-v7:27.0.2'
-
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }
 
 repositories {
     mavenCentral()
 }
 
+
+apply plugin: 'kotlin-android-extensions'
