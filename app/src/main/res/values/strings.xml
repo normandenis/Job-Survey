@@ -1,13 +1,13 @@
 <resources>
 
-	<string name="app_name">Job_Aymax</string>
+	<string name="app_name">Job Survey</string>
 
 
 	<!--sign_in_view-->
 
 
 	<string name="sign_in_view_txt_0">
-		<b>JOB-SURVEY</b>
+		<b>Job Survey</b>
 	</string>
 
 	<string name="sign_in_view_txt_1">Email</string>
@@ -27,7 +27,7 @@
 
 
 	<string name="sign_up_view_txt_0">
-		<b>JOB-SURVEY</b>
+		<b>Job Survey</b>
 	</string>
 
 	<string name="sign_up_view_txt_1">
