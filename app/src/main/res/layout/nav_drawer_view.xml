@@ -2,10 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.job_aymax.NavDrawerViewModel">
+        tools:context="jobtrends.job_aymax.viewmodel.NavDrawerViewModel">
 
 	<data>
-		<variable name="vm" type="jobtrends.job_aymax.StartSurveyViewModel"/>
+		<variable name="vm" type="jobtrends.job_aymax.viewmodel.StartSurveyViewModel"/>
 	</data>
 
 	<android.support.v4.widget.DrawerLayout android:id="@+id/drawer_layout"

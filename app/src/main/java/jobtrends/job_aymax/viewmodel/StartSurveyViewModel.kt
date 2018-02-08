@@ -1,4 +1,4 @@
-package jobtrends.job_aymax
+package jobtrends.job_aymax.viewmodel
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -7,8 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import jobtrends.job_aymax.databinding.StartSurveyViewBinding
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
+import jobtrends.job_aymax.R
 
 
 class StartSurveyViewModel : Fragment()

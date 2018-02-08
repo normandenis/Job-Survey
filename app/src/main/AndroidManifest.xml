@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="jobtrends.job_aymax">
+	
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 	<application
 		android:allowBackup="true"
@@ -9,20 +12,20 @@
 		android:roundIcon="@drawable/ic_logo_gray"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".SignInViewModel">
+		<activity android:name=".viewmodel.SignInViewModel">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
-		<activity android:name=".SignUpViewModel">
+		<activity android:name=".viewmodel.SignUpViewModel">
 		</activity>
-		<activity android:name=".NavDrawerViewModel">
+		<activity android:name=".viewmodel.NavDrawerViewModel">
 		</activity>
-		<activity android:name=".SettingViewModel">
+		<activity android:name=".viewmodel.SettingViewModel">
 		</activity>
-		<activity android:name=".ProfileViewModel">
+		<activity android:name=".viewmodel.ProfileViewModel">
 		</activity>
 		<!--<activity android:name=".StartSurveyViewModel">-->
 		<!--</activity>-->

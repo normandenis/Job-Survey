@@ -1,10 +1,11 @@
-package jobtrends.job_aymax
+package jobtrends.job_aymax.viewmodel
 
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import jobtrends.job_aymax.R
 import jobtrends.job_aymax.databinding.SettingViewBinding
 
 class SettingViewModel : AppCompatActivity()

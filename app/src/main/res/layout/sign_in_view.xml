@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.job_aymax.SignInViewModel">
+        tools:context="jobtrends.job_aymax.viewmodel.SignInViewModel">
 
 	<data>
 		<variable name="vm"
-		          type="jobtrends.job_aymax.SignInViewModel"/>
+		          type="jobtrends.job_aymax.viewmodel.SignInViewModel"/>
 	</data>
 
 	<LinearLayout android:layout_width="match_parent"

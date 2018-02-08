@@ -1,8 +1,9 @@
-package jobtrends.job_aymax
+package jobtrends.job_aymax.viewmodel
 
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import jobtrends.job_aymax.R
 import jobtrends.job_aymax.databinding.ProfileViewBinding
 
 class ProfileViewModel : AppCompatActivity() {

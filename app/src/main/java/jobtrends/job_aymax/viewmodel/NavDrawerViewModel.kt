@@ -1,4 +1,4 @@
-package jobtrends.job_aymax
+package jobtrends.job_aymax.viewmodel
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
+import jobtrends.job_aymax.R
 
 class NavDrawerViewModel : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener
 {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.job_aymax.SurveyContentViewModel">
+        tools:context="jobtrends.job_aymax.viewmodel.SurveyContentViewModel">
 
 	<data>
-		<variable name="vm" type="jobtrends.job_aymax.SurveyContentViewModel"/>
+		<variable name="vm" type="jobtrends.job_aymax.viewmodel.SurveyContentViewModel"/>
 	</data>
 
 	<LinearLayout android:layout_width="match_parent"
@@ -22,7 +22,7 @@
 		                                    android:layout_marginLeft="16dp"
 		                                    android:layout_marginRight="16dp"
 		                                    android:layout_weight="2"
-		                                    app:cardElevation="8dp">
+		                                    bind:cardElevation="8dp">
 
 			<LinearLayout android:layout_width="match_parent"
 			              android:layout_height="wrap_content"
@@ -32,31 +32,16 @@
 				<TextView android:layout_width="match_parent"
 				          android:layout_height="wrap_content"
 				          android:gravity="center"
-				          android:text="@{vm.title}"
+				          android:text="@{vm.questionSurveyModel.content}"
 				          android:textAppearance="?android:attr/textAppearanceLarge"
 				          android:textStyle="bold"/>
 
-				<Button android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"
-				        android:layout_gravity="center"
-				        android:layout_margin="16dp"
-				        android:padding="16dp"
-				        android:background="@drawable/rounded_layout"
-				        android:text="OUI"
-				        android:textAppearance="?android:attr/textAppearanceSmall"
-				        android:textColor="@android:color/white"
-				        android:textStyle="bold"/>
+				<ListView android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:dividerHeight="0dp"
+				          android:divider="@null"
+				          bind:items="@{vm.questionSurveyModel.answers}"/>
 
-				<Button android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"
-				        android:layout_gravity="center"
-				        android:layout_margin="16dp"
-				        android:background="@drawable/outline_layout"
-				        android:padding="16dp"
-				        android:text="NON"
-				        android:textAppearance="?android:attr/textAppearanceSmall"
-				        android:textColor="@android:color/black"
-				        android:textStyle="bold"/>
 
 			</LinearLayout>
 
@@ -70,7 +55,7 @@
 		<TextView android:layout_width="match_parent"
 		          android:layout_height="wrap_content"
 		          android:gravity="center"
-		          android:text="Cela nous permet de savoir si votre corps de métier recoit des formations"
+		          android:text="@{vm.questionSurveyModel.description}"
 		          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 
