@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import jobtrends.job_aymax.R
 import jobtrends.job_aymax.databinding.SurveyViewBinding
-import jobtrends.job_aymax.model.QuestionSurveyModel
+import jobtrends.job_aymax.model.SurveyQuestionModel
 import jobtrends.job_aymax.service.ServiceController.Companion.jsonController
 import jobtrends.job_aymax.service.ServiceController.Companion.surveyController
 
@@ -17,7 +17,7 @@ class SurveyViewModel : Fragment()
 {
 	private var _pagerAdapterController : PagerAdapterController? = null
 
-	private fun newInstance(question : QuestionSurveyModel) : Fragment
+	private fun newInstance(question : SurveyQuestionModel) : Fragment
 	{
 		val fragment = SurveyContentViewModel()
 

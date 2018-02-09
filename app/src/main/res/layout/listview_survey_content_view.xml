@@ -2,10 +2,12 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="jobtrends.job_aymax.viewmodel.SurveyAnswerViewModel">
 
 	<data>
-		<variable name="vm" type="jobtrends.job_aymax.model.AnswerSurveyModel"/>
+		<!--<variable name="vm" type="jobtrends.job_aymax.viewmodel.SurveyAnswerViewModel"/>-->
+		<variable name="m" type="jobtrends.job_aymax.model.SurveyAnswerModel"/>
 	</data>
 
 	<LinearLayout android:layout_width="match_parent"
@@ -18,7 +20,7 @@
 		        android:layout_margin="16dp"
 		        android:background="@drawable/rounded_layout"
 		        android:padding="16dp"
-		        android:text="@{vm.title}"
+		        android:text="@{m.title}"
 		        android:textAppearance="?android:attr/textAppearanceSmall"
 		        android:textColor="@android:color/white"
 		        android:textStyle="bold"/>

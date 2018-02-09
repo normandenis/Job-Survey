@@ -4,5 +4,5 @@ class SurveyModel
 {
 	var id : Int? = null
 	var title : String? = null
-	var questions : List<QuestionSurveyModel>? = null
+	var questions : List<SurveyQuestionModel>? = null
 }

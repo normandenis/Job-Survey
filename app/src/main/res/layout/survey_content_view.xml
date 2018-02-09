@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         tools:context="jobtrends.job_aymax.viewmodel.SurveyContentViewModel">
 
@@ -22,7 +22,7 @@
 		                                    android:layout_marginLeft="16dp"
 		                                    android:layout_marginRight="16dp"
 		                                    android:layout_weight="2"
-		                                    bind:cardElevation="8dp">
+		                                    app:cardElevation="8dp">
 
 			<LinearLayout android:layout_width="match_parent"
 			              android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
 				<TextView android:layout_width="match_parent"
 				          android:layout_height="wrap_content"
 				          android:gravity="center"
-				          android:text="@{vm.questionSurveyModel.content}"
+				          android:text="@{vm.surveyQuestionModel.content}"
 				          android:textAppearance="?android:attr/textAppearanceLarge"
 				          android:textStyle="bold"/>
 
@@ -40,8 +40,7 @@
 				          android:layout_height="wrap_content"
 				          android:dividerHeight="0dp"
 				          android:divider="@null"
-				          bind:items="@{vm.questionSurveyModel.answers}"/>
-
+				          app:adapter="@{vm.surveyAnswerViewModel}"/>
 
 			</LinearLayout>
 
@@ -55,7 +54,7 @@
 		<TextView android:layout_width="match_parent"
 		          android:layout_height="wrap_content"
 		          android:gravity="center"
-		          android:text="@{vm.questionSurveyModel.description}"
+		          android:text="@{vm.surveyQuestionModel.description}"
 		          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 

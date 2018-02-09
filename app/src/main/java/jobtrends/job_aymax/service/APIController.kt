@@ -10,7 +10,12 @@ class APIController
 	fun getSurvey() : String
 	{
 		val inputStream = resources?.openRawResource(R.raw.survey_example)
-		val strSurvey = IOUtils.toString(inputStream, StandardCharsets.UTF_8)
-		return strSurvey
+		return IOUtils.toString(inputStream, StandardCharsets.UTF_8)
+	}
+
+	fun getCategory() : String
+	{
+		val inputStream = resources?.openRawResource(R.raw.survey_category_example)
+		return IOUtils.toString(inputStream, StandardCharsets.UTF_8)
 	}
 }

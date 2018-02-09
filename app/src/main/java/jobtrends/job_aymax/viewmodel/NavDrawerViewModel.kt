@@ -11,6 +11,8 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import jobtrends.job_aymax.R
+import jobtrends.job_aymax.service.ServiceController.Companion.jsonController
+import jobtrends.job_aymax.service.ServiceController.Companion.surveyController
 
 class NavDrawerViewModel : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener
 {
@@ -36,9 +38,14 @@ class NavDrawerViewModel : AppCompatActivity(), NavigationView.OnNavigationItemS
 			{
 				return
 			}
-			val firstFragment = StartSurveyViewModel()
+			val categories = surveyController.getCategory()
+			val serialized = jsonController.serialize(categories)
+			val bundle = Bundle()
+			bundle.putString("categories", serialized)
+			val fragment = StartSurveyViewModel()
+			fragment.arguments = bundle
 			val transaction = supportFragmentManager.beginTransaction()
-			transaction.add(R.id.fragment_app_bar_nav_drawer_0, firstFragment)
+			transaction.add(R.id.fragment_app_bar_nav_drawer_0, fragment)
 			transaction.commit()
 		}
 	}

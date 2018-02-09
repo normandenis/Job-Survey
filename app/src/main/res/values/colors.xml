@@ -2,5 +2,6 @@
 <resources>
 	<color name="colorPrimary">#EFA95E</color>
 	<color name="colorAccent">#144C60</color>
-	<color name="facebook_blue">#305298</color>
+	<color name="colorButtonLight">@android:color/white</color>
+	<color name="colorButtonDark">@android:color/black</color>
 </resources>

@@ -112,7 +112,7 @@
 		        android:layout_margin="16dp"
 		        android:padding="16dp"
 		        android:background="@drawable/rounded_layout"
-		        android:textColor="@android:color/white"
+		        android:textColor="@color/colorButtonLight"
 		        android:onClick="@{() -> vm.onClick()}"
 		        android:textAppearance="?android:attr/textAppearanceSmall"/>
 
