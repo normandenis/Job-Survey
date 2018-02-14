@@ -18,7 +18,7 @@ class SignUpViewModel : AppCompatActivity()
 
 	fun onClick()
 	{
-		val intent = Intent(this, NavDrawerViewModel::class.java)
+		val intent = Intent(this, HomeViewModel::class.java)
 		startActivity(intent)
 	}
 }

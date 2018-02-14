@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import jobtrends.job_aymax.R
-import jobtrends.job_aymax.databinding.ListviewStartSurveyViewBinding
-import jobtrends.job_aymax.model.SurveyCategoryModel
+import jobtrends.job_aymax.databinding.ListviewFaqViewBinding
+import jobtrends.job_aymax.model.FAQModel
 
-class SurveyCategoryViewModel(var list : List<SurveyCategoryModel>) : BaseAdapter()
+class ListViewFAQViewModel(var list : List<FAQModel>) : BaseAdapter()
 {
 	var inflater : LayoutInflater? = null
 
@@ -23,7 +23,7 @@ class SurveyCategoryViewModel(var list : List<SurveyCategoryModel>) : BaseAdapte
 			inflater = parent?.context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 		}
 
-		val binding : ListviewStartSurveyViewBinding = DataBindingUtil.inflate(inflater, R.layout.listview_start_survey_view, parent, false)
+		val binding : ListviewFaqViewBinding = DataBindingUtil.inflate(inflater, R.layout.listview_faq_view, parent, false)
 		binding.m = list[position]
 
 		return binding.root
@@ -43,4 +43,5 @@ class SurveyCategoryViewModel(var list : List<SurveyCategoryModel>) : BaseAdapte
 	{
 		return list.size
 	}
+
 }

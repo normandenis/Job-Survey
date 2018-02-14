@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import jobtrends.job_aymax.R
 import jobtrends.job_aymax.databinding.SurveyViewBinding
 import jobtrends.job_aymax.model.SurveyQuestionModel
+import jobtrends.job_aymax.service.PagerAdapterController
 import jobtrends.job_aymax.service.ServiceController.Companion.jsonController
 import jobtrends.job_aymax.service.ServiceController.Companion.surveyController
 

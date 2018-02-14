@@ -1,5 +1,7 @@
 package jobtrends.job_aymax.viewmodel
 
+import android.app.Fragment
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -11,26 +13,20 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import jobtrends.job_aymax.R
+import jobtrends.job_aymax.databinding.HomeViewBinding
 import jobtrends.job_aymax.service.ServiceController.Companion.jsonController
 import jobtrends.job_aymax.service.ServiceController.Companion.surveyController
 
-class NavDrawerViewModel : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener
+class HomeViewModel : AppCompatActivity()
 {
 	override fun onCreate(savedInstanceState : Bundle?)
 	{
 		super.onCreate(savedInstanceState)
-		setContentView(R.layout.nav_drawer_view)
+		val binding : HomeViewBinding = DataBindingUtil.setContentView(this, R.layout.home_view)
+		binding.vm = this
+
 		val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
 		setSupportActionBar(toolbar)
-
-
-		val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
-		val toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-		drawer.setDrawerListener(toggle)
-		toggle.syncState()
-
-		val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
-		navigationView.setNavigationItemSelectedListener(this)
 
 		if (findViewById<FrameLayout>(R.id.fragment_app_bar_nav_drawer_0) != null)
 		{
@@ -46,39 +42,17 @@ class NavDrawerViewModel : AppCompatActivity(), NavigationView.OnNavigationItemS
 			fragment.arguments = bundle
 			val transaction = supportFragmentManager.beginTransaction()
 			transaction.add(R.id.fragment_app_bar_nav_drawer_0, fragment)
+			transaction.addToBackStack(null)
 			transaction.commit()
 		}
 	}
 
-	override fun onBackPressed()
+	fun onClick()
 	{
-		val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
-		if (drawer.isDrawerOpen(GravityCompat.START))
-		{
-			drawer.closeDrawer(GravityCompat.START)
-		}
-		else
-		{
-			super.onBackPressed()
-		}
-	}
-
-	override fun onNavigationItemSelected(item : MenuItem) : Boolean
-	{
-		// Handle navigation view item clicks here.
-		val id = item.itemId
-
-		if (id == R.id.nav_gallery)
-		{
-
-		}
-		else if (id == R.id.nav_slideshow)
-		{
-
-		}
-
-		val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
-		drawer.closeDrawer(GravityCompat.START)
-		return true
+		val fragment = SettingViewModel()
+		val transaction = supportFragmentManager.beginTransaction()
+		transaction?.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
+		transaction?.addToBackStack(null)
+		transaction?.commit()
 	}
 }

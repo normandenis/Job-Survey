@@ -4,4 +4,5 @@
 	<color name="colorAccent">#144C60</color>
 	<color name="colorButtonLight">@android:color/white</color>
 	<color name="colorButtonDark">@android:color/black</color>
+	<color name="colorCardView">#E4E4E4</color>
 </resources>

@@ -18,4 +18,10 @@ class APIController
 		val inputStream = resources?.openRawResource(R.raw.survey_category_example)
 		return IOUtils.toString(inputStream, StandardCharsets.UTF_8)
 	}
+
+	fun getFAQQuestion() : String
+	{
+		val inputStream = resources?.openRawResource(R.raw.question_faq_example)
+		return IOUtils.toString(inputStream, StandardCharsets.UTF_8)
+	}
 }

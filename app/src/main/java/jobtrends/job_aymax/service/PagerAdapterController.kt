@@ -1,4 +1,4 @@
-package jobtrends.job_aymax.viewmodel
+package jobtrends.job_aymax.service
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

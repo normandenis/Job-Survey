@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="jobtrends.job_aymax">
-	
+
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
@@ -21,18 +21,22 @@
 		</activity>
 		<activity android:name=".viewmodel.SignUpViewModel">
 		</activity>
-		<activity android:name=".viewmodel.NavDrawerViewModel">
+		<activity android:name=".viewmodel.HomeViewModel">
 		</activity>
 		<activity android:name=".viewmodel.SettingViewModel">
 		</activity>
 		<activity android:name=".viewmodel.ProfileViewModel">
 		</activity>
-		<!--<activity android:name=".StartSurveyViewModel">-->
-		<!--</activity>-->
-		<!--<activity android:name=".SurveyViewModel">-->
-		<!--</activity>-->
-		<!--<activity android:name=".SurveyContentViewModel">-->
-		<!--</activity>-->
+		<!-- <activity android:name=".StartSurveyViewModel"> -->
+		<!-- </activity> -->
+		<!-- <activity android:name=".SurveyViewModel"> -->
+		<!-- </activity> -->
+		<!-- <activity android:name=".SurveyContentViewModel"> -->
+		<!-- </activity> -->
+		<activity android:name=".viewmodel.ListViewFAQViewModel">
+		</activity>
+		<activity android:name=".viewmodel.EndSurveyViewModel">
+		</activity>
 	</application>
 
 </manifest>

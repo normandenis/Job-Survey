@@ -15,11 +15,11 @@
 	<string name="sign_in_view_txt_2">Mot de passe</string>
 
 	<string name="sign_in_view_txt_3">
-		<b>SE CONNECTER</b>
+		<b>Se connecter</b>
 	</string>
 
 	<string name="sign_in_view_txt_4">
-		<b>S\'INSCRIRE</b>
+		<b>S\'inscrire</b>
 	</string>
 
 
@@ -53,9 +53,6 @@
 		<b>S\'INSCRIRE</b>
 	</string>
 
-	<string name="navigation_drawer_open">Open navigation drawer</string>
-	<string name="navigation_drawer_close">Close navigation drawer</string>
-
 
 	<!--setting_view-->
 
@@ -65,13 +62,13 @@
 	</string>
 
 	<string name="setting_view_txt_1">
-		<b>Profil</b>
+		<b>Félix Marcotte-Ruffin</b>
 	</string>
 
-	<string name="setting_view_txt_2">Félix Marcotte</string>
+	<string name="setting_view_txt_2">Chef de Projet</string>
 
 	<string name="setting_view_txt_3">
-		<b>Compte</b>
+		<b>Modifier</b>
 	</string>
 
 	<string name="setting_view_txt_4">felix@jobtrends.io</string>
@@ -112,11 +109,6 @@
 		<b>DÉMARRER LE SONDAGE ?</b>
 	</string>
 
-	<string name="start_survey_view_1">COMMENCER</string>
-	<string name="title_activity_survey_view_model">Survey</string>
-	<string name="action_settings">Settings</string>
-	<string name="section_format">Hello World from section: %1$d</string>
-
 
 	<!--listview_start_survey_view-->
 
@@ -124,5 +116,20 @@
 	<string name="listview_start_survey_view_txt_0">Thème&#160;</string>
 
 	<string name="listview_start_survey_view_txt_1">Niveau&#160;</string>
+
+
+	<!--end_survey_view-->
+
+	<string name="end_survey_view_txt_0">
+		<b>Merci d'avoir répondu</b>
+	</string>
+
+	<string name="end_survey_view_txt_1">De la part de toute l’équipe</string>
+
+	<string name="end_survey_view_txt_2">Votre participation nous permettra de vous proposer un
+		outil gratuit et toujours plus adapté
+	</string>
+
+	<string name="end_survey_view_txt_3">Terminer</string>
 
 </resources>

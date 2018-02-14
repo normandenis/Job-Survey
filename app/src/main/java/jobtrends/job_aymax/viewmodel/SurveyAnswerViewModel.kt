@@ -43,5 +43,4 @@ class SurveyAnswerViewModel(var list : List<SurveyAnswerModel>) : BaseAdapter()
 	{
 		return list.size
 	}
-
 }
