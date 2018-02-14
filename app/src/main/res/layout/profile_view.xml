@@ -34,7 +34,7 @@
 				<TextView android:layout_width="match_parent"
 				          android:layout_height="wrap_content"
 				          android:layout_margin="8dp"
-				          android:text="Modification"
+				          android:text="@string/profile_view_1"
 				          android:textColor="@color/colorAccent"
 				          android:textStyle="bold"
 				          android:gravity="center"
@@ -44,7 +44,6 @@
 				          android:layout_height="wrap_content"
 				          android:inputType="textPersonName"
 				          android:layout_margin="8dp"
-				          android:text="Félix Marcotte-Ruffin"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
 				          android:textColor="@color/colorAccent"/>
 
@@ -52,7 +51,6 @@
 				          android:layout_height="wrap_content"
 				          android:inputType="date"
 				          android:layout_margin="8dp"
-				          android:text="Félix Marcotte-Ruffin"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
 				          android:textColor="@color/colorAccent"/>
 
@@ -60,22 +58,13 @@
 				          android:layout_height="wrap_content"
 				          android:layout_margin="8dp"
 				          android:inputType="textEmailAddress"
-				          android:text="Félix Marcotte-Ruffin"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
 				          android:textColor="@color/colorAccent"/>
 
 				<EditText android:layout_width="match_parent"
 				          android:layout_height="wrap_content"
 				          android:layout_margin="8dp"
-				          android:text="Félix Marcotte-Ruffin"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:textColor="@color/colorAccent"/>
-
-				<EditText android:layout_width="match_parent"
-				          android:layout_height="wrap_content"
-				          android:layout_margin="8dp"
-				          android:inputType="textPassword"
-				          android:text="Félix Marcotte-Ruffin"
+				          android:inputType="text"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
 				          android:textColor="@color/colorAccent"/>
 
@@ -83,7 +72,7 @@
 				          android:layout_height="wrap_content"
 				          android:layout_margin="8dp"
 				          android:inputType="textPassword"
-				          android:text="Félix Marcotte-Ruffin"
+				          android:hint="@string/profile_view_2"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
 				          android:textColor="@color/colorAccent"/>
 
@@ -91,7 +80,15 @@
 				          android:layout_height="wrap_content"
 				          android:layout_margin="8dp"
 				          android:inputType="textPassword"
-				          android:text="Félix Marcotte-Ruffin"
+				          android:hint="@string/profile_view_3"
+				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:textColor="@color/colorAccent"/>
+
+				<EditText android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:layout_margin="8dp"
+				          android:inputType="textPassword"
+				          android:hint="@string/profile_view_4"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
 				          android:textColor="@color/colorAccent"/>
 
@@ -111,7 +108,7 @@
 		        android:onClick="@{() -> vm.onClick()}"
 		        android:paddingLeft="32dp"
 		        android:paddingRight="32dp"
-		        android:text="Sauvegarder"
+		        android:text="@string/profile_view_5"
 		        android:textAppearance="?android:attr/textAppearanceSmall"
 		        android:textColor="@color/colorButtonLight"/>
 

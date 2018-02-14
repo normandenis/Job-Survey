@@ -37,6 +37,8 @@
 		</activity>
 		<activity android:name=".viewmodel.EndSurveyViewModel">
 		</activity>
+		<activity android:name=".viewmodel.NotificationPopupViewModel">
+		</activity>
 	</application>
 
 </manifest>

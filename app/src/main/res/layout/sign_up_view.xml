@@ -68,7 +68,7 @@
 				          android:layout_marginTop="16dp"
 				          android:layout_marginRight="16dp"
 				          android:layout_marginLeft="16dp"
-				          android:inputType="textEmailAddress"
+				          android:inputType="date"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
 				          android:hint="@string/sign_up_view_txt_3"/>
 
@@ -77,7 +77,7 @@
 				          android:layout_marginTop="16dp"
 				          android:layout_marginRight="16dp"
 				          android:layout_marginLeft="16dp"
-				          android:inputType="textPassword"
+				          android:inputType="textEmailAddress"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
 				          android:hint="@string/sign_up_view_txt_4"/>
 
@@ -90,12 +90,30 @@
 				          android:textAppearance="?android:attr/textAppearanceSmall"
 				          android:hint="@string/sign_up_view_txt_5"/>
 
+				<EditText android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:layout_marginTop="16dp"
+				          android:layout_marginRight="16dp"
+				          android:layout_marginLeft="16dp"
+				          android:inputType="textPassword"
+				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:hint="@string/sign_up_view_txt_6"/>
+
+				<EditText android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:layout_marginTop="16dp"
+				          android:layout_marginRight="16dp"
+				          android:layout_marginLeft="16dp"
+				          android:inputType="textPassword"
+				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:hint="@string/sign_up_view_txt_7"/>
+
 				<TextView android:layout_width="match_parent"
 				          android:layout_height="wrap_content"
 				          android:layout_margin="16dp"
 				          android:gravity="center"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:text="@string/sign_up_view_txt_6"/>
+				          android:text="@string/sign_up_view_txt_8"/>
 
 			</LinearLayout>
 
@@ -105,12 +123,13 @@
 		       android:layout_height="wrap_content"
 		       android:layout_weight="1"/>
 
-		<Button android:text="@string/sign_up_view_txt_7"
+		<Button android:text="@string/sign_up_view_txt_9"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:layout_gravity="center"
 		        android:layout_margin="16dp"
-		        android:padding="16dp"
+		        android:paddingLeft="32dp"
+		        android:paddingRight="32dp"
 		        android:background="@drawable/rounded_layout"
 		        android:textColor="@color/colorButtonLight"
 		        android:onClick="@{() -> vm.onClick()}"

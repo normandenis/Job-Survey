@@ -22,32 +22,40 @@
 		              android:layout_weight="2"
 		              android:orientation="vertical">
 
-			<RelativeLayout android:layout_width="match_parent"
-			                android:layout_height="wrap_content">
+			<android.support.v7.widget.GridLayout android:layout_width="match_parent"
+			                                      android:layout_height="wrap_content"
+			                                      app:columnOrderPreserved="false"
+			                                      app:rowOrderPreserved="false">
 
 				<ProgressBar android:id="@+id/myProgressBar"
-				             android:layout_width="125dp"
-				             android:layout_height="125dp"
-				             android:layout_alignParentEnd="true"
-				             android:layout_alignParentStart="true"
-				             android:progress="75"/>
+				             style="?android:attr/progressBarStyleHorizontal"
+				             android:layout_width="128dp"
+				             android:layout_height="128dp"
+				             android:background="@drawable/circle_shape"
+				             android:indeterminate="false"
+				             android:max="100"
+				             android:progress="75"
+				             android:progressDrawable="@drawable/circular_progress_bar"
+				             app:layout_column="0"
+				             app:layout_gravity="center"
+				             app:layout_row="0"/>
 
 				<TextView android:layout_width="match_parent"
 				          android:layout_height="wrap_content"
-				          android:layout_alignBottom="@id/myProgressBar"
-				          android:layout_alignEnd="@id/myProgressBar"
-				          android:layout_alignStart="@id/myProgressBar"
-				          android:layout_alignTop="@id/myProgressBar"
 				          android:gravity="center"
 				          android:text="75%"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
 				          android:textColor="@color/colorPrimary"
-				          android:textStyle="bold"/>
+				          android:textStyle="bold"
+				          app:layout_column="0"
+				          app:layout_gravity="center"
+				          app:layout_row="0"/>
 
-			</RelativeLayout>
+			</android.support.v7.widget.GridLayout>
 
 			<ListView android:layout_width="match_parent"
 			          android:layout_height="wrap_content"
+			          android:layout_margin="16dp"
 			          app:adapter="@{vm.surveyCategoryViewModel}"/>
 
 		</LinearLayout>

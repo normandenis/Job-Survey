@@ -36,21 +36,25 @@
 
 	<string name="sign_up_view_txt_2">Nom complet</string>
 
-	<string name="sign_up_view_txt_3">Email</string>
+	<string name="sign_up_view_txt_3">Date de naissance</string>
 
-	<string name="sign_up_view_txt_4">Mot de passe</string>
+	<string name="sign_up_view_txt_4">Email</string>
 
-	<string name="sign_up_view_txt_5">Métier actuel</string>
+	<string name="sign_up_view_txt_5">Profession</string>
 
-	<string name="sign_up_view_txt_6">En créant votre compte vous acceptez nos <b>Conditions
+	<string name="sign_up_view_txt_6">Mot de passe</string>
+
+	<string name="sign_up_view_txt_7">Confirmation de mot de passe</string>
+
+	<string name="sign_up_view_txt_8">En créant votre compte vous acceptez nos <b>Conditions
 		d’Utilisation
 	</b> et
 		notre
 		<b>Privacy Policy</b>
 	</string>
 
-	<string name="sign_up_view_txt_7">
-		<b>S\'INSCRIRE</b>
+	<string name="sign_up_view_txt_9">
+		<b>S\'inscrire</b>
 	</string>
 
 
@@ -95,11 +99,17 @@
 	<!--profile_view-->
 
 
-	<string name="profile_view_0">SONDAGE</string>
+	<string name="profile_view_0">Compte</string>
 
-	<string name="profile_view_1">POINTS</string>
+	<string name="profile_view_1">Modification</string>
 
-	<string name="profile_view_2">CLASSEMENT</string>
+	<string name="profile_view_2">Ancien mot de passe</string>
+
+	<string name="profile_view_3">Nouveau mot de passe</string>
+
+	<string name="profile_view_4">Confirmation du mot de passe</string>
+
+	<string name="profile_view_5">Sauvegarder</string>
 
 
 	<!--start_survey_view-->
@@ -131,5 +141,12 @@
 	</string>
 
 	<string name="end_survey_view_txt_3">Terminer</string>
+
+
+	<!--faq_view-->
+
+	<string name="faq_view_0">FAQ</string>
+
+	<string name="faq_view_1">Search</string>
 
 </resources>

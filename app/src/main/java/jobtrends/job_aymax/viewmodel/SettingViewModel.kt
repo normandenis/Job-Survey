@@ -1,5 +1,6 @@
 package jobtrends.job_aymax.viewmodel
 
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -38,5 +39,17 @@ class SettingViewModel : Fragment()
 		transaction?.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
 		transaction?.addToBackStack(null)
 		transaction?.commit()
+	}
+
+	fun onNavNotif()
+	{
+		val dialog = NotificationPopupViewModel()
+		dialog.show(fragmentManager, "Salut")
+	}
+
+	fun onNavSignIn()
+	{
+		val intent = Intent(activity, SignInViewModel::class.java)
+		startActivity(intent)
 	}
 }

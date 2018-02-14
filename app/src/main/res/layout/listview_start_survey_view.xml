@@ -12,10 +12,12 @@
 
 	<LinearLayout android:layout_width="match_parent"
 	              android:layout_height="match_parent"
+	              android:layout_margin="8dp"
 	              android:orientation="horizontal">
 
 		<TextView android:layout_width="match_parent"
 		          android:layout_height="wrap_content"
+		          android:layout_margin="8dp"
 		          android:layout_weight="1"
 		          android:gravity="center"
 		          android:text="@{@string/listview_start_survey_view_txt_0 + m.id.toString()}"
@@ -24,6 +26,7 @@
 
 		<TextView android:layout_width="match_parent"
 		          android:layout_height="wrap_content"
+		          android:layout_margin="8dp"
 		          android:layout_weight="1"
 		          android:gravity="center"
 		          android:text="@{@string/listview_start_survey_view_txt_1 + m.numQuestion.toString()}"
@@ -31,6 +34,7 @@
 
 		<TextView android:layout_width="match_parent"
 		          android:layout_height="wrap_content"
+		          android:layout_margin="8dp"
 		          android:layout_weight="1"
 		          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
