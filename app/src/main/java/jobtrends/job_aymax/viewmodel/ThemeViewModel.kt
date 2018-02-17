@@ -9,9 +9,10 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import jobtrends.job_aymax.R
 import jobtrends.job_aymax.databinding.ListviewStartSurveyViewBinding
-import jobtrends.job_aymax.model.SurveyCategoryModel
+import jobtrends.job_aymax.model.Theme
+import jobtrends.job_aymax.model.ThemeModel
 
-class SurveyCategoryViewModel(var list : List<SurveyCategoryModel>) : BaseAdapter()
+class ThemeViewModel(var list : List<Theme>) : BaseAdapter()
 {
 	var inflater : LayoutInflater? = null
 

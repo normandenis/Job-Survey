@@ -9,29 +9,32 @@ import android.view.ViewGroup
 import jobtrends.job_aymax.databinding.StartSurveyViewBinding
 import jobtrends.job_aymax.R
 import jobtrends.job_aymax.model.StartSurveyModel
-import jobtrends.job_aymax.model.SurveyCategoryModel
 import jobtrends.job_aymax.service.ServiceController
+import jobtrends.job_aymax.service.ServiceController.Companion.apiController
 
 
 class StartSurveyViewModel : Fragment()
 {
-	var surveyCategoryViewModel : SurveyCategoryViewModel? = null
+	var themeViewModel : ThemeViewModel? = null
 	var startSurveyModel : StartSurveyModel? = null
+	var myview : View? = null
 
 	override fun onCreateView(inflater : LayoutInflater, container : ViewGroup?, savedInstanceState : Bundle?) : View?
 	{
 		val binding : StartSurveyViewBinding = DataBindingUtil.inflate(inflater, R.layout.start_survey_view, container, false)
-		val view = binding.root
+		myview = binding.root
 		binding.vm = this
 
-		val strCategories = arguments?.getString("categories")
-		startSurveyModel = ServiceController.jsonController.deserialize<StartSurveyModel>(strCategories.toString())
-		surveyCategoryViewModel = SurveyCategoryViewModel(startSurveyModel?.categories !!)
+		val strThemes = arguments?.get("themes")
+		startSurveyModel = ServiceController.jsonController.deserialize<StartSurveyModel>(strThemes.toString())
+		themeViewModel = ThemeViewModel(startSurveyModel?.themes !!)
 
-		return view
+		return myview
 	}
 
-//	fun onClick()
+
+
+	//	fun onClick()
 //	{
 //		val fragment = SurveyViewModel()
 //		val transaction = fragmentManager?.beginTransaction()

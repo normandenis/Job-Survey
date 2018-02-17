@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity
 import jobtrends.job_aymax.R
 import jobtrends.job_aymax.databinding.SignInViewBinding
 import jobtrends.job_aymax.service.ServiceController
+import jobtrends.job_aymax.service.ServiceController.Companion.apiController
+import jobtrends.job_aymax.service.ServiceController.Companion.jsonController
 import jobtrends.job_aymax.service.SurveyController
 
 class SignInViewModel : AppCompatActivity()
@@ -21,7 +23,25 @@ class SignInViewModel : AppCompatActivity()
 		ServiceController(resources)
 	}
 
-	fun onClick()
+	fun onClickSignIn()
+	{
+		val tmp = mutableMapOf<String, String?>()
+
+		tmp["username"] = "benjamin@jobtrends.io"
+		tmp["password"] = "totoToto"
+
+		val tmpSerialized = jsonController.serialize(tmp)
+
+		apiController.post("https://api.dev.jobtrends.io/auth/login", tmpSerialized, ::firstResponse, this)
+	}
+
+	fun firstResponse(response : String)
+	{
+		val intent = Intent(this, HomeViewModel::class.java)
+		startActivity(intent)
+	}
+
+	fun onClickSignUp()
 	{
 		val intent = Intent(this, SignUpViewModel::class.java)
 		startActivity(intent)

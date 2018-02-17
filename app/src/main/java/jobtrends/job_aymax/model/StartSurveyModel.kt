@@ -2,5 +2,9 @@ package jobtrends.job_aymax.model
 
 class StartSurveyModel
 {
-	var categories : List<SurveyCategoryModel>? = null
+	var id : String? = null
+	var score : Int? = null
+	var taken : List<Any>? = null
+	var themes : List<Theme>? = null
+	var results : List<Any>? = null
 }

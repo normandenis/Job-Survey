@@ -5,7 +5,7 @@ import android.widget.ListAdapter
 import android.widget.ListView
 
 @BindingAdapter("app:adapter")
-fun bindItems(view : ListView, viewModel : ListAdapter)
+fun bindItems(view : ListView, viewModel : ListAdapter?)
 {
 	view.adapter = viewModel
 }

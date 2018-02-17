@@ -61,7 +61,18 @@
 				          android:layout_marginLeft="16dp"
 				          android:inputType="textPersonName"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:hint="@string/sign_up_view_txt_2"/>
+				          android:text="@={vm.m_userModel.lastName}"
+				          android:hint="Nom"/>
+
+				<EditText android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:layout_marginTop="16dp"
+				          android:layout_marginRight="16dp"
+				          android:layout_marginLeft="16dp"
+				          android:inputType="textPersonName"
+				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@={vm.m_userModel.firstName}"
+				          android:hint="Prénom"/>
 
 				<EditText android:layout_width="match_parent"
 				          android:layout_height="wrap_content"
@@ -70,6 +81,7 @@
 				          android:layout_marginLeft="16dp"
 				          android:inputType="date"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@={vm.m_userModel.birthday}"
 				          android:hint="@string/sign_up_view_txt_3"/>
 
 				<EditText android:layout_width="match_parent"
@@ -79,6 +91,7 @@
 				          android:layout_marginLeft="16dp"
 				          android:inputType="textEmailAddress"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@={vm.m_userModel.email}"
 				          android:hint="@string/sign_up_view_txt_4"/>
 
 				<EditText android:layout_width="match_parent"
@@ -88,6 +101,7 @@
 				          android:layout_marginLeft="16dp"
 				          android:inputType="text"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@={vm.m_userModel.metier}"
 				          android:hint="@string/sign_up_view_txt_5"/>
 
 				<EditText android:layout_width="match_parent"
@@ -97,6 +111,7 @@
 				          android:layout_marginLeft="16dp"
 				          android:inputType="textPassword"
 				          android:textAppearance="?android:attr/textAppearanceSmall"
+				          android:text="@={vm.m_userModel.password}"
 				          android:hint="@string/sign_up_view_txt_6"/>
 
 				<EditText android:layout_width="match_parent"

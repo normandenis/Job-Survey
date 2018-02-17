@@ -1,7 +1,6 @@
 package jobtrends.job_aymax.service
 
 import jobtrends.job_aymax.model.StartSurveyModel
-import jobtrends.job_aymax.model.SurveyCategoryModel
 import jobtrends.job_aymax.model.SurveyModel
 import jobtrends.job_aymax.service.ServiceController.Companion.apiController
 import jobtrends.job_aymax.service.ServiceController.Companion.jsonController

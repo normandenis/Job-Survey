@@ -11,14 +11,19 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import jobtrends.job_aymax.R
 import jobtrends.job_aymax.databinding.HomeViewBinding
+import jobtrends.job_aymax.model.StartSurveyModel
+import jobtrends.job_aymax.service.ServiceController
+import jobtrends.job_aymax.service.ServiceController.Companion.apiController
 import jobtrends.job_aymax.service.ServiceController.Companion.jsonController
 import jobtrends.job_aymax.service.ServiceController.Companion.surveyController
 
 class HomeViewModel : AppCompatActivity()
 {
+
 	override fun onCreate(savedInstanceState : Bundle?)
 	{
 		super.onCreate(savedInstanceState)
@@ -34,18 +39,23 @@ class HomeViewModel : AppCompatActivity()
 			{
 				return
 			}
-			val categories = surveyController.getCategory()
-			val serialized = jsonController.serialize(categories)
-			val bundle = Bundle()
-			bundle.putString("categories", serialized)
-			val fragment = StartSurveyViewModel()
-			fragment.arguments = bundle
-			val transaction = supportFragmentManager.beginTransaction()
-			transaction.add(R.id.fragment_app_bar_nav_drawer_0, fragment)
-			transaction.addToBackStack(null)
-			transaction.commit()
+			apiController.get("https://api.dev.jobtrends.io/jobaymax/me", ::firstResponse, this)
 		}
 	}
+
+	fun firstResponse(response : String)
+	{
+		val bundle = Bundle()
+		bundle.putString("themes", response)
+		val fragment = StartSurveyViewModel()
+		fragment.arguments = bundle
+		val transaction = supportFragmentManager.beginTransaction()
+		transaction.add(R.id.fragment_app_bar_nav_drawer_0, fragment)
+		transaction.addToBackStack(null)
+		transaction.commit()
+	}
+
+
 
 	fun onClick()
 	{

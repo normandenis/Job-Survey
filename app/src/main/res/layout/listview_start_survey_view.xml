@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.job_aymax.viewmodel.SurveyCategoryViewModel">
+        tools:context="jobtrends.job_aymax.viewmodel.ThemeViewModel">
 
 	<data>
-		<!--<variable name="vm" type="jobtrends.job_aymax.viewmodel.SurveyCategoryViewModel"/>-->
-		<variable name="m" type="jobtrends.job_aymax.model.SurveyCategoryModel"/>
+		<!--<variable name="vm" type="jobtrends.job_aymax.viewmodel.ThemeViewModel"/>-->
+		<variable name="m" type="jobtrends.job_aymax.model.Theme"/>
 	</data>
 
 	<LinearLayout android:layout_width="match_parent"
@@ -20,7 +19,7 @@
 		          android:layout_margin="8dp"
 		          android:layout_weight="1"
 		          android:gravity="center"
-		          android:text="@{@string/listview_start_survey_view_txt_0 + m.id.toString()}"
+		          android:text="@{m.name}"
 		          android:textAppearance="?android:attr/textAppearanceSmall"
 		          android:textStyle="bold"/>
 
@@ -29,7 +28,7 @@
 		          android:layout_margin="8dp"
 		          android:layout_weight="1"
 		          android:gravity="center"
-		          android:text="@{@string/listview_start_survey_view_txt_1 + m.numQuestion.toString()}"
+		          android:text="@{@string/listview_start_survey_view_txt_1 + m.lvl}"
 		          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 		<TextView android:layout_width="match_parent"
@@ -39,5 +38,4 @@
 		          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 	</LinearLayout>
-
 </layout>

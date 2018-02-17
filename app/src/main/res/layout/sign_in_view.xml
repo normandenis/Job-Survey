@@ -64,7 +64,7 @@
 		        android:layout_margin="16dp"
 		        android:paddingRight="32dp"
 		        android:paddingLeft="32dp"
-		        android:onClick="@{() -> vm.onClick()}"
+		        android:onClick="@{() -> vm.onClickSignIn()}"
 		        android:text="@string/sign_in_view_txt_3"
 		        android:textAppearance="?android:attr/textAppearanceSmall"
 		        android:textColor="@color/colorButtonLight"/>
@@ -80,7 +80,7 @@
 		        android:paddingRight="32dp"
 		        android:paddingLeft="32dp"
 		        android:background="@drawable/rounded_layout"
-		        android:onClick="@{() -> vm.onClick()}"
+		        android:onClick="@{() -> vm.onClickSignUp()}"
 		        android:text="@string/sign_in_view_txt_4"
 		        android:textAppearance="?android:attr/textAppearanceSmall"
 		        android:textColor="@color/colorButtonLight"/>
