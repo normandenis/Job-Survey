@@ -9,24 +9,26 @@ import android.view.View
 import android.view.ViewGroup
 import jobtrends.job_aymax.R
 import jobtrends.job_aymax.databinding.SurveyViewBinding
-import jobtrends.job_aymax.model.SurveyQuestionModel
+import jobtrends.job_aymax.model.Question
+import jobtrends.job_aymax.model.Reply
+import jobtrends.job_aymax.model.Survey
 import jobtrends.job_aymax.service.PagerAdapterController
+import jobtrends.job_aymax.service.ServiceController.Companion.endSurvey
 import jobtrends.job_aymax.service.ServiceController.Companion.jsonController
-import jobtrends.job_aymax.service.ServiceController.Companion.surveyController
 
 class SurveyViewModel : Fragment()
 {
 	private var _pagerAdapterController : PagerAdapterController? = null
+	var survey : Survey? = null
 
-	private fun newInstance(question : SurveyQuestionModel) : Fragment
+	private fun newInstance(question : Question) : Fragment
 	{
-		val fragment = SurveyContentViewModel()
-
-		val serialized = jsonController.serialize(question)
-
-		val bundle = Bundle()
-		bundle.putString("survey", serialized)
-		fragment.arguments = bundle
+		val reply = Reply()
+		reply.questionId = question.id
+		val fragment = QuestionViewModel()
+		fragment.question = question
+		fragment.reply = reply
+		endSurvey.answers?.add(reply)
 		return fragment
 	}
 
@@ -34,11 +36,11 @@ class SurveyViewModel : Fragment()
 	{
 		super.onViewCreated(view, savedInstanceState)
 
-		val survey = surveyController.getSurvey()
-
 		val list : MutableList<Fragment> = mutableListOf()
+		endSurvey.surveyId = survey?.id
+		endSurvey.answers = mutableListOf()
 
-		for (question in survey.questions !!)
+		for (question in survey?.questions !!)
 		{
 			list.add(newInstance(question))
 		}

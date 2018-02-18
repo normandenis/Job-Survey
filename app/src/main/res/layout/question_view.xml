@@ -2,10 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.job_aymax.viewmodel.SurveyContentViewModel">
+        tools:context="jobtrends.job_aymax.viewmodel.QuestionViewModel">
 
 	<data>
-		<variable name="vm" type="jobtrends.job_aymax.viewmodel.SurveyContentViewModel"/>
+		<variable name="vm" type="jobtrends.job_aymax.viewmodel.QuestionViewModel"/>
 	</data>
 
 	<LinearLayout android:layout_width="match_parent"
@@ -32,7 +32,7 @@
 				<TextView android:layout_width="match_parent"
 				          android:layout_height="wrap_content"
 				          android:gravity="center"
-				          android:text="@{vm.surveyQuestionModel.content}"
+				          android:text="@{vm.question.content}"
 				          android:textAppearance="?android:attr/textAppearanceLarge"
 				          android:textStyle="bold"/>
 
@@ -40,7 +40,7 @@
 				          android:layout_height="wrap_content"
 				          android:dividerHeight="0dp"
 				          android:divider="@null"
-				          app:adapter="@{vm.surveyAnswerViewModel}"/>
+				          app:adapter="@{vm.answerViewModel}"/>
 
 			</LinearLayout>
 
@@ -54,7 +54,7 @@
 		<TextView android:layout_width="match_parent"
 		          android:layout_height="wrap_content"
 		          android:gravity="center"
-		          android:text="@{vm.surveyQuestionModel.description}"
+		          android:text="@{vm.question.description}"
 		          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 

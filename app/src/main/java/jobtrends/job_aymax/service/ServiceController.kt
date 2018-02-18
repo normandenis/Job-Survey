@@ -1,6 +1,7 @@
 package jobtrends.job_aymax.service
 
 import android.content.res.Resources
+import jobtrends.job_aymax.model.EndSurvey
 import jobtrends.job_aymax.model.User
 import jobtrends.job_aymax.model.UserModel
 
@@ -20,6 +21,8 @@ class ServiceController
 		var userModel = UserModel()
 
 		var user = User()
+
+		var endSurvey = EndSurvey()
 
 		var apiController = APIController()
 

@@ -55,8 +55,6 @@ class HomeViewModel : AppCompatActivity()
 		transaction.commit()
 	}
 
-
-
 	fun onClick()
 	{
 		val fragment = SettingViewModel()

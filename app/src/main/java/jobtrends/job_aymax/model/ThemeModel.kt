@@ -14,8 +14,8 @@ class ThemeModel
 class Theme
 {
 	var name : String? = null
-	var surveyId : String? = null
-	var themeId : Int? = null
+	var survey_id : String? = null
+	var theme_id : Int? = null
 	var lvl : Int? = null
 	var open : Boolean? = null
 }

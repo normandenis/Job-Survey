@@ -32,7 +32,7 @@
 		<!-- </activity> -->
 		<!-- <activity android:name=".SurveyViewModel"> -->
 		<!-- </activity> -->
-		<!-- <activity android:name=".SurveyContentViewModel"> -->
+		<!-- <activity android:namQuestionViewModelodel"> -->
 		<!-- </activity> -->
 		<activity android:name=".viewmodel.ListViewFAQViewModel">
 		</activity>

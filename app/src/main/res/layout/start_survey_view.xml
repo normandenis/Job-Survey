@@ -57,6 +57,8 @@
 			<ListView android:layout_width="match_parent"
 			          android:layout_height="wrap_content"
 			          android:layout_margin="16dp"
+			          android:clickable="true"
+			          android:focusable="true"
 			          app:adapter="@{vm.themeViewModel}"/>
 
 		</LinearLayout>

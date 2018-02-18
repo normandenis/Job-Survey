@@ -10,8 +10,6 @@ import jobtrends.job_aymax.databinding.StartSurveyViewBinding
 import jobtrends.job_aymax.R
 import jobtrends.job_aymax.model.StartSurveyModel
 import jobtrends.job_aymax.service.ServiceController
-import jobtrends.job_aymax.service.ServiceController.Companion.apiController
-
 
 class StartSurveyViewModel : Fragment()
 {
@@ -29,17 +27,8 @@ class StartSurveyViewModel : Fragment()
 		startSurveyModel = ServiceController.jsonController.deserialize<StartSurveyModel>(strThemes.toString())
 		themeViewModel = ThemeViewModel(startSurveyModel?.themes !!)
 
+		themeViewModel?.fragmentManager = fragmentManager
+
 		return myview
 	}
-
-
-
-	//	fun onClick()
-//	{
-//		val fragment = SurveyViewModel()
-//		val transaction = fragmentManager?.beginTransaction()
-//		transaction?.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
-//		transaction?.addToBackStack(null)
-//		transaction?.commit()
-//	}
 }
