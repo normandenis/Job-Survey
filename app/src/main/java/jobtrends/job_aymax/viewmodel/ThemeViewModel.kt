@@ -2,9 +2,8 @@ package jobtrends.job_aymax.viewmodel
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.databinding.DataBindingUtil
-import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,9 @@ import jobtrends.job_aymax.databinding.ListviewStartSurveyViewBinding
 import jobtrends.job_aymax.model.Survey
 import jobtrends.job_aymax.model.Theme
 import jobtrends.job_aymax.service.ServiceController.Companion.apiController
+import jobtrends.job_aymax.service.ServiceController.Companion.appBarBtn
 import jobtrends.job_aymax.service.ServiceController.Companion.jsonController
+
 
 class ThemeViewModel(var list : List<Theme>) : BaseAdapter()
 {
@@ -72,4 +73,5 @@ class ThemeViewModel(var list : List<Theme>) : BaseAdapter()
 		transaction?.addToBackStack(null)
 		transaction?.commit()
 	}
+
 }

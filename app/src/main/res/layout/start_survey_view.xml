@@ -12,60 +12,48 @@
 
 	<LinearLayout android:layout_width="match_parent"
 	              android:layout_height="match_parent"
+	              android:weightSum="2"
 	              android:orientation="vertical">
 
-		<Space android:layout_width="wrap_content"
-		       android:layout_height="wrap_content"
-		       android:layout_weight="1"/>
+		<android.support.v7.widget.GridLayout android:layout_width="match_parent"
+		                                      android:layout_height="wrap_content"
+		                                      android:layout_weight="1"
+		                                      app:columnOrderPreserved="false"
+		                                      app:rowOrderPreserved="false">
 
-		<LinearLayout android:layout_width="match_parent"
-		              android:layout_height="wrap_content"
-		              android:layout_weight="2"
-		              android:orientation="vertical">
+			<ProgressBar android:id="@+id/myProgressBar"
+			             style="?android:attr/progressBarStyleHorizontal"
+			             android:layout_width="128dp"
+			             android:layout_height="128dp"
+			             android:background="@drawable/circle_shape"
+			             android:indeterminate="false"
+			             android:max="100"
+			             android:progress="@{vm.startSurveyModel.score}"
+			             android:progressDrawable="@drawable/circular_progress_bar"
+			             app:layout_column="0"
+			             app:layout_gravity="center"
+			             app:layout_row="0"/>
 
-			<android.support.v7.widget.GridLayout android:layout_width="match_parent"
-			                                      android:layout_height="wrap_content"
-			                                      app:columnOrderPreserved="false"
-			                                      app:rowOrderPreserved="false">
-
-				<ProgressBar android:id="@+id/myProgressBar"
-				             style="?android:attr/progressBarStyleHorizontal"
-				             android:layout_width="128dp"
-				             android:layout_height="128dp"
-				             android:background="@drawable/circle_shape"
-				             android:indeterminate="false"
-				             android:max="100"
-				             android:progress="75"
-				             android:progressDrawable="@drawable/circular_progress_bar"
-				             app:layout_column="0"
-				             app:layout_gravity="center"
-				             app:layout_row="0"/>
-
-				<TextView android:layout_width="match_parent"
-				          android:layout_height="wrap_content"
-				          android:gravity="center"
-				          android:text="75%"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:textColor="@color/colorPrimary"
-				          android:textStyle="bold"
-				          app:layout_column="0"
-				          app:layout_gravity="center"
-				          app:layout_row="0"/>
-
-			</android.support.v7.widget.GridLayout>
-
-			<ListView android:layout_width="match_parent"
+			<TextView android:layout_width="match_parent"
 			          android:layout_height="wrap_content"
-			          android:layout_margin="16dp"
-			          android:clickable="true"
-			          android:focusable="true"
-			          app:adapter="@{vm.themeViewModel}"/>
+			          android:gravity="center"
+			          android:text="@{vm.startSurveyModel.score.toString() + @string/start_survey_view_txt_1}"
+			          android:textAppearance="?android:attr/textAppearanceSmall"
+			          android:textColor="@color/colorPrimary"
+			          android:textStyle="bold"
+			          app:layout_column="0"
+			          app:layout_gravity="center"
+			          app:layout_row="0"/>
 
-		</LinearLayout>
+		</android.support.v7.widget.GridLayout>
 
-		<Space android:layout_width="wrap_content"
-		       android:layout_height="wrap_content"
-		       android:layout_weight="1"/>
+		<ListView android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:layout_margin="16dp"
+		          android:layout_weight="1"
+		          android:clickable="true"
+		          android:focusable="true"
+		          app:adapter="@{vm.themeViewModel}"/>
 
 	</LinearLayout>
 

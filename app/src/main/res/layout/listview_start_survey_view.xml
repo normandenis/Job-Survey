@@ -23,6 +23,7 @@
 		          android:layout_weight="1"
 		          android:clickable="true"
 		          android:focusable="true"
+		          android:textColor="@color/colorAccent"
 		          android:onClick="@{() -> vm.onClickTheme(m)}"
 		          android:gravity="center"
 		          android:text="@{m.name}"
@@ -34,12 +35,14 @@
 		          android:layout_margin="8dp"
 		          android:layout_weight="1"
 		          android:gravity="center"
+		          android:textColor="@color/colorAccent"
 		          android:text="@{@string/listview_start_survey_view_txt_1 + m.lvl}"
 		          android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 		<TextView android:layout_width="match_parent"
 		          android:layout_height="wrap_content"
 		          android:layout_margin="8dp"
+		          android:textColor="@color/colorAccent"
 		          android:layout_weight="1"
 		          android:textAppearance="?android:attr/textAppearanceSmall"/>
 

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="jobtrends.job_aymax.viewmodel.ValidatePopupViewModel">
+
+	<data>
+		<variable name="vm" type="jobtrends.job_aymax.viewmodel.SurveyViewModel"/>
+	</data>
+
+	<LinearLayout android:layout_width="match_parent"
+	              android:layout_height="match_parent"
+	              android:orientation="vertical"
+	              android:weightSum="2">
+
+		<TextView android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:layout_margin="16dp"
+		          android:layout_weight="1"
+		          android:gravity="center"
+		          android:text="@string/validate_popup_view_txt_0"
+		          android:textAppearance="?android:attr/textAppearanceLarge"
+		          android:textColor="@color/colorAccent"/>
+
+		<LinearLayout android:layout_width="match_parent"
+		              android:layout_height="wrap_content"
+		              android:layout_weight="1"
+		              android:orientation="horizontal"
+		              android:weightSum="2">
+
+			<Button android:id="@+id/validate_no_button"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_margin="16dp"
+			        android:layout_weight="1"
+			        android:background="@drawable/outline_layout"
+			        android:clickable="true"
+			        android:focusable="true"
+			        android:text="@string/validate_popup_view_txt_1"
+			        android:onClick="@{() -> vm.onValideNo()}"
+			        android:textAppearance="?android:attr/textAppearanceSmall"
+			        android:textColor="@color/colorButtonDark"
+			        tools:ignore="ButtonStyle"/>
+
+			<Button android:id="@+id/validate_yes_button"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_margin="16dp"
+			        android:layout_weight="1"
+			        android:background="@drawable/rounded_layout"
+			        android:clickable="true"
+			        android:focusable="true"
+			        android:onClick="@{() -> vm.onValideYes()}"
+			        android:text="@string/validate_popup_view_txt_2"
+			        android:textAppearance="?android:attr/textAppearanceSmall"
+			        android:textColor="@color/colorButtonLight"
+			        tools:ignore="ButtonStyle"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</layout>

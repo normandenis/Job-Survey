@@ -52,6 +52,7 @@
 		        android:textColor="@color/colorButtonLight"
 		        android:layout_gravity="center"
 		        android:layout_margin="16dp"
+		        android:onClick="@{() -> vm.onValidateSurvey()}"
 		        android:paddingLeft="32dp"
 		        android:paddingRight="32dp"/>
 

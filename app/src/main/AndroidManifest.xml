@@ -40,6 +40,10 @@
 		</activity>
 		<activity android:name=".viewmodel.NotificationPopupViewModel">
 		</activity>
+		<activity android:name=".viewmodel.CancelPopupViewModel">
+		</activity>
+		<activity android:name=".viewmodel.ValidatePopupViewModel">
+		</activity>
 	</application>
 
 </manifest>

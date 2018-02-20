@@ -23,12 +23,22 @@ class StartSurveyViewModel : Fragment()
 		myview = binding.root
 		binding.vm = this
 
-		val strThemes = arguments?.get("themes")
-		startSurveyModel = ServiceController.jsonController.deserialize<StartSurveyModel>(strThemes.toString())
-		themeViewModel = ThemeViewModel(startSurveyModel?.themes !!)
+		ServiceController.appBarBtn?.setBackgroundResource(R.drawable.ic_person_orange_32dp)
+		ServiceController.appBarBtn?.setOnClickListener { onNavSetting() }
 
+		themeViewModel = ThemeViewModel(startSurveyModel?.themes !!)
 		themeViewModel?.fragmentManager = fragmentManager
 
 		return myview
+	}
+
+	fun onNavSetting()
+	{
+		val fragment = SettingViewModel()
+		fragment.startSurveyModel = startSurveyModel
+		val transaction = fragmentManager?.beginTransaction()
+		transaction?.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
+		transaction?.addToBackStack(null)
+		transaction?.commit()
 	}
 }

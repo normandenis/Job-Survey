@@ -119,6 +119,8 @@
 		<b>DÉMARRER LE SONDAGE ?</b>
 	</string>
 
+	<string name="start_survey_view_txt_1">&#160;%</string>
+
 
 	<!--listview_start_survey_view-->
 
@@ -130,9 +132,8 @@
 
 	<!--end_survey_view-->
 
-	<string name="end_survey_view_txt_0">
-		<b>Merci d'avoir répondu</b>
-	</string>
+
+	<string name="end_survey_view_txt_0"><b>Merci d\'avoir répondu</b></string>
 
 	<string name="end_survey_view_txt_1">De la part de toute l’équipe</string>
 
@@ -140,13 +141,52 @@
 		outil gratuit et toujours plus adapté
 	</string>
 
-	<string name="end_survey_view_txt_3">Terminer</string>
+	<string name="end_survey_view_txt_3">
+		<b>Terminer</b>
+	</string>
 
 
 	<!--faq_view-->
 
+
 	<string name="faq_view_0">FAQ</string>
 
 	<string name="faq_view_1">Search</string>
+
+
+	<!--validate_popup_view-->
+
+
+	<string name="validate_popup_view_txt_0">
+		<b>Vous êtes sur le point de valider le questionnaire, est
+			ce que c’est ce que vous vouliez faire ?
+		</b>
+	</string>
+
+	<string name="validate_popup_view_txt_1">
+		<b>Non</b>
+	</string>
+
+	<string name="validate_popup_view_txt_2">
+		<b>Oui</b>
+	</string>
+
+
+	<!--cancel_popup_view-->
+
+
+	<string name="cancel_popup_view_txt_0">
+		<b>Vous êtes sur le point de quitter le questionnaire, toutes avancées seront perdues.
+			Quitter ?
+		</b>
+	</string>
+
+	<string name="cancel_popup_view_txt_1">
+		<b>Non</b>
+	</string>
+
+	<string name="cancel_popup_view_txt_2">
+		<b>Oui</b>
+	</string>
 
 </resources>
