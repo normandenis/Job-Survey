@@ -2,6 +2,7 @@ package jobtrends.job_aymax.viewmodel
 
 import android.content.Intent
 import android.databinding.DataBindingUtil
+import android.databinding.ObservableField
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import jobtrends.job_aymax.R
@@ -13,7 +14,8 @@ import jobtrends.job_aymax.service.SurveyController
 
 class SignInViewModel : AppCompatActivity()
 {
-//	val serviceController = ServiceController(resources)
+	var username = ObservableField<String>()
+	var password = ObservableField<String>()
 
 	override fun onCreate(savedInstanceState : Bundle?)
 	{
@@ -27,8 +29,11 @@ class SignInViewModel : AppCompatActivity()
 	{
 		val tmp = mutableMapOf<String, String?>()
 
-		tmp["username"] = "benjamin@jobtrends.io"
-		tmp["password"] = "totoToto"
+//		"benjamin@jobtrends.io"
+//		"totoToto"
+
+		tmp["username"] = username.get()
+		tmp["password"] = password.get()
 
 		val tmpSerialized = jsonController.serialize(tmp)
 

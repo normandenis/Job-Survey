@@ -2,12 +2,14 @@ package jobtrends.job_aymax.viewmodel
 
 import android.app.Dialog
 import android.databinding.DataBindingUtil
+import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import jobtrends.job_aymax.R
 import jobtrends.job_aymax.databinding.NotificationPopupViewBinding
 

@@ -35,7 +35,7 @@ class StartSurveyViewModel : Fragment()
 	fun onNavSetting()
 	{
 		val fragment = SettingViewModel()
-		fragment.startSurveyModel = startSurveyModel
+		fragment.startSurveyModel = this.startSurveyModel
 		val transaction = fragmentManager?.beginTransaction()
 		transaction?.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
 		transaction?.addToBackStack(null)

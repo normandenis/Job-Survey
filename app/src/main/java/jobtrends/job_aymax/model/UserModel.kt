@@ -1,6 +1,7 @@
 package jobtrends.job_aymax.model
 
 import android.databinding.ObservableField
+import java.util.*
 
 class UserModel
 {

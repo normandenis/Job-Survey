@@ -11,40 +11,42 @@
 
 	<LinearLayout android:layout_width="match_parent"
 	              android:layout_height="match_parent"
-	              android:clickable="true"
-	              android:focusable="true"
-	              android:onClick="@{() -> vm.onClickTheme(m)}"
 	              android:layout_margin="8dp"
-	              android:orientation="horizontal">
+	              android:orientation="horizontal"
+	              android:weightSum="3">
 
 		<TextView android:layout_width="match_parent"
 		          android:layout_height="wrap_content"
+		          android:layout_gravity="center"
 		          android:layout_margin="8dp"
 		          android:layout_weight="1"
 		          android:clickable="true"
 		          android:focusable="true"
-		          android:textColor="@color/colorAccent"
-		          android:onClick="@{() -> vm.onClickTheme(m)}"
 		          android:gravity="center"
+		          android:enabled="@{m.open}"
+		          android:onClick="@{() -> vm.onClickTheme(m)}"
 		          android:text="@{m.name}"
 		          android:textAppearance="?android:attr/textAppearanceSmall"
+		          android:textColor="@color/colorAccent"
 		          android:textStyle="bold"/>
 
 		<TextView android:layout_width="match_parent"
 		          android:layout_height="wrap_content"
+		          android:layout_gravity="center"
 		          android:layout_margin="8dp"
 		          android:layout_weight="1"
 		          android:gravity="center"
-		          android:textColor="@color/colorAccent"
 		          android:text="@{@string/listview_start_survey_view_txt_1 + m.lvl}"
-		          android:textAppearance="?android:attr/textAppearanceSmall"/>
+		          android:textAppearance="?android:attr/textAppearanceSmall"
+		          android:textColor="@color/colorAccent"/>
 
-		<TextView android:layout_width="match_parent"
-		          android:layout_height="wrap_content"
-		          android:layout_margin="8dp"
-		          android:textColor="@color/colorAccent"
-		          android:layout_weight="1"
-		          android:textAppearance="?android:attr/textAppearanceSmall"/>
+		<ImageView android:layout_width="match_parent"
+		           android:layout_height="wrap_content"
+		           android:layout_gravity="center"
+		           android:layout_margin="8dp"
+		           android:layout_weight="1"
+		           android:visibility="@{vm.isVisible(m.open)}"
+		           android:src="@drawable/ic_lock_orange_16dp"/>
 
 	</LinearLayout>
 </layout>

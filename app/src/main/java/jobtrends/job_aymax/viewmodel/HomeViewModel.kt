@@ -13,6 +13,7 @@ import jobtrends.job_aymax.model.StartSurveyModel
 import jobtrends.job_aymax.service.ServiceController
 import jobtrends.job_aymax.service.ServiceController.Companion.apiController
 import jobtrends.job_aymax.service.ServiceController.Companion.appBarBtn
+import jobtrends.job_aymax.service.ServiceController.Companion.startSurveyModel
 
 class HomeViewModel : AppCompatActivity()
 {
@@ -41,6 +42,7 @@ class HomeViewModel : AppCompatActivity()
 	{
 		val fragment = StartSurveyViewModel()
 		fragment.startSurveyModel = ServiceController.jsonController.deserialize<StartSurveyModel>(response)
+		startSurveyModel = fragment.startSurveyModel
 		val transaction = supportFragmentManager?.beginTransaction()
 		transaction?.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
 		transaction?.addToBackStack(null)

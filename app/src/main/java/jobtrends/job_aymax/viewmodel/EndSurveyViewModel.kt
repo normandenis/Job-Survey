@@ -13,6 +13,7 @@ import jobtrends.job_aymax.service.ServiceController
 import jobtrends.job_aymax.service.ServiceController.Companion
 import jobtrends.job_aymax.service.ServiceController.Companion.endSurvey
 import jobtrends.job_aymax.service.ServiceController.Companion.jsonController
+import jobtrends.job_aymax.service.ServiceController.Companion.startSurveyModel
 
 class EndSurveyViewModel : Fragment()
 {
@@ -43,6 +44,7 @@ class EndSurveyViewModel : Fragment()
 	{
 		val fragment = StartSurveyViewModel()
 		fragment.startSurveyModel = ServiceController.jsonController.deserialize<StartSurveyModel>(response)
+		startSurveyModel = fragment.startSurveyModel
 		val transaction = fragmentManager?.beginTransaction()
 		transaction?.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
 		transaction?.addToBackStack(null)

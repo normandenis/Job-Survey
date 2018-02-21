@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.widget.Button
 import jobtrends.job_aymax.R
 import jobtrends.job_aymax.model.EndSurvey
+import jobtrends.job_aymax.model.StartSurveyModel
 import jobtrends.job_aymax.model.User
 import jobtrends.job_aymax.model.UserModel
 
@@ -27,6 +28,8 @@ class ServiceController
 		var user = User()
 
 		var endSurvey = EndSurvey()
+
+		var startSurveyModel : StartSurveyModel? = null
 
 		var apiController = APIController()
 

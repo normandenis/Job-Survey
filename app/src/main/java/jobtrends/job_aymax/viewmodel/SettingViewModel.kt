@@ -12,12 +12,10 @@ import jobtrends.job_aymax.databinding.SettingViewBinding
 import jobtrends.job_aymax.model.ListFAQModel
 import jobtrends.job_aymax.model.StartSurveyModel
 import jobtrends.job_aymax.service.ServiceController
-import jobtrends.job_aymax.service.ServiceController.Companion.apiController
-import jobtrends.job_aymax.service.ServiceController.Companion.jsonController
 
 class SettingViewModel : Fragment()
 {
-	var startSurveyModel : StartSurveyModel? = null
+	var startSurveyModel : StartSurveyModel? = ServiceController.startSurveyModel
 
 	override fun onCreateView(inflater : LayoutInflater, container : ViewGroup?, savedInstanceState : Bundle?) : View?
 	{

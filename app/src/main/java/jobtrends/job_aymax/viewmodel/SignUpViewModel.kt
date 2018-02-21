@@ -13,6 +13,8 @@ import jobtrends.job_aymax.service.ServiceController.Companion.user
 import jobtrends.job_aymax.service.ServiceController.Companion.userModel
 import kotlinx.coroutines.experimental.async
 import java.net.CacheResponse
+import java.sql.Date
+import java.util.*
 
 class SignUpViewModel : AppCompatActivity()
 {
@@ -33,7 +35,7 @@ class SignUpViewModel : AppCompatActivity()
 		m_user.lastName = m_userModel.lastName.get()
 		m_user.password = m_userModel.password.get()
 		m_user.metier = m_userModel.metier.get()
-		m_user.birthday = m_userModel.birthday.get().toInt()
+		m_user.birthday = 0
 
 		val json = jsonController.serialize(m_user)
 

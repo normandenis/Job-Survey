@@ -74,4 +74,9 @@ class ThemeViewModel(var list : List<Theme>) : BaseAdapter()
 		transaction?.commit()
 	}
 
+	fun isVisible(open : Boolean) : Int
+	{
+		return if (open) View.INVISIBLE else View.VISIBLE
+	}
+
 }
