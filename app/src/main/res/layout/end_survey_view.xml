@@ -1,65 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.job_aymax.viewmodel.EndSurveyViewModel">
+        tools:context="jobtrends.jobaymax.viewmodel.EndSurveyViewModel">
 
-	<data>
-		<variable name="vm" type="jobtrends.job_aymax.viewmodel.EndSurveyViewModel"/>
-	</data>
+    <data>
+        <variable name="vm" type="jobtrends.jobaymax.viewmodel.EndSurveyViewModel"/>
+    </data>
 
-	<LinearLayout android:layout_width="match_parent"
-	              android:layout_height="match_parent"
-	              android:orientation="vertical">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
 
-		<Space android:layout_width="match_parent"
-		       android:layout_height="wrap_content"
-		       android:layout_weight="1"/>
+        <Space android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"/>
 
-		<TextView android:layout_width="match_parent"
-		          android:layout_height="wrap_content"
-		          android:gravity="center"
-		          android:layout_margin="16dp"
-		          android:text="@string/end_survey_view_txt_0"
-		          android:textColor="@color/colorAccent"
-		          android:textAppearance="?android:attr/textAppearanceMedium"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="16dp"
+                  android:gravity="center"
+                  android:text="@string/end_survey_view_txt_0"
+                  android:textAppearance="?android:attr/textAppearanceMedium"
+                  android:textColor="@color/colorAccent"/>
 
-		<ImageView android:layout_width="160dp"
-		           android:layout_height="160dp"
-		           android:layout_margin="16dp"
-		           android:layout_gravity="center"
-		           android:src="@drawable/ic_logo_gray"/>
+        <ImageView android:layout_width="160dp"
+                   android:layout_height="160dp"
+                   android:layout_gravity="center"
+                   android:layout_margin="16dp"
+                   android:src="@drawable/ic_logo_gray"/>
 
-		<TextView android:layout_width="match_parent"
-		          android:layout_height="wrap_content"
-		          android:gravity="center"
-		          android:layout_margin="16dp"
-		          android:text="@string/end_survey_view_txt_1"
-		          android:textAppearance="?android:attr/textAppearanceSmall"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="16dp"
+                  android:gravity="center"
+                  android:text="@string/end_survey_view_txt_1"
+                  android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-		<TextView android:layout_width="match_parent"
-		          android:layout_height="wrap_content"
-		          android:gravity="center"
-		          android:layout_margin="16dp"
-		          android:text="@string/end_survey_view_txt_2"
-		          android:textAppearance="?android:attr/textAppearanceSmall"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="16dp"
+                  android:gravity="center"
+                  android:text="@string/end_survey_view_txt_2"
+                  android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-		<Button android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:background="@drawable/rounded_layout"
-		        android:text="@string/end_survey_view_txt_3"
-		        android:textAppearance="?android:attr/textAppearanceSmall"
-		        android:textColor="@color/colorButtonLight"
-		        android:layout_gravity="center"
-		        android:layout_margin="16dp"
-		        android:onClick="@{() -> vm.onValidateSurvey()}"
-		        android:paddingLeft="32dp"
-		        android:paddingRight="32dp"/>
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:background="@drawable/rounded_layout"
+                android:onClick="@{() -> vm.onValidateSurvey()}"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp"
+                android:text="@string/end_survey_view_txt_3"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/colorButtonLight"/>
 
-		<Space android:layout_width="match_parent"
-		       android:layout_height="wrap_content"
-		       android:layout_weight="1"/>
+        <Space android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"/>
 
-	</LinearLayout>
+    </LinearLayout>
 
 </layout>

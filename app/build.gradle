@@ -7,7 +7,7 @@ android {
     buildToolsVersion "27.0.3"
     defaultConfig {
         vectorDrawables.useSupportLibrary = true
-        applicationId "jobtrends.job_aymax"
+        applicationId "jobtrends.jobaymax"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
@@ -49,23 +49,32 @@ dependencies {
     // or "androidTestCompile", depending on your app's implementation
     kapt "com.android.databinding:compiler:3.0.1"
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.21'
-    implementation 'com.android.support:support-annotations:27.0.2'
-    implementation 'com.android.support:support-v4:27.0.2'
-    implementation 'com.android.support:design:27.0.2'
-    implementation 'com.google.android.gms:play-services-maps:11.8.0'
-    implementation 'com.android.support:cardview-v7:27.0.2'
-    implementation 'com.android.support:gridlayout-v7:27.0.2'
-    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.21'
+
+    implementation 'com.android.support:support-annotations:27.1.0'
+    implementation 'com.android.support:support-v4:27.1.0'
+    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:cardview-v7:27.1.0'
+    implementation 'com.android.support:gridlayout-v7:27.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'commons-io:commons-io:2.6'
     implementation 'com.android.volley:volley:1.1.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.21'
+
+
+    implementation 'com.google.firebase:firebase-messaging:11.8.0'
+    implementation 'com.google.firebase:firebase-core:11.8.0'
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+    implementation 'com.google.android.gms:play-services-gcm:11.8.0'
+    implementation 'com.google.android.gms:play-services-maps:11.8.0'
 }
 
 repositories {
     mavenCentral()
 }
 
-
+apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android-extensions'

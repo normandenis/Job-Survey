@@ -1,52 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.job_aymax.viewmodel.ThemeViewModel">
+        tools:context="jobtrends.jobaymax.viewmodel.ThemeViewModel">
 
-	<data>
-		<variable name="vm" type="jobtrends.job_aymax.viewmodel.ThemeViewModel"/>
-		<variable name="m" type="jobtrends.job_aymax.model.Theme"/>
-	</data>
+    <data>
+        <variable name="vm" type="jobtrends.jobaymax.viewmodel.ThemeViewModel"/>
+        <variable name="m" type="jobtrends.jobaymax.model.Theme"/>
+    </data>
 
-	<LinearLayout android:layout_width="match_parent"
-	              android:layout_height="match_parent"
-	              android:layout_margin="8dp"
-	              android:orientation="horizontal"
-	              android:weightSum="3">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_margin="8dp"
+                  android:orientation="horizontal"
+                  android:weightSum="3">
 
-		<TextView android:layout_width="match_parent"
-		          android:layout_height="wrap_content"
-		          android:layout_gravity="center"
-		          android:layout_margin="8dp"
-		          android:layout_weight="1"
-		          android:clickable="true"
-		          android:focusable="true"
-		          android:gravity="center"
-		          android:enabled="@{m.open}"
-		          android:onClick="@{() -> vm.onClickTheme(m)}"
-		          android:text="@{m.name}"
-		          android:textAppearance="?android:attr/textAppearanceSmall"
-		          android:textColor="@color/colorAccent"
-		          android:textStyle="bold"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:layout_margin="8dp"
+                  android:layout_weight="1"
+                  android:clickable="true"
+                  android:enabled="@{m.open}"
+                  android:focusable="true"
+                  android:gravity="center"
+                  android:onClick="@{() -> vm.onClickTheme(m)}"
+                  android:text="@{m.name}"
+                  android:textAppearance="?android:attr/textAppearanceSmall"
+                  android:textColor="@color/colorAccent"
+                  android:textStyle="bold"/>
 
-		<TextView android:layout_width="match_parent"
-		          android:layout_height="wrap_content"
-		          android:layout_gravity="center"
-		          android:layout_margin="8dp"
-		          android:layout_weight="1"
-		          android:gravity="center"
-		          android:text="@{@string/listview_start_survey_view_txt_1 + m.lvl}"
-		          android:textAppearance="?android:attr/textAppearanceSmall"
-		          android:textColor="@color/colorAccent"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:layout_margin="8dp"
+                  android:layout_weight="1"
+                  android:gravity="center"
+                  android:text="@{@string/listview_start_survey_view_txt_1 + m.lvl}"
+                  android:textAppearance="?android:attr/textAppearanceSmall"
+                  android:textColor="@color/colorAccent"/>
 
-		<ImageView android:layout_width="match_parent"
-		           android:layout_height="wrap_content"
-		           android:layout_gravity="center"
-		           android:layout_margin="8dp"
-		           android:layout_weight="1"
-		           android:visibility="@{vm.isVisible(m.open)}"
-		           android:src="@drawable/ic_lock_orange_16dp"/>
+        <ImageView android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:layout_margin="8dp"
+                   android:layout_weight="1"
+                   android:src="@drawable/ic_lock_orange_16dp"
+                   android:visibility="@{vm.isVisible(m.open)}"/>
 
-	</LinearLayout>
+    </LinearLayout>
 </layout>

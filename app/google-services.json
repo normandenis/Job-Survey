@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "795440575142",
+    "firebase_url": "https://jobaymax-dfcba.firebaseio.com",
+    "project_id": "jobaymax-dfcba",
+    "storage_bucket": "jobaymax-dfcba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795440575142:android:11cb631b2dc6f32c",
+        "android_client_info": {
+          "package_name": "jobtrends.jobaymax"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "795440575142-arej7lbfkhc1k13iliffht40nufegq6n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "jobtrends.jobaymax",
+            "certificate_hash": "0ff11de948953720c10471b47f0b7cf26d4fc5ca"
+          }
+        },
+        {
+          "client_id": "795440575142-pt5b1857uohaed8g15si81os42aauj8h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsJMY5d3lhowZdOOeIWw4qQSLzKgKMmsI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "795440575142-pt5b1857uohaed8g15si81os42aauj8h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

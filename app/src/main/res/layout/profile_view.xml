@@ -2,121 +2,121 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.job_aymax.viewmodel.ProfileViewModel">
+        tools:context="jobtrends.jobaymax.viewmodel.ProfileViewModel">
 
-	<data>
-		<variable name="vm"
-		          type="jobtrends.job_aymax.viewmodel.ProfileViewModel"/>
-	</data>
+    <data>
+        <variable name="vm"
+                  type="jobtrends.jobaymax.viewmodel.ProfileViewModel"/>
+    </data>
 
-	<LinearLayout android:layout_width="match_parent"
-	              android:layout_height="match_parent"
-	              android:orientation="vertical">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
 
-		<Space android:layout_width="match_parent"
-		       android:layout_height="wrap_content"
-		       android:layout_weight="1"/>
+        <Space android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"/>
 
-		<android.support.v7.widget.CardView android:layout_width="match_parent"
-		                                    android:layout_height="wrap_content"
-		                                    android:layout_marginBottom="8dp"
-		                                    android:layout_marginLeft="16dp"
-		                                    android:layout_marginRight="16dp"
-		                                    android:layout_marginTop="8dp"
-		                                    android:layout_weight="2"
-		                                    app:cardCornerRadius="8dp"
-		                                    app:cardElevation="8dp">
+        <android.support.v7.widget.CardView android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="8dp"
+                                            android:layout_marginLeft="16dp"
+                                            android:layout_marginRight="16dp"
+                                            android:layout_marginTop="8dp"
+                                            android:layout_weight="2"
+                                            app:cardCornerRadius="8dp"
+                                            app:cardElevation="8dp">
 
-			<LinearLayout android:layout_width="match_parent"
-			              android:layout_height="match_parent"
-			              android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical">
 
-				<TextView android:layout_width="match_parent"
-				          android:layout_height="wrap_content"
-				          android:layout_margin="8dp"
-				          android:gravity="center"
-				          android:text="@string/profile_view_1"
-				          android:textAppearance="?android:attr/textAppearanceMedium"
-				          android:textColor="@color/colorAccent"
-				          android:textStyle="bold"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_margin="8dp"
+                          android:gravity="center"
+                          android:text="@string/profile_view_1"
+                          android:textAppearance="?android:attr/textAppearanceMedium"
+                          android:textColor="@color/colorAccent"
+                          android:textStyle="bold"/>
 
-				<EditText android:layout_width="match_parent"
-				          android:layout_height="wrap_content"
-				          android:layout_margin="8dp"
-				          android:hint="Nom complet"
-				          android:inputType="textPersonName"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:textColor="@color/colorAccent"/>
+                <EditText android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_margin="8dp"
+                          android:hint="Nom complet"
+                          android:inputType="textPersonName"
+                          android:textAppearance="?android:attr/textAppearanceSmall"
+                          android:textColor="@color/colorAccent"/>
 
-				<EditText android:layout_width="match_parent"
-				          android:layout_height="wrap_content"
-				          android:layout_margin="8dp"
-				          android:hint="Date de naissance"
-				          android:inputType="date"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:textColor="@color/colorAccent"/>
+                <EditText android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_margin="8dp"
+                          android:hint="Date de naissance"
+                          android:inputType="date"
+                          android:textAppearance="?android:attr/textAppearanceSmall"
+                          android:textColor="@color/colorAccent"/>
 
-				<EditText android:layout_width="match_parent"
-				          android:layout_height="wrap_content"
-				          android:layout_margin="8dp"
-				          android:hint="E-mail"
-				          android:inputType="textEmailAddress"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:textColor="@color/colorAccent"/>
+                <EditText android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_margin="8dp"
+                          android:hint="E-mail"
+                          android:inputType="textEmailAddress"
+                          android:textAppearance="?android:attr/textAppearanceSmall"
+                          android:textColor="@color/colorAccent"/>
 
-				<EditText android:layout_width="match_parent"
-				          android:layout_height="wrap_content"
-				          android:layout_margin="8dp"
-				          android:hint="Profession"
-				          android:inputType="text"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:textColor="@color/colorAccent"/>
+                <EditText android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_margin="8dp"
+                          android:hint="Profession"
+                          android:inputType="text"
+                          android:textAppearance="?android:attr/textAppearanceSmall"
+                          android:textColor="@color/colorAccent"/>
 
-				<EditText android:layout_width="match_parent"
-				          android:layout_height="wrap_content"
-				          android:layout_margin="8dp"
-				          android:hint="@string/profile_view_2"
-				          android:inputType="textPassword"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:textColor="@color/colorAccent"/>
+                <EditText android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_margin="8dp"
+                          android:hint="@string/profile_view_2"
+                          android:inputType="textPassword"
+                          android:textAppearance="?android:attr/textAppearanceSmall"
+                          android:textColor="@color/colorAccent"/>
 
-				<EditText android:layout_width="match_parent"
-				          android:layout_height="wrap_content"
-				          android:layout_margin="8dp"
-				          android:hint="@string/profile_view_3"
-				          android:inputType="textPassword"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:textColor="@color/colorAccent"/>
+                <EditText android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_margin="8dp"
+                          android:hint="@string/profile_view_3"
+                          android:inputType="textPassword"
+                          android:textAppearance="?android:attr/textAppearanceSmall"
+                          android:textColor="@color/colorAccent"/>
 
-				<EditText android:layout_width="match_parent"
-				          android:layout_height="wrap_content"
-				          android:layout_margin="8dp"
-				          android:hint="@string/profile_view_4"
-				          android:inputType="textPassword"
-				          android:textAppearance="?android:attr/textAppearanceSmall"
-				          android:textColor="@color/colorAccent"/>
+                <EditText android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_margin="8dp"
+                          android:hint="@string/profile_view_4"
+                          android:inputType="textPassword"
+                          android:textAppearance="?android:attr/textAppearanceSmall"
+                          android:textColor="@color/colorAccent"/>
 
-			</LinearLayout>
+            </LinearLayout>
 
-		</android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
 
-		<Space android:layout_width="match_parent"
-		       android:layout_height="wrap_content"
-		       android:layout_weight="1"/>
+        <Space android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"/>
 
-		<Button android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_gravity="center"
-		        android:layout_margin="16dp"
-		        android:background="@drawable/rounded_layout"
-		        android:onClick="@{() -> vm.onClick()}"
-		        android:paddingLeft="32dp"
-		        android:paddingRight="32dp"
-		        android:text="@string/profile_view_5"
-		        android:textAppearance="?android:attr/textAppearanceSmall"
-		        android:textColor="@color/colorButtonLight"/>
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:background="@drawable/rounded_layout"
+                android:onClick="@{() -> vm.onClick()}"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp"
+                android:text="@string/profile_view_5"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/colorButtonLight"/>
 
 
-	</LinearLayout>
+    </LinearLayout>
 
 </layout>
