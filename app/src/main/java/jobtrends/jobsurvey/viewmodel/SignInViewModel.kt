@@ -1,22 +1,28 @@
 package jobtrends.jobsurvey.viewmodel
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.databinding.ObservableField
+import android.os.Build
+import android.os.Build.VERSION
+import android.os.Build.VERSION_CODES
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.databinding.SignInViewBinding
 import jobtrends.jobsurvey.service.ServiceController
 import jobtrends.jobsurvey.service.ServiceController.Companion.apiController
 import jobtrends.jobsurvey.service.ServiceController.Companion.jsonController
-import android.app.NotificationManager
-import android.app.NotificationChannel
-import android.os.Build
-import android.os.Build.VERSION
-import android.os.Build.VERSION_CODES
-import android.util.Log
+import jobtrends.jobsurvey.service.serviceController
 
+
+class Toto
+{
+  var name : String? = null
+}
 
 class SignInViewModel : AppCompatActivity()
 {
@@ -30,6 +36,11 @@ class SignInViewModel : AppCompatActivity()
     val binding : SignInViewBinding = DataBindingUtil.setContentView(this, R.layout.sign_in_view)
     binding.vm = this
     ServiceController(this.resources)
+    val toto = Toto()
+    toto.name = "Toto"
+    serviceController.register(toto)
+    val totobis = serviceController.getInstance<Toto>()
+    println(totobis.name)
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
     {
@@ -45,7 +56,7 @@ class SignInViewModel : AppCompatActivity()
         TODO("VERSION.SDK_INT < M")
       }
       notificationManager !!.createNotificationChannel(
-          NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_LOW))
+        NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_LOW))
     }
 
     // If a notification message is tapped, any data accompanying the notification
@@ -101,7 +112,7 @@ class SignInViewModel : AppCompatActivity()
     val tmpSerialized = jsonController.serialize(tmp)
 
     apiController
-        .post("https://api.dev.jobtrends.io/auth/login", tmpSerialized, this::firstResponse, this)
+      .post("https://api.dev.jobtrends.io/auth/login", tmpSerialized, this::firstResponse, this)
   }
 
   private fun firstResponse(response : String)

@@ -21,16 +21,17 @@ class AnswerViewModel(var list : List<Answer>) : BaseAdapter()
   var reply : Reply? = null
   var myView : View? = null
   var lastButton : Button? = null
+
   @SuppressLint("ViewHolder")
   override fun getView(position : Int, convertView : View?, parent : ViewGroup?) : View
   {
     if (inflater == null)
     {
       inflater = parent?.context?.getSystemService(
-          Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     }
     val binding : ListviewQuestionViewBinding = DataBindingUtil
-        .inflate(inflater, R.layout.listview_question_view, parent, false)
+      .inflate(inflater, R.layout.listview_question_view, parent, false)
     binding.vm = this
     binding.m = list[position]
 
