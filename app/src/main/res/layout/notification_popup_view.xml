@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="jobtrends.jobaymax.viewmodel.NotificationPopupViewModel">
+
+    <data>
+        <variable name="vm" type="jobtrends.jobaymax.viewmodel.NotificationPopupViewModel"/>
+    </data>
+
+    <android.support.v7.widget.GridLayout android:layout_width="match_parent"
+                                          android:layout_height="wrap_content"
+                                          app:alignmentMode="alignBounds"
+                                          app:columnCount="2"
+                                          app:rowCount="3">
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="16dp"
+                  android:gravity="center"
+                  android:text="Nouveau Sondage"
+                  app:layout_columnWeight="1"
+                  app:layout_rowWeight="1"/>
+
+        <Switch android:layout_margin="16dp"
+                app:layout_columnWeight="1"
+                app:layout_gravity="center"
+                app:layout_rowWeight="1"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="16dp"
+                  android:gravity="center"
+                  android:text="Newsletter"
+                  android:textAppearance="?android:attr/textAppearanceSmall"
+                  app:layout_columnWeight="1"
+                  app:layout_rowWeight="1"/>
+
+        <Switch android:layout_margin="16dp"
+                app:layout_columnWeight="1"
+                app:layout_gravity="center"
+                app:layout_rowWeight="1"/>
+
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@drawable/outline_layout"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp"
+                android:text="Annuler"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/colorButtonDark"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"/>
+
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@drawable/rounded_layout"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp"
+                android:text="Valider"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/colorButtonLight"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"/>
+
+    </android.support.v7.widget.GridLayout>
+
+</layout>
