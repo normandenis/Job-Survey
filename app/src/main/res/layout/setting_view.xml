@@ -4,291 +4,294 @@
         xmlns:tools="http://schemas.android.com/tools"
         tools:context="jobtrends.jobaymax.viewmodel.SettingViewModel">
 
-    <data>
-        <variable name="vm"
-                  type="jobtrends.jobaymax.viewmodel.SettingViewModel"/>
-    </data>
+  <data>
+    <variable name="vm"
+              type="jobtrends.jobaymax.viewmodel.SettingViewModel"/>
+  </data>
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical">
+  <LinearLayout android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <Space android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_weight="1"/>
+    <Space android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"/>
 
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center"
-                  android:text="@string/setting_view_txt_1"
-                  android:textAppearance="?android:attr/textAppearanceMedium"
-                  android:textColor="@color/colorAccent"
-                  android:textStyle="bold"/>
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:text="@string/setting_view_txt_1"
+              android:textAppearance="?android:attr/textAppearanceMedium"
+              android:textColor="@color/colorAccent"
+              android:textStyle="bold"/>
 
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center"
-                  android:text="@string/setting_view_txt_2"
-                  android:textAppearance="?android:attr/textAppearanceSmall"
-                  android:textColor="@color/colorPrimary"/>
-
-        <Space android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_weight="1"/>
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:text="@string/setting_view_txt_2"
+              android:textAppearance="?android:attr/textAppearanceSmall"
+              android:textColor="@color/colorPrimary"/>
 
 
-        <android.support.v7.widget.GridLayout android:layout_width="match_parent"
-                                              android:layout_height="wrap_content"
-                                              app:columnOrderPreserved="false"
-                                              app:rowOrderPreserved="false">
+    <Space android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"/>
 
-            <ProgressBar android:id="@+id/myProgressBar"
-                         style="?android:attr/progressBarStyleHorizontal"
-                         android:layout_width="128dp"
-                         android:layout_height="128dp"
-                         android:background="@drawable/circle_shape"
-                         android:indeterminate="false"
-                         android:max="100"
-                         android:progress="@{vm.startSurveyModel.score}"
-                         android:progressDrawable="@drawable/circular_progress_bar"
-                         app:layout_column="0"
-                         app:layout_gravity="center"
-                         app:layout_row="0"/>
 
-            <TextView android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:gravity="center"
-                      android:text="@{vm.startSurveyModel.score.toString() + @string/start_survey_view_txt_1}"
-                      android:textAppearance="?android:attr/textAppearanceSmall"
-                      android:textColor="@color/colorPrimary"
-                      android:textStyle="bold"
-                      app:layout_column="0"
-                      app:layout_gravity="center"
-                      app:layout_row="0"/>
+    <android.support.v7.widget.GridLayout android:layout_width="match_parent"
+                                          android:layout_height="wrap_content"
+                                          app:columnOrderPreserved="false"
+                                          app:rowOrderPreserved="false">
 
-        </android.support.v7.widget.GridLayout>
+      <ProgressBar android:id="@+id/myProgressBar"
+                   style="?android:attr/progressBarStyleHorizontal"
+                   android:layout_width="128dp"
+                   android:layout_height="128dp"
+                   android:background="@drawable/circle_shape"
+                   android:indeterminate="false"
+                   android:max="100"
+                   android:progress="@{vm.startSurveyModel.score}"
+                   android:progressDrawable="@drawable/circular_progress_bar"
+                   app:layout_column="0"
+                   app:layout_gravity="center"
+                   app:layout_row="0"/>
 
-        <Space android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_weight="1"/>
+      <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{vm.startSurveyModel.score.toString() + @string/start_survey_view_txt_1}"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                app:layout_column="0"
+                app:layout_gravity="center"
+                app:layout_row="0"/>
 
-        <android.support.v7.widget.GridLayout android:layout_width="match_parent"
-                                              android:layout_height="wrap_content"
-                                              android:layout_gravity="bottom"
-                                              android:layout_margin="16dp"
-                                              app:alignmentMode="alignBounds"
-                                              app:columnCount="2"
-                                              app:rowCount="2">
+    </android.support.v7.widget.GridLayout>
 
-            <!-- Row 0 -->
-            <!-- Column 0 -->
-            <android.support.v7.widget.CardView android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_marginBottom="8dp"
-                                                android:layout_marginLeft="16dp"
-                                                android:layout_marginRight="8dp"
-                                                android:layout_marginTop="16dp"
-                                                android:clickable="true"
-                                                android:focusable="true"
-                                                android:onClick="@{() -> vm.onClick()}"
-                                                app:cardBackgroundColor="@color/colorCardView"
-                                                app:cardCornerRadius="8dp"
-                                                app:cardElevation="8dp"
-                                                app:layout_columnWeight="1"
-                                                app:layout_gravity="fill"
-                                                app:layout_rowWeight="1">
+    <Space android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"/>
 
-                <LinearLayout android:layout_width="match_parent"
-                              android:layout_height="match_parent"
-                              android:orientation="vertical">
+    <android.support.v7.widget.GridLayout android:layout_width="match_parent"
+                                          android:layout_height="wrap_content"
+                                          android:layout_gravity="bottom"
+                                          android:layout_margin="16dp"
+                                          app:alignmentMode="alignBounds"
+                                          app:columnCount="2"
+                                          app:rowCount="2">
 
-                    <ImageView android:layout_width="wrap_content"
-                               android:layout_height="wrap_content"
-                               android:layout_marginBottom="4dp"
-                               android:layout_marginLeft="16dp"
-                               android:layout_marginRight="0dp"
-                               android:layout_marginTop="16dp"
-                               android:src="@drawable/ic_edit_black_16dp"/>
+      <!-- Row 0 -->
+      <!-- Column 0 -->
+      <android.support.v7.widget.CardView android:layout_width="wrap_content"
+                                          android:layout_height="wrap_content"
+                                          android:layout_marginBottom="8dp"
+                                          android:layout_marginLeft="16dp"
+                                          android:layout_marginRight="8dp"
+                                          android:layout_marginTop="16dp"
+                                          android:clickable="true"
+                                          android:focusable="true"
+                                          android:onClick="@{() -> vm.onClick()}"
+                                          app:cardBackgroundColor="@color/colorAccent"
+                                          app:cardCornerRadius="8dp"
+                                          app:cardElevation="8dp"
+                                          app:layout_columnWeight="1"
+                                          app:layout_gravity="fill"
+                                          app:layout_rowWeight="1">
 
-                    <TextView android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:layout_marginBottom="4dp"
-                              android:layout_marginLeft="16dp"
-                              android:layout_marginRight="0dp"
-                              android:layout_marginTop="4dp"
-                              android:text="@string/setting_view_txt_1"
-                              android:textAppearance="?android:attr/textAppearanceSmall"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical">
 
-                    <TextView android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:layout_marginBottom="16dp"
-                              android:layout_marginLeft="16dp"
-                              android:layout_marginRight="0dp"
-                              android:layout_marginTop="4dp"
-                              android:text="@string/setting_view_txt_2"
-                              android:textAppearance="?android:attr/textAppearanceSmall"/>
+          <ImageView android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginBottom="4dp"
+                     android:layout_marginLeft="16dp"
+                     android:layout_marginRight="0dp"
+                     android:layout_marginTop="16dp"
+                     android:src="@drawable/ic_edit_white_16dp"/>
 
-                </LinearLayout>
+          <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/setting_view_txt_3"
+                    android:textColor="@color/colorButtonLight"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-            </android.support.v7.widget.CardView>
+          <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/setting_view_txt_4"
+                    android:textColor="@color/colorButtonLight"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-            <!-- Row 0 -->
-            <!-- Column 1 -->
-            <android.support.v7.widget.CardView android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_marginBottom="8dp"
-                                                android:layout_marginLeft="16dp"
-                                                android:layout_marginRight="16dp"
-                                                android:layout_marginTop="16dp"
-                                                android:clickable="true"
-                                                android:focusable="true"
-                                                android:onClick="@{() -> vm.onNavNotif()}"
-                                                app:cardBackgroundColor="@color/colorCardView"
-                                                app:cardCornerRadius="8dp"
-                                                app:cardElevation="8dp"
-                                                app:layout_columnWeight="1"
-                                                app:layout_gravity="fill"
-                                                app:layout_rowWeight="1">
+        </LinearLayout>
 
-                <LinearLayout android:layout_width="match_parent"
-                              android:layout_height="match_parent"
-                              android:orientation="vertical">
+      </android.support.v7.widget.CardView>
 
-                    <ImageView android:layout_width="wrap_content"
-                               android:layout_height="wrap_content"
-                               android:layout_marginBottom="4dp"
-                               android:layout_marginLeft="16dp"
-                               android:layout_marginRight="0dp"
-                               android:layout_marginTop="16dp"
-                               android:src="@drawable/ic_notifications_black_16dp"/>
+      <!-- Row 0 -->
+      <!-- Column 1 -->
+      <android.support.v7.widget.CardView android:layout_width="wrap_content"
+                                          android:layout_height="wrap_content"
+                                          android:layout_marginBottom="8dp"
+                                          android:layout_marginLeft="16dp"
+                                          android:layout_marginRight="16dp"
+                                          android:layout_marginTop="16dp"
+                                          android:clickable="true"
+                                          android:focusable="true"
+                                          android:onClick="@{() -> vm.onNavNotif()}"
+                                          app:cardBackgroundColor="@color/colorCardView"
+                                          app:cardCornerRadius="8dp"
+                                          app:cardElevation="8dp"
+                                          app:layout_columnWeight="1"
+                                          app:layout_gravity="fill"
+                                          app:layout_rowWeight="1">
 
-                    <TextView android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:layout_marginBottom="4dp"
-                              android:layout_marginLeft="16dp"
-                              android:layout_marginRight="0dp"
-                              android:layout_marginTop="4dp"
-                              android:text="@string/setting_view_txt_5"
-                              android:textAppearance="?android:attr/textAppearanceSmall"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical">
 
-                    <TextView android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:layout_marginBottom="16dp"
-                              android:layout_marginLeft="16dp"
-                              android:layout_marginRight="0dp"
-                              android:layout_marginTop="4dp"
-                              android:text="@string/setting_view_txt_6"
-                              android:textAppearance="?android:attr/textAppearanceSmall"/>
+          <ImageView android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginBottom="4dp"
+                     android:layout_marginLeft="16dp"
+                     android:layout_marginRight="0dp"
+                     android:layout_marginTop="16dp"
+                     android:src="@drawable/ic_notifications_black_16dp"/>
 
-                </LinearLayout>
+          <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/setting_view_txt_5"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-            </android.support.v7.widget.CardView>
+          <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/setting_view_txt_6"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-            <!-- Row 1 -->
-            <!-- Column 0 -->
-            <android.support.v7.widget.CardView android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_marginBottom="16dp"
-                                                android:layout_marginLeft="16dp"
-                                                android:layout_marginRight="16dp"
-                                                android:layout_marginTop="16dp"
-                                                android:clickable="true"
-                                                android:focusable="true"
-                                                android:onClick="@{() -> vm.onNavSignIn()}"
-                                                app:cardBackgroundColor="@color/colorCardView"
-                                                app:cardCornerRadius="8dp"
-                                                app:cardElevation="8dp"
-                                                app:layout_columnWeight="1"
-                                                app:layout_gravity="fill"
-                                                app:layout_rowWeight="1">
+        </LinearLayout>
 
-                <LinearLayout android:layout_width="match_parent"
-                              android:layout_height="match_parent"
-                              android:orientation="vertical">
+      </android.support.v7.widget.CardView>
 
-                    <ImageView android:layout_width="wrap_content"
-                               android:layout_height="wrap_content"
-                               android:layout_marginBottom="4dp"
-                               android:layout_marginLeft="16dp"
-                               android:layout_marginRight="0dp"
-                               android:layout_marginTop="16dp"
-                               android:src="@drawable/ic_exit_to_app_black_16dp"/>
+      <!-- Row 1 -->
+      <!-- Column 0 -->
+      <android.support.v7.widget.CardView android:layout_width="wrap_content"
+                                          android:layout_height="wrap_content"
+                                          android:layout_marginBottom="16dp"
+                                          android:layout_marginLeft="16dp"
+                                          android:layout_marginRight="16dp"
+                                          android:layout_marginTop="16dp"
+                                          android:clickable="true"
+                                          android:focusable="true"
+                                          android:onClick="@{() -> vm.onNavSignIn()}"
+                                          app:cardBackgroundColor="@color/colorCardView"
+                                          app:cardCornerRadius="8dp"
+                                          app:cardElevation="8dp"
+                                          app:layout_columnWeight="1"
+                                          app:layout_gravity="fill"
+                                          app:layout_rowWeight="1">
 
-                    <TextView android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:layout_marginBottom="4dp"
-                              android:layout_marginLeft="16dp"
-                              android:layout_marginRight="0dp"
-                              android:layout_marginTop="4dp"
-                              android:text="@string/setting_view_txt_7"
-                              android:textAppearance="?android:attr/textAppearanceSmall"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical">
 
-                    <TextView android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:layout_marginBottom="16dp"
-                              android:layout_marginLeft="16dp"
-                              android:layout_marginRight="0dp"
-                              android:layout_marginTop="4dp"
-                              android:text="@string/setting_view_txt_8"
-                              android:textAppearance="?android:attr/textAppearanceSmall"/>
+          <ImageView android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginBottom="4dp"
+                     android:layout_marginLeft="16dp"
+                     android:layout_marginRight="0dp"
+                     android:layout_marginTop="16dp"
+                     android:src="@drawable/ic_exit_to_app_black_16dp"/>
 
-                </LinearLayout>
+          <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/setting_view_txt_7"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-            </android.support.v7.widget.CardView>
+          <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/setting_view_txt_8"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-            <!-- Row 1 -->
-            <!-- Column 1 -->
-            <android.support.v7.widget.CardView android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_marginBottom="16dp"
-                                                android:layout_marginLeft="16dp"
-                                                android:layout_marginRight="16dp"
-                                                android:layout_marginTop="16dp"
-                                                android:clickable="true"
-                                                android:focusable="true"
-                                                android:onClick="@{() -> vm.onNavFAQ()}"
-                                                app:cardBackgroundColor="@color/colorCardView"
-                                                app:cardCornerRadius="8dp"
-                                                app:cardElevation="8dp"
-                                                app:layout_columnWeight="1"
-                                                app:layout_rowWeight="1">
+        </LinearLayout>
 
-                <LinearLayout android:layout_width="match_parent"
-                              android:layout_height="match_parent"
-                              android:orientation="vertical">
+      </android.support.v7.widget.CardView>
 
-                    <ImageView android:layout_width="wrap_content"
-                               android:layout_height="wrap_content"
-                               android:layout_marginBottom="4dp"
-                               android:layout_marginLeft="16dp"
-                               android:layout_marginRight="0dp"
-                               android:layout_marginTop="16dp"
-                               android:src="@drawable/ic_help_black_16dp"/>
+      <!-- Row 1 -->
+      <!-- Column 1 -->
+      <android.support.v7.widget.CardView android:layout_width="wrap_content"
+                                          android:layout_height="wrap_content"
+                                          android:layout_marginBottom="16dp"
+                                          android:layout_marginLeft="16dp"
+                                          android:layout_marginRight="16dp"
+                                          android:layout_marginTop="16dp"
+                                          android:clickable="true"
+                                          android:focusable="true"
+                                          android:onClick="@{() -> vm.onNavFAQ()}"
+                                          app:cardBackgroundColor="@color/colorCardView"
+                                          app:cardCornerRadius="8dp"
+                                          app:cardElevation="8dp"
+                                          app:layout_columnWeight="1"
+                                          app:layout_rowWeight="1">
 
-                    <TextView android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:layout_marginBottom="4dp"
-                              android:layout_marginLeft="16dp"
-                              android:layout_marginRight="0dp"
-                              android:layout_marginTop="4dp"
-                              android:text="@string/setting_view_txt_9"
-                              android:textAppearance="?android:attr/textAppearanceSmall"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical">
 
-                    <TextView android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:layout_marginBottom="16dp"
-                              android:layout_marginLeft="16dp"
-                              android:layout_marginRight="0dp"
-                              android:layout_marginTop="4dp"
-                              android:text="@string/setting_view_txt_10"
-                              android:textAppearance="?android:attr/textAppearanceSmall"/>
+          <ImageView android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginBottom="4dp"
+                     android:layout_marginLeft="16dp"
+                     android:layout_marginRight="0dp"
+                     android:layout_marginTop="16dp"
+                     android:src="@drawable/ic_help_black_16dp"/>
 
-                </LinearLayout>
+          <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/setting_view_txt_9"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-            </android.support.v7.widget.CardView>
+          <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/setting_view_txt_10"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-        </android.support.v7.widget.GridLayout>
+        </LinearLayout>
 
-    </LinearLayout>
+      </android.support.v7.widget.CardView>
+
+    </android.support.v7.widget.GridLayout>
+
+  </LinearLayout>
 
 </layout>
