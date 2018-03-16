@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.jobaymax.viewmodel.ValidatePopupViewModel">
+        tools:context="jobtrends.jobsurvey.viewmodel.ValidatePopupViewModel">
 
     <data>
-        <variable name="vm" type="jobtrends.jobaymax.viewmodel.SurveyViewModel"/>
+        <variable name="vm" type="jobtrends.jobsurvey.viewmodel.SurveyViewModel"/>
     </data>
 
     <LinearLayout android:layout_width="match_parent"

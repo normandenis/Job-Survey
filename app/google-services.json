@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "795440575142",
-    "firebase_url": "https://jobaymax-dfcba.firebaseio.com",
-    "project_id": "jobaymax-dfcba",
-    "storage_bucket": "jobaymax-dfcba.appspot.com"
+    "project_number": "624351271130",
+    "firebase_url": "https://jobsurvey-2b54f.firebaseio.com",
+    "project_id": "jobsurvey-2b54f",
+    "storage_bucket": "jobsurvey-2b54f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:795440575142:android:11cb631b2dc6f32c",
+        "mobilesdk_app_id": "1:624351271130:android:ad94fa44e75c950f",
         "android_client_info": {
-          "package_name": "jobtrends.jobaymax"
+          "package_name": "jobtrends.jobsurvey"
         }
       },
       "oauth_client": [
         {
-          "client_id": "795440575142-arej7lbfkhc1k13iliffht40nufegq6n.apps.googleusercontent.com",
+          "client_id": "624351271130-87j4roe5nndiqa9l1i94masr67p3rnql.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "jobtrends.jobaymax",
-            "certificate_hash": "0ff11de948953720c10471b47f0b7cf26d4fc5ca"
+            "package_name": "jobtrends.jobsurvey",
+            "certificate_hash": "7ba159a3db9b7601cb439954cd6a7c4d6db92ab5"
           }
         },
         {
-          "client_id": "795440575142-pt5b1857uohaed8g15si81os42aauj8h.apps.googleusercontent.com",
+          "client_id": "624351271130-j6b8s6pf1ie3d1dm26c3q7qb6rpsdlg2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBsJMY5d3lhowZdOOeIWw4qQSLzKgKMmsI"
+          "current_key": "AIzaSyBmEZf6cHy2oD0a78O-pqIwQSyD1TsEz8I"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "795440575142-pt5b1857uohaed8g15si81os42aauj8h.apps.googleusercontent.com",
+              "client_id": "624351271130-j6b8s6pf1ie3d1dm26c3q7qb6rpsdlg2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

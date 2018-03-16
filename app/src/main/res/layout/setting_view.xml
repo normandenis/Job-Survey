@@ -2,11 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.jobaymax.viewmodel.SettingViewModel">
+        tools:context="jobtrends.jobsurvey.viewmodel.SettingViewModel">
 
   <data>
     <variable name="vm"
-              type="jobtrends.jobaymax.viewmodel.SettingViewModel"/>
+              type="jobtrends.jobsurvey.viewmodel.SettingViewModel"/>
   </data>
 
   <LinearLayout android:layout_width="match_parent"

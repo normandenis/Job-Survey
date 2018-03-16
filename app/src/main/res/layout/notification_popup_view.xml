@@ -2,10 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.jobaymax.viewmodel.NotificationPopupViewModel">
+        tools:context="jobtrends.jobsurvey.viewmodel.NotificationPopupViewModel">
 
     <data>
-        <variable name="vm" type="jobtrends.jobaymax.viewmodel.NotificationPopupViewModel"/>
+        <variable name="vm" type="jobtrends.jobsurvey.viewmodel.NotificationPopupViewModel"/>
     </data>
 
     <android.support.v7.widget.GridLayout android:layout_width="match_parent"

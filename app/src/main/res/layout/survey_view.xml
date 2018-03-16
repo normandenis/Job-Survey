@@ -3,10 +3,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.jobaymax.viewmodel.SurveyViewModel">
+        tools:context="jobtrends.jobsurvey.viewmodel.SurveyViewModel">
 
     <data>
-        <variable name="vm" type="jobtrends.jobaymax.viewmodel.SurveyViewModel"/>
+        <variable name="vm" type="jobtrends.jobsurvey.viewmodel.SurveyViewModel"/>
     </data>
 
     <LinearLayout android:id="@+id/main_content"

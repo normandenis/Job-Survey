@@ -2,11 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.jobaymax.viewmodel.HomeViewModel">
+        tools:context="jobtrends.jobsurvey.viewmodel.HomeViewModel">
 
     <data>
-        <variable name="vm" type="jobtrends.jobaymax.viewmodel.HomeViewModel"/>
-        <variable name="cmp" type="jobtrends.jobaymax.service.ServiceController.Companion"/>
+        <variable name="vm" type="jobtrends.jobsurvey.viewmodel.HomeViewModel"/>
+        <variable name="cmp" type="jobtrends.jobsurvey.service.ServiceController.Companion"/>
     </data>
 
     <LinearLayout android:layout_width="match_parent"

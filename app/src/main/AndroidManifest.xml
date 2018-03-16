@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="jobtrends.jobaymax">
+          package="jobtrends.jobsurvey">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -30,16 +30,16 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id"/>
 
-        <activity android:name="jobtrends.jobaymax.viewmodel.SignInViewModel">
+        <activity android:name="jobtrends.jobsurvey.viewmodel.SignInViewModel">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="jobtrends.jobaymax.viewmodel.SignUpViewModel">
+        <activity android:name="jobtrends.jobsurvey.viewmodel.SignUpViewModel">
         </activity>
-        <activity android:name="jobtrends.jobaymax.viewmodel.HomeViewModel">
+        <activity android:name="jobtrends.jobsurvey.viewmodel.HomeViewModel">
         </activity>
         <!--<activity android:name=".viewmodel.SettingViewModel">-->
         <!--</activity>-->
@@ -62,13 +62,13 @@
         <!--<activity android:name=".viewmodel.ValidatePopupViewModel">-->
         <!--</activity>-->
 
-        <service android:name="jobtrends.jobaymax.service.MyFirebaseMessagingService">
+        <service android:name="jobtrends.jobsurvey.service.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
 
-        <service android:name="jobtrends.jobaymax.service.MyFirebaseInstanceIDService">
+        <service android:name="jobtrends.jobsurvey.service.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>

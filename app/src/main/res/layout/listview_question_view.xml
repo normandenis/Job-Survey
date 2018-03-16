@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.jobaymax.viewmodel.AnswerViewModel">
+        tools:context="jobtrends.jobsurvey.viewmodel.AnswerViewModel">
 
     <data>
-        <variable name="vm" type="jobtrends.jobaymax.viewmodel.AnswerViewModel"/>
-        <variable name="m" type="jobtrends.jobaymax.model.Answer"/>
+        <variable name="vm" type="jobtrends.jobsurvey.viewmodel.AnswerViewModel"/>
+        <variable name="m" type="jobtrends.jobsurvey.model.Answer"/>
     </data>
 
     <LinearLayout android:layout_width="match_parent"
