@@ -13,34 +13,24 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.databinding.SignInViewBinding
+import jobtrends.jobsurvey.service.APIController
+import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.ServiceController
-import jobtrends.jobsurvey.service.ServiceController.Companion.apiController
-import jobtrends.jobsurvey.service.ServiceController.Companion.jsonController
 import jobtrends.jobsurvey.service.serviceController
-
-
-class Toto
-{
-  var name : String? = null
-}
 
 class SignInViewModel : AppCompatActivity()
 {
   var username = ObservableField<String>()
   var password = ObservableField<String>()
-  private val TAG = "MainActivity"
+  private val TAG = "SignInViewModel"
 
-  override fun onCreate(savedInstanceState : Bundle?)
+  override fun onCreate(savedInstanceState: Bundle?)
   {
     super.onCreate(savedInstanceState)
-    val binding : SignInViewBinding = DataBindingUtil.setContentView(this, R.layout.sign_in_view)
+    val binding: SignInViewBinding = DataBindingUtil.setContentView(this, R.layout.sign_in_view)
     binding.vm = this
-    ServiceController(this.resources)
-    val toto = Toto()
-    toto.name = "Toto"
-    serviceController.register(toto)
-    val totobis = serviceController.getInstance<Toto>()
-    println(totobis.name)
+    serviceController = ServiceController()
+    serviceController!!.register(resources)
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
     {
@@ -55,24 +45,17 @@ class SignInViewModel : AppCompatActivity()
       {
         TODO("VERSION.SDK_INT < M")
       }
-      notificationManager !!.createNotificationChannel(
-        NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_LOW))
+      notificationManager!!.createNotificationChannel(
+        NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH))
     }
 
-    // If a notification message is tapped, any data accompanying the notification
-    // message is available in the intent extras. In this sample the launcher
-    // intent is fired when the notification is tapped, so any accompanying data would
-    // be handled here. If you want a different intent fired, set the click_action
-    // field of the notification message to the desired intent. The launcher intent
-    // is used when no click_action is specified.
-    //
     // Handle possible data accompanying notification message.
     // [START handle_data_extras]
     if (intent.extras != null)
     {
-      for (key in intent.extras !!.keySet())
+      for (key in intent.extras!!.keySet())
       {
-        val value = intent.extras !!.get(key)
+        val value = intent.extras!!.get(key)
         Log.d(TAG, "Key: $key Value: $value")
       }
     }
@@ -104,19 +87,22 @@ class SignInViewModel : AppCompatActivity()
 
   fun onClickSignIn()
   {
+    val jsonController = serviceController!!.getInstance<JsonController>()
+    val apiController = serviceController!!.getInstance<APIController>()
     val tmp = mutableMapOf<String, String?>()
     //		"benjamin@jobtrends.io"
-    //		"totoToto"
-    tmp["username"] = this.username.get()
-    tmp["password"] = this.password.get()
+    //		"totoToto"*
+    tmp["username"] = username.get()
+    tmp["password"] = password.get()
     val tmpSerialized = jsonController.serialize(tmp)
 
     apiController
-      .post("https://api.dev.jobtrends.io/auth/login", tmpSerialized, this::firstResponse, this)
+      .post("auth/login", tmpSerialized, ::firstResponse, this)
   }
 
-  private fun firstResponse(response : String)
+  private fun firstResponse(response: String)
   {
+    Log.d(TAG, response)
     val intent = Intent(this, HomeViewModel::class.java)
     this.startActivity(intent)
   }

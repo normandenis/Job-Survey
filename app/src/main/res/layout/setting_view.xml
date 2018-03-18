@@ -118,8 +118,8 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginTop="4dp"
                     android:text="@string/setting_view_txt_3"
-                    android:textColor="@color/colorButtonLight"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorButtonLight"/>
 
           <TextView android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -128,8 +128,8 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginTop="4dp"
                     android:text="@string/setting_view_txt_4"
-                    android:textColor="@color/colorButtonLight"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorButtonLight"/>
 
         </LinearLayout>
 

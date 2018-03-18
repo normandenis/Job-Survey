@@ -1,46 +1,37 @@
 package jobtrends.jobsurvey.service
 
-import android.annotation.SuppressLint
-import android.content.res.Resources
-import android.widget.Button
+import android.os.Debug
+import android.util.Log
 import jobtrends.jobsurvey.model.EndSurvey
-import jobtrends.jobsurvey.model.StartSurveyModel
 import jobtrends.jobsurvey.model.User
 import jobtrends.jobsurvey.model.UserModel
 
-var serviceController = ServiceController()
+var serviceController: ServiceController? = null
 
 class ServiceController
 {
-  var instances : MutableMap<Any, Any> = mutableMapOf()
-
-  constructor(rsrc : Resources)
-  {
-    resources = rsrc
-  }
+  var instances: MutableMap<Any, Any> = mutableMapOf()
 
   constructor()
-
-  inline fun <reified T> register(obj : T)
   {
-    instances[T::class] = obj as Any
+    register<JsonController>()
+    register<UserModel>()
+    register<User>()
+    register<EndSurvey>()
+    register<APIController>()
+    register<SurveyController>()
   }
 
-  inline fun <reified T> getInstance() : T
+  inline fun <reified T> register(obj: T? = null, new: Boolean = false)
+  {
+    if (!instances.containsKey(T::class) || new)
+    {
+      instances[T::class] = (obj ?: T::class.java.newInstance()) as Any
+    }
+  }
+
+  inline fun <reified T> getInstance(): T
   {
     return instances[T::class] as T
-  }
-
-  companion object
-  {
-    var resources : Resources? = null
-    var jsonController = JsonController()
-    var userModel = UserModel()
-    var user = User()
-    var endSurvey = EndSurvey()
-    var startSurveyModel : StartSurveyModel? = null
-    var apiController = APIController()
-    var surveyController = SurveyController()
-    var appBarBtn : Button? = null
   }
 }

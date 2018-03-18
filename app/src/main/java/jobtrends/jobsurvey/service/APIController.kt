@@ -1,26 +1,31 @@
 package jobtrends.jobsurvey.service
 
+import android.app.Application
 import android.content.Context
+import android.content.res.Resources
 import com.android.volley.NetworkResponse
 import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.toolbox.DiskBasedCache
 import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import jobtrends.jobsurvey.R
-import jobtrends.jobsurvey.service.ServiceController.Companion.resources
+import jobtrends.jobsurvey.viewmodel.HomeViewModel
+import jobtrends.jobsurvey.viewmodel.SignInViewModel
 import org.apache.commons.io.IOUtils
 import java.nio.charset.StandardCharsets
 
 class APIController
 {
   var token : String? = null
+  val urlBase : String = "https://api.dev.jobtrends.io/"
 
   fun post(url : String, json : String, callback : (res : String) -> Unit, context : Context)
   {
     val queue = Volley.newRequestQueue(context)
     val stringRequest = object :
-        StringRequest(Request.Method.POST, url, Response.Listener<String> { s ->
+        StringRequest(Request.Method.POST, urlBase + url, Response.Listener<String> { s ->
           callback(s)
         }, Response.ErrorListener(::println))
     {
@@ -51,7 +56,7 @@ class APIController
   {
     val queue = Volley.newRequestQueue(context)
     val stringRequest = object :
-        StringRequest(Request.Method.GET, url, Response.Listener<String> { s ->
+        StringRequest(Request.Method.GET, urlBase + url, Response.Listener<String> { s ->
           callback(s)
         }, Response.ErrorListener(::println))
     {
@@ -75,21 +80,10 @@ class APIController
     queue.add(stringRequest)
   }
 
-  fun getSurvey() : String
-  {
-    val inputStream = resources?.openRawResource(R.raw.survey_example)
-    return IOUtils.toString(inputStream, StandardCharsets.UTF_8)
-  }
-
-  fun getCategory() : String
-  {
-    val inputStream = resources?.openRawResource(R.raw.survey_category_example)
-    return IOUtils.toString(inputStream, StandardCharsets.UTF_8)
-  }
-
   fun getFAQQuestion() : String
   {
-    val inputStream = resources?.openRawResource(R.raw.question_faq_example)
+    val resources = serviceController!!.getInstance<Resources>()
+    val inputStream = resources.openRawResource(R.raw.question_faq_example)
     return IOUtils.toString(inputStream, StandardCharsets.UTF_8)
   }
 }

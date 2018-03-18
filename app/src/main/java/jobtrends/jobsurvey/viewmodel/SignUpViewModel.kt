@@ -4,17 +4,23 @@ import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.databinding.SignUpViewBinding
-import jobtrends.jobsurvey.service.ServiceController.Companion.apiController
-import jobtrends.jobsurvey.service.ServiceController.Companion.jsonController
-import jobtrends.jobsurvey.service.ServiceController.Companion.user
-import jobtrends.jobsurvey.service.ServiceController.Companion.userModel
+import jobtrends.jobsurvey.model.User
+import jobtrends.jobsurvey.model.UserModel
+import jobtrends.jobsurvey.service.APIController
+import jobtrends.jobsurvey.service.JsonController
+import jobtrends.jobsurvey.service.serviceController
 
 class SignUpViewModel : AppCompatActivity()
 {
-  var m_userModel = userModel
-  var m_user = user
+  var userModel = serviceController !!.getInstance<UserModel>()
+  var user = serviceController !!.getInstance<User>()
+  var jsonController = serviceController !!.getInstance<JsonController>()
+  var apiController = serviceController !!.getInstance<APIController>()
+  private val tag = "SignUpViewModel"
+
   override fun onCreate(savedInstanceState : Bundle?)
   {
     super.onCreate(savedInstanceState)
@@ -24,32 +30,30 @@ class SignUpViewModel : AppCompatActivity()
 
   fun onClick()
   {
-    m_user.email = m_userModel.email.get()
-    m_user.firstName = m_userModel.firstName.get()
-    m_user.lastName = m_userModel.lastName.get()
-    m_user.password = m_userModel.password.get()
-    m_user.metier = m_userModel.metier.get()
-    m_user.birthday = 0
-    val json = jsonController.serialize(m_user)
-
-    apiController.post("https://api.dev.jobtrends.io/auth/signup", json, ::firstResponse, this)
+    user.email = userModel.email.get()
+    user.firstName = userModel.firstName.get()
+    user.lastName = userModel.lastName.get()
+    user.password = userModel.password.get()
+    user.metier = userModel.metier.get()
+    user.birthday = 0
+    val json = jsonController.serialize(user)
+    apiController.post("auth/signup", json, ::firstResponse, this)
   }
 
   fun firstResponse(response : String)
   {
-    m_user = jsonController.deserialize(response)
+    Log.d(tag, response)
     val tmp = mutableMapOf<String, String?>()
-
-    tmp["username"] = m_user.email
-    tmp["password"] = m_user.password
+    tmp["username"] = user.email
+    tmp["password"] = user.password
     val tmpSerialized = jsonController.serialize(tmp)
-
     apiController
-        .post("https://api.dev.jobtrends.io/auth/login", tmpSerialized, ::secondResponse, this)
+      .post("auth/login", tmpSerialized, ::secondResponse, this)
   }
 
   fun secondResponse(response : String)
   {
+    println(response)
     val intent = Intent(this, HomeViewModel::class.java)
     startActivity(intent)
   }

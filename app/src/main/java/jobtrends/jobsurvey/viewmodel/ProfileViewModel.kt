@@ -11,11 +11,6 @@ import jobtrends.jobsurvey.databinding.ProfileViewBinding
 
 class ProfileViewModel : Fragment()
 {
-  var UserName : String = "Félix Marcotte-Ruffin"
-  var UserJob = "Expert Comptable"
-  var Survey = 28
-  var Point = 350
-  var Ranking = 12
   override fun onCreateView(inflater : LayoutInflater, container : ViewGroup?,
                             savedInstanceState : Bundle?) : View?
   {

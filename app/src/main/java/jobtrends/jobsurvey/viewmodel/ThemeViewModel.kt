@@ -12,14 +12,18 @@ import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.databinding.ListviewStartSurveyViewBinding
 import jobtrends.jobsurvey.model.Survey
 import jobtrends.jobsurvey.model.Theme
-import jobtrends.jobsurvey.service.ServiceController.Companion.apiController
-import jobtrends.jobsurvey.service.ServiceController.Companion.jsonController
+import jobtrends.jobsurvey.service.APIController
+import jobtrends.jobsurvey.service.JsonController
+import jobtrends.jobsurvey.service.serviceController
 
 class ThemeViewModel(var list : List<Theme>) : BaseAdapter()
 {
+  val apiController = serviceController!!.getInstance<APIController>()
+  val jsonController = serviceController!!.getInstance<JsonController>()
   var inflater : LayoutInflater? = null
   var myView : View? = null
   var fragmentManager : FragmentManager? = null
+
   @SuppressLint("ViewHolder")
   override fun getView(position : Int, convertView : View?, parent : ViewGroup?) : View
   {
@@ -56,7 +60,7 @@ class ThemeViewModel(var list : List<Theme>) : BaseAdapter()
   fun onClickTheme(theme : Theme)
   {
     val id = theme.survey_id
-    apiController.get("https://api.dev.jobtrends.io/jobsurvey/survey/$id", ::firstResponse,
+    apiController.get("jobaymax/survey/$id", ::firstResponse,
                       myView?.context !!)
   }
 
@@ -65,10 +69,10 @@ class ThemeViewModel(var list : List<Theme>) : BaseAdapter()
     val survey = jsonController.deserialize<Survey>(response)
     val fragment = SurveyViewModel()
     fragment.survey = survey
-    val transaction = fragmentManager?.beginTransaction()
-    transaction?.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
-    transaction?.addToBackStack(null)
-    transaction?.commit()
+    val transaction = fragmentManager!!.beginTransaction()
+    transaction.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
+    transaction.addToBackStack(null)
+    transaction.commit()
   }
 
   fun isVisible(open : Boolean) : Int

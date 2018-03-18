@@ -16,15 +16,17 @@ class QuestionViewModel : Fragment()
   var question : Question? = null
   var reply : Reply? = null
   var answerViewModel : AnswerViewModel? = null
+  var myView: View? = null
+
   override fun onCreateView(inflater : LayoutInflater, container : ViewGroup?,
                             savedInstanceState : Bundle?) : View?
   {
     val binding : QuestionViewBinding = DataBindingUtil
         .inflate(inflater, R.layout.question_view, container, false)
-    val view = binding.root
+    myView = binding.root
     binding.vm = this
-    answerViewModel = AnswerViewModel(question?.answers !!)
-    answerViewModel?.reply = reply
-    return view
+    answerViewModel = AnswerViewModel(question!!.answers !!)
+    answerViewModel!!.reply = reply
+    return myView
   }
 }

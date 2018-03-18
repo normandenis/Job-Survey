@@ -12,8 +12,9 @@ import android.widget.Button
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.databinding.ListviewQuestionViewBinding
 import jobtrends.jobsurvey.model.Answer
+import jobtrends.jobsurvey.model.EndSurvey
 import jobtrends.jobsurvey.model.Reply
-import jobtrends.jobsurvey.service.ServiceController.Companion.endSurvey
+import jobtrends.jobsurvey.service.serviceController
 
 class AnswerViewModel(var list : List<Answer>) : BaseAdapter()
 {
@@ -21,13 +22,14 @@ class AnswerViewModel(var list : List<Answer>) : BaseAdapter()
   var reply : Reply? = null
   var myView : View? = null
   var lastButton : Button? = null
+  val endSurvey = serviceController !!.getInstance<EndSurvey>()
 
   @SuppressLint("ViewHolder")
   override fun getView(position : Int, convertView : View?, parent : ViewGroup?) : View
   {
     if (inflater == null)
     {
-      inflater = parent?.context?.getSystemService(
+      inflater = parent !!.context !!.getSystemService(
         Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     }
     val binding : ListviewQuestionViewBinding = DataBindingUtil
@@ -58,9 +60,9 @@ class AnswerViewModel(var list : List<Answer>) : BaseAdapter()
   fun onClick(answer : Answer, view : View)
   {
     println("---------------------------------------------------------------------------------")
-    println(endSurvey.answers?.size)
+    println(endSurvey.answers !!.size)
     val button = view.findViewById<Button>(R.id.answer_button)
-    reply?.value = answer.value
+    reply !!.value = answer.value
     lastButton?.setBackgroundResource(R.drawable.outline_layout)
     lastButton?.setTextColor(Color.BLACK)
     lastButton = button

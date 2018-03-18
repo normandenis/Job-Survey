@@ -31,9 +31,6 @@
           </value>
         </option>
         <option name="RIGHT_MARGIN" value="100" />
-        <AndroidXmlCodeStyleSettings>
-          <option name="USE_CUSTOM_SETTINGS" value="true" />
-        </AndroidXmlCodeStyleSettings>
         <JetCodeStyleSettings>
           <option name="PACKAGES_TO_USE_STAR_IMPORTS">
             <value>
@@ -41,8 +38,6 @@
               <package name="kotlinx.android.synthetic" withSubpackages="false" static="false" />
             </value>
           </option>
-          <option name="SPACE_AROUND_RANGE" value="true" />
-          <option name="SPACE_BEFORE_TYPE_COLON" value="true" />
           <option name="ALIGN_IN_COLUMNS_CASE_BRANCH" value="true" />
           <option name="LBRACE_ON_NEXT_LINE" value="true" />
           <option name="NAME_COUNT_TO_USE_STAR_IMPORT" value="2147483647" />
@@ -75,15 +70,14 @@
           </extensions>
         </Objective-C-extensions>
         <XML>
-          <option name="XML_KEEP_LINE_BREAKS" value="false" />
-          <option name="XML_ALIGN_ATTRIBUTES" value="false" />
-          <option name="XML_SPACE_INSIDE_EMPTY_TAG" value="true" />
           <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
         </XML>
         <codeStyleSettings language="XML">
           <option name="FORCE_REARRANGE_MODE" value="1" />
           <indentOptions>
-            <option name="CONTINUATION_INDENT_SIZE" value="4" />
+            <option name="INDENT_SIZE" value="2" />
+            <option name="CONTINUATION_INDENT_SIZE" value="2" />
+            <option name="TAB_SIZE" value="2" />
           </indentOptions>
           <arrangement>
             <rules>
@@ -246,7 +240,6 @@
           <option name="ALIGN_MULTILINE_BINARY_OPERATION" value="true" />
           <option name="ALIGN_MULTILINE_EXTENDS_LIST" value="true" />
           <option name="ALIGN_MULTILINE_METHOD_BRACKETS" value="true" />
-          <option name="SPACE_AROUND_UNARY_OPERATOR" value="true" />
           <option name="PARAMETER_ANNOTATION_WRAP" value="2" />
           <option name="VARIABLE_ANNOTATION_WRAP" value="2" />
           <indentOptions>
