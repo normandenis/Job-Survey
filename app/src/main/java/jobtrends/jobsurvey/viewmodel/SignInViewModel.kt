@@ -9,27 +9,39 @@ import android.os.Build
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.databinding.SignInViewBinding
+import jobtrends.jobsurvey.model.User
 import jobtrends.jobsurvey.service.APIController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.ServiceController
 import jobtrends.jobsurvey.service.serviceController
 
-class SignInViewModel : AppCompatActivity()
+class SignInViewModel : AppCompatActivity
 {
+  var jsonController: JsonController? = null
+  var apiController: APIController? = null
   var username = ObservableField<String>()
   var password = ObservableField<String>()
   private val TAG = "SignInViewModel"
+
+  constructor() : super()
+  {
+    serviceController = ServiceController()
+    jsonController = serviceController!!.getInstance<JsonController>()
+    apiController = serviceController!!.getInstance<APIController>()
+  }
+
 
   override fun onCreate(savedInstanceState: Bundle?)
   {
     super.onCreate(savedInstanceState)
     val binding: SignInViewBinding = DataBindingUtil.setContentView(this, R.layout.sign_in_view)
     binding.vm = this
-    serviceController = ServiceController()
+
     serviceController!!.register(resources)
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
@@ -83,21 +95,28 @@ class SignInViewModel : AppCompatActivity()
 //      Log.d(TAG, msg)
 //      Toast.makeText(this@SignInViewModel, msg, Toast.LENGTH_SHORT).show()
 //    })
+
+    val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+    val json = preferences.getString(User::class.java.simpleName, null)
+    Log.d(TAG, json ?: "")
+    if (json != null)
+    {
+      val user = jsonController!!.deserialize<User>(json)
+      serviceController!!.register(user, true)
+      apiController!!.initToken()
+      username.set(user.email)
+      password.set(user.password)
+      onClickSignIn()
+    }
   }
 
   fun onClickSignIn()
   {
-    val jsonController = serviceController!!.getInstance<JsonController>()
-    val apiController = serviceController!!.getInstance<APIController>()
     val tmp = mutableMapOf<String, String?>()
-    //		"benjamin@jobtrends.io"
-    //		"totoToto"*
     tmp["username"] = username.get()
     tmp["password"] = password.get()
-    val tmpSerialized = jsonController.serialize(tmp)
-
-    apiController
-      .post("auth/login", tmpSerialized, ::firstResponse, this)
+    val tmpSerialized = jsonController!!.serialize(tmp)
+    apiController!!.post("auth/login", tmpSerialized, ::firstResponse, this)
   }
 
   private fun firstResponse(response: String)

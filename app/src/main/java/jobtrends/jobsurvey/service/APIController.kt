@@ -3,16 +3,16 @@ package jobtrends.jobsurvey.service
 import android.app.Application
 import android.content.Context
 import android.content.res.Resources
+import android.preference.PreferenceManager
+import android.view.View
 import com.android.volley.NetworkResponse
 import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.toolbox.DiskBasedCache
 import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import jobtrends.jobsurvey.R
-import jobtrends.jobsurvey.viewmodel.HomeViewModel
-import jobtrends.jobsurvey.viewmodel.SignInViewModel
+import jobtrends.jobsurvey.model.User
 import org.apache.commons.io.IOUtils
 import java.nio.charset.StandardCharsets
 
@@ -20,6 +20,12 @@ class APIController
 {
   var token : String? = null
   val urlBase : String = "https://api.dev.jobtrends.io/"
+
+  fun initToken()
+  {
+    val user = serviceController!!.getInstance<User>()
+    token = user.resetToken
+  }
 
   fun post(url : String, json : String, callback : (res : String) -> Unit, context : Context)
   {
@@ -31,7 +37,12 @@ class APIController
     {
       override fun parseNetworkResponse(response : NetworkResponse?) : Response<String>
       {
-        token = "Bearer " + response?.headers?.get("X-AUTH-TOKEN")
+        if (token == null)
+        {
+          token = "Bearer " + response?.headers?.get("X-AUTH-TOKEN")
+          val user = serviceController!!.getInstance<User>()
+          user.resetToken = token
+        }
         val data = String(response?.data !!)
         return Response.success(data, HttpHeaderParser.parseCacheHeaders(response))
       }
