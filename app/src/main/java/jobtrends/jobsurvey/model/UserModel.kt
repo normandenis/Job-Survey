@@ -20,7 +20,7 @@ class UserModel
   var resetToken = ObservableField<String>()
   var resetTimestamp = ObservableField<Int>()
 
-  operator fun plusAssign(user: User)
+  fun merge(user: User)
   {
     id.set(if (user.id == null) id.get() else user.id)
     email.set(if (user.email == null) email.get() else user.email)

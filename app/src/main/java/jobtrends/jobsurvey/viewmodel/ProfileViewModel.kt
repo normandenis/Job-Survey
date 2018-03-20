@@ -8,9 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.databinding.ProfileViewBinding
+import jobtrends.jobsurvey.model.UserModel
+import jobtrends.jobsurvey.service.serviceController
 
 class ProfileViewModel : Fragment()
 {
+  var userModel = serviceController!!.getInstance<UserModel>()
+
   override fun onCreateView(inflater : LayoutInflater, container : ViewGroup?,
                             savedInstanceState : Bundle?) : View?
   {

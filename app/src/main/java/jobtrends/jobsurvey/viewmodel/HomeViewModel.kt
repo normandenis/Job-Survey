@@ -15,6 +15,7 @@ import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.databinding.HomeViewBinding
 import jobtrends.jobsurvey.model.StartSurveyModel
 import jobtrends.jobsurvey.model.User
+import jobtrends.jobsurvey.model.UserModel
 import jobtrends.jobsurvey.service.APIController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.serviceController
@@ -46,7 +47,9 @@ class HomeViewModel : AppCompatActivity()
   {
     val updatedUser = jsonController.deserialize<User>(response)
     val user = serviceController!!.getInstance<User>()
+    val userModel = serviceController!!.getInstance<UserModel>()
     user.merge(updatedUser)
+    userModel.merge(updatedUser)
     val json = jsonController.serialize(user)
     Log.d(TAG, json)
     val preferences = PreferenceManager.getDefaultSharedPreferences(this)

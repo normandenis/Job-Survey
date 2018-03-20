@@ -43,7 +43,17 @@
         <EditText android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:layout_margin="8dp"
-                  android:hint="Nom complet"
+                  android:hint="Firstname"
+                  android:text="@={vm.userModel.firstName}"
+                  android:inputType="textPersonName"
+                  android:textAppearance="?android:attr/textAppearanceSmall"
+                  android:textColor="@color/colorAccent"/>
+
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="8dp"
+                  android:hint="Lastname"
+                  android:text="@={vm.userModel.lastName}"
                   android:inputType="textPersonName"
                   android:textAppearance="?android:attr/textAppearanceSmall"
                   android:textColor="@color/colorAccent"/>
@@ -52,6 +62,7 @@
                   android:layout_height="wrap_content"
                   android:layout_margin="8dp"
                   android:hint="Date de naissance"
+                  android:text="@={vm.userModel.birthday}"
                   android:inputType="date"
                   android:textAppearance="?android:attr/textAppearanceSmall"
                   android:textColor="@color/colorAccent"/>
@@ -60,6 +71,7 @@
                   android:layout_height="wrap_content"
                   android:layout_margin="8dp"
                   android:hint="E-mail"
+                  android:text="@={vm.userModel.email}"
                   android:inputType="textEmailAddress"
                   android:textAppearance="?android:attr/textAppearanceSmall"
                   android:textColor="@color/colorAccent"/>
@@ -68,6 +80,7 @@
                   android:layout_height="wrap_content"
                   android:layout_margin="8dp"
                   android:hint="Profession"
+                  android:text="@={vm.userModel.metier}"
                   android:inputType="text"
                   android:textAppearance="?android:attr/textAppearanceSmall"
                   android:textColor="@color/colorAccent"/>
@@ -84,6 +97,7 @@
                   android:layout_height="wrap_content"
                   android:layout_margin="8dp"
                   android:hint="@string/profile_view_3"
+                  android:text="@={vm.userModel.password}"
                   android:inputType="textPassword"
                   android:textAppearance="?android:attr/textAppearanceSmall"
                   android:textColor="@color/colorAccent"/>

@@ -13,13 +13,12 @@
                 android:orientation="vertical">
 
     <Button android:id="@+id/answer_button"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="16dp"
             android:background="@drawable/outline_layout"
             android:onClick="@{(view) -> vm.onClick(m, view)}"
-            android:padding="16dp"
             android:text="@{m.title}"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@android:color/black"
