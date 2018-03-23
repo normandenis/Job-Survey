@@ -31,6 +31,8 @@ class SettingViewModel : Fragment()
   private val TAG = "SettingViewModel"
   private var myView: View? = null
   private var dialog: Dialog? = null
+  private var news : Boolean? = null
+  private var jobaymax : Boolean? = null
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                             savedInstanceState: Bundle?): View?
@@ -87,6 +89,8 @@ class SettingViewModel : Fragment()
 
   fun onNavNotif()
   {
+    jobaymax = userModel.jobaymax.get()
+    news = userModel.newsletter.get()
     val bind: NotificationPopupViewBinding = DataBindingUtil
       .inflate(LayoutInflater.from(context), R.layout.notification_popup_view,
                myView as ViewGroup, false)
@@ -97,12 +101,38 @@ class SettingViewModel : Fragment()
 
   fun onNotifYes()
   {
-    // TODO: The API should be informed of changes made to notifications
+    val tmpUser = User()
+    tmpUser.merge(userModel)
+    val json = jsonController.serialize(tmpUser)
+    apiController.put("auth/user", json, ::myResponse, context!!)
+  }
+
+
+  fun myResponse(response: String)
+  {
+    apiController.get("auth/user/me", ::secondResponse, context!!)
+  }
+
+  private fun secondResponse(response: String)
+  {
+    val updatedUser = jsonController.deserialize<User>(response)
+    val user = serviceController!!.getInstance<User>()
+    val userModel = serviceController!!.getInstance<UserModel>()
+    user.merge(updatedUser)
+    userModel.merge(updatedUser)
+    val json = jsonController.serialize(user)
+    Log.d(TAG, json)
+    val preferences = PreferenceManager.getDefaultSharedPreferences(activity)
+    val editor = preferences.edit()
+    editor.putString(User::class.java.simpleName, json)
+    editor.apply()
     dialog!!.hide()
   }
 
   fun onNotifNo()
   {
+    userModel.jobaymax.set(jobaymax)
+    userModel.newsletter.set(news)
     dialog!!.hide()
   }
 
