@@ -20,21 +20,13 @@ import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.ServiceController
 import jobtrends.jobsurvey.service.serviceController
 
-class SignInViewModel : AppCompatActivity
+class SignInViewModel : AppCompatActivity()
 {
-  var jsonController: JsonController? = null
-  var apiController: APIController? = null
+  var jsonController = serviceController!!.getInstance<JsonController>()
+  var apiController = serviceController!!.getInstance<APIController>()
   var username = ObservableField<String>()
   var password = ObservableField<String>()
   private val TAG = "SignInViewModel"
-
-  constructor() : super()
-  {
-    serviceController = ServiceController()
-    jsonController = serviceController!!.getInstance<JsonController>()
-    apiController = serviceController!!.getInstance<APIController>()
-  }
-
 
   override fun onCreate(savedInstanceState: Bundle?)
   {
@@ -96,18 +88,18 @@ class SignInViewModel : AppCompatActivity
 //      Toast.makeText(this@SignInViewModel, msg, Toast.LENGTH_SHORT).show()
 //    })
 
-    val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-    val json = preferences.getString(User::class.java.simpleName, null)
-    Log.d(TAG, json ?: "")
-    if (json != null)
-    {
-      val user = jsonController!!.deserialize<User>(json)
-      serviceController!!.register(user, true)
-      apiController!!.initToken()
-      username.set(user.email)
-      password.set(user.password)
-      onClickSignIn()
-    }
+//    val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+//    val json = preferences.getString(User::class.java.simpleName, null)
+//    Log.d(TAG, json ?: "")
+//    if (json != null)
+//    {
+//      val user = jsonController!!.deserialize<User>(json)
+//      serviceController!!.register(user, true)
+//      apiController!!.initToken()
+//      username.set(user.email)
+//      password.set(user.password)
+//      onClickSignIn()
+//    }
   }
 
   fun onClickSignIn()
@@ -115,20 +107,20 @@ class SignInViewModel : AppCompatActivity
     val tmp = mutableMapOf<String, String?>()
     tmp["username"] = username.get()
     tmp["password"] = password.get()
-    val tmpSerialized = jsonController!!.serialize(tmp)
-    apiController!!.post("auth/login", tmpSerialized, ::firstResponse, this)
+    val tmpSerialized = jsonController.serialize(tmp)
+    apiController.post("auth/login", tmpSerialized, ::firstResponse, this)
   }
 
   private fun firstResponse(response: String)
   {
     Log.d(TAG, response)
     val intent = Intent(this, HomeViewModel::class.java)
-    this.startActivity(intent)
+    startActivity(intent)
   }
 
   fun onClickSignUp()
   {
     val intent = Intent(this, SignUpViewModel::class.java)
-    this.startActivity(intent)
+    startActivity(intent)
   }
 }

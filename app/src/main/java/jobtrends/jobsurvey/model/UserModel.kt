@@ -14,8 +14,8 @@ class UserModel
   var metier = ObservableField<String>()
   var telephonePortable = ObservableField<Any>()
   var isAdmin = ObservableField<Boolean>()
-  var longitude = ObservableField<Int>()
-  var latitude = ObservableField<Int>()
+  var newsletter = ObservableField<Boolean>()
+  var jobaymax = ObservableField<Boolean>()
   var signInCount = ObservableField<Int>()
   var resetToken = ObservableField<String>()
   var resetTimestamp = ObservableField<Int>()
@@ -32,8 +32,8 @@ class UserModel
     metier.set(if (user.metier == null) metier.get() else user.metier)
     telephonePortable.set(if (user.telephonePortable == null) telephonePortable.get() else user.telephonePortable)
     isAdmin.set(if (user.isAdmin == null) isAdmin.get() else user.isAdmin)
-    longitude.set(if (user.longitude == null) longitude.get() else user.longitude)
-    latitude.set(if (user.latitude == null) latitude.get() else user.latitude)
+    newsletter.set(if (user.newsletter == null) newsletter.get() else user.newsletter)
+    jobaymax.set(if (user.jobaymax == null) jobaymax.get() else user.jobaymax)
     signInCount.set(if (user.signInCount == null) signInCount.get() else user.signInCount)
     resetToken.set(if (user.resetToken == null) resetToken.get() else user.resetToken)
     resetTimestamp.set(if (user.resetTimestamp == null) resetTimestamp.get() else user.resetTimestamp)
@@ -47,13 +47,13 @@ class User
   var firstName: String? = null
   var lastName: String? = null
   var password: String? = null
-  var birthday: Int? = null
+  var birthday: String? = null
   var encryptedPassword: String? = null
   var metier: String? = null
   var telephonePortable: Any? = null
   var isAdmin: Boolean? = null
-  var longitude: Int? = null
-  var latitude: Int? = null
+  var newsletter: Boolean? = null
+  var jobaymax: Boolean? = null
   var signInCount: Int? = null
   var resetToken: String? = null
   var resetTimestamp: Int? = null
@@ -70,10 +70,29 @@ class User
     metier = if (user.metier != null) user.metier else metier
     telephonePortable = if (user.telephonePortable != null) user.telephonePortable else telephonePortable
     isAdmin = if (user.isAdmin != null) user.isAdmin else isAdmin
-    longitude = if (user.longitude != null) user.longitude else longitude
-    latitude = if (user.latitude != null) user.latitude else latitude
+    newsletter = if (user.newsletter != null) user.newsletter else newsletter
+    jobaymax = if (user.jobaymax != null) user.jobaymax else jobaymax
     signInCount = if (user.signInCount != null) user.signInCount else signInCount
     resetToken = if (user.resetToken != null) user.resetToken else resetToken
     resetTimestamp = if (user.resetTimestamp != null) user.resetTimestamp else resetTimestamp
+  }
+
+  fun merge(user: UserModel)
+  {
+    id = if (user.id.get() != null) user.id.get() else id
+    email = if (user.email.get() != null) user.email.get() else email
+    firstName = if (user.firstName.get() != null) user.firstName.get() else firstName
+    lastName = if (user.lastName.get() != null) user.lastName.get() else lastName
+    password = if (user.password.get() != null) user.password.get() else password
+    birthday = if (user.birthday.get() != null) user.birthday.get() else birthday
+    encryptedPassword = if (user.encryptedPassword.get() != null) user.encryptedPassword.get() else encryptedPassword
+    metier = if (user.metier.get() != null) user.metier.get() else metier
+    telephonePortable = if (user.telephonePortable.get() != null) user.telephonePortable else telephonePortable
+    isAdmin = if (user.isAdmin.get() != null) user.isAdmin.get() else isAdmin
+    newsletter = if (user.newsletter.get() != null) user.newsletter.get() else newsletter
+    jobaymax = if (user.jobaymax.get() != null) user.jobaymax.get() else jobaymax
+    signInCount = if (user.signInCount.get() != null) user.signInCount.get() else signInCount
+    resetToken = if (user.resetToken.get() != null) user.resetToken.get() else resetToken
+    resetTimestamp = if (user.resetTimestamp.get() != null) user.resetTimestamp.get() else resetTimestamp
   }
 }

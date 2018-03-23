@@ -20,7 +20,7 @@
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:gravity="center"
-              android:text="@string/setting_view_txt_1"
+              android:text="@={vm.userModel.firstName}"
               android:textAppearance="?android:attr/textAppearanceMedium"
               android:textColor="@color/colorAccent"
               android:textStyle="bold"/>
@@ -28,7 +28,7 @@
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:gravity="center"
-              android:text="@string/setting_view_txt_2"
+              android:text="@={vm.userModel.metier}"
               android:textAppearance="?android:attr/textAppearanceSmall"
               android:textColor="@color/colorPrimary"/>
 
@@ -125,9 +125,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginRight="0dp"
                     android:layout_marginTop="4dp"
-                    android:text="@string/setting_view_txt_4"
+                    android:text="@={vm.userModel.email}"
+                    android:singleLine="true"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/colorButtonLight"/>
 

@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,8 @@ import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.databinding.NotificationPopupViewBinding
 import jobtrends.jobsurvey.databinding.SettingViewBinding
 import jobtrends.jobsurvey.model.StartSurveyModel
+import jobtrends.jobsurvey.model.User
+import jobtrends.jobsurvey.model.UserModel
 import jobtrends.jobsurvey.service.APIController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.serviceController
@@ -24,6 +27,7 @@ class SettingViewModel : Fragment()
   val startSurveyModel = serviceController!!.getInstance<StartSurveyModel>()
   private val jsonController = serviceController!!.getInstance<JsonController>()
   private val apiController = serviceController!!.getInstance<APIController>()
+  var userModel = serviceController!!.getInstance<UserModel>()
   private val TAG = "SettingViewModel"
   private var myView: View? = null
   private var dialog: Dialog? = null
@@ -104,6 +108,10 @@ class SettingViewModel : Fragment()
 
   fun onNavSignIn()
   {
+    val preferences = PreferenceManager.getDefaultSharedPreferences(activity)
+    val editor = preferences.edit()
+    editor.putString(User::class.java.simpleName, "")
+    editor.apply()
     val intent = Intent(activity, SignInViewModel::class.java)
     startActivity(intent)
   }

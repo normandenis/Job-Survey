@@ -24,12 +24,15 @@
         <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id"
                    android:value="@string/default_notification_channel_id"/>
 
-        <activity android:name="jobtrends.jobsurvey.viewmodel.SignInViewModel">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+      <activity android:name="jobtrends.jobsurvey.viewmodel.SplashViewModel">
+        <intent-filter>
+          <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+          <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
+      </activity>
+
+        <activity android:name="jobtrends.jobsurvey.viewmodel.SignInViewModel">
         </activity>
 
         <activity android:name="jobtrends.jobsurvey.viewmodel.SignUpViewModel">

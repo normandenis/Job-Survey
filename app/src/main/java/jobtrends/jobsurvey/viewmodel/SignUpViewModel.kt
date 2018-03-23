@@ -35,7 +35,7 @@ class SignUpViewModel : AppCompatActivity()
     user.lastName = userModel.lastName.get()
     user.password = userModel.password.get()
     user.metier = userModel.metier.get()
-    user.birthday = 0
+    user.birthday = userModel.birthday.get()
     val json = jsonController.serialize(user)
     apiController.post("auth/signup", json, ::firstResponse, this)
   }
