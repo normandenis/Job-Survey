@@ -16,53 +16,53 @@ import jobtrends.jobsurvey.model.EndSurvey
 import jobtrends.jobsurvey.model.Reply
 import jobtrends.jobsurvey.service.serviceController
 
-class AnswerViewModel(var list : List<Answer>) : BaseAdapter()
+class AnswerViewModel(var list: List<Answer>) : BaseAdapter()
 {
-  var inflater : LayoutInflater? = null
-  var reply : Reply? = null
-  var myView : View? = null
-  var lastButton : Button? = null
-  val endSurvey = serviceController !!.getInstance<EndSurvey>()
+  var inflater: LayoutInflater? = null
+  var reply: Reply? = null
+  var myView: View? = null
+  var lastButton: Button? = null
+  val endSurvey = serviceController!!.getInstance<EndSurvey>()
 
   @SuppressLint("ViewHolder")
-  override fun getView(position : Int, convertView : View?, parent : ViewGroup?) : View
+  override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View
   {
     if (inflater == null)
     {
-      inflater = parent !!.context !!.getSystemService(
+      inflater = parent!!.context!!.getSystemService(
         Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     }
-    val binding : ListviewQuestionViewBinding = DataBindingUtil
-      .inflate(inflater, R.layout.listview_question_view, parent, false)
+    val binding: ListviewQuestionViewBinding = DataBindingUtil
+      .inflate(inflater!!, R.layout.listview_question_view, parent, false)
     binding.vm = this
     binding.m = list[position]
 
     myView = binding.root
 
-    return myView !!
+    return myView!!
   }
 
-  override fun getItem(position : Int) : Any
+  override fun getItem(position: Int): Any
   {
     return list[position]
   }
 
-  override fun getItemId(position : Int) : Long
+  override fun getItemId(position: Int): Long
   {
     return position.toLong()
   }
 
-  override fun getCount() : Int
+  override fun getCount(): Int
   {
     return list.size
   }
 
-  fun onClick(answer : Answer, view : View)
+  fun onClick(answer: Answer, view: View)
   {
     println("---------------------------------------------------------------------------------")
-    println(endSurvey.answers !!.size)
+    println(endSurvey.answers!!.size)
     val button = view.findViewById<Button>(R.id.answer_button)
-    reply !!.value = answer.value
+    reply!!.value = answer.value
     lastButton?.setBackgroundResource(R.drawable.outline_layout)
     lastButton?.setTextColor(Color.BLACK)
     lastButton = button

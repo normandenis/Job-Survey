@@ -16,55 +16,54 @@ import jobtrends.jobsurvey.service.APIController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.serviceController
 
-class ThemeViewModel(var list : List<Theme>) : BaseAdapter()
+class ThemeViewModel(var list: List<Theme>) : BaseAdapter()
 {
   val apiController = serviceController!!.getInstance<APIController>()
   val jsonController = serviceController!!.getInstance<JsonController>()
-  var inflater : LayoutInflater? = null
-  var myView : View? = null
-  var fragmentManager : FragmentManager? = null
+  var inflater: LayoutInflater? = null
+  var myView: View? = null
+  var fragmentManager: FragmentManager? = null
 
   @SuppressLint("ViewHolder")
-  override fun getView(position : Int, convertView : View?, parent : ViewGroup?) : View
+  override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View
   {
     if (inflater == null)
     {
       inflater = parent?.context?.getSystemService(
-          Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     }
-    val binding : ListviewStartSurveyViewBinding = DataBindingUtil
-        .inflate(inflater, R.layout.listview_start_survey_view, parent, false)
+    val binding: ListviewStartSurveyViewBinding = DataBindingUtil.inflate(inflater!!, R.layout.listview_start_survey_view, parent, false)
     binding.vm = this
     binding.m = list[position]
 
     myView = binding.root
 
-    return myView !!
+    return myView!!
   }
 
-  override fun getItem(position : Int) : Any
+  override fun getItem(position: Int): Any
   {
     return list[position]
   }
 
-  override fun getItemId(position : Int) : Long
+  override fun getItemId(position: Int): Long
   {
     return position.toLong()
   }
 
-  override fun getCount() : Int
+  override fun getCount(): Int
   {
     return list.size
   }
 
-  fun onClickTheme(theme : Theme)
+  fun onClickTheme(theme: Theme)
   {
     val id = theme.survey_id
     apiController.get("jobaymax/survey/$id", ::firstResponse,
-                      myView?.context !!)
+                      myView?.context!!)
   }
 
-  fun firstResponse(response : String)
+  fun firstResponse(response: String)
   {
     val survey = jsonController.deserialize<Survey>(response)
     val fragment = SurveyViewModel()
@@ -75,7 +74,7 @@ class ThemeViewModel(var list : List<Theme>) : BaseAdapter()
     transaction.commit()
   }
 
-  fun isVisible(open : Boolean) : Int
+  fun isVisible(open: Boolean): Int
   {
     return if (open) View.INVISIBLE else View.VISIBLE
   }

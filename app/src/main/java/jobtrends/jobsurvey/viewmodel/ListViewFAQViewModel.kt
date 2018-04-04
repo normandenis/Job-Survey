@@ -26,7 +26,7 @@ class ListViewFAQViewModel(var list : List<FAQModel>) : BaseAdapter(), Filterabl
           Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     }
     val binding : ListviewFaqViewBinding = DataBindingUtil
-        .inflate(inflater, R.layout.listview_faq_view, parent, false)
+        .inflate(inflater!!, R.layout.listview_faq_view, parent, false)
     binding.m = listdisplayed[position]
 
     return binding.root

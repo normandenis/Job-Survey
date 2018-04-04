@@ -17,6 +17,8 @@ class MyFirebaseInstanceIDService : FirebaseInstanceIdService()
   private fun sendRegistrationToServer(token : String)
   {
     // TODO: Implement this method to send token to your app server.
+
+    Log.e(TAG, token)
   }
 
   companion object
