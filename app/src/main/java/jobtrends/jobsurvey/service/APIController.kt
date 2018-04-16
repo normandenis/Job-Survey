@@ -21,7 +21,7 @@ class APIController
   var token : String? = null
   val urlBase : String = "https://api.dev.jobtrends.io/"
 
-  fun post(url : String, json : String, callback : (res : String) -> Unit, context : Context)
+  fun post(url : String, json : String?, callback : (res : String) -> Unit, context : Context)
   {
     val queue = Volley.newRequestQueue(context)
     val stringRequest = object :
@@ -41,7 +41,7 @@ class APIController
         return Response.success(data, HttpHeaderParser.parseCacheHeaders(response))
       }
 
-      override fun getBody() : ByteArray = json.toByteArray()
+      override fun getBody() : ByteArray? = if (json != null && json != "") json.toByteArray() else null
 
       override fun getHeaders() : MutableMap<String, String>
       {

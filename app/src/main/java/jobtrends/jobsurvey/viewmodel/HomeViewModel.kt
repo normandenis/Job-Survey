@@ -38,9 +38,29 @@ class HomeViewModel : AppCompatActivity()
     serviceController!!.register(findViewById<Button>(R.id.btn), true)
     serviceController!!.register(binding.root, true)
 
-
     apiController.get("auth/user/me", ::syncUser, this)
     apiController.get("jobaymax/me", ::firstResponse, this)
+
+    initNotification()
+  }
+
+  fun initNotification()
+  {
+    val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+    val token = preferences.getString("DeviceId", null)
+    Log.d(TAG, token ?: "")
+    if (token != null && token != "")
+    {
+      apiController.post("jobaymax/me/device/$token?type=ANDROID", null, ::deviceRegisterReply, this)
+    }
+
+  }
+
+  private fun deviceRegisterReply(response: String)
+  {
+    Log.e(TAG, "----------------------------------------------------------------------------")
+    Log.e(TAG, response)
+    Log.e(TAG, "----------------------------------------------------------------------------")
   }
 
   fun syncUser(response: String)
