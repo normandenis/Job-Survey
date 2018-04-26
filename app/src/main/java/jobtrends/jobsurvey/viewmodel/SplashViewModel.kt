@@ -87,7 +87,7 @@ class SplashViewModel : AppCompatActivity
                           }, delayMillis)
   }
 
-  private fun firstResponse(response: String)
+  private fun firstResponse(code: Int, response: String)
   {
     val intent = Intent(this, HomeViewModel::class.java)
     startActivity(intent)

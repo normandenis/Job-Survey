@@ -26,6 +26,7 @@ class SignInViewModel : AppCompatActivity()
   var apiController = serviceController!!.getInstance<APIController>()
   var username = ObservableField<String>()
   var password = ObservableField<String>()
+  var error = ObservableField<String>()
   private val TAG = "SignInViewModel"
 
   override fun onCreate(savedInstanceState: Bundle?)
@@ -47,9 +48,14 @@ class SignInViewModel : AppCompatActivity()
     apiController.post("auth/login", tmpSerialized, ::firstResponse, this)
   }
 
-  private fun firstResponse(response: String)
+  private fun firstResponse(code: Int, response: String)
   {
-    Log.d(TAG, response)
+    Log.d(TAG, "$code: $response")
+    if (code != 200)
+    {
+      error.set("L'email et/ou le mot de passe entré(s) est/sont incorrect(s).")
+      return
+    }
     val intent = Intent(this, HomeViewModel::class.java)
     startActivity(intent)
   }

@@ -40,7 +40,7 @@ class SignUpViewModel : AppCompatActivity()
     apiController.post("auth/signup", json, ::firstResponse, this)
   }
 
-  fun firstResponse(response : String)
+  fun firstResponse(code: Int, response : String)
   {
     Log.d(tag, response)
     val tmp = mutableMapOf<String, String?>()
@@ -51,7 +51,7 @@ class SignUpViewModel : AppCompatActivity()
       .post("auth/login", tmpSerialized, ::secondResponse, this)
   }
 
-  fun secondResponse(response : String)
+  fun secondResponse(code: Int, response : String)
   {
     println(response)
     val intent = Intent(this, HomeViewModel::class.java)

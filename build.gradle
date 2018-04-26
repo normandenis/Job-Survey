@@ -5,7 +5,7 @@ buildscript {
         kotlin_version = "1.2.31"
         android_support = "27.1.1"
         google_service = "15.0.0"
-        gradle_version = "3.1.1"
+        gradle_version = "3.1.2"
     }
     repositories {
         google()

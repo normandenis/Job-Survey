@@ -41,7 +41,7 @@ class EndSurveyViewModel : Fragment()
     apiController.post("jobaymax/result", endSurveySerialiazed, ::firstResponse, context !!)
   }
 
-  fun firstResponse(response : String)
+  fun firstResponse(code: Int, response : String)
   {
     println(response)
     apiController.get("jobaymax/me", ::secondResponse, context !!)

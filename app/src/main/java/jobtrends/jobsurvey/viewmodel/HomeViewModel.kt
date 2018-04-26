@@ -56,7 +56,7 @@ class HomeViewModel : AppCompatActivity()
 
   }
 
-  private fun deviceRegisterReply(response: String)
+  private fun deviceRegisterReply(code: Int, response: String)
   {
     Log.e(TAG, "----------------------------------------------------------------------------")
     Log.e(TAG, response)
