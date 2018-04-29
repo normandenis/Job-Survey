@@ -3,12 +3,16 @@
     <dimen name="button_padding">32dp</dimen>
 
     <dimen name="margin_all">8dp</dimen>
+    <dimen name="margin_vertical">16dp</dimen>
+    <dimen name="margin_horizontal">8dp</dimen>
     <dimen name="margin_top">16dp</dimen>
     <dimen name="margin_right">8dp</dimen>
     <dimen name="margin_bottom">16dp</dimen>
     <dimen name="margin_left">8dp</dimen>
 
     <dimen name="divider_all">16dp</dimen>
+    <dimen name="divider_vertical">32dp</dimen>
+    <dimen name="divider_horizontal">16dp</dimen>
     <dimen name="divider_top">32dp</dimen>
     <dimen name="divider_right">16dp</dimen>
     <dimen name="divider_bottom">32dp</dimen>

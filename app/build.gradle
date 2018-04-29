@@ -36,25 +36,23 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     kapt "com.android.databinding:compiler:$gradle_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.21"
-
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.21'
     implementation "com.android.support:support-annotations:$android_support"
     implementation "com.android.support:support-v4:$android_support"
     implementation "com.android.support:design:$android_support"
     implementation "com.android.support:cardview-v7:$android_support"
     implementation "com.android.support:gridlayout-v7:$android_support"
     implementation "com.android.support:appcompat-v7:$android_support"
-    implementation "com.android.support.constraint:constraint-layout:1.1.0"
-
-    implementation "com.google.code.gson:gson:2.8.2"
-    implementation "commons-io:commons-io:2.6"
-    implementation "com.android.volley:volley:1.1.0"
-
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'commons-io:commons-io:2.6'
+    implementation 'com.android.volley:volley:1.1.0'
     implementation "com.google.firebase:firebase-messaging:$google_service"
     implementation "com.google.firebase:firebase-core:$google_service"
     implementation "com.google.android.gms:play-services-gcm:$google_service"
     implementation "com.google.android.gms:play-services-maps:$google_service"
-    implementation "com.firebase:firebase-jobdispatcher:0.8.5"
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+    implementation 'javax.mail:mail:1.5.0-b01'
 }
 
 repositories {

@@ -38,26 +38,28 @@
         <b>Créer un compte</b>
     </string>
 
-    <string name="sign_up_view_txt_2">Nom complet</string>
+    <string name="sign_up_view_txt_2">Nom</string>
 
-    <string name="sign_up_view_txt_3">Date de naissance</string>
+    <string name="sign_up_view_txt_3">Prénom</string>
 
-    <string name="sign_up_view_txt_4">Email</string>
+    <string name="sign_up_view_txt_4">Date de naissance</string>
 
-    <string name="sign_up_view_txt_5">Profession</string>
+    <string name="sign_up_view_txt_5">Email</string>
 
-    <string name="sign_up_view_txt_6">Mot de passe</string>
+    <string name="sign_up_view_txt_6">Profession</string>
 
-    <string name="sign_up_view_txt_7">Confirmation de mot de passe</string>
+    <string name="sign_up_view_txt_7">Mot de passe</string>
 
-    <string name="sign_up_view_txt_8">En créant votre compte vous acceptez nos <b>Conditions
+    <string name="sign_up_view_txt_8">Confirmation de mot de passe</string>
+
+    <string name="sign_up_view_txt_9">En créant votre compte vous acceptez nos <b>Conditions
         d’Utilisation
     </b> et
         notre
         <b>Privacy Policy</b>
     </string>
 
-    <string name="sign_up_view_txt_9">
+    <string name="sign_up_view_txt_10">
         <b>S\'inscrire</b>
     </string>
 

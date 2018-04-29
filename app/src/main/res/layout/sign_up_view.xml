@@ -13,12 +13,12 @@
               android:layout_height="match_parent">
 
     <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:layout_marginBottom="@dimen/margin_bottom"
-                  android:layout_marginLeft="@dimen/margin_left"
-                  android:layout_marginRight="@dimen/margin_right"
-                  android:layout_marginTop="@dimen/margin_top"
-                  android:orientation="vertical">
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:paddingBottom="@dimen/margin_bottom"
+                  android:paddingEnd="@dimen/margin_right"
+                  android:paddingStart="@dimen/margin_left"
+                  android:paddingTop="@dimen/margin_top">
 
       <TextView android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -31,8 +31,8 @@
       <android.support.v7.widget.CardView android:layout_width="match_parent"
                                           android:layout_height="wrap_content"
                                           android:layout_marginBottom="@dimen/margin_bottom"
-                                          android:layout_marginLeft="@dimen/margin_left"
-                                          android:layout_marginRight="@dimen/margin_right"
+                                          android:layout_marginEnd="@dimen/margin_right"
+                                          android:layout_marginStart="@dimen/margin_left"
                                           android:layout_marginTop="@dimen/margin_top"
                                           app:cardCornerRadius="8dp"
                                           app:cardElevation="8dp">
@@ -40,13 +40,14 @@
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="match_parent"
                       android:layout_marginBottom="@dimen/margin_bottom"
-                      android:layout_marginLeft="@dimen/margin_left"
-                      android:layout_marginRight="@dimen/margin_right"
+                      android:layout_marginEnd="@dimen/margin_right"
+                      android:layout_marginStart="@dimen/margin_left"
                       android:layout_marginTop="@dimen/margin_top"
                       android:orientation="vertical">
 
           <TextView android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top"
                     android:gravity="center"
                     android:text="@string/sign_up_view_txt_1"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -55,7 +56,7 @@
           <EditText android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top"
-                    android:hint="Nom"
+                    android:hint="@string/sign_up_view_txt_2"
                     android:inputType="textPersonName"
                     android:text="@={vm.userModel.lastName}"
                     android:textAppearance="?android:attr/textAppearanceSmall"/>
@@ -63,7 +64,7 @@
           <EditText android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top"
-                    android:hint="Prénom"
+                    android:hint="@string/sign_up_view_txt_3"
                     android:inputType="textPersonName"
                     android:text="@={vm.userModel.firstName}"
                     android:textAppearance="?android:attr/textAppearanceSmall"/>
@@ -71,7 +72,7 @@
           <EditText android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top"
-                    android:hint="@string/sign_up_view_txt_3"
+                    android:hint="@string/sign_up_view_txt_4"
                     android:inputType="date"
                     android:text="@={vm.userModel.birthday}"
                     android:textAppearance="?android:attr/textAppearanceSmall"/>
@@ -79,15 +80,16 @@
           <EditText android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top"
-                    android:hint="@string/sign_up_view_txt_4"
+                    android:hint="@string/sign_up_view_txt_5"
                     android:inputType="textEmailAddress"
                     android:text="@={vm.userModel.email}"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    app:errorText="@{vm.emailErrorText}"/>
 
           <EditText android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top"
-                    android:hint="@string/sign_up_view_txt_5"
+                    android:hint="@string/sign_up_view_txt_6"
                     android:inputType="text"
                     android:text="@={vm.userModel.metier}"
                     android:textAppearance="?android:attr/textAppearanceSmall"/>
@@ -95,7 +97,7 @@
           <EditText android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top"
-                    android:hint="@string/sign_up_view_txt_6"
+                    android:hint="@string/sign_up_view_txt_7"
                     android:inputType="textPassword"
                     android:text="@={vm.userModel.password}"
                     android:textAppearance="?android:attr/textAppearanceSmall"/>
@@ -103,7 +105,7 @@
           <EditText android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top"
-                    android:hint="@string/sign_up_view_txt_7"
+                    android:hint="@string/sign_up_view_txt_8"
                     android:inputType="textPassword"
                     android:textAppearance="?android:attr/textAppearanceSmall"/>
 
@@ -111,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top"
                     android:gravity="center"
-                    android:text="@string/sign_up_view_txt_8"
+                    android:text="@string/sign_up_view_txt_9"
                     android:textAppearance="?android:attr/textAppearanceSmall"/>
 
         </LinearLayout>
@@ -121,12 +123,13 @@
       <Button android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_gravity="center"
+              android:layout_marginBottom="@dimen/margin_bottom"
               android:layout_marginTop="@dimen/margin_top"
               android:background="@drawable/rounded_layout"
               android:onClick="@{() -> vm.onClick()}"
               android:paddingLeft="@dimen/button_padding"
               android:paddingRight="@dimen/button_padding"
-              android:text="@string/sign_up_view_txt_9"
+              android:text="@string/sign_up_view_txt_10"
               android:textAppearance="?android:attr/textAppearanceSmall"
               android:textColor="@color/colorButtonLight"/>
 
