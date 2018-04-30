@@ -59,7 +59,8 @@
                     android:hint="@string/sign_up_view_txt_2"
                     android:inputType="textPersonName"
                     android:text="@={vm.userModel.lastName}"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    app:errorText="@{vm.lastnameErrorText}"/>
 
           <EditText android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -67,15 +68,21 @@
                     android:hint="@string/sign_up_view_txt_3"
                     android:inputType="textPersonName"
                     android:text="@={vm.userModel.firstName}"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    app:errorText="@{vm.firstnameErrorText}"/>
 
-          <EditText android:layout_width="match_parent"
+          <EditText android:id="@+id/sign_up_view_id_4"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:hint="@string/sign_up_view_txt_4"
                     android:inputType="date"
+                    android:onClick="@{() -> vm.onDatePickerClick()}"
                     android:text="@={vm.userModel.birthday}"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    app:errorText="@{vm.birthdayErrorText}"/>
 
           <EditText android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -92,7 +99,8 @@
                     android:hint="@string/sign_up_view_txt_6"
                     android:inputType="text"
                     android:text="@={vm.userModel.metier}"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    app:errorText="@{vm.jobErrorText}"/>
 
           <EditText android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,14 +108,16 @@
                     android:hint="@string/sign_up_view_txt_7"
                     android:inputType="textPassword"
                     android:text="@={vm.userModel.password}"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    app:errorText="@{vm.passwordErrorText}"/>
 
           <EditText android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top"
                     android:hint="@string/sign_up_view_txt_8"
                     android:inputType="textPassword"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    app:errorText="@{vm.passwordBisErrorText}"/>
 
           <TextView android:layout_width="match_parent"
                     android:layout_height="wrap_content"

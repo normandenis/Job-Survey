@@ -3,12 +3,9 @@ package jobtrends.jobsurvey.viewmodel
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.databinding.ObservableField
-import android.icu.text.SimpleDateFormat
-import android.net.ParseException
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.widget.EditText
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.databinding.SignUpViewBinding
 import jobtrends.jobsurvey.model.User
@@ -19,96 +16,114 @@ import jobtrends.jobsurvey.service.serviceController
 import java.util.*
 import javax.mail.internet.AddressException
 import javax.mail.internet.InternetAddress
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
+import java.text.SimpleDateFormat
 
 class SignUpViewModel : AppCompatActivity
 {
-  var userModel = serviceController !!.getInstance<UserModel>()
-  var user = serviceController !!.getInstance<User>()
-  var jsonController = serviceController !!.getInstance<JsonController>()
-  var apiController = serviceController !!.getInstance<APIController>()
-  private val tag = "SignUpViewModel"
-  var lastnameErrorText = ObservableField<String?>()
-  var firstnameErrorText = ObservableField<String?>()
-  var birthdayErrorText = ObservableField<String?>()
-  var emailErrorText = ObservableField<String?>()
-  var jobErrorText = ObservableField<String?>()
-  var passwordErrorText = ObservableField<String?>()
-  var passwordBisErrorText = ObservableField<String?>()
-  private val funcs = mutableMapOf<Int, (String?) -> Boolean>()
+  val userModel: UserModel
+  val user: User
+  val jsonController: JsonController
+  val apiController: APIController
+  val tag: String
+  val lastnameErrorText: ObservableField<String>
+  val firstnameErrorText: ObservableField<String>
+  val birthdayErrorText: ObservableField<String>
+  val emailErrorText: ObservableField<String>
+  val jobErrorText: ObservableField<String>
+  val passwordErrorText: ObservableField<String>
+  val passwordBisErrorText: ObservableField<String>
+  private val myCalendar: Calendar
+  val date: OnDateSetListener
 
   constructor() : super()
   {
-    funcs[0] = { s : String? -> isValidEmailAddress(s) }
-    funcs[1] = { s : String? -> isValidFormat(s) }
+    tag = "SignUpViewModel"
+
+    userModel = serviceController!!.getInstance()
+    user = serviceController!!.getInstance()
+    jsonController = serviceController!!.getInstance()
+    apiController = serviceController!!.getInstance()
+
+    lastnameErrorText = ObservableField()
+    firstnameErrorText = ObservableField()
+    birthdayErrorText = ObservableField()
+    emailErrorText = ObservableField()
+    jobErrorText = ObservableField()
+    passwordErrorText = ObservableField()
+    passwordBisErrorText = ObservableField()
+
+    myCalendar = Calendar.getInstance()
+    date = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+      myCalendar.set(Calendar.YEAR, year)
+      myCalendar.set(Calendar.MONTH, monthOfYear)
+      myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+      updateLabel()
+    }
   }
 
-  override fun onCreate(savedInstanceState : Bundle?)
+  override fun onCreate(savedInstanceState: Bundle?)
   {
     super.onCreate(savedInstanceState)
-    val binding : SignUpViewBinding = DataBindingUtil.setContentView(this, R.layout.sign_up_view)
+    val binding: SignUpViewBinding = DataBindingUtil.setContentView(this, R.layout.sign_up_view)
     binding.vm = this
   }
 
+  private var stop: Boolean = false
 
-  fun checkInput()
+  private fun checkInput(): Boolean
   {
-    if (!funcs[0]!!(userModel.email.get()))
-    {
-      emailErrorText.set("Invalid email")
-    }
+    stop = false
+    checkInput(userModel.lastName.get(), "^[a-zA-Z ,.'-]+$", lastnameErrorText)
+    checkInput(userModel.firstName.get(), "^[a-zA-Z ,.'-]+$", firstnameErrorText)
+    checkInput(userModel.birthday.get(), "[0-9]{2}/[0-9]{2}/[0-9]{4}", birthdayErrorText)
+    checkInput(userModel.email.get(), "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", emailErrorText)
+    checkInput(userModel.metier.get(), "^[a-zA-Z ,.'-]+$", jobErrorText)
+    checkInput(userModel.password.get(), "^[a-zA-Z0-9]+$", passwordErrorText)
+    return stop
   }
 
-  fun isValidEmailAddress(email: String?): Boolean
-  {
-    var result = true
-    try
-    {
-      val emailAddr = InternetAddress(email)
-      emailAddr.validate()
-    }
-    catch (ex: AddressException)
-    {
-      result = false
-    }
-
-    return result
-  }
-
-  fun isValidFormat(value: String?): Boolean
-  {
-    val format : String = "dd/MM/yyyy"
-    var date: Date? = null
-    try
-    {
-      val sdf = SimpleDateFormat(format)
-      date = sdf.parse(value)
-      if (value != sdf.format(date))
-      {
-        date = null
-      }
-    }
-    catch (ex: ParseException)
-    {
-      ex.printStackTrace()
-    }
-
-    return date != null
-  }
-
-  private fun isInvalidInput(input : String?): Boolean
+  private fun checkInput(input: String?, pattern: String, error: ObservableField<String>)
   {
     if (input == null || input == "")
     {
-      return true
+      error.set("")
+      error.set("Ce champ ne peut pas être vide")
+      stop = true
+      return
     }
-    val regex : Regex = Regex("/^[0-9]{8}[A-Za-z]$/")
+    val regex = Regex(pattern)
     val result = input.matches(regex)
-    return !result
+    if (!result)
+    {
+      error.set("")
+      error.set("Ce champ est invalide")
+      stop = true
+    }
+  }
+
+  fun onDatePickerClick()
+  {
+    DatePickerDialog(this, date, myCalendar
+      .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                     myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+  }
+
+  private fun updateLabel()
+  {
+    val df = SimpleDateFormat("dd/mm/yyyy", Locale.FRANCE)
+    val format = df.format(myCalendar.time)
+    userModel.birthday.set(format)
   }
 
   fun onClick()
   {
     checkInput()
+    if (stop)
+    {
+      return
+    }
 //    user.email = userModel.email.get()
 //    user.firstName = userModel.firstName.get()
 //    user.lastName = userModel.lastName.get()
@@ -119,18 +134,17 @@ class SignUpViewModel : AppCompatActivity
 //    apiController.post("auth/signup", json, ::firstResponse, this)
   }
 
-  fun firstResponse(code: Int, response : String)
+  fun firstResponse(code: Int, response: String?)
   {
     Log.d(tag, response)
-    val tmp = mutableMapOf<String, String?>()
-    tmp["username"] = user.email
-    tmp["password"] = user.password
+    val tmp = mutableMapOf<String?, String?>()
+    tmp["username"] = user.email!!
+    tmp["password"] = user.password!!
     val tmpSerialized = jsonController.serialize(tmp)
-    apiController
-      .post("auth/login", tmpSerialized, ::secondResponse, this)
+    apiController.post("auth/login", tmpSerialized, ::secondResponse, this)
   }
 
-  fun secondResponse(code: Int, response : String)
+  private fun secondResponse(code: Int, response: String?)
   {
     println(response)
     val intent = Intent(this, HomeViewModel::class.java)
