@@ -34,7 +34,7 @@ class FAQViewModel : Fragment()
     return view
   }
 
-  fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int)
+  fun onTextChanged(s: CharSequence, start: Int?, before: Int?, count: Int?)
   {
     // Call back the Adapter with current character to Filter
     viewmodel!!.filter.filter(s.toString())

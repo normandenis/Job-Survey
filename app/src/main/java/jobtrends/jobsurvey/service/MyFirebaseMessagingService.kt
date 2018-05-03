@@ -16,103 +16,69 @@ import com.google.firebase.messaging.RemoteMessage
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.viewmodel.HomeViewModel
 
-class MyFirebaseMessagingService : FirebaseMessagingService()
+abstract class MyFirebaseMessagingService : FirebaseMessagingService
 {
+  private val _tag: String?
 
-  /**
-   * Called when message is received.
-   *
-   * @param remoteMessage Object representing the message received from Firebase Cloud Messaging.
-   */
-  // [START receive_message]
-  override fun onMessageReceived(remoteMessage : RemoteMessage?)
+  constructor() : super()
   {
-    // [START_EXCLUDE]
-    // There are two types of messages data messages and notification messages. Data messages are handled
-    // here in onMessageReceived whether the app is in the foreground or background. Data messages are the type
-    // traditionally used with GCM. Notification messages are only received here in onMessageReceived when the app
-    // is in the foreground. When the app is in the background an automatically generated notification is displayed.
-    // When the user taps on the notification they are returned to the app. Messages containing both notification
-    // and data payloads are treated as notification messages. The Firebase console always sends notification
-    // messages. For more see: https://firebase.google.com/docs/cloud-messaging/concept-options
-    // [END_EXCLUDE]
+    _tag = "MyFirebaseMsgService"
+  }
 
-    // TODO(developer): Handle FCM messages here.
-    // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
-    Log.d(TAG, "From: " + remoteMessage !!.from !!)
+  override fun onMessageReceived(remoteMessage: RemoteMessage?)
+  {
+    val msg = "From: ${remoteMessage!!.from!!}"
+    Log.d(_tag, msg)
 
-    // Check if message contains a data payload.
-    if (remoteMessage.data.size > 0)
+    if (remoteMessage.data.isNotEmpty())
     {
-      Log.d(TAG, "Message data payload: " + remoteMessage.data)
+      Log.d(_tag, "Message data payload: ${remoteMessage.data}")
 
-      if (/* Check if data needs to be processed by long running job */ true)
+      if (true)
       {
-        // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
         scheduleJob()
-      }
-      else
+      } else
       {
-        // Handle message within 10 seconds
         handleNow()
       }
 
     }
-
-    // Check if message contains a notification payload.
     if (remoteMessage.notification != null)
     {
-      Log.d(TAG, "Message Notification Body: " + remoteMessage.notification !!.body !!)
+      Log.d(_tag, "Message Notification Body: ${remoteMessage.notification!!.body}")
     }
 
-    // Also if you intend on generating your own notifications as a result of a received FCM
-    // message, here is where that should be initiated. See sendNotification method below.
   }
-  // [END receive_message]
 
-  /**
-   * Schedule a job using FirebaseJobDispatcher.
-   */
   private fun scheduleJob()
   {
-    // [START dispatch_job]
     val dispatcher = FirebaseJobDispatcher(GooglePlayDriver(this))
     val myJob = dispatcher.newJobBuilder().setService(MyJobService::class.java).setTag("my-job-tag")
-        .build()
+      .build()
     dispatcher.schedule(myJob)
-    // [END dispatch_job]
   }
 
-  /**
-   * Handle time allotted to BroadcastReceivers.
-   */
   private fun handleNow()
   {
-    Log.d(TAG, "Short lived task is done.")
+    Log.d(_tag, "Short lived task is done.")
   }
 
-  /**
-   * Create and show a simple notification containing the received FCM message.
-   *
-   * @param messageBody FCM message body received.
-   */
-  private fun sendNotification(messageBody : String)
+  private fun sendNotification(messageBody: String?)
   {
     val intent = Intent(this, HomeViewModel::class.java)
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
     val pendingIntent = PendingIntent
-        .getActivity(this, 0 /* Request code */, intent, PendingIntent.FLAG_ONE_SHOT)
+      .getActivity(this, 0 /* Request code */, intent, PendingIntent.FLAG_ONE_SHOT)
 
     val channelId = getString(R.string.default_notification_channel_id)
     val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
     val notificationBuilder = NotificationCompat.Builder(this, channelId)
-        .setSmallIcon(R.drawable.ic_logo_gray_500dp).setContentTitle("FCM Message")
-        .setContentText(messageBody).setAutoCancel(true).setSound(defaultSoundUri)
-        .setContentIntent(pendingIntent)
+      .setSmallIcon(R.drawable.ic_logo_gray_500dp).setContentTitle("FCM Message")
+      .setContentText(messageBody).setAutoCancel(true).setSound(defaultSoundUri)
+      .setContentIntent(pendingIntent)
 
     val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-    // Since android Oreo notification channel is needed.
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
     {
       val channel = NotificationChannel(channelId, "Channel human readable title",
@@ -120,12 +86,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService()
       notificationManager.createNotificationChannel(channel)
     }
 
-    notificationManager.notify(0 /* ID of notification */, notificationBuilder.build())
-  }
-
-  companion object
-  {
-
-    private val TAG = "MyFirebaseMsgService"
+    notificationManager.notify(0, notificationBuilder.build())
   }
 }

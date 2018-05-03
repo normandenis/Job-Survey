@@ -1,5 +1,6 @@
 package jobtrends.jobsurvey.viewmodel
 
+import android.annotation.SuppressLint
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -11,22 +12,35 @@ import jobtrends.jobsurvey.databinding.QuestionViewBinding
 import jobtrends.jobsurvey.model.Question
 import jobtrends.jobsurvey.model.Reply
 
-class QuestionViewModel : Fragment()
+@SuppressLint("ValidFragment")
+class QuestionViewModel : Fragment
 {
-  var question : Question? = null
-  var reply : Reply? = null
-  var answerViewModel : AnswerViewModel? = null
-  var myView: View? = null
+  private val _question: Question?
+  private val _reply: Reply?
+  private val _answerViewModel: AnswerViewModel?
+  private var _view: View?
 
-  override fun onCreateView(inflater : LayoutInflater, container : ViewGroup?,
-                            savedInstanceState : Bundle?) : View?
+  @SuppressLint("ValidFragment")
+  constructor(reply: Reply?, question: Question?) : super()
   {
-    val binding : QuestionViewBinding = DataBindingUtil
-        .inflate(inflater, R.layout.question_view, container, false)
-    myView = binding.root
+    _question = question
+    _reply = reply
+
+    _answerViewModel = AnswerViewModel(_question!!.answers, _reply)
+
+    _view = null
+  }
+
+
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                            savedInstanceState: Bundle?): View?
+  {
+    val binding: QuestionViewBinding? = DataBindingUtil
+      .inflate(inflater, R.layout.question_view, container, false)
+    _view = binding!!.root
     binding.vm = this
-    answerViewModel = AnswerViewModel(question!!.answers !!)
-    answerViewModel!!.reply = reply
-    return myView
+    binding.question = _question
+    binding.answerViewModel = _answerViewModel
+    return _view
   }
 }

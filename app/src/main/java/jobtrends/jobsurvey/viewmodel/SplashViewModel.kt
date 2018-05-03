@@ -73,7 +73,7 @@ class SplashViewModel : AppCompatActivity
                             {
                               val user = jsonController!!.deserialize<User>(json)
                               serviceController!!.register(user, true)
-                              val tmp = mutableMapOf<String, String?>()
+                              val tmp = mutableMapOf<String?, String?>()
                               tmp["username"] = user.email
                               tmp["password"] = user.password
                               val tmpSerialized = jsonController!!.serialize(tmp)
@@ -87,7 +87,7 @@ class SplashViewModel : AppCompatActivity
                           }, delayMillis)
   }
 
-  private fun firstResponse(code: Int, response: String)
+  private fun firstResponse(code: Int?, response: String?)
   {
     val intent = Intent(this, HomeViewModel::class.java)
     startActivity(intent)

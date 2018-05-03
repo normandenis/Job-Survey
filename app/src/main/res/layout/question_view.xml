@@ -5,7 +5,12 @@
         tools:context="jobtrends.jobsurvey.viewmodel.QuestionViewModel">
 
   <data>
-    <variable name="vm" type="jobtrends.jobsurvey.viewmodel.QuestionViewModel"/>
+    <variable name="vm"
+              type="jobtrends.jobsurvey.viewmodel.QuestionViewModel"/>
+    <variable name="question"
+              type="jobtrends.jobsurvey.model.Question"/>
+    <variable name="answerViewModel"
+              type="jobtrends.jobsurvey.viewmodel.AnswerViewModel"/>
   </data>
 
   <LinearLayout android:layout_width="match_parent"
@@ -33,7 +38,7 @@
                   android:layout_height="wrap_content"
                   android:layout_margin="16dp"
                   android:gravity="center"
-                  android:text="@{vm.question.content}"
+                  android:text="@{question.content}"
                   android:textAppearance="?android:attr/textAppearanceLarge"
                   android:textColor="@color/colorAccent"
                   android:textStyle="bold"/>
@@ -42,7 +47,7 @@
                   android:layout_height="wrap_content"
                   android:divider="@null"
                   android:dividerHeight="0dp"
-                  app:adapter="@{vm.answerViewModel}"/>
+                  app:adapter="@{answerViewModel}"/>
 
       </LinearLayout>
 
@@ -56,7 +61,7 @@
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:gravity="center"
-              android:text="@{vm.question.description}"
+              android:text="@{question.description}"
               android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Space android:layout_width="match_parent"

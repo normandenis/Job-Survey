@@ -4,11 +4,11 @@ import android.databinding.ObservableField
 
 class QuestionModel
 {
-  var id = ObservableField<String>()
-  var content = ObservableField<String>()
+  var id = ObservableField<String?>()
+  var content = ObservableField<String?>()
   var answers = ObservableField<List<AnswerModel>>()
-  var type = ObservableField<Int>()
-  var description = ObservableField<String>()
+  var type = ObservableField<Int?>()
+  var description = ObservableField<String?>()
 }
 
 class Question

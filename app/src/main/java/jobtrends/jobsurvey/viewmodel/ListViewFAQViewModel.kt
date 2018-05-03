@@ -13,39 +13,43 @@ import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.databinding.ListviewFaqViewBinding
 import jobtrends.jobsurvey.model.FAQModel
 
-class ListViewFAQViewModel(var list : List<FAQModel>) : BaseAdapter(), Filterable
+class ListViewFAQViewModel(var list: List<FAQModel>) : BaseAdapter(), Filterable
 {
-  var listdisplayed : List<FAQModel> = list
-  var inflater : LayoutInflater? = null
+  var listdisplayed: List<FAQModel> = list
+  var inflater: LayoutInflater? = null
+
   @SuppressLint("ViewHolder")
-  override fun getView(position : Int, convertView : View?, parent : ViewGroup?) : View
+  override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View?
   {
-    if (this.inflater == null)
+    if (inflater == null)
     {
       inflater = parent?.context?.getSystemService(
-          Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     }
-    val binding : ListviewFaqViewBinding = DataBindingUtil
-        .inflate(inflater!!, R.layout.listview_faq_view, parent, false)
+    val binding: ListviewFaqViewBinding = DataBindingUtil
+      .inflate(inflater!!, R.layout.listview_faq_view, parent, false)
     binding.m = listdisplayed[position]
 
     return binding.root
   }
 
-  override fun getItem(position : Int) : Any = this.listdisplayed[position]
-  override fun getItemId(position : Int) : Long = position.toLong()
-  override fun getCount() : Int = this.listdisplayed.size
-  override fun getFilter() : Filter
+  override fun getItem(position: Int): Any? = listdisplayed[position]
+
+  override fun getItemId(position: Int): Long = position.toLong()
+
+  override fun getCount(): Int = listdisplayed.size
+
+  override fun getFilter(): Filter
   {
     return object : Filter()
     {
-      override fun publishResults(constraint : CharSequence, results : FilterResults)
+      override fun publishResults(constraint: CharSequence, results: FilterResults)
       {
         listdisplayed = results.values as ArrayList<FAQModel> // has the filtered values
         notifyDataSetChanged()  // notifies the data with new filtered values
       }
 
-      override fun performFiltering(constraint : CharSequence?) : FilterResults
+      override fun performFiltering(constraint: CharSequence?): FilterResults
       {
         var constraint = constraint
         val results = FilterResults()        // Holds the results of a filtering operation in values
@@ -61,14 +65,13 @@ class ListViewFAQViewModel(var list : List<FAQModel>) : BaseAdapter(), Filterabl
           // set the Original result to return
           results.count = list.size
           results.values = list
-        }
-        else
+        } else
         {
           constraint = constraint.toString().toLowerCase()
           for (i in 0 until list.size)
           {
             val data = list[i].question
-            if (data?.toLowerCase()?.startsWith(constraint.toString()) !!)
+            if (data?.toLowerCase()?.startsWith(constraint.toString())!!)
             {
               filteredArrList.add(FAQModel(list[i].question))
             }

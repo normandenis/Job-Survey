@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.databinding.DataBindingUtil
 import android.support.v4.app.FragmentManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,34 +17,48 @@ import jobtrends.jobsurvey.service.APIController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.serviceController
 
-class ThemeViewModel(var list: List<Theme>) : BaseAdapter()
+class ThemeViewModel : BaseAdapter
 {
-  val apiController = serviceController!!.getInstance<APIController>()
-  val jsonController = serviceController!!.getInstance<JsonController>()
-  var inflater: LayoutInflater? = null
-  var myView: View? = null
-  var fragmentManager: FragmentManager? = null
+  private val _apiController: APIController?
+  private val _jsonController: JsonController?
+  private var _inflater: LayoutInflater?
+  private var _view: View?
+  private val _fragmentManager: FragmentManager?
+  private val _tag: String?
+  private val _list: List<Theme>?
 
-  @SuppressLint("ViewHolder")
-  override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View
+  constructor(list: List<Theme>, fragmentManager: FragmentManager?) : super()
   {
-    if (inflater == null)
-    {
-      inflater = parent?.context?.getSystemService(
-        Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    }
-    val binding: ListviewStartSurveyViewBinding = DataBindingUtil.inflate(inflater!!, R.layout.listview_start_survey_view, parent, false)
-    binding.vm = this
-    binding.m = list[position]
-
-    myView = binding.root
-
-    return myView!!
+    _list = list
+    _fragmentManager = fragmentManager
+    _tag = "ThemeViewModel"
+    _apiController = serviceController!!.getInstance()
+    _jsonController = serviceController!!.getInstance()
+    _view = null
+    _inflater = null
   }
 
-  override fun getItem(position: Int): Any
+  @SuppressLint("ViewHolder")
+  override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View?
   {
-    return list[position]
+    if (_inflater == null)
+    {
+      _inflater = parent!!.context.getSystemService(
+        Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    }
+    val binding: ListviewStartSurveyViewBinding? = DataBindingUtil
+      .inflate(_inflater!!, R.layout.listview_start_survey_view, parent, false)
+    binding!!.vm = this
+    binding.m = _list!![position]
+
+    _view = binding.root
+
+    return _view
+  }
+
+  override fun getItem(position: Int): Any?
+  {
+    return _list!![position]
   }
 
   override fun getItemId(position: Int): Long
@@ -53,29 +68,30 @@ class ThemeViewModel(var list: List<Theme>) : BaseAdapter()
 
   override fun getCount(): Int
   {
-    return list.size
+    return _list!!.size
   }
 
   fun onClickTheme(theme: Theme)
   {
     val id = theme.survey_id
-    apiController.get("jobaymax/survey/$id", ::firstResponse,
-                      myView?.context!!)
+    _apiController!!.get("jobaymax/survey/$id", ::jobaymaxSurveyIdReply, _view!!.context)
   }
 
-  fun firstResponse(response: String)
+  private fun jobaymaxSurveyIdReply(code: Int?, body: String?)
   {
-    val survey = jsonController.deserialize<Survey>(response)
+    val msg = "$code: $body"
+    Log.d(_tag, msg)
+    val survey = _jsonController!!.deserialize<Survey>(body)
     val fragment = SurveyViewModel()
     fragment.survey = survey
-    val transaction = fragmentManager!!.beginTransaction()
+    val transaction = _fragmentManager!!.beginTransaction()
     transaction.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
     transaction.addToBackStack(null)
     transaction.commit()
   }
 
-  fun isVisible(open: Boolean): Int
+  fun isVisible(open: Boolean?): Int?
   {
-    return if (open) View.INVISIBLE else View.VISIBLE
+    return if (open == true) View.INVISIBLE else View.VISIBLE
   }
 }

@@ -1,11 +1,7 @@
 package jobtrends.jobsurvey.service
 
-import android.app.Application
 import android.content.Context
 import android.content.res.Resources
-import android.preference.PreferenceManager
-import android.util.Log
-import android.view.View
 import com.android.volley.NetworkResponse
 import com.android.volley.Request
 import com.android.volley.Response
@@ -21,24 +17,24 @@ class APIController
 {
   var token: String? = null
   var statusCode: Int? = null
-  val urlBase: String = "https://api.dev.jobtrends.io/"
+  val urlBase: String? = "https://api.dev.jobtrends.io/"
 
-  fun post(url: String, json: String?, callback: (code: Int, res: String) -> Unit, context: Context)
+  fun post(url: String?, json: String?, callback: (Int?, String?) -> Unit?, context: Context?)
   {
     val queue = Volley.newRequestQueue(context)
     val stringRequest = object :
-      StringRequest(Request.Method.POST, urlBase + url, Response.Listener<String> { s ->
+      StringRequest(Request.Method.POST, urlBase+url, Response.Listener<String?> { s ->
         callback(statusCode!!, s)
       }, Response.ErrorListener { s ->
-        callback(s.networkResponse.statusCode, "Failure")
+        callback(s.networkResponse.statusCode, "No message available")
       })
     {
 
-      override fun parseNetworkResponse(response: NetworkResponse?): Response<String>
+      override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>
       {
         if (token == null)
         {
-          token = "Bearer " + response?.headers?.get("X-AUTH-TOKEN")
+          token = "Bearer "+response?.headers?.get("X-AUTH-TOKEN")
           val user = serviceController!!.getInstance<User>()
           user.resetToken = token
         }
@@ -47,11 +43,12 @@ class APIController
         return Response.success(data, HttpHeaderParser.parseCacheHeaders(response))
       }
 
-      override fun getBody(): ByteArray? = if (json != null && json != "") json.toByteArray() else null
+      override fun getBody(): ByteArray? =
+        if (json != null && json != "") json.toByteArray() else null
 
-      override fun getHeaders(): MutableMap<String, String>
+      override fun getHeaders(): MutableMap<String?, String?>
       {
-        val tmp = mutableMapOf<String, String>()
+        val tmp = mutableMapOf<String?, String?>()
         if (token != null)
         {
           tmp["Authorization"] = token!!
@@ -63,19 +60,21 @@ class APIController
     queue.add(stringRequest)
   }
 
-  fun put(url: String, json: String, callback: (res: String) -> Unit, context: Context)
+  fun put(url: String?, json: String?, callback: (Int?, String?) -> Unit?, context: Context?)
   {
     val queue = Volley.newRequestQueue(context)
     val stringRequest = object :
-      StringRequest(Request.Method.PUT, urlBase + url, Response.Listener<String> { s ->
-        callback(s)
-      }, Response.ErrorListener(::println))
+      StringRequest(Request.Method.PUT, urlBase+url, Response.Listener<String?> { s ->
+        callback(statusCode!!, s)
+      }, Response.ErrorListener { s ->
+        callback(s.networkResponse.statusCode, s.message ?: "No message available")
+      })
     {
-      override fun parseNetworkResponse(response: NetworkResponse?): Response<String>
+      override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>
       {
         if (token == null)
         {
-          token = "Bearer " + response?.headers?.get("X-AUTH-TOKEN")
+          token = "Bearer "+response?.headers?.get("X-AUTH-TOKEN")
           val user = serviceController!!.getInstance<User>()
           user.resetToken = token
         }
@@ -83,11 +82,11 @@ class APIController
         return Response.success(data, HttpHeaderParser.parseCacheHeaders(response))
       }
 
-      override fun getBody(): ByteArray = json.toByteArray()
+      override fun getBody(): ByteArray? = json?.toByteArray()
 
-      override fun getHeaders(): MutableMap<String, String>
+      override fun getHeaders(): MutableMap<String?, String?>
       {
-        val tmp = mutableMapOf<String, String>()
+        val tmp = mutableMapOf<String?, String?>()
         if (token != null)
         {
           tmp["Authorization"] = token!!
@@ -99,23 +98,25 @@ class APIController
     queue.add(stringRequest)
   }
 
-  fun get(url: String, callback: (res: String) -> Unit, context: Context)
+  fun get(url: String?, callback: (Int?, String?) -> Unit?, context: Context?)
   {
     val queue = Volley.newRequestQueue(context)
     val stringRequest = object :
-      StringRequest(Request.Method.GET, urlBase + url, Response.Listener<String> { s ->
-        callback(s)
-      }, Response.ErrorListener(::println))
+      StringRequest(Request.Method.GET, urlBase+url, Response.Listener<String?> { s ->
+        callback(statusCode!!, s)
+      }, Response.ErrorListener { s ->
+        callback(s.networkResponse.statusCode, s.message ?: "No message available")
+      })
     {
-      override fun parseNetworkResponse(response: NetworkResponse?): Response<String>
+      override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>
       {
         val data = String(response?.data!!)
         return Response.success(data, HttpHeaderParser.parseCacheHeaders(response))
       }
 
-      override fun getHeaders(): MutableMap<String, String>
+      override fun getHeaders(): MutableMap<String?, String?>
       {
-        val tmp = mutableMapOf<String, String>()
+        val tmp = mutableMapOf<String?, String?>()
         if (token != null)
         {
           tmp["Authorization"] = token!!
@@ -127,7 +128,7 @@ class APIController
     queue.add(stringRequest)
   }
 
-  fun getFAQQuestion(): String
+  fun getFAQQuestion(): String?
   {
     val resources = serviceController!!.getInstance<Resources>()
     val inputStream = resources.openRawResource(R.raw.question_faq_example)

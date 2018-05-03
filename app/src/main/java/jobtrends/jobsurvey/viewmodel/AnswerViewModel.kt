@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.databinding.DataBindingUtil
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,35 +17,50 @@ import jobtrends.jobsurvey.model.EndSurvey
 import jobtrends.jobsurvey.model.Reply
 import jobtrends.jobsurvey.service.serviceController
 
-class AnswerViewModel(var list: List<Answer>) : BaseAdapter()
+class AnswerViewModel : BaseAdapter
 {
-  var inflater: LayoutInflater? = null
-  var reply: Reply? = null
-  var myView: View? = null
-  var lastButton: Button? = null
-  val endSurvey = serviceController!!.getInstance<EndSurvey>()
+  private var _inflater: LayoutInflater?
+  private var _reply: Reply?
+  private var _view: View?
+  private var _button: Button?
+  private val _endSurvey: EndSurvey?
+  private val _list: List<Answer>?
+  private val _tag: String?
 
-  @SuppressLint("ViewHolder")
-  override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View
+
+  constructor(list: List<Answer>?, reply: Reply?) : super()
   {
-    if (inflater == null)
-    {
-      inflater = parent!!.context!!.getSystemService(
-        Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    }
-    val binding: ListviewQuestionViewBinding = DataBindingUtil
-      .inflate(inflater!!, R.layout.listview_question_view, parent, false)
-    binding.vm = this
-    binding.m = list[position]
+    _list = list
+    _reply = reply
 
-    myView = binding.root
+    _tag = "AnswerViewModel"
+    _endSurvey = serviceController!!.getInstance()
 
-    return myView!!
+    _inflater = null
+    _button = null
+    _view = null
   }
 
-  override fun getItem(position: Int): Any
+  @SuppressLint("ViewHolder")
+  override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View?
   {
-    return list[position]
+    if (_inflater == null)
+    {
+      _inflater = parent!!.context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    }
+    val binding: ListviewQuestionViewBinding = DataBindingUtil
+      .inflate(_inflater!!, R.layout.listview_question_view, parent, false)
+    binding.vm = this
+    binding.m = _list!![position]
+
+    _view = binding.root
+
+    return _view!!
+  }
+
+  override fun getItem(position: Int): Any?
+  {
+    return _list!![position]
   }
 
   override fun getItemId(position: Int): Long
@@ -54,19 +70,19 @@ class AnswerViewModel(var list: List<Answer>) : BaseAdapter()
 
   override fun getCount(): Int
   {
-    return list.size
+    return _list!!.size
   }
 
   fun onClick(answer: Answer, view: View)
   {
-    println("---------------------------------------------------------------------------------")
-    println(endSurvey.answers!!.size)
+    val msg = "Answers size: ${_endSurvey!!.answers!!.size}"
+    Log.d(_tag, msg)
     val button = view.findViewById<Button>(R.id.answer_button)
-    reply!!.value = answer.value
-    lastButton?.setBackgroundResource(R.drawable.outline_layout)
-    lastButton?.setTextColor(Color.BLACK)
-    lastButton = button
-    lastButton?.setBackgroundResource(R.drawable.rounded_layout)
-    lastButton?.setTextColor(Color.WHITE)
+    _reply!!.value = answer.value
+    _button!!.setBackgroundResource(R.drawable.outline_layout)
+    _button!!.setTextColor(Color.BLACK)
+    _button = button
+    _button!!.setBackgroundResource(R.drawable.rounded_layout)
+    _button!!.setTextColor(Color.WHITE)
   }
 }

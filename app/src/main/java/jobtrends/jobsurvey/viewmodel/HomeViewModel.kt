@@ -1,7 +1,6 @@
 package jobtrends.jobsurvey.viewmodel
 
 import android.annotation.SuppressLint
-import android.content.SharedPreferences
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -10,7 +9,6 @@ import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.FrameLayout
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.databinding.HomeViewBinding
 import jobtrends.jobsurvey.model.StartSurveyModel
@@ -38,34 +36,36 @@ class HomeViewModel : AppCompatActivity()
     serviceController!!.register(findViewById<Button>(R.id.btn), true)
     serviceController!!.register(binding.root, true)
 
-    apiController.get("auth/user/me", ::syncUser, this)
-    apiController.get("jobaymax/me", ::firstResponse, this)
+    apiController.get("auth/user/me", ::authUserMeReply, this)
+    apiController.get("jobaymax/me", ::jobaymaxReply, this)
 
     initNotification()
   }
 
-  fun initNotification()
+  private fun initNotification()
   {
     val preferences = PreferenceManager.getDefaultSharedPreferences(this)
     val token = preferences.getString("DeviceId", null)
-    Log.d(TAG, token ?: "")
+    val msg = token ?: ""
+    Log.d(TAG, msg)
     if (token != null && token != "")
     {
-      apiController.post("jobaymax/me/device/$token?type=ANDROID", null, ::deviceRegisterReply, this)
+      apiController.post("jobaymax/me/device/$token?type=ANDROID", null, ::jobaymaxMeDeviceTokenReply, this)
     }
 
   }
 
-  private fun deviceRegisterReply(code: Int, response: String)
+  private fun jobaymaxMeDeviceTokenReply(code: Int?, body: String?)
   {
-    Log.e(TAG, "----------------------------------------------------------------------------")
-    Log.e(TAG, response)
-    Log.e(TAG, "----------------------------------------------------------------------------")
+    val msg = "$code: $body"
+    Log.d(TAG, msg)
   }
 
-  fun syncUser(response: String)
+  private fun authUserMeReply(code: Int?, body: String?)
   {
-    val updatedUser = jsonController.deserialize<User>(response)
+    val msg = "$code: $body"
+    Log.i(TAG, msg)
+    val updatedUser = jsonController.deserialize<User>(body)
     val user = serviceController!!.getInstance<User>()
     val userModel = serviceController!!.getInstance<UserModel>()
     user.merge(updatedUser)
@@ -78,13 +78,13 @@ class HomeViewModel : AppCompatActivity()
     editor.apply()
   }
 
-  fun firstResponse(response: String)
+  private fun jobaymaxReply(code: Int?, body: String?)
   {
-    Log.i(TAG, response)
-    val startSurveyModel = jsonController.deserialize<StartSurveyModel>(response)
+    val msg = "$code: $body"
+    Log.i(TAG, msg)
+    val startSurveyModel = jsonController.deserialize<StartSurveyModel>(body)
     serviceController!!.register(startSurveyModel, true)
-    val fragment = StartSurveyViewModel()
-    fragment.startSurveyModel = startSurveyModel
+    val fragment = StartSurveyViewModel(startSurveyModel)
     val transaction = supportFragmentManager!!.beginTransaction()
     transaction.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
     transaction.addToBackStack(null)

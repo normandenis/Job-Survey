@@ -25,32 +25,41 @@ import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.PagerAdapterController
 import jobtrends.jobsurvey.service.serviceController
 
-class SurveyViewModel : Fragment()
+class SurveyViewModel : Fragment
 {
-  var myView: View? = null
-  private var _pagerAdapterController: PagerAdapterController? = null
-  var survey: Survey? = null
-  var dialog: Dialog? = null
-  val apiController = serviceController!!.getInstance<APIController>()
-  val jsonController = serviceController!!.getInstance<JsonController>()
-  val endSurvey = serviceController!!.getInstance<EndSurvey>()
-  val appBarBtn = serviceController!!.getInstance<Button>()
-  private val TAG = "SurveyViewModel"
+  private var _view: View?
+  private var _pagerAdapterController: PagerAdapterController?
+  var survey: Survey?
+  private var _dialog: Dialog?
+  private val _apiController: APIController?
+  private val _jsonController: JsonController?
+  private val _endSurvey: EndSurvey?
+  private val _appBarBtn: Button?
+  private val _tag: String?
+
+  constructor() : super()
+  {
+    _view = null
+    _pagerAdapterController = null
+    survey = null
+    _dialog = null
+    _apiController = serviceController!!.getInstance()
+    _jsonController = serviceController!!.getInstance()
+    _endSurvey = serviceController!!.getInstance()
+    _appBarBtn = serviceController!!.getInstance()
+    _tag = "SurveyViewModel"
+  }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?)
   {
     super.onViewCreated(view, savedInstanceState)
     val list: MutableList<Fragment> = mutableListOf()
-    endSurvey.surveyId = survey!!.id
-    endSurvey.answers = mutableListOf()
-    for (question in survey!!.questions!!)
-    {
-      list.add(newInstance(question))
-    }
-
+    _endSurvey!!.surveyId = survey!!.id
+    _endSurvey.answers = mutableListOf()
+    survey!!.questions!!.mapTo(list, ::newInstance)
     _pagerAdapterController = PagerAdapterController(fragmentManager, list)
-    val pager: ViewPager = getView()!!.findViewById(R.id.pager)
-    pager.adapter = _pagerAdapterController
+    val pager: ViewPager? = getView()!!.findViewById(R.id.pager)
+    pager!!.adapter = _pagerAdapterController
     pager.addOnPageChangeListener(object : OnPageChangeListener
                                   {
                                     override fun onPageScrollStateChanged(state: Int)
@@ -65,15 +74,16 @@ class SurveyViewModel : Fragment()
 
                                     override fun onPageSelected(position: Int)
                                     {
-                                      if (position == list.size - 1)
+                                      if (position == list.size-1)
                                       {
-                                        appBarBtn.setBackgroundResource(R.drawable.ic_check_orange_32dp)
-                                        appBarBtn.setOnClickListener { onValidateSurvey() }
-                                      }
-                                      else
+                                        _appBarBtn!!
+                                          .setBackgroundResource(R.drawable.ic_check_orange_32dp)
+                                        _appBarBtn.setOnClickListener { onValidateSurvey() }
+                                      } else
                                       {
-                                        appBarBtn.setBackgroundResource(R.drawable.ic_close_orange_32dp)
-                                        appBarBtn.setOnClickListener { onCloseSurvey() }
+                                        _appBarBtn!!
+                                          .setBackgroundResource(R.drawable.ic_close_orange_32dp)
+                                        _appBarBtn.setOnClickListener { onCloseSurvey() }
                                       }
                                     }
                                   })
@@ -82,22 +92,21 @@ class SurveyViewModel : Fragment()
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                             savedInstanceState: Bundle?): View?
   {
-    val binding: SurveyViewBinding = DataBindingUtil.inflate(inflater, R.layout.survey_view, container, false)
+    val binding: SurveyViewBinding = DataBindingUtil
+      .inflate(inflater, R.layout.survey_view, container, false)
     binding.vm = this
-    dialog = Dialog(context!!)
-    myView = binding.root
-    serviceController!!.register(myView!!, true)
-    return myView
+    _dialog = Dialog(context)
+    _view = binding.root
+    serviceController!!.register(_view, true)
+    return _view
   }
 
   private fun newInstance(question: Question): Fragment
   {
     val reply = Reply()
     reply.questionId = question.id
-    val fragment = QuestionViewModel()
-    fragment.question = question
-    fragment.reply = reply
-    endSurvey.answers!!.add(reply)
+    val fragment = QuestionViewModel(reply, question)
+    _endSurvey!!.answers!!.add(reply)
     return fragment
   }
 
@@ -105,25 +114,25 @@ class SurveyViewModel : Fragment()
   {
     val bind: ValidatePopupViewBinding = DataBindingUtil
       .inflate(LayoutInflater.from(context), R.layout.validate_popup_view,
-               myView as ViewGroup, false)
+               _view as ViewGroup, false)
     bind.vm = this
-    dialog!!.setContentView(bind.root)
-    dialog!!.show()
+    _dialog!!.setContentView(bind.root)
+    _dialog!!.show()
   }
 
   fun onCloseSurvey()
   {
     val bind: CancelPopupViewBinding = DataBindingUtil
       .inflate(LayoutInflater.from(context), R.layout.cancel_popup_view,
-               myView as ViewGroup, false)
+               _view as ViewGroup, false)
     bind.vm = this
-    dialog!!.setContentView(bind.root)
-    dialog!!.show()
+    _dialog!!.setContentView(bind.root)
+    _dialog!!.show()
   }
 
   fun onValideYes()
   {
-    dialog!!.hide()
+    _dialog!!.hide()
     val fragment = EndSurveyViewModel()
     val transaction = fragmentManager!!.beginTransaction()
     transaction.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
@@ -133,22 +142,22 @@ class SurveyViewModel : Fragment()
 
   fun onValideNo()
   {
-    dialog!!.hide()
+    _dialog!!.hide()
   }
 
   fun onCloseYes()
   {
-    dialog!!.hide()
-    apiController.get("jobaymax/me", ::firstResponse, context!!)
+    _dialog!!.hide()
+    _apiController!!.get("jobaymax/me", ::jobaymaxMeReply, context!!)
   }
 
-  fun firstResponse(response: String)
+  private fun jobaymaxMeReply(code: Int?, body: String?)
   {
-    Log.i(TAG, response)
-    val startSurveyModel = jsonController.deserialize<StartSurveyModel>(response)
+    val msg = "$code: $body"
+    Log.i(_tag, msg)
+    val startSurveyModel = _jsonController!!.deserialize<StartSurveyModel>(body)
     serviceController!!.register(startSurveyModel, true)
-    val fragment = StartSurveyViewModel()
-    fragment.startSurveyModel = startSurveyModel
+    val fragment = StartSurveyViewModel(startSurveyModel)
     val transaction = fragmentManager!!.beginTransaction()
     transaction.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
     transaction.addToBackStack(null)
@@ -157,6 +166,6 @@ class SurveyViewModel : Fragment()
 
   fun onCloseNo()
   {
-    dialog!!.hide()
+    _dialog!!.hide()
   }
 }

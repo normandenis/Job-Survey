@@ -18,46 +18,46 @@ import jobtrends.jobsurvey.service.serviceController
 
 class EndSurveyViewModel : Fragment()
 {
-  var binding : EndSurveyViewBinding? = null
-  val appBarBtn = serviceController !!.getInstance<Button>()
-  val jsonController = serviceController !!.getInstance<JsonController>()
-  val apiController = serviceController !!.getInstance<APIController>()
-  val endSurvey = serviceController !!.getInstance<EndSurvey>()
-  private val TAG = "EndSurveyViewModel"
+  var binding: EndSurveyViewBinding? = null
+  private val _appBarBtn = serviceController!!.getInstance<Button>()
+  val jsonController = serviceController!!.getInstance<JsonController>()
+  val apiController = serviceController!!.getInstance<APIController>()
+  private val _endSurvey = serviceController!!.getInstance<EndSurvey>()
+  private val _tag = "EndSurveyViewModel"
 
-  override fun onCreateView(inflater : LayoutInflater, container : ViewGroup?,
-                            savedInstanceState : Bundle?) : View
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                            savedInstanceState: Bundle?): View
   {
     binding = DataBindingUtil.inflate(inflater, R.layout.end_survey_view, container, false)
-    binding !!.vm = this
-    appBarBtn.setBackgroundResource(R.drawable.ic_close_orange_32dp)
-    appBarBtn.setOnClickListener { onValidateSurvey() }
-    return binding !!.root
+    binding!!.vm = this
+    _appBarBtn.setBackgroundResource(R.drawable.ic_close_orange_32dp)
+    _appBarBtn.setOnClickListener { onValidateSurvey() }
+    return binding!!.root
   }
 
   fun onValidateSurvey()
   {
-    val endSurveySerialiazed = jsonController.serialize(endSurvey)
-    apiController.post("jobaymax/result", endSurveySerialiazed, ::firstResponse, context !!)
+    val endSurveySerialiazed = jsonController.serialize(_endSurvey)
+    apiController.post("jobaymax/result", endSurveySerialiazed, ::jobaymaxResultReply, context!!)
   }
 
-  fun firstResponse(code: Int, response : String)
+  private fun jobaymaxResultReply(code: Int?, body: String?)
   {
-    println(response)
-    apiController.get("jobaymax/me", ::secondResponse, context !!)
+    val msg = "$code: $body"
+    Log.i(_tag, msg)
+    apiController.get("jobaymax/me", ::jobaymaxMeReply, context!!)
   }
 
-  fun secondResponse(response: String)
+  private fun jobaymaxMeReply(code: Int?, body: String?)
   {
-    Log.i(TAG, response)
-    val startSurveyModel = jsonController.deserialize<StartSurveyModel>(response)
+    val msg = "$code: $body"
+    Log.i(_tag, msg)
+    val startSurveyModel = jsonController.deserialize<StartSurveyModel>(body)
     serviceController!!.register(startSurveyModel, true)
-    val fragment = StartSurveyViewModel()
-    fragment.startSurveyModel = startSurveyModel
+    val fragment = StartSurveyViewModel(startSurveyModel)
     val transaction = fragmentManager!!.beginTransaction()
     transaction.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
     transaction.addToBackStack(null)
     transaction.commit()
   }
-
 }

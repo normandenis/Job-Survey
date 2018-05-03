@@ -4,8 +4,8 @@ import android.databinding.ObservableField
 
 class AnswerModel
 {
-  var title = ObservableField<String>()
-  var value = ObservableField<String>()
+  var title = ObservableField<String?>()
+  var value = ObservableField<String?>()
 }
 
 class Answer

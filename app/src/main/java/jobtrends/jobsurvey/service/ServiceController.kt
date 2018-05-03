@@ -10,7 +10,7 @@ var serviceController: ServiceController? = null
 
 class ServiceController
 {
-  var instances: MutableMap<Any, Any> = mutableMapOf()
+  var instances: MutableMap<Any?, Any?> = mutableMapOf()
 
   constructor()
   {
@@ -22,11 +22,11 @@ class ServiceController
     register<SurveyController>()
   }
 
-  inline fun <reified T> register(obj: T? = null, new: Boolean = false)
+  inline fun <reified T> register(obj: T? = null, new: Boolean? = false)
   {
-    if (!instances.containsKey(T::class) || new)
+    if (!instances.containsKey(T::class) || new == true)
     {
-      instances[T::class] = (obj ?: T::class.java.newInstance()) as Any
+      instances[T::class] = (obj ?: T::class.java.newInstance()) as Any?
     }
   }
 

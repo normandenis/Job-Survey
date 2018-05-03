@@ -19,21 +19,21 @@ import jobtrends.jobsurvey.service.serviceController
 class ProfileViewModel : Fragment
 {
   var userModel = serviceController!!.getInstance<UserModel>()
-  var user = serviceController!!.getInstance<User>()
+  private var _user = serviceController!!.getInstance<User>()
   private val jsonController = serviceController!!.getInstance<JsonController>()
   private val apiController = serviceController!!.getInstance<APIController>()
-  private val TAG = "ProfileViewModel"
+  private val _tag = "ProfileViewModel"
 
   constructor() : super()
   {
-    userModel.password.set("")
+    userModel.password!!.set("")
   }
 
-  override fun onCreateView(inflater : LayoutInflater, container : ViewGroup?,
-                            savedInstanceState : Bundle?) : View?
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                            savedInstanceState: Bundle?): View?
   {
-    val binding : ProfileViewBinding = DataBindingUtil
-        .inflate(inflater, R.layout.profile_view, container, false)
+    val binding: ProfileViewBinding = DataBindingUtil
+      .inflate(inflater, R.layout.profile_view, container, false)
     val view = binding.root
     binding.vm = this
     return view
@@ -44,21 +44,27 @@ class ProfileViewModel : Fragment
     val tmpUser = User()
     tmpUser.merge(userModel)
     val json = jsonController.serialize(tmpUser)
-    apiController.put("auth/user", json, ::firstResponse, context!!)
+    apiController.put("auth/user", json, ::authUserReply, context!!)
   }
 
-  fun firstResponse(response: String)
+  private fun authUserReply(code: Int?, body: String?)
   {
-    apiController.get("auth/user/me", ::secondResponse, context!!)
+    val msg = "$code: $body"
+    Log.i(_tag, msg)
+    apiController.get("auth/user/me", ::authUserMeReply, context!!)
   }
 
-  private fun secondResponse(response: String)
+  private fun authUserMeReply(code: Int?, body: String?)
   {
-    val updatedUser = jsonController.deserialize<User>(response)
-    user.merge(updatedUser)
+    val msg = "$code: $body"
+    Log.i(_tag, msg)
+
+    val updatedUser = jsonController.deserialize<User>(body)
+    _user.merge(updatedUser)
     userModel.merge(updatedUser)
-    val json = jsonController.serialize(user)
-    Log.d(TAG, json)
+    val json = jsonController.serialize(_user)
+    Log.d(_tag, json)
+
     val preferences = PreferenceManager.getDefaultSharedPreferences(activity)
     val editor = preferences.edit()
     editor.putString(User::class.java.simpleName, json)

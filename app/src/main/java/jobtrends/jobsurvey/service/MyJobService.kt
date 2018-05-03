@@ -6,20 +6,17 @@ import com.firebase.jobdispatcher.JobService
 
 class MyJobService : JobService()
 {
-  override fun onStartJob(jobParameters : JobParameters) : Boolean
+  private val _tag = "MyJobService"
+
+  override fun onStartJob(jobParameters: JobParameters): Boolean
   {
-    Log.d(TAG, "Performing long running task in scheduled job")
+    Log.d(_tag, "Performing long running task in scheduled job")
     // TODO(developer): add long running task here.
     return false
   }
 
-  override fun onStopJob(jobParameters : JobParameters) : Boolean
+  override fun onStopJob(jobParameters: JobParameters): Boolean
   {
     return false
-  }
-
-  companion object
-  {
-    private val TAG = "MyJobService"
   }
 }
