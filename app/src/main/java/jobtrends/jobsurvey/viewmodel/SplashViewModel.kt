@@ -20,16 +20,17 @@ import jobtrends.jobsurvey.service.serviceController
 
 class SplashViewModel : AppCompatActivity
 {
-  var jsonController: JsonController? = null
-  var apiController: APIController? = null
-  private val delayMillis: Long = 1000
-  private val TAG = "SplashViewModel"
+  private val _jsonController: JsonController?
+  private val _apiController: APIController?
+  private val _delayMillis: Long?
+  private val _tag = "SplashViewModel"
 
   constructor() : super()
   {
+    _delayMillis = 1000
     serviceController = ServiceController()
-    jsonController = serviceController!!.getInstance<JsonController>()
-    apiController = serviceController!!.getInstance<APIController>()
+    _jsonController = serviceController!!.getInstance()
+    _apiController = serviceController!!.getInstance()
   }
 
   private fun initNotification()
@@ -41,8 +42,7 @@ class SplashViewModel : AppCompatActivity
       val notificationManager = if (VERSION.SDK_INT >= VERSION_CODES.M)
       {
         getSystemService(NotificationManager::class.java)
-      }
-      else
+      } else
       {
         TODO("VERSION.SDK_INT < M")
       }
@@ -54,7 +54,7 @@ class SplashViewModel : AppCompatActivity
       for (key in intent.extras!!.keySet())
       {
         val value = intent.extras!!.get(key)
-        Log.d(TAG, "Key: $key Value: $value")
+        Log.d(_tag, "Key: $key Value: $value")
       }
     }
   }
@@ -63,32 +63,34 @@ class SplashViewModel : AppCompatActivity
   {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.splash_view)
+    serviceController!!.register(resources)
 
     Handler().postDelayed({
                             initNotification()
                             val preferences = PreferenceManager.getDefaultSharedPreferences(this)
                             val json = preferences.getString(User::class.java.simpleName, null)
-                            Log.d(TAG, json ?: "")
+                            Log.d(_tag, json ?: "")
                             if (json != null && json != "")
                             {
-                              val user = jsonController!!.deserialize<User>(json)
+                              val user = _jsonController!!.deserialize<User>(json)
                               serviceController!!.register(user, true)
                               val tmp = mutableMapOf<String?, String?>()
                               tmp["username"] = user.email
                               tmp["password"] = user.password
-                              val tmpSerialized = jsonController!!.serialize(tmp)
-                              apiController!!.post("auth/login", tmpSerialized, ::firstResponse, this)
-                            }
-                            else
+                              val tmpSerialized = _jsonController.serialize(tmp)
+                              _apiController!!.post("auth/login", tmpSerialized, ::authLoginReply, this)
+                            } else
                             {
                               val intent = Intent(this, SignInViewModel::class.java)
                               startActivity(intent)
                             }
-                          }, delayMillis)
+                          }, _delayMillis!!)
   }
 
-  private fun firstResponse(code: Int?, response: String?)
+  private fun authLoginReply(code: Int?, body: String?)
   {
+    val msg = "$code: $body"
+    Log.d(_tag, msg)
     val intent = Intent(this, HomeViewModel::class.java)
     startActivity(intent)
   }

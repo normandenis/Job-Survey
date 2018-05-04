@@ -6,6 +6,10 @@
   <data>
     <variable name="vm"
               type="jobtrends.jobsurvey.viewmodel.SignInViewModel"/>
+    <variable name="errorModel"
+              type="jobtrends.jobsurvey.model.ErrorModel"/>
+    <variable name="userModel"
+              type="jobtrends.jobsurvey.model.UserModel"/>
   </data>
 
   <ScrollView android:layout_width="match_parent"
@@ -13,18 +17,19 @@
 
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:paddingTop="@dimen/margin_top"
-                  android:paddingEnd="@dimen/margin_right"
-                  android:paddingBottom="@dimen/margin_bottom"
-                  android:paddingStart="@dimen/margin_left"
                   android:layout_gravity="center"
-                  android:orientation="vertical">
+                  android:orientation="vertical"
+                  android:paddingBottom="@dimen/margin_bottom"
+                  android:paddingEnd="@dimen/margin_right"
+                  android:paddingStart="@dimen/margin_left"
+                  android:paddingTop="@dimen/margin_top">
 
       <ImageView android:layout_width="100dp"
                  android:layout_height="100dp"
                  android:layout_gravity="center"
                  android:layout_marginTop="@dimen/margin_top"
-                 android:src="@drawable/ic_logo_gray"/>
+                 android:src="@drawable/ic_logo_gray"
+                 tools:ignore="ContentDescription"/>
 
       <TextView android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,7 +45,7 @@
                 android:layout_marginTop="@dimen/margin_top"
                 android:hint="@string/sign_in_view_txt_1"
                 android:inputType="textEmailAddress"
-                android:text="@={vm.username}"
+                android:text="@={userModel.email}"
                 android:textAppearance="?android:attr/textAppearanceSmall"/>
 
       <!--android:drawableStart="@drawable/ic_lock_orange_16dp"-->
@@ -49,14 +54,14 @@
                 android:layout_marginTop="@dimen/margin_top"
                 android:hint="@string/sign_in_view_txt_2"
                 android:inputType="textPassword"
-                android:text="@={vm.password}"
+                android:text="@={userModel.password}"
                 android:textAppearance="?android:attr/textAppearanceSmall"/>
 
       <TextView android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_marginTop="@dimen/margin_top"
-                android:text="@={vm.error}"
+                android:gravity="center"
+                android:text="@={errorModel.mainMsg}"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@android:color/holo_red_light"/>
 
@@ -73,9 +78,9 @@
 
       <Button android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_gravity="right"
-              android:layout_marginTop="@dimen/margin_top"
+              android:layout_gravity="end"
               android:layout_marginBottom="@dimen/margin_bottom"
+              android:layout_marginTop="@dimen/margin_top"
               android:background="@drawable/rounded_layout"
               android:onClick="@{() -> vm.onClickSignUp()}"
               android:paddingLeft="32dp"

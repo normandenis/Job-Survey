@@ -7,129 +7,136 @@
   <data>
     <variable name="vm"
               type="jobtrends.jobsurvey.viewmodel.ProfileViewModel"/>
+    <variable name="userModel"
+              type="jobtrends.jobsurvey.model.UserModel"/>
   </data>
 
-  <LinearLayout android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+  <ScrollView android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
-    <Space android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_weight="1"/>
-
-    <android.support.v7.widget.CardView android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="8dp"
-                                        android:layout_marginLeft="16dp"
-                                        android:layout_marginRight="16dp"
-                                        android:layout_marginTop="8dp"
-                                        android:layout_weight="2"
-                                        app:cardCornerRadius="8dp"
-                                        app:cardElevation="8dp">
-
-      <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-        <TextView android:layout_width="match_parent"
+    <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:layout_margin="8dp"
-                  android:gravity="center"
-                  android:text="@string/profile_view_1"
-                  android:textAppearance="?android:attr/textAppearanceMedium"
-                  android:textColor="@color/colorAccent"
-                  android:textStyle="bold"/>
+                  android:paddingBottom="@dimen/margin_bottom"
+                  android:paddingEnd="@dimen/margin_right"
+                  android:paddingStart="@dimen/margin_left"
+                  android:paddingTop="@dimen/margin_top"
+                  android:orientation="vertical">
 
-        <EditText android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_margin="8dp"
-                  android:hint="Firstname"
-                  android:text="@={vm.userModel.firstName}"
-                  android:inputType="textPersonName"
-                  android:textAppearance="?android:attr/textAppearanceSmall"
-                  android:textColor="@color/colorAccent"/>
+      <android.support.v7.widget.CardView android:layout_width="match_parent"
+                                          android:layout_height="0dp"
+                                          android:layout_marginBottom="@dimen/margin_bottom"
+                                          android:layout_marginEnd="@dimen/margin_right"
+                                          android:layout_marginStart="@dimen/margin_left"
+                                          android:layout_marginTop="@dimen/margin_top"
+                                          android:layout_weight="2"
+                                          app:cardCornerRadius="8dp"
+                                          app:cardElevation="8dp">
 
-        <EditText android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_margin="8dp"
-                  android:hint="Lastname"
-                  android:text="@={vm.userModel.lastName}"
-                  android:inputType="textPersonName"
-                  android:textAppearance="?android:attr/textAppearanceSmall"
-                  android:textColor="@color/colorAccent"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical"
+                      android:paddingBottom="@dimen/margin_bottom"
+                      android:paddingEnd="@dimen/margin_right"
+                      android:paddingStart="@dimen/margin_left"
+                      android:paddingTop="@dimen/margin_top">
 
-        <EditText android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_margin="8dp"
-                  android:hint="Date de naissance"
-                  android:text="@={vm.userModel.birthday}"
-                  android:inputType="date"
-                  android:textAppearance="?android:attr/textAppearanceSmall"
-                  android:textColor="@color/colorAccent"/>
+          <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/profile_view_1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"/>
 
-        <EditText android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_margin="8dp"
-                  android:hint="E-mail"
-                  android:text="@={vm.userModel.email}"
-                  android:inputType="textEmailAddress"
-                  android:textAppearance="?android:attr/textAppearanceSmall"
-                  android:textColor="@color/colorAccent"/>
+          <EditText android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:hint="@string/profile_view_2"
+                    android:inputType="textPersonName"
+                    android:text="@={userModel.firstName}"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorAccent"/>
 
-        <EditText android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_margin="8dp"
-                  android:hint="Profession"
-                  android:text="@={vm.userModel.metier}"
-                  android:inputType="text"
-                  android:textAppearance="?android:attr/textAppearanceSmall"
-                  android:textColor="@color/colorAccent"/>
+          <EditText android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:hint="@string/profile_view_3"
+                    android:inputType="textPersonName"
+                    android:text="@={userModel.firstName}"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorAccent"/>
 
-        <EditText android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_margin="8dp"
-                  android:hint="@string/profile_view_2"
-                  android:inputType="textPassword"
-                  android:textAppearance="?android:attr/textAppearanceSmall"
-                  android:textColor="@color/colorAccent"/>
+          <EditText android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:hint="@string/profile_view_4"
+                    android:inputType="date"
+                    android:text="@={userModel.birthday}"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorAccent"/>
 
-        <EditText android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_margin="8dp"
-                  android:hint="@string/profile_view_3"
-                  android:text="@={vm.userModel.password}"
-                  android:inputType="textPassword"
-                  android:textAppearance="?android:attr/textAppearanceSmall"
-                  android:textColor="@color/colorAccent"/>
+          <EditText android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:hint="@string/profile_view_5"
+                    android:inputType="textEmailAddress"
+                    android:text="@={userModel.email}"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorAccent"/>
 
-        <EditText android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_margin="8dp"
-                  android:hint="@string/profile_view_4"
-                  android:inputType="textPassword"
-                  android:textAppearance="?android:attr/textAppearanceSmall"
-                  android:textColor="@color/colorAccent"/>
+          <EditText android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:hint="@string/profile_view_6"
+                    android:inputType="text"
+                    android:text="@={userModel.metier}"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorAccent"/>
 
-      </LinearLayout>
+          <EditText android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:hint="@string/profile_view_7"
+                    android:inputType="textPassword"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorAccent"/>
 
-    </android.support.v7.widget.CardView>
+          <EditText android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:hint="@string/profile_view_8"
+                    android:inputType="textPassword"
+                    android:text="@={userModel.password}"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorAccent"/>
 
-    <Space android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_weight="1"/>
+          <EditText android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:text="@={userModel.encryptedPassword}"
+                    android:hint="@string/profile_view_9"
+                    android:inputType="textPassword"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorAccent"/>
 
-    <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="16dp"
-            android:background="@drawable/rounded_layout"
-            android:onClick="@{() -> vm.onClick()}"
-            android:paddingLeft="32dp"
-            android:paddingRight="32dp"
-            android:text="@string/profile_view_5"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/colorButtonLight"/>
+        </LinearLayout>
 
-  </LinearLayout>
+      </android.support.v7.widget.CardView>
+
+      <Button android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:layout_marginBottom="@dimen/margin_bottom"
+              android:background="@drawable/rounded_layout"
+              android:onClick="@{() -> vm.onClick()}"
+              android:paddingLeft="32dp"
+              android:paddingRight="32dp"
+              android:text="@string/profile_view_10"
+              android:textAppearance="?android:attr/textAppearanceSmall"
+              android:textColor="@color/colorButtonLight"/>
+
+    </LinearLayout>
+
+  </ScrollView>
 
 </layout>

@@ -29,7 +29,7 @@ class SettingViewModel : Fragment
   private val _apiController: APIController?
   private val _userModel: UserModel?
   private val _tag: String?
-  private val _dialog: Dialog?
+  private var _dialog: Dialog?
   private var _view: View?
   private var _news: Boolean?
   private var _jobaymax: Boolean?
@@ -37,7 +37,6 @@ class SettingViewModel : Fragment
   constructor() : super()
   {
     _tag = "SettingViewModel"
-    _dialog = Dialog(context)
     _news = false
     _jobaymax = false
 
@@ -47,6 +46,7 @@ class SettingViewModel : Fragment
     _jsonController = serviceController!!.getInstance()
     _userModel = serviceController!!.getInstance()
 
+    _dialog = null
     _view = null
   }
 
@@ -59,6 +59,8 @@ class SettingViewModel : Fragment
     binding.vm = this
     binding.startSurveyModel = _startSurveyModel
     binding.userModel = _userModel
+
+    _dialog = Dialog(context)
 
     _appBarBtn!!.setBackgroundResource(R.drawable.ic_close_orange_32dp)
     _appBarBtn.setOnClickListener { onNavStartSurvey() }
@@ -114,7 +116,7 @@ class SettingViewModel : Fragment
     bind.vm = this
     bind.userModel = _userModel
     _dialog!!.setContentView(bind.root)
-    _dialog.show()
+    _dialog!!.show()
   }
 
   fun onNotifYes()
@@ -122,7 +124,7 @@ class SettingViewModel : Fragment
     val tmpUser = User()
     tmpUser.merge(_userModel)
     val json = _jsonController!!.serialize(tmpUser)
-    _apiController!!.put("auth/user", json, ::authUserReply, context)
+    _apiController!!.put("auth/user/me", json, ::authUserReply, context)
   }
 
 

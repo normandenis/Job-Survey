@@ -37,6 +37,8 @@ class UserModel
     signInCount = ObservableField()
     resetToken = ObservableField()
     resetTimestamp = ObservableField()
+    newsletter!!.set(false)
+    jobaymax!!.set(false)
   }
 
 

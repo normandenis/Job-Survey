@@ -20,12 +20,13 @@
               android:hint="@string/faq_view_1"
               android:onTextChanged="@{vm::onTextChanged}"
               android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textColor="@color/colorAccent"/>
+              android:textColor="@color/colorAccent"
+              android:inputType="text"/>
 
     <ListView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_margin="16dp"
-              app:adapter="@{vm.viewmodel}"/>
+              app:adapter="@{vm.viewModel}"/>
 
   </LinearLayout>
 

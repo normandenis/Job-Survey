@@ -3,6 +3,7 @@ package jobtrends.jobsurvey.service
 import android.os.Debug
 import android.util.Log
 import jobtrends.jobsurvey.model.EndSurvey
+import jobtrends.jobsurvey.model.ErrorModel
 import jobtrends.jobsurvey.model.User
 import jobtrends.jobsurvey.model.UserModel
 
@@ -18,6 +19,7 @@ class ServiceController
     register<UserModel>()
     register<User>()
     register<EndSurvey>()
+    register<ErrorModel>()
     register<APIController>()
     register<SurveyController>()
   }

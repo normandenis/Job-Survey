@@ -13,12 +13,22 @@ import jobtrends.jobsurvey.service.APIController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.serviceController
 
-class FAQViewModel : Fragment()
+class FAQViewModel : Fragment
 {
-  var viewmodel: ListViewFAQViewModel? = null
-  var model: ListFAQModel? = null
-  val apiController = serviceController!!.getInstance<APIController>()
-  val jsonController = serviceController!!.getInstance<JsonController>()
+  val viewModel: ListViewFAQViewModel?
+  val model: ListFAQModel?
+  private val _apiController: APIController?
+  private val _jsonController: JsonController?
+
+  constructor() : super()
+  {
+    _apiController = serviceController!!.getInstance()
+    _jsonController = serviceController!!.getInstance()
+    val strQuestions = _apiController!!.getFAQQuestion()
+    model = _jsonController!!.deserialize(strQuestions)
+    viewModel = ListViewFAQViewModel(model!!.questions)
+  }
+
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                             savedInstanceState: Bundle?): View?
@@ -27,16 +37,12 @@ class FAQViewModel : Fragment()
       .inflate(inflater, R.layout.faq_view, container, false)
     val view = binding.root
     binding.vm = this
-    val strQuestions = apiController.getFAQQuestion()
-    model = jsonController.deserialize<ListFAQModel>(strQuestions)
-    viewmodel = ListViewFAQViewModel(model!!.questions!!)
-
     return view
   }
 
   fun onTextChanged(s: CharSequence, start: Int?, before: Int?, count: Int?)
   {
     // Call back the Adapter with current character to Filter
-    viewmodel!!.filter.filter(s.toString())
+    viewModel!!.filter.filter(s.toString())
   }
 }

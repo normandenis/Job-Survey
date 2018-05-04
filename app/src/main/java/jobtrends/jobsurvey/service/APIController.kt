@@ -9,6 +9,7 @@ import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import jobtrends.jobsurvey.R
+import jobtrends.jobsurvey.model.BodyModel
 import jobtrends.jobsurvey.model.User
 import org.apache.commons.io.IOUtils
 import java.nio.charset.StandardCharsets
@@ -26,7 +27,9 @@ class APIController
       StringRequest(Request.Method.POST, urlBase+url, Response.Listener<String?> { s ->
         callback(statusCode!!, s)
       }, Response.ErrorListener { s ->
-        callback(s.networkResponse.statusCode, "No message available")
+        val jsonController: JsonController = serviceController!!.getInstance()
+        val bodyModel: BodyModel = jsonController.deserialize(String(s.networkResponse.data))
+        callback(s.networkResponse.statusCode, bodyModel.message ?: "No message available")
       })
     {
 
@@ -67,7 +70,9 @@ class APIController
       StringRequest(Request.Method.PUT, urlBase+url, Response.Listener<String?> { s ->
         callback(statusCode!!, s)
       }, Response.ErrorListener { s ->
-        callback(s.networkResponse.statusCode, s.message ?: "No message available")
+        val jsonController: JsonController = serviceController!!.getInstance()
+        val bodyModel: BodyModel = jsonController.deserialize(String(s.networkResponse.data))
+        callback(s.networkResponse.statusCode, bodyModel.message ?: "No message available")
       })
     {
       override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>
@@ -105,7 +110,9 @@ class APIController
       StringRequest(Request.Method.GET, urlBase+url, Response.Listener<String?> { s ->
         callback(statusCode!!, s)
       }, Response.ErrorListener { s ->
-        callback(s.networkResponse.statusCode, s.message ?: "No message available")
+        val jsonController: JsonController = serviceController!!.getInstance()
+        val bodyModel: BodyModel = jsonController.deserialize(String(s.networkResponse.data))
+        callback(s.networkResponse.statusCode, bodyModel.message ?: "No message available")
       })
     {
       override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>

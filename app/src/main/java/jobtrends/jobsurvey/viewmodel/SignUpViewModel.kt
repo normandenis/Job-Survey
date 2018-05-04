@@ -15,50 +15,36 @@ import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.serviceController
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
+import jobtrends.jobsurvey.model.ErrorModel
 import java.text.SimpleDateFormat
 import java.util.*
 
 class SignUpViewModel : AppCompatActivity
 {
-  val userModel: UserModel
-  val user: User
-  val jsonController: JsonController
-  val apiController: APIController
-  val tag: String?
-  val lastnameErrorText: ObservableField<String?>
-  val firstnameErrorText: ObservableField<String?>
-  val birthdayErrorText: ObservableField<String?>
-  val emailErrorText: ObservableField<String?>
-  val jobErrorText: ObservableField<String?>
-  val passwordErrorText: ObservableField<String?>
-  val passwordBisErrorText: ObservableField<String?>
-  val errorMsg: ObservableField<String>?
-  private val myCalendar: Calendar
-  val date: OnDateSetListener
+  private val _userModel: UserModel?
+  private val _user: User?
+  private val _jsonController: JsonController?
+  private val _apiController: APIController?
+  private val _errorModel: ErrorModel?
+  private val _tag: String?
+  private val _calendar: Calendar?
+  private val _date: OnDateSetListener?
 
   constructor() : super()
   {
-    tag = "SignUpViewModel"
+    _tag = "SignUpViewModel"
 
-    userModel = serviceController!!.getInstance()
-    user = serviceController!!.getInstance()
-    jsonController = serviceController!!.getInstance()
-    apiController = serviceController!!.getInstance()
+    _userModel = serviceController!!.getInstance()
+    _user = serviceController!!.getInstance()
+    _errorModel = serviceController!!.getInstance()
+    _jsonController = serviceController!!.getInstance()
+    _apiController = serviceController!!.getInstance()
 
-    lastnameErrorText = ObservableField()
-    firstnameErrorText = ObservableField()
-    birthdayErrorText = ObservableField()
-    emailErrorText = ObservableField()
-    jobErrorText = ObservableField()
-    passwordErrorText = ObservableField()
-    passwordBisErrorText = ObservableField()
-    errorMsg = ObservableField()
-
-    myCalendar = Calendar.getInstance()
-    date = DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-      myCalendar.set(Calendar.YEAR, year)
-      myCalendar.set(Calendar.MONTH, monthOfYear)
-      myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+    _calendar = Calendar.getInstance()
+    _date = DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+      _calendar.set(Calendar.YEAR, year)
+      _calendar.set(Calendar.MONTH, monthOfYear)
+      _calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
       updateLabel()
     }
   }
@@ -68,7 +54,8 @@ class SignUpViewModel : AppCompatActivity
     super.onCreate(savedInstanceState)
     val binding: SignUpViewBinding = DataBindingUtil.setContentView(this, R.layout.sign_up_view)
     binding.vm = this
-    binding.m = userModel
+    binding.errorModel = _errorModel
+    binding.userModel = _userModel
   }
 
   private var stop: Boolean? = false
@@ -76,31 +63,31 @@ class SignUpViewModel : AppCompatActivity
   private fun checkInput()
   {
     stop = false
-    checkInput(userModel.lastName!!.get(), "^[a-zA-Z ,.'-]+$", lastnameErrorText)
-    checkInput(userModel.firstName!!.get(), "^[a-zA-Z ,.'-]+$", firstnameErrorText)
-    checkInput(userModel.birthday!!.get(), "[0-9]{2}/[0-9]{2}/[0-9]{4}", birthdayErrorText)
-    checkInput(userModel.email!!.get(), "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
-               emailErrorText)
-    checkInput(userModel.metier!!.get(), "^[a-zA-Z ,.'-]+$", jobErrorText)
-    checkInput(userModel.password!!.get(), "^[a-zA-Z0-9]+$", passwordErrorText)
+    checkInput(_userModel!!.lastName!!.get(), "^[a-zA-Z ,.'-]+$", _errorModel!!.lastnameMsg)
+    checkInput(_userModel.firstName!!.get(), "^[a-zA-Z ,.'-]+$", _errorModel.firstnameMsg)
+    checkInput(_userModel.birthday!!.get(), "[0-9]{2}/[0-9]{2}/[0-9]{4}", _errorModel.birthdayMsg)
+    checkInput(_userModel.email!!.get(), "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+               _errorModel.emailMsg)
+    checkInput(_userModel.metier!!.get(), "^[a-zA-Z ,.'-]+$", _errorModel.jobMsg)
+    checkInput(_userModel.password!!.get(), "^[a-zA-Z0-9]+$", _errorModel.passwordMsg)
     checkPassword()
   }
 
   private fun checkPassword()
   {
-    if (userModel.password!!.get() != userModel.encryptedPassword!!.get())
+    if (_userModel!!.password!!.get() != _userModel.encryptedPassword!!.get())
     {
       stop = true
-      passwordBisErrorText.set("")
-      passwordBisErrorText.set("Ce mot de passe est différent du premier")
+      _errorModel!!.passwordBisMsg!!.set("")
+      _errorModel.passwordBisMsg!!.set("Ce mot de passe est différent du premier")
     }
   }
 
-  private fun checkInput(input: String?, pattern: String?, error: ObservableField<String?>)
+  private fun checkInput(input: String?, pattern: String?, error: ObservableField<String?>?)
   {
     if (input == null || input == "")
     {
-      error.set("")
+      error!!.set("")
       error.set("Ce champ ne peut pas être vide")
       stop = true
       return
@@ -109,7 +96,7 @@ class SignUpViewModel : AppCompatActivity
     val result = input.matches(regex)
     if (!result)
     {
-      error.set("")
+      error!!.set("")
       error.set("Ce champ est invalide")
       stop = true
     }
@@ -117,15 +104,15 @@ class SignUpViewModel : AppCompatActivity
 
   fun onDatePickerClick()
   {
-    DatePickerDialog(this, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                     myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+    DatePickerDialog(this, _date, _calendar!!.get(Calendar.YEAR), _calendar.get(Calendar.MONTH),
+                     _calendar.get(Calendar.DAY_OF_MONTH)).show()
   }
 
   private fun updateLabel()
   {
     val df = SimpleDateFormat("dd/mm/yyyy", Locale.FRANCE)
-    val format = df.format(myCalendar.time)
-    userModel.birthday!!.set(format)
+    val format = df.format(_calendar!!.time)
+    _userModel!!.birthday!!.set(format)
   }
 
   fun onClick()
@@ -135,15 +122,15 @@ class SignUpViewModel : AppCompatActivity
     {
       return
     }
-    user.lastName = userModel.lastName!!.get()
-    user.firstName = userModel.firstName!!.get()
-    user.birthday = userModel.birthday!!.get()
-    user.email = userModel.email!!.get()
-    user.metier = userModel.metier!!.get()
-    user.password = userModel.password!!.get()
-    user.encryptedPassword = userModel.encryptedPassword!!.get()
-    val body = jsonController.serialize(user)
-    apiController.post("auth/signup", body, ::authSignupReply, this)
+    _user!!.lastName = _userModel!!.lastName!!.get()
+    _user.firstName = _userModel.firstName!!.get()
+    _user.birthday = _userModel.birthday!!.get()
+    _user.email = _userModel.email!!.get()
+    _user.metier = _userModel.metier!!.get()
+    _user.password = _userModel.password!!.get()
+    _user.encryptedPassword = _userModel.encryptedPassword!!.get()
+    val body = _jsonController!!.serialize(_user)
+    _apiController!!.post("auth/signup", body, ::authSignupReply, this)
   }
 
   fun onNavBack()
@@ -155,24 +142,24 @@ class SignUpViewModel : AppCompatActivity
   private fun authSignupReply(code: Int?, bodyRecv: String?)
   {
     val msg = "$code: $bodyRecv"
-    Log.d(tag, msg)
-    if (code != 200)
+    Log.d(_tag, msg)
+    if (code != 201)
     {
-      errorMsg!!.set("")
-      errorMsg.set(bodyRecv)
+      _errorModel!!.mainMsg!!.set("")
+      _errorModel.mainMsg!!.set(bodyRecv)
       return
     }
-    val bodySend = mutableMapOf<String?, String?>()
-    bodySend["username"] = user.email!!
-    bodySend["password"] = user.password!!
-    val bodySerialized = jsonController.serialize(bodySend)
-    apiController.post("auth/login", bodySerialized, ::authLoginReply, this)
+    val bodySend: MutableMap<String?, String?>? = mutableMapOf()
+    bodySend!!["username"] = _user!!.email
+    bodySend["password"] = _user.password
+    val bodySerialized = _jsonController!!.serialize(bodySend)
+    _apiController!!.post("auth/login", bodySerialized, ::authLoginReply, this)
   }
 
   private fun authLoginReply(code: Int?, body: String?)
   {
     val msg = "$code: $body"
-    Log.d(tag, msg)
+    Log.d(_tag, msg)
     val intent = Intent(this, HomeViewModel::class.java)
     startActivity(intent)
   }
