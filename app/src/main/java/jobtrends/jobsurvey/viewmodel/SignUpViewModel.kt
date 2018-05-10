@@ -29,10 +29,12 @@ class SignUpViewModel : AppCompatActivity
   private val _tag: String?
   private val _calendar: Calendar?
   private val _date: OnDateSetListener?
+  private var _stop: Boolean?
 
   constructor() : super()
   {
     _tag = "SignUpViewModel"
+    _stop = false
 
     _userModel = serviceController!!.getInstance()
     _user = serviceController!!.getInstance()
@@ -58,12 +60,11 @@ class SignUpViewModel : AppCompatActivity
     binding.userModel = _userModel
   }
 
-  private var stop: Boolean? = false
-
   private fun checkInput()
   {
-    stop = false
-    checkInput(_userModel!!.lastName!!.get(), "^[a-zA-Z ,.'-]+$", _errorModel!!.lastnameMsg)
+    _stop = false
+    _errorModel!!.reset()
+    checkInput(_userModel!!.lastName!!.get(), "^[a-zA-Z ,.'-]+$", _errorModel.lastnameMsg)
     checkInput(_userModel.firstName!!.get(), "^[a-zA-Z ,.'-]+$", _errorModel.firstnameMsg)
     checkInput(_userModel.birthday!!.get(), "[0-9]{2}/[0-9]{2}/[0-9]{4}", _errorModel.birthdayMsg)
     checkInput(_userModel.email!!.get(), "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
@@ -77,9 +78,8 @@ class SignUpViewModel : AppCompatActivity
   {
     if (_userModel!!.password!!.get() != _userModel.encryptedPassword!!.get())
     {
-      stop = true
-      _errorModel!!.passwordBisMsg!!.set("")
-      _errorModel.passwordBisMsg!!.set("Ce mot de passe est différent du premier")
+      _stop = true
+      _errorModel!!.passwordBisMsg!!.set("Ce mot de passe est différent du premier")
     }
   }
 
@@ -87,18 +87,16 @@ class SignUpViewModel : AppCompatActivity
   {
     if (input == null || input == "")
     {
-      error!!.set("")
-      error.set("Ce champ ne peut pas être vide")
-      stop = true
+      error!!.set("Ce champ ne peut pas être vide")
+      _stop = true
       return
     }
     val regex = Regex(pattern!!)
     val result = input.matches(regex)
     if (!result)
     {
-      error!!.set("")
-      error.set("Ce champ est invalide")
-      stop = true
+      error!!.set("Ce champ est invalide")
+      _stop = true
     }
   }
 
@@ -118,7 +116,7 @@ class SignUpViewModel : AppCompatActivity
   fun onClick()
   {
     checkInput()
-    if (stop == true)
+    if (_stop == true)
     {
       return
     }
@@ -145,8 +143,7 @@ class SignUpViewModel : AppCompatActivity
     Log.d(_tag, msg)
     if (code != 201)
     {
-      _errorModel!!.mainMsg!!.set("")
-      _errorModel.mainMsg!!.set(bodyRecv)
+      _errorModel!!.mainMsg!!.set(bodyRecv)
       return
     }
     val bodySend: MutableMap<String?, String?>? = mutableMapOf()

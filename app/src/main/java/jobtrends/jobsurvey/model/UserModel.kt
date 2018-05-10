@@ -41,6 +41,27 @@ class UserModel
     jobaymax!!.set(false)
   }
 
+  fun merge(userModel: UserModel?)
+  {
+    id!!.set(if (userModel!!.id!!.get() == null) id!!.get() else userModel.id!!.get())
+    email!!.set(if (userModel.email!!.get() == null) email!!.get() else userModel.email!!.get())
+    firstName!!.set(if (userModel.firstName!!.get() == null) firstName!!.get() else userModel.firstName!!.get())
+    lastName!!.set(if (userModel.lastName!!.get() == null) lastName!!.get() else userModel.lastName!!.get())
+    password!!.set(if (userModel.password!!.get() == null) password!!.get() else userModel.password!!.get())
+    birthday!!.set(if (userModel.birthday!!.get() == null) birthday!!.get() else userModel.birthday!!.get())
+    encryptedPassword!!.set(
+      if (userModel.encryptedPassword!!.get() == null) encryptedPassword!!.get() else userModel.encryptedPassword!!.get())
+    metier!!.set(if (userModel.metier!!.get() == null) metier!!.get() else userModel.metier!!.get())
+    telephonePortable!!.set(
+      if (userModel.telephonePortable!!.get() == null) telephonePortable!!.get() else userModel.telephonePortable!!.get())
+    isAdmin!!.set(if (userModel.isAdmin!!.get() == null) isAdmin!!.get() else userModel.isAdmin!!.get())
+    newsletter!!.set(if (userModel.newsletter!!.get() == null) newsletter!!.get() else userModel.newsletter!!.get())
+    jobaymax!!.set(if (userModel.jobaymax!!.get() == null) jobaymax!!.get() else userModel.jobaymax!!.get())
+    signInCount!!.set(if (userModel.signInCount!!.get() == null) signInCount!!.get() else userModel.signInCount!!.get())
+    resetToken!!.set(if (userModel.resetToken!!.get() == null) resetToken!!.get() else userModel.resetToken!!.get())
+    resetTimestamp!!
+      .set(if (userModel.resetTimestamp!!.get() == null) resetTimestamp!!.get() else userModel.resetTimestamp!!.get())
+  }
 
   fun merge(user: User)
   {
@@ -49,7 +70,7 @@ class UserModel
     firstName!!.set(if (user.firstName == null) firstName!!.get() else user.firstName)
     lastName!!.set(if (user.lastName == null) lastName!!.get() else user.lastName)
     password!!.set(if (user.password == null) password!!.get() else user.password)
-    birthday!!.set(if (user.birthday == null) birthday!!.get() else user.birthday!!.toString())
+    birthday!!.set(if (user.birthday == null) birthday!!.get() else user.birthday)
     encryptedPassword!!.set(
       if (user.encryptedPassword == null) encryptedPassword!!.get() else user.encryptedPassword)
     metier!!.set(if (user.metier == null) metier!!.get() else user.metier)

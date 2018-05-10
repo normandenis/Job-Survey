@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.databinding.CancelPopupViewBinding
 import jobtrends.jobsurvey.databinding.SurveyViewBinding
@@ -53,13 +54,19 @@ class SurveyViewModel : Fragment
   override fun onViewCreated(view: View, savedInstanceState: Bundle?)
   {
     super.onViewCreated(view, savedInstanceState)
+
+    _appBarBtn!!
+      .setBackgroundResource(R.drawable.ic_close_orange_32dp)
+    _appBarBtn.setOnClickListener { onCloseSurvey() }
+
     val list: MutableList<Fragment> = mutableListOf()
     _endSurvey!!.surveyId = survey!!.id
     _endSurvey.answers = mutableListOf()
     survey!!.questions!!.mapTo(list, ::newInstance)
     _pagerAdapterController = PagerAdapterController(fragmentManager, list)
     val pager: ViewPager? = getView()!!.findViewById(R.id.pager)
-    pager!!.adapter = _pagerAdapterController
+    pager!!.offscreenPageLimit = survey!!.questions!!.size
+    pager.adapter = _pagerAdapterController
     pager.addOnPageChangeListener(object : OnPageChangeListener
                                   {
                                     override fun onPageScrollStateChanged(state: Int)
@@ -76,12 +83,12 @@ class SurveyViewModel : Fragment
                                     {
                                       if (position == list.size-1)
                                       {
-                                        _appBarBtn!!
+                                        _appBarBtn
                                           .setBackgroundResource(R.drawable.ic_check_orange_32dp)
                                         _appBarBtn.setOnClickListener { onValidateSurvey() }
                                       } else
                                       {
-                                        _appBarBtn!!
+                                        _appBarBtn
                                           .setBackgroundResource(R.drawable.ic_close_orange_32dp)
                                         _appBarBtn.setOnClickListener { onCloseSurvey() }
                                       }

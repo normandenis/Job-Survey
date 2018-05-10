@@ -139,6 +139,10 @@
 
   <string name="start_survey_view_txt_1">&#160;%</string>
 
+  <string name="start_survey_view_txt_2">Vous serez averti lorsque de nouveau sondages seront disponible, merci de votre
+    contribution !
+  </string>
+
 
   <!--listview_start_survey_view-->
 

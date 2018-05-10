@@ -32,19 +32,22 @@ class StartSurveyViewModel : Fragment
     _appBarBtn = serviceController!!.getInstance()
   }
 
-
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                             savedInstanceState: Bundle?): View?
   {
+
     val binding: StartSurveyViewBinding = DataBindingUtil
       .inflate(inflater, R.layout.start_survey_view, container, false)
     _view = binding.root
-    binding.vm = this
+
+    _themeViewModel = ThemeViewModel(_startSurveyModel!!.themes!!, fragmentManager)
 
     _appBarBtn!!.setBackgroundResource(R.drawable.ic_person_orange_32dp)
     _appBarBtn.setOnClickListener { onNavSetting() }
 
-    _themeViewModel = ThemeViewModel(_startSurveyModel!!.themes!!, fragmentManager)
+    binding.vm = this
+    binding.startSurveyModel = _startSurveyModel
+    binding.themeViewModel = _themeViewModel
 
     return _view
   }

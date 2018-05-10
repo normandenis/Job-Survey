@@ -79,8 +79,11 @@ class AnswerViewModel : BaseAdapter
     Log.d(_tag, msg)
     val button = view.findViewById<Button>(R.id.answer_button)
     _reply!!.value = answer.value
-    _button!!.setBackgroundResource(R.drawable.outline_layout)
-    _button!!.setTextColor(Color.BLACK)
+    if (_button != null)
+    {
+      _button!!.setBackgroundResource(R.drawable.outline_layout)
+      _button!!.setTextColor(Color.BLACK)
+    }
     _button = button
     _button!!.setBackgroundResource(R.drawable.rounded_layout)
     _button!!.setTextColor(Color.WHITE)

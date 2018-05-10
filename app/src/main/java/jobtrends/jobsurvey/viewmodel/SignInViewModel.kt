@@ -59,12 +59,14 @@ class SignInViewModel : AppCompatActivity
       _errorModel!!.mainMsg!!.set(body)
       return
     }
+    _errorModel!!.reset()
     val intent = Intent(this, HomeViewModel::class.java)
     startActivity(intent)
   }
 
   fun onClickSignUp()
   {
+    _errorModel!!.reset()
     val intent = Intent(this, SignUpViewModel::class.java)
     startActivity(intent)
   }

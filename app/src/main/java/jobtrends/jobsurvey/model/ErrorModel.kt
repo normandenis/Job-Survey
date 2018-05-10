@@ -9,6 +9,7 @@ class ErrorModel
   var birthdayMsg: ObservableField<String?>?
   var emailMsg: ObservableField<String?>?
   var jobMsg: ObservableField<String?>?
+  var oldPassword: ObservableField<String?>?
   var passwordMsg: ObservableField<String?>?
   var passwordBisMsg: ObservableField<String?>?
   var mainMsg: ObservableField<String?>?
@@ -20,8 +21,22 @@ class ErrorModel
     birthdayMsg = ObservableField()
     emailMsg = ObservableField()
     jobMsg = ObservableField()
+    oldPassword = ObservableField()
     passwordMsg = ObservableField()
     passwordBisMsg = ObservableField()
     mainMsg = ObservableField()
+  }
+
+  fun reset()
+  {
+    lastnameMsg!!.set("")
+    firstnameMsg!!.set("")
+    birthdayMsg!!.set("")
+    emailMsg!!.set("")
+    jobMsg!!.set("")
+    oldPassword!!.set("")
+    passwordMsg!!.set("")
+    passwordBisMsg!!.set("")
+    mainMsg!!.set("")
   }
 }
