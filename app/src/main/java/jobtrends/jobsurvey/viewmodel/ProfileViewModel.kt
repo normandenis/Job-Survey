@@ -83,30 +83,39 @@ class ProfileViewModel : Fragment
     checkPassword()
   }
 
-  private fun checkPassword()
+  private fun checkIfNull(str: String?, error: ObservableField<String?>?): Boolean?
   {
-    if (oldPassword!!.get() == null || oldPassword.get() == "")
+    if (str == null || str == "")
     {
       _stop = true
-      _errorModel!!.oldPassword!!.set("Ce champ ne peut pas être vide")
-    } else
+      error!!.set("Ce champ ne peut pas être vide")
+      return true
+    }
+    return false
+  }
+
+  private fun checkPassword()
+  {
+    if (checkIfNull(oldPassword!!.get(), _errorModel!!.oldPassword) != false)
     {
       if (oldPassword.get() != _userModel!!.password!!.get())
       {
         _stop = true
-        _errorModel!!.oldPassword!!.set("Ce mot de passe ne correspond pas à l'ancien mot de passe")
+        _errorModel.oldPassword!!.set("Ce mot de passe ne correspond pas à l'ancien mot de passe")
       }
     }
-    if (_tmpUserModel!!.encryptedPassword!!.get() == null || _tmpUserModel.encryptedPassword!!.get() == "")
+    if (checkIfNull(_tmpUserModel!!.password!!.get(), _errorModel.passwordMsg) == false
+        && checkIfNull(_tmpUserModel.encryptedPassword!!.get(), _errorModel.passwordBisMsg) == false)
     {
-      _stop = true
-      _errorModel!!.passwordBisMsg!!.set("Ce champ ne peut pas être vide")
-    } else
-    {
+      if (_tmpUserModel.password!!.get()!!.length < 8)
+      {
+        _stop = true
+        _errorModel.passwordMsg!!.set("Votre mot de passe est inférieur à 8 charactères")
+      }
       if (_tmpUserModel.password!!.get() != _tmpUserModel.encryptedPassword!!.get())
       {
         _stop = true
-        _errorModel!!.passwordBisMsg!!.set("Ce mot de passe est différent du premier")
+        _errorModel.passwordBisMsg!!.set("Ce mot de passe est différent du premier")
       }
     }
   }
@@ -146,7 +155,7 @@ class ProfileViewModel : Fragment
   {
     val msg = "$code: $body"
     Log.i(_tag, msg)
-    if (code != 200 || code != 201)
+    if (code != 200 && code != 201)
     {
       _errorModel!!.mainMsg!!.set(body)
       return
