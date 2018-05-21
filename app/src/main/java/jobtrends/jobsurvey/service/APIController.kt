@@ -20,11 +20,25 @@ class APIController
   var statusCode: Int? = null
   val urlBase: String? = "https://api.dev.jobtrends.io/"
 
+  fun resetToken()
+  {
+    token = null
+  }
+
+  fun isToken(): Boolean
+  {
+    if (token == null || token == "" || token == "Bearer " || token == "Bearer null")
+    {
+      return false
+    }
+    return true
+  }
+
   fun post(url: String?, json: String?, callback: (Int?, String?) -> Unit?, context: Context?)
   {
     val queue = Volley.newRequestQueue(context)
     val stringRequest = object :
-      StringRequest(Request.Method.POST, urlBase+url, Response.Listener<String?> { s ->
+      StringRequest(Request.Method.POST, urlBase + url, Response.Listener<String?> { s ->
         callback(statusCode!!, s)
       }, Response.ErrorListener { s ->
         val jsonController: JsonController = serviceController!!.getInstance()
@@ -35,9 +49,9 @@ class APIController
 
       override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>
       {
-        if (token == null)
+        if (token == null || token == "" || token == "Bearer " || token == "Bearer null")
         {
-          token = "Bearer "+response?.headers?.get("X-AUTH-TOKEN")
+          token = "Bearer " + response?.headers?.get("X-AUTH-TOKEN")
           val user = serviceController!!.getInstance<User>()
           user.resetToken = token
         }
@@ -67,7 +81,7 @@ class APIController
   {
     val queue = Volley.newRequestQueue(context)
     val stringRequest = object :
-      StringRequest(Request.Method.PUT, urlBase+url, Response.Listener<String?> { s ->
+      StringRequest(Request.Method.PUT, urlBase + url, Response.Listener<String?> { s ->
         callback(statusCode!!, s)
       }, Response.ErrorListener { s ->
         val jsonController: JsonController = serviceController!!.getInstance()
@@ -77,9 +91,9 @@ class APIController
     {
       override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>
       {
-        if (token == null)
+        if (token == null || token == "" || token == "Bearer " || token == "Bearer null")
         {
-          token = "Bearer "+response?.headers?.get("X-AUTH-TOKEN")
+          token = "Bearer " + response?.headers?.get("X-AUTH-TOKEN")
           val user = serviceController!!.getInstance<User>()
           user.resetToken = token
         }
@@ -107,7 +121,7 @@ class APIController
   {
     val queue = Volley.newRequestQueue(context)
     val stringRequest = object :
-      StringRequest(Request.Method.GET, urlBase+url, Response.Listener<String?> { s ->
+      StringRequest(Request.Method.GET, urlBase + url, Response.Listener<String?> { s ->
         callback(statusCode!!, s)
       }, Response.ErrorListener { s ->
         val jsonController: JsonController = serviceController!!.getInstance()

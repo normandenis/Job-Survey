@@ -83,7 +83,7 @@ class ProfileViewModel : Fragment
     checkPassword()
   }
 
-  private fun checkIfNull(str: String?, error: ObservableField<String?>?): Boolean?
+  private fun isNull(str: String?, error: ObservableField<String?>?): Boolean?
   {
     if (str == null || str == "")
     {
@@ -96,16 +96,16 @@ class ProfileViewModel : Fragment
 
   private fun checkPassword()
   {
-    if (checkIfNull(oldPassword!!.get(), _errorModel!!.oldPassword) != false)
+    if (isNull(oldPassword!!.get(), _errorModel!!.oldPassword) == false)
     {
-      if (oldPassword.get() != _userModel!!.password!!.get())
+      if (oldPassword.get() != _userModel!!.encryptedPassword!!.get())
       {
         _stop = true
         _errorModel.oldPassword!!.set("Ce mot de passe ne correspond pas à l'ancien mot de passe")
       }
     }
-    if (checkIfNull(_tmpUserModel!!.password!!.get(), _errorModel.passwordMsg) == false
-        && checkIfNull(_tmpUserModel.encryptedPassword!!.get(), _errorModel.passwordBisMsg) == false)
+    if (isNull(_tmpUserModel!!.password!!.get(), _errorModel.passwordMsg) == false
+        && isNull(_tmpUserModel.encryptedPassword!!.get(), _errorModel.passwordBisMsg) == false)
     {
       if (_tmpUserModel.password!!.get()!!.length < 8)
       {

@@ -29,8 +29,8 @@ class SplashViewModel : AppCompatActivity
   {
     _delayMillis = 1000
     serviceController = ServiceController()
-    _jsonController = serviceController!!.getInstance()
-    _apiController = serviceController!!.getInstance()
+    _jsonController = serviceController?.getInstance()
+    _apiController = serviceController?.getInstance()
   }
 
   private fun initNotification()
@@ -42,18 +42,19 @@ class SplashViewModel : AppCompatActivity
       val notificationManager = if (VERSION.SDK_INT >= VERSION_CODES.M)
       {
         getSystemService(NotificationManager::class.java)
-      } else
+      }
+      else
       {
         TODO("VERSION.SDK_INT < M")
       }
-      notificationManager!!.createNotificationChannel(
+      notificationManager.createNotificationChannel(
         NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH))
     }
     if (intent.extras != null)
     {
-      for (key in intent.extras!!.keySet())
+      for (key in intent.extras.keySet())
       {
-        val value = intent.extras!!.get(key)
+        val value = intent.extras.get(key)
         Log.d(_tag, "Key: $key Value: $value")
       }
     }
@@ -63,37 +64,63 @@ class SplashViewModel : AppCompatActivity
   {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.splash_view)
-    serviceController!!.register(resources)
+    serviceController?.register(resources)
 
-    Handler().postDelayed({
-                            initNotification()
-                            val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-                            val json = preferences.getString(User::class.java.simpleName, null)
-                            Log.d(_tag, json ?: "")
-                            if (json != null && json != "")
-                            {
-                              val user = _jsonController!!.deserialize<User>(json)
-                              serviceController!!.register(user, true)
-                              val tmp = mutableMapOf<String?, String?>()
-                              tmp["username"] = user.email
-                              tmp["password"] = user.password
-                              val tmpSerialized = _jsonController.serialize(tmp)
-                              _apiController!!.post("auth/login", tmpSerialized, ::authLoginReply, this)
-                            } else
-                            {
-                              val intent = Intent(this, SignInViewModel::class.java)
-                              startActivity(intent)
-                            }
-                          }, _delayMillis!!)
+    Handler().postDelayed(::initUser, _delayMillis!!)
+  }
+
+  private fun initUser()
+  {
+    initNotification()
+    val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+    val json = preferences.getString(User::class.java.simpleName, null)
+    Log.d(_tag, json ?: "")
+    if (json != null && json != "")
+    {
+      signInUser(json)
+    }
+    else
+    {
+      navToSignInView()
+    }
+  }
+
+  private fun signInUser(json: String?)
+  {
+    val user = _jsonController?.deserialize<User?>(json)
+    if (user == null)
+    {
+      navToSignInView()
+    }
+    serviceController?.register(user, true)
+    val tmp = mutableMapOf<String?, String?>()
+    tmp["username"] = user?.email
+    tmp["password"] = user?.encryptedPassword
+    val tmpSerialized = _jsonController?.serialize(tmp)
+    _apiController?.post("auth/login", tmpSerialized, ::authLoginReply, this)
   }
 
   private fun authLoginReply(code: Int?, body: String?)
   {
     val msg = "$code: $body"
     Log.d(_tag, msg)
-    val intent = Intent(this, HomeViewModel::class.java)
+    if (code != 200 && code != 201)
+    {
+      navToSignInView()
+      return
+    }
+    navToHomeView()
+  }
+
+  private fun navToSignInView()
+  {
+    val intent = Intent(this, SignInViewModel::class.java)
     startActivity(intent)
   }
 
-
+  private fun navToHomeView()
+  {
+    val intent = Intent(this, HomeViewModel::class.java)
+    startActivity(intent)
+  }
 }

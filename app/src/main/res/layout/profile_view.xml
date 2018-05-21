@@ -55,7 +55,7 @@
                     android:layout_marginTop="@dimen/margin_top"
                     android:hint="@string/profile_view_2"
                     android:inputType="textPersonName"
-                    android:text="@={userModel.firstName}"
+                    android:text="@={userModel.lastName}"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/colorAccent"
                     app:errorText="@{errorModel.lastnameMsg}"/>

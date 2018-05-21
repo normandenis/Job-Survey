@@ -45,7 +45,7 @@ class SignInViewModel : AppCompatActivity
   {
     val body: MutableMap<String?, String?>? = mutableMapOf()
     body!!["username"] = _userModel!!.email!!.get()
-    body["password"] = _userModel.password!!.get()
+    body["password"] = _userModel.encryptedPassword!!.get()
     val bodySerialized = _jsonController!!.serialize(body)
     _apiController!!.post("auth/login", bodySerialized, ::authLoginReply, this)
   }
@@ -54,7 +54,7 @@ class SignInViewModel : AppCompatActivity
   {
     val msg = "$code: $body"
     Log.d(_tag, msg)
-    if (code != 200)
+    if (code != 200 && code != 201)
     {
       _errorModel!!.mainMsg!!.set(body)
       return
@@ -67,6 +67,8 @@ class SignInViewModel : AppCompatActivity
   fun onClickSignUp()
   {
     _errorModel!!.reset()
+    _userModel!!.email!!.set("")
+    _userModel.password!!.set("")
     val intent = Intent(this, SignUpViewModel::class.java)
     startActivity(intent)
   }
