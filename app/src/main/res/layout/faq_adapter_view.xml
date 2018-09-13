@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.jobsurvey.viewmodel.ListViewFAQViewModel">
+        tools:context="jobtrends.jobsurvey.adapter.FAQAdapter">
 
   <data>
-    <variable name="vm" type="jobtrends.jobsurvey.viewmodel.ListViewFAQViewModel"/>
+    <variable name="vm" type="jobtrends.jobsurvey.adapter.FAQAdapter"/>
     <variable name="m" type="jobtrends.jobsurvey.model.FAQModel"/>
   </data>
 

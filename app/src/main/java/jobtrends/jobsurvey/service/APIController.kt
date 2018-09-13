@@ -8,151 +8,163 @@ import com.android.volley.Response
 import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import jobtrends.jobsurvey.BuildConfig
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.model.BodyModel
-import jobtrends.jobsurvey.model.User
+import jobtrends.jobsurvey.model.UserModel
 import org.apache.commons.io.IOUtils
 import java.nio.charset.StandardCharsets
 
 class APIController
 {
-  var token: String? = null
-  var statusCode: Int? = null
-  val urlBase: String? = "https://api.dev.jobtrends.io/"
+    var token: String? = null
+    var statusCode: Int? = null
+    val urlBase: String?
 
-  fun resetToken()
-  {
-    token = null
-  }
-
-  fun isToken(): Boolean
-  {
-    if (token == null || token == "" || token == "Bearer " || token == "Bearer null")
+    constructor()
     {
-      return false
+        if (BuildConfig.FLAVOR == "dev")
+        {
+            urlBase = "https://api.dev.jobtrends.io/v2/"
+        }
+        else
+        {
+            urlBase = "https://api.jobtrends.io/v2/"
+        }
     }
-    return true
-  }
 
-  fun post(url: String?, json: String?, callback: (Int?, String?) -> Unit?, context: Context?)
-  {
-    val queue = Volley.newRequestQueue(context)
-    val stringRequest = object :
-      StringRequest(Request.Method.POST, urlBase + url, Response.Listener<String?> { s ->
-        callback(statusCode!!, s)
-      }, Response.ErrorListener { s ->
-        val jsonController: JsonController = serviceController!!.getInstance()
-        val bodyModel: BodyModel = jsonController.deserialize(String(s.networkResponse.data))
-        callback(s.networkResponse.statusCode, bodyModel.message ?: "No message available")
-      })
+    fun resetToken()
     {
-
-      override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>
-      {
-        if (token == null || token == "" || token == "Bearer " || token == "Bearer null")
-        {
-          token = "Bearer " + response?.headers?.get("X-AUTH-TOKEN")
-          val user = serviceController!!.getInstance<User>()
-          user.resetToken = token
-        }
-        statusCode = response!!.statusCode
-        val data = String(response.data!!)
-        return Response.success(data, HttpHeaderParser.parseCacheHeaders(response))
-      }
-
-      override fun getBody(): ByteArray? =
-        if (json != null && json != "") json.toByteArray() else null
-
-      override fun getHeaders(): MutableMap<String?, String?>
-      {
-        val tmp = mutableMapOf<String?, String?>()
-        if (token != null)
-        {
-          tmp["Authorization"] = token!!
-        }
-        tmp["Content-Type"] = "application/json"
-        return tmp
-      }
+        token = null
     }
-    queue.add(stringRequest)
-  }
 
-  fun put(url: String?, json: String?, callback: (Int?, String?) -> Unit?, context: Context?)
-  {
-    val queue = Volley.newRequestQueue(context)
-    val stringRequest = object :
-      StringRequest(Request.Method.PUT, urlBase + url, Response.Listener<String?> { s ->
-        callback(statusCode!!, s)
-      }, Response.ErrorListener { s ->
-        val jsonController: JsonController = serviceController!!.getInstance()
-        val bodyModel: BodyModel = jsonController.deserialize(String(s.networkResponse.data))
-        callback(s.networkResponse.statusCode, bodyModel.message ?: "No message available")
-      })
+    fun isToken(): Boolean
     {
-      override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>
-      {
-        if (token == null || token == "" || token == "Bearer " || token == "Bearer null")
+        if (token == null || token == "")
         {
-          token = "Bearer " + response?.headers?.get("X-AUTH-TOKEN")
-          val user = serviceController!!.getInstance<User>()
-          user.resetToken = token
+            return false
         }
-        val data = String(response?.data!!)
-        return Response.success(data, HttpHeaderParser.parseCacheHeaders(response))
-      }
-
-      override fun getBody(): ByteArray? = json?.toByteArray()
-
-      override fun getHeaders(): MutableMap<String?, String?>
-      {
-        val tmp = mutableMapOf<String?, String?>()
-        if (token != null)
-        {
-          tmp["Authorization"] = token!!
-        }
-        tmp["Content-Type"] = "application/json"
-        return tmp
-      }
+        return true
     }
-    queue.add(stringRequest)
-  }
 
-  fun get(url: String?, callback: (Int?, String?) -> Unit?, context: Context?)
-  {
-    val queue = Volley.newRequestQueue(context)
-    val stringRequest = object :
-      StringRequest(Request.Method.GET, urlBase + url, Response.Listener<String?> { s ->
-        callback(statusCode!!, s)
-      }, Response.ErrorListener { s ->
-        val jsonController: JsonController = serviceController!!.getInstance()
-        val bodyModel: BodyModel = jsonController.deserialize(String(s.networkResponse.data))
-        callback(s.networkResponse.statusCode, bodyModel.message ?: "No message available")
-      })
+    fun post(url: String?, json: String?, callback: (Int?, String?) -> Unit?, context: Context?)
     {
-      override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>
-      {
-        val data = String(response?.data!!)
-        return Response.success(data, HttpHeaderParser.parseCacheHeaders(response))
-      }
-
-      override fun getHeaders(): MutableMap<String?, String?>
-      {
-        val tmp = mutableMapOf<String?, String?>()
-        if (token != null)
+        val queue = Volley.newRequestQueue(context)
+        val stringRequest = object : StringRequest(Request.Method.POST, urlBase + url, Response.Listener<String?> { s ->
+            callback(statusCode!!, s)
+        }, Response.ErrorListener { s ->
+            val jsonController: JsonController = serviceController!!.getInstance()
+            val bodyModel: BodyModel? = jsonController.deserialize(String(s.networkResponse.data))
+            callback(s.networkResponse.statusCode, bodyModel?.message?.get() ?: "No message available")
+        })
         {
-          tmp["Authorization"] = token!!
-        }
-        tmp["Content-Type"] = "application/json"
-        return tmp
-      }
-    }
-    queue.add(stringRequest)
-  }
 
-  fun getFAQQuestion(): String?
-  {
-    val resources = serviceController!!.getInstance<Resources>()
-    val inputStream = resources.openRawResource(R.raw.question_faq_example)
-    return IOUtils.toString(inputStream, StandardCharsets.UTF_8)
-  }
+            override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>
+            {
+                if (token == null || token == "")
+                {
+                    token = response?.headers?.get("x-access-token")
+                    val user = serviceController!!.getInstance<UserModel>()
+                    user.token?.set(token)
+                }
+                statusCode = response!!.statusCode
+                val data = String(response.data!!)
+                return Response.success(data, HttpHeaderParser.parseCacheHeaders(response))
+            }
+
+            override fun getBody(): ByteArray? =
+                    if (json != null && json != "") json.toByteArray() else null
+
+            override fun getHeaders(): MutableMap<String?, String?>
+            {
+                val tmp = mutableMapOf<String?, String?>()
+                if (token != null)
+                {
+                    tmp["x-access-token"] = token!!
+                }
+                tmp["Content-Type"] = "application/json"
+                return tmp
+            }
+        }
+        queue.add(stringRequest)
+    }
+
+    fun put(url: String?, json: String?, callback: (Int?, String?) -> Unit?, context: Context?)
+    {
+        val queue = Volley.newRequestQueue(context)
+        val stringRequest = object :
+                StringRequest(Request.Method.PUT, urlBase + url, Response.Listener<String?> { s ->
+                    callback(statusCode!!, s)
+                }, Response.ErrorListener { s ->
+                    val jsonController: JsonController = serviceController!!.getInstance()
+                    val bodyModel: BodyModel? = jsonController.deserialize(String(s.networkResponse.data))
+                    callback(s.networkResponse.statusCode, bodyModel?.message?.get() ?: "No message available")
+                })
+        {
+            override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>
+            {
+                if (token == null || token == "")
+                {
+                    token = response?.headers?.get("x-access-token")
+                    val user = serviceController!!.getInstance<UserModel>()
+                    user.token?.set(token)
+                }
+                val data = String(response?.data!!)
+                return Response.success(data, HttpHeaderParser.parseCacheHeaders(response))
+            }
+
+            override fun getBody(): ByteArray? = json?.toByteArray()
+
+            override fun getHeaders(): MutableMap<String?, String?>
+            {
+                val tmp = mutableMapOf<String?, String?>()
+                if (token != null)
+                {
+                    tmp["x-access-token"] = token!!
+                }
+                tmp["Content-Type"] = "application/json"
+                return tmp
+            }
+        }
+        queue.add(stringRequest)
+    }
+
+    fun get(url: String?, callback: (Int?, String?) -> Unit?, context: Context?)
+    {
+        val queue = Volley.newRequestQueue(context)
+        val stringRequest = object :
+                StringRequest(Request.Method.GET, urlBase + url, Response.Listener<String?> { s ->
+                    callback(statusCode!!, s)
+                }, Response.ErrorListener { s ->
+                    val jsonController: JsonController = serviceController!!.getInstance()
+                    val bodyModel: BodyModel? = jsonController.deserialize(String(s.networkResponse.data))
+                    callback(s.networkResponse.statusCode, bodyModel?.message?.get() ?: "No message available")
+                })
+        {
+            override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>
+            {
+                val data = String(response?.data!!)
+                return Response.success(data, HttpHeaderParser.parseCacheHeaders(response))
+            }
+
+            override fun getHeaders(): MutableMap<String?, String?>
+            {
+                val tmp = mutableMapOf<String?, String?>()
+                if (token != null)
+                {
+                    tmp["x-access-token"] = token!!
+                }
+                tmp["Content-Type"] = "application/json"
+                return tmp
+            }
+        }
+        queue.add(stringRequest)
+    }
+
+    fun getFAQQuestion(): String?
+    {
+        val resources = serviceController!!.getInstance<Resources>()
+        val inputStream = resources.openRawResource(R.raw.question_faq_example)
+        return IOUtils.toString(inputStream, StandardCharsets.UTF_8)
+    }
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.jobsurvey.viewmodel.ThemeViewModel">
+        tools:context="jobtrends.jobsurvey.adapter.ThemeAdapter">
 
   <data>
-    <variable name="vm" type="jobtrends.jobsurvey.viewmodel.ThemeViewModel"/>
-    <variable name="m" type="jobtrends.jobsurvey.model.Theme"/>
+    <variable name="vm" type="jobtrends.jobsurvey.adapter.ThemeAdapter"/>
+    <variable name="m" type="jobtrends.jobsurvey.model.ThemeModel"/>
   </data>
 
   <LinearLayout android:layout_width="match_parent"
@@ -35,7 +35,7 @@
               android:layout_margin="8dp"
               android:layout_weight="1"
               android:gravity="center"
-              android:text="@{@string/listview_start_survey_view_txt_1 + m.lvl}"
+              android:text="@{@string/listview_start_survey_view_txt_1 + m.level}"
               android:textAppearance="?android:attr/textAppearanceSmall"
               android:textColor="@color/colorAccent"/>
 

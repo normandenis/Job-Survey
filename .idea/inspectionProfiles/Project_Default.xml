@@ -465,7 +465,7 @@
     <inspection_tool class="ConnectionResource" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ConstPropertyName" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ConstantAssertCondition" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="ConstantConditionIf" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="ConstantConditionIf" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="ConstantConditionalExpression" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ConstantConditions" enabled="true" level="ERROR" enabled_by_default="true">
       <option name="SUGGEST_NULLABLE_ANNOTATIONS" value="false" />
@@ -945,7 +945,6 @@
     <inspection_tool class="IncrementDecrementUsedAsExpression" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="IndexOfReplaceableByContains" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="InfiniteLoopStatement" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="InfiniteRecursion" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="InnerClassMayBeStatic" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="InnerClassOnInterface" enabled="true" level="ERROR" enabled_by_default="true">
       <option name="m_ignoreInnerInterfaces" value="false" />
@@ -1081,7 +1080,7 @@
     <inspection_tool class="LeakingThis" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="LengthOneStringInIndexOf" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="LengthOneStringsInConcatenation" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="LiftReturnOrAssignment" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="LiftReturnOrAssignment" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="LimitedScopeInnerClass" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ListIndexOfReplaceableByContains" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ListenerMayUseAdapter" enabled="true" level="ERROR" enabled_by_default="true">
@@ -1205,6 +1204,7 @@
       <option name="limit" value="100" />
     </inspection_tool>
     <inspection_tool class="MoveFieldAssignmentToInitializer" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="MoveLambdaOutsideParentheses" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="MoveSuspiciousCallableReferenceIntoParentheses" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="MultiCatchCanBeSplit" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="MultipleDeclaration" enabled="true" level="ERROR" enabled_by_default="true">
@@ -1236,6 +1236,7 @@
     <inspection_tool class="NegativelyNamedBooleanVariable" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="NestedAssignment" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="NestedConditionalExpression" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="NestedLambdaShadowedImplicitParameter" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="NestedMethodCall" enabled="true" level="ERROR" enabled_by_default="true">
       <option name="m_ignoreFieldInitializations" value="true" />
     </inspection_tool>
@@ -1484,7 +1485,7 @@
     <inspection_tool class="RecursiveEqualsCall" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="RecursivePropertyAccessor" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="RedundantArrayCreation" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="RedundantCast" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="RedundantAsync" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="RedundantCompanionReference" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="RedundantExplicitType" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="RedundantFieldInitialization" enabled="true" level="ERROR" enabled_by_default="true" />
@@ -1555,6 +1556,8 @@
     <inspection_tool class="ReplaceSingleLineLet" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ReplaceSizeCheckWithIsNotEmpty" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ReplaceSizeZeroCheckWithIsEmpty" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="ReplaceStringFormatWithLiteral" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="ReplaceToStringWithStringTemplate" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ReplaceToWithInfixForm" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ReplaceWithOperatorAssignment" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="RequireNonNull" enabled="true" level="ERROR" enabled_by_default="true" />
@@ -1802,7 +1805,7 @@
     <inspection_tool class="ThrowsRuntimeException" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="TimeToString" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ToArrayCallWithZeroLengthArrayArgument" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="TodoComment" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="TodoComment" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="TooBroadCatch" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="TooBroadScope" enabled="true" level="ERROR" enabled_by_default="true">
       <option name="m_allowConstructorAsInitializer" value="false" />

@@ -1,97 +1,63 @@
 package jobtrends.jobsurvey.viewmodel
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.databinding.DataBindingUtil
-import android.support.v4.app.FragmentManager
-import android.util.Log
+import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
+import android.widget.Button
 import jobtrends.jobsurvey.R
-import jobtrends.jobsurvey.databinding.ListviewStartSurveyViewBinding
-import jobtrends.jobsurvey.model.Survey
-import jobtrends.jobsurvey.model.Theme
-import jobtrends.jobsurvey.service.APIController
-import jobtrends.jobsurvey.service.JsonController
+import jobtrends.jobsurvey.adapter.ThemeAdapter
+import jobtrends.jobsurvey.databinding.ThemeViewBinding
+import jobtrends.jobsurvey.model.HomeModel
 import jobtrends.jobsurvey.service.serviceController
 
-class ThemeViewModel : BaseAdapter
+@SuppressLint("ValidFragment")
+class ThemeViewModel : Fragment
 {
-  private val _apiController: APIController?
-  private val _jsonController: JsonController?
-  private var _inflater: LayoutInflater?
-  private var _view: View?
-  private val _fragmentManager: FragmentManager?
-  private val _tag: String?
-  private val _list: List<Theme>?
+    private var _themeAdapter: ThemeAdapter?
+    private var _homeModel: HomeModel?
+    private var _view: View?
+    private val _appBarBtn: Button?
+    private val _tag: String?
 
-  constructor(list: List<Theme>, fragmentManager: FragmentManager?) : super()
-  {
-    _list = list
-    _fragmentManager = fragmentManager
-    _tag = "ThemeViewModel"
-    _apiController = serviceController!!.getInstance()
-    _jsonController = serviceController!!.getInstance()
-    _view = null
-    _inflater = null
-  }
-
-  @SuppressLint("ViewHolder")
-  override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View?
-  {
-    if (_inflater == null)
+    @SuppressLint("ValidFragment")
+    constructor(homeModel: HomeModel?) : super()
     {
-      _inflater = parent!!.context.getSystemService(
-        Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        _tag = "ThemeViewModel"
+        _themeAdapter = null
+        _view = null
+        _homeModel = homeModel
+        _appBarBtn = serviceController?.getInstance()
     }
-    val binding: ListviewStartSurveyViewBinding? = DataBindingUtil
-      .inflate(_inflater!!, R.layout.listview_start_survey_view, parent, false)
-    binding!!.vm = this
-    binding.m = _list!![position]
 
-    _view = binding.root
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View?
+    {
 
-    return _view
-  }
+        val binding: ThemeViewBinding? = DataBindingUtil.inflate(inflater, R.layout.theme_view, container, false)
+        _view = binding?.root
 
-  override fun getItem(position: Int): Any?
-  {
-    return _list!![position]
-  }
+        _themeAdapter = ThemeAdapter(_homeModel?.themes, fragmentManager)
 
-  override fun getItemId(position: Int): Long
-  {
-    return position.toLong()
-  }
+        _appBarBtn?.setBackgroundResource(R.drawable.ic_person_orange_32dp)
+        _appBarBtn?.setOnClickListener { onNavSetting() }
 
-  override fun getCount(): Int
-  {
-    return _list!!.size
-  }
+        binding?.vm = this
+        binding?.homeModel = _homeModel
+        binding?.themeAdapter = _themeAdapter
 
-  fun onClickTheme(theme: Theme)
-  {
-    val id = theme.survey_id
-    _apiController!!.get("jobaymax/survey/$id", ::jobaymaxSurveyIdReply, _view!!.context)
-  }
+        return _view
+    }
 
-  private fun jobaymaxSurveyIdReply(code: Int?, body: String?)
-  {
-    val msg = "$code: $body"
-    Log.d(_tag, msg)
-    val survey = _jsonController!!.deserialize<Survey>(body)
-    val fragment = SurveyViewModel()
-    fragment.survey = survey
-    val transaction = _fragmentManager!!.beginTransaction()
-    transaction.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
-    transaction.addToBackStack(null)
-    transaction.commit()
-  }
-
-  fun isVisible(open: Boolean?): Int?
-  {
-    return if (open == true) View.INVISIBLE else View.VISIBLE
-  }
+    private fun onNavSetting()
+    {
+        val fragment = SettingViewModel()
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
+        transaction?.addToBackStack(null)
+        transaction?.commit()
+    }
 }

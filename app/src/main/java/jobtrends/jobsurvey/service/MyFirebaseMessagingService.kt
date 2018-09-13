@@ -18,74 +18,75 @@ import jobtrends.jobsurvey.viewmodel.HomeViewModel
 
 abstract class MyFirebaseMessagingService : FirebaseMessagingService
 {
-  private val _tag: String?
+    private val _tag: String?
 
-  constructor() : super()
-  {
-    _tag = "MyFirebaseMsgService"
-  }
-
-  override fun onMessageReceived(remoteMessage: RemoteMessage?)
-  {
-    val msg = "From: ${remoteMessage!!.from!!}"
-    Log.d(_tag, msg)
-
-    if (remoteMessage.data.isNotEmpty())
+    constructor() : super()
     {
-      Log.d(_tag, "Message data payload: ${remoteMessage.data}")
-
-      if (true)
-      {
-        scheduleJob()
-      } else
-      {
-        handleNow()
-      }
-
-    }
-    if (remoteMessage.notification != null)
-    {
-      Log.d(_tag, "Message Notification Body: ${remoteMessage.notification!!.body}")
+        _tag = "MyFirebaseMsgService"
     }
 
-  }
-
-  private fun scheduleJob()
-  {
-    val dispatcher = FirebaseJobDispatcher(GooglePlayDriver(this))
-    val myJob = dispatcher.newJobBuilder().setService(MyJobService::class.java).setTag("my-job-tag")
-      .build()
-    dispatcher.schedule(myJob)
-  }
-
-  private fun handleNow()
-  {
-    Log.d(_tag, "Short lived task is done.")
-  }
-
-  private fun sendNotification(messageBody: String?)
-  {
-    val intent = Intent(this, HomeViewModel::class.java)
-    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-    val pendingIntent = PendingIntent
-      .getActivity(this, 0 /* Request code */, intent, PendingIntent.FLAG_ONE_SHOT)
-
-    val channelId = getString(R.string.default_notification_channel_id)
-    val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-    val notificationBuilder = NotificationCompat.Builder(this, channelId)
-      .setSmallIcon(R.drawable.ic_logo_gray_500dp).setContentTitle("FCM Message")
-      .setContentText(messageBody).setAutoCancel(true).setSound(defaultSoundUri)
-      .setContentIntent(pendingIntent)
-
-    val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+    override fun onMessageReceived(remoteMessage: RemoteMessage?)
     {
-      val channel = NotificationChannel(channelId, "Channel human readable title",
-                                        NotificationManager.IMPORTANCE_DEFAULT)
-      notificationManager.createNotificationChannel(channel)
+        val msg = "From: ${remoteMessage!!.from!!}"
+        Log.d(_tag, msg)
+
+        if (remoteMessage.data.isNotEmpty())
+        {
+            Log.d(_tag, "MessageModel data payload: ${remoteMessage.data}")
+
+            if (true)
+            {
+                scheduleJob()
+            }
+            else
+            {
+                handleNow()
+            }
+
+        }
+        if (remoteMessage.notification != null)
+        {
+            Log.d(_tag, "MessageModel Notification Body: ${remoteMessage.notification!!.body}")
+        }
+
     }
 
-    notificationManager.notify(0, notificationBuilder.build())
-  }
+    private fun scheduleJob()
+    {
+        val dispatcher = FirebaseJobDispatcher(GooglePlayDriver(this))
+        val myJob = dispatcher.newJobBuilder().setService(MyJobService::class.java).setTag("my-job-tag")
+                .build()
+        dispatcher.schedule(myJob)
+    }
+
+    private fun handleNow()
+    {
+        Log.d(_tag, "Short lived task is done.")
+    }
+
+    private fun sendNotification(messageBody: String?)
+    {
+        val intent = Intent(this, HomeViewModel::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        val pendingIntent = PendingIntent
+                .getActivity(this, 0 /* Request code */, intent, PendingIntent.FLAG_ONE_SHOT)
+
+        val channelId = getString(R.string.default_notification_channel_id)
+        val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        val notificationBuilder = NotificationCompat.Builder(this, channelId)
+                .setSmallIcon(R.drawable.ic_logo_gray_500dp).setContentTitle("FCM MessageModel")
+                .setContentText(messageBody).setAutoCancel(true).setSound(defaultSoundUri)
+                .setContentIntent(pendingIntent)
+
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            val channel = NotificationChannel(channelId, "Channel human readable title",
+                                              NotificationManager.IMPORTANCE_DEFAULT)
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        notificationManager.notify(0, notificationBuilder.build())
+    }
 }

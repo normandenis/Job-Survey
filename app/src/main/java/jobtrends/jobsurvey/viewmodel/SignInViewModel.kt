@@ -15,61 +15,61 @@ import jobtrends.jobsurvey.service.serviceController
 
 class SignInViewModel : AppCompatActivity
 {
-  private val _jsonController: JsonController?
-  private val _apiController: APIController?
-  private val _userModel: UserModel?
-  private val _errorModel: ErrorModel?
-  private val _tag: String?
+    private val _jsonController: JsonController?
+    private val _apiController: APIController?
+    private val _userModel: UserModel?
+    private val _errorModel: ErrorModel?
+    private val _tag: String?
 
-  constructor() : super()
-  {
-    _tag = "SignInViewModel"
-    _apiController = serviceController!!.getInstance()
-    _jsonController = serviceController!!.getInstance()
-    _errorModel = serviceController!!.getInstance()
-    _userModel = serviceController!!.getInstance()
-  }
-
-
-  override fun onCreate(savedInstanceState: Bundle?)
-  {
-    super.onCreate(savedInstanceState)
-    val binding: SignInViewBinding = DataBindingUtil.setContentView(this, R.layout.sign_in_view)
-    binding.vm = this
-    binding.userModel = _userModel
-    binding.errorModel = _errorModel
-    serviceController!!.register(resources)
-  }
-
-  fun onClickSignIn()
-  {
-    val body: MutableMap<String?, String?>? = mutableMapOf()
-    body!!["username"] = _userModel!!.email!!.get()
-    body["password"] = _userModel.encryptedPassword!!.get()
-    val bodySerialized = _jsonController!!.serialize(body)
-    _apiController!!.post("auth/login", bodySerialized, ::authLoginReply, this)
-  }
-
-  private fun authLoginReply(code: Int?, body: String?)
-  {
-    val msg = "$code: $body"
-    Log.d(_tag, msg)
-    if (code != 200 && code != 201)
+    constructor() : super()
     {
-      _errorModel!!.mainMsg!!.set(body)
-      return
+        _tag = "SignInViewModel"
+        _apiController = serviceController?.getInstance()
+        _jsonController = serviceController?.getInstance()
+        _errorModel = serviceController?.getInstance()
+        _userModel = serviceController?.getInstance()
     }
-    _errorModel!!.reset()
-    val intent = Intent(this, HomeViewModel::class.java)
-    startActivity(intent)
-  }
 
-  fun onClickSignUp()
-  {
-    _errorModel!!.reset()
-    _userModel!!.email!!.set("")
-    _userModel.password!!.set("")
-    val intent = Intent(this, SignUpViewModel::class.java)
-    startActivity(intent)
-  }
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+        val binding: SignInViewBinding = DataBindingUtil.setContentView(this, R.layout.sign_in_view)
+        binding.vm = this
+        binding.userModel = _userModel
+        binding.errorModel = _errorModel
+        serviceController?.register(resources)
+    }
+
+    fun onClickSignIn()
+    {
+        val body: MutableMap<String?, String?>? = mutableMapOf()
+        body?.set("email", _userModel?.email?.get())
+        body?.set("password", _userModel?.password?.get())
+        val bodySerialized = _jsonController?.serialize(body)
+        _apiController?.post("login", bodySerialized, ::authLoginReply, this)
+    }
+
+    private fun authLoginReply(code: Int?, body: String?)
+    {
+        val msg = "$code: $body"
+        Log.d(_tag, msg)
+        if (code != 200 && code != 201)
+        {
+            _errorModel?.mainMsg?.set(body)
+            return
+        }
+        _errorModel?.reset()
+        val intent = Intent(this, HomeViewModel::class.java)
+        startActivity(intent)
+    }
+
+    fun onClickSignUp()
+    {
+        _errorModel?.reset()
+        _userModel?.email?.set("")
+        _userModel?.password?.set("")
+        val intent = Intent(this, SignUpViewModel::class.java)
+        startActivity(intent)
+    }
 }

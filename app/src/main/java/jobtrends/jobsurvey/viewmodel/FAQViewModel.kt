@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import jobtrends.jobsurvey.R
+import jobtrends.jobsurvey.adapter.FAQAdapter
 import jobtrends.jobsurvey.databinding.FaqViewBinding
 import jobtrends.jobsurvey.model.ListFAQModel
 import jobtrends.jobsurvey.service.APIController
@@ -15,34 +16,35 @@ import jobtrends.jobsurvey.service.serviceController
 
 class FAQViewModel : Fragment
 {
-  val viewModel: ListViewFAQViewModel?
-  val model: ListFAQModel?
-  private val _apiController: APIController?
-  private val _jsonController: JsonController?
+    val faqAdapter: FAQAdapter?
+    val model: ListFAQModel?
+    private val _apiController: APIController?
+    private val _jsonController: JsonController?
 
-  constructor() : super()
-  {
-    _apiController = serviceController!!.getInstance()
-    _jsonController = serviceController!!.getInstance()
-    val strQuestions = _apiController!!.getFAQQuestion()
-    model = _jsonController!!.deserialize(strQuestions)
-    viewModel = ListViewFAQViewModel(model!!.questions)
-  }
+    constructor() : super()
+    {
+        _apiController = serviceController?.getInstance()
+        _jsonController = serviceController?.getInstance()
+        val strQuestions = _apiController?.getFAQQuestion()
+        model = _jsonController?.deserialize(strQuestions)
+        faqAdapter = FAQAdapter(model?.questions)
+    }
 
 
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                            savedInstanceState: Bundle?): View?
-  {
-    val binding: FaqViewBinding = DataBindingUtil
-      .inflate(inflater, R.layout.faq_view, container, false)
-    val view = binding.root
-    binding.vm = this
-    return view
-  }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View?
+    {
+        val binding: FaqViewBinding? = DataBindingUtil.inflate(inflater, R.layout.faq_view, container, false)
+        binding?.vm = this
+        return binding?.root
+    }
 
-  fun onTextChanged(s: CharSequence, start: Int?, before: Int?, count: Int?)
-  {
-    // Call back the Adapter with current character to Filter
-    viewModel!!.filter.filter(s.toString())
-  }
+    fun onTextChanged(s: CharSequence, start: Int?, before: Int?, count: Int?)
+    {
+        start as Any
+        before as Any
+        count as Any
+        // Call back the Adapter with current character to Filter
+        faqAdapter?.filter?.filter("$s")
+    }
 }

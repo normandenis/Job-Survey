@@ -32,7 +32,7 @@
               android:layout_height="wrap_content"
               android:layout_margin="16dp"
               android:layout_weight="2"
-              android:checked="@={userModel.jobaymax}"/>
+              android:checked="false"/>
 
     </LinearLayout>
 
@@ -51,7 +51,7 @@
               android:layout_height="wrap_content"
               android:layout_margin="16dp"
               android:layout_weight="2"
-              android:checked="@={userModel.newsletter}"/>
+              android:checked="false"/>
 
     </LinearLayout>
 

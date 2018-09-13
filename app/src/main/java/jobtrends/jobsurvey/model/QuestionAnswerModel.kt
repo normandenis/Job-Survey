@@ -6,19 +6,25 @@ import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
 import jobtrends.jobsurvey.adapter.ObservableStringAdapter
 
-class BodyModel
+class QuestionAnswerModel
 {
     @Expose(serialize = true, deserialize = true)
+    @SerializedName("_id")
     @JsonAdapter(ObservableStringAdapter::class)
-    var message: ObservableField<String?>?
+    var id: ObservableField<String?>?
 
     @Expose(serialize = true, deserialize = true)
-    @SerializedName("err")
-    var error: MessageModel?
+    @JsonAdapter(ObservableStringAdapter::class)
+    var title: ObservableField<String?>?
+
+    @Expose(serialize = true, deserialize = true)
+    @JsonAdapter(ObservableStringAdapter::class)
+    var value: ObservableField<String?>?
 
     constructor()
     {
-        message = ObservableField()
-        error = MessageModel()
+        id = ObservableField()
+        title = ObservableField()
+        value = ObservableField()
     }
 }

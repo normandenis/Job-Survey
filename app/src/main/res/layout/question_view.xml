@@ -8,9 +8,9 @@
     <variable name="vm"
               type="jobtrends.jobsurvey.viewmodel.QuestionViewModel"/>
     <variable name="question"
-              type="jobtrends.jobsurvey.model.Question"/>
-    <variable name="answerViewModel"
-              type="jobtrends.jobsurvey.viewmodel.AnswerViewModel"/>
+              type="jobtrends.jobsurvey.model.QuestionModel"/>
+    <variable name="answerAdapter"
+              type="jobtrends.jobsurvey.adapter.AnswerAdapter"/>
   </data>
 
     <LinearLayout android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                     android:layout_marginTop="@dimen/margin_top"
                     android:divider="@null"
                     android:dividerHeight="0dp"
-                    app:adapter="@{answerViewModel}"/>
+                    app:adapter="@{answerAdapter}"/>
 
         </LinearLayout>
 

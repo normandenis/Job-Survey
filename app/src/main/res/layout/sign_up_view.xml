@@ -126,7 +126,7 @@
                       android:layout_marginTop="@dimen/margin_top"
                       android:hint="@string/sign_up_view_txt_6"
                       android:inputType="text"
-                      android:text="@={userModel.metier}"
+                      android:text="@={userModel.job}"
                       android:textAppearance="?android:attr/textAppearanceSmall"
                       app:errorText="@{errorModel.jobMsg}"/>
 
@@ -144,7 +144,7 @@
                       android:layout_marginTop="@dimen/margin_top"
                       android:hint="@string/sign_up_view_txt_8"
                       android:inputType="textPassword"
-                      android:text="@={userModel.encryptedPassword}"
+                      android:text="@={userModel.passwordProtection}"
                       android:textAppearance="?android:attr/textAppearanceSmall"
                       app:errorText="@{errorModel.passwordBisMsg}"/>
 

@@ -130,7 +130,7 @@
   <string name="profile_view_10">Sauvegarder</string>
 
 
-  <!--start_survey_view-->
+  <!--theme_view-->
 
 
   <string name="start_survey_view_0">
@@ -144,7 +144,7 @@
   </string>
 
 
-  <!--listview_start_survey_view-->
+  <!--theme_adapter_view-->
 
 
   <string name="listview_start_survey_view_txt_0">Thème&#160;</string>
@@ -152,7 +152,7 @@
   <string name="listview_start_survey_view_txt_1">Niveau&#160;</string>
 
 
-  <!--end_survey_view-->
+  <!--result_view-->
 
 
   <string name="end_survey_view_txt_0">

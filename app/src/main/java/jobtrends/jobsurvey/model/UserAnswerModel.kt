@@ -3,22 +3,21 @@ package jobtrends.jobsurvey.model
 import android.databinding.ObservableField
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.JsonAdapter
-import com.google.gson.annotations.SerializedName
 import jobtrends.jobsurvey.adapter.ObservableStringAdapter
 
-class BodyModel
+class UserAnswerModel
 {
     @Expose(serialize = true, deserialize = true)
     @JsonAdapter(ObservableStringAdapter::class)
-    var message: ObservableField<String?>?
+    var question: ObservableField<String?>?
 
     @Expose(serialize = true, deserialize = true)
-    @SerializedName("err")
-    var error: MessageModel?
+    @JsonAdapter(ObservableStringAdapter::class)
+    var answer: ObservableField<String?>?
 
     constructor()
     {
-        message = ObservableField()
-        error = MessageModel()
+        question = ObservableField()
+        answer = ObservableField()
     }
 }
