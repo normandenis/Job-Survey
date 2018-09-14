@@ -166,7 +166,7 @@ class SignUpViewModel : AppCompatActivity
         bodySend?.set("username", _userModel?.email?.get())
         bodySend?.set("password", _userModel?.password?.get())
         val bodySerialized = _jsonController?.serialize(bodySend)
-        _apiController?.post("auth/login", bodySerialized, ::authLoginReply, this)
+        _apiController?.post("login", bodySerialized, ::authLoginReply, this)
     }
 
     private fun authLoginReply(code: Int?, body: String?)

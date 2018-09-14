@@ -104,7 +104,7 @@ class SurveyViewModel : Fragment
     private fun newInstance(questionModel: QuestionModel?): Fragment
     {
         val userAnswerModel: UserAnswerModel? = UserAnswerModel()
-        userAnswerModel?.question?.set(questionModel?.content?.get())
+        userAnswerModel?.question?.set(questionModel?.id?.get())
         val fragment = QuestionViewModel(userAnswerModel, questionModel)
         _resultModel?.answers?.add(userAnswerModel)
 

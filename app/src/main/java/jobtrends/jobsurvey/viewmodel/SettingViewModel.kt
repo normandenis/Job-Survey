@@ -121,7 +121,7 @@ class SettingViewModel : Fragment
     fun onNotifYes()
     {
         val json = _jsonController?.serialize(_userModel)
-        _apiController?.put("auth/user", json, ::authUserReply, context)
+        _apiController?.put("users", json, ::authUserReply, context)
     }
 
 

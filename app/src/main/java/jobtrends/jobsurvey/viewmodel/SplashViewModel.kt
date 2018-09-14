@@ -97,7 +97,7 @@ class SplashViewModel : AppCompatActivity
         tmp?.set("email", user?.email?.get())
         tmp?.set("password", user?.password?.get())
         val tmpSerialized = _jsonController?.serialize(tmp)
-        _apiController?.post("auth/login", tmpSerialized, ::authLoginReply, this)
+        _apiController?.post("login", tmpSerialized, ::authLoginReply, this)
     }
 
     private fun authLoginReply(code: Int?, body: String?)

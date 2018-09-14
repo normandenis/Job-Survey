@@ -74,7 +74,7 @@ class AnswerAdapter : BaseAdapter
         val msg = "Answers size: ${_resultModel?.answers?.size}"
         Log.d(_tag, msg)
         val button = view?.findViewById<Button>(R.id.answer_button)
-        _userAnswerModel?.answer?.set(answer?.title?.get())
+        _userAnswerModel?.answer?.set(answer?.value?.get())
         if (_button != null)
         {
             _button?.setBackgroundResource(R.drawable.outline_layout)

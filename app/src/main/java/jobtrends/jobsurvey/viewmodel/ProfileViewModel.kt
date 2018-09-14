@@ -144,7 +144,7 @@ class ProfileViewModel : Fragment
             return
         }
         val json = _jsonController?.serialize(_tmpUserModel)
-        _apiController?.put("auth/user", json, ::authUserReply, context)
+        _apiController?.put("users", json, ::authUserReply, context)
     }
 
     private fun authUserReply(code: Int?, body: String?)

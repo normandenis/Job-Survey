@@ -1,6 +1,7 @@
 package jobtrends.jobsurvey.viewmodel
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -12,6 +13,7 @@ import android.widget.Button
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.databinding.HomeViewBinding
 import jobtrends.jobsurvey.model.HomeModel
+import jobtrends.jobsurvey.model.UserModel
 import jobtrends.jobsurvey.service.APIController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.serviceController
@@ -21,11 +23,13 @@ class HomeViewModel : AppCompatActivity
     private val _tag = "HomeViewModel"
     private val _jsonController: JsonController?
     private val _apiController: APIController?
+    private val _userModel: UserModel?
 
     constructor()
     {
         _jsonController = serviceController?.getInstance()
         _apiController = serviceController?.getInstance()
+        _userModel = serviceController?.getInstance()
     }
 
     @SuppressLint("CommitPrefEdits")
@@ -43,17 +47,27 @@ class HomeViewModel : AppCompatActivity
         _apiController?.get("me", ::jobaymaxMeRepley, this)
 
         initNotification()
+        saveUser()
+    }
+
+    fun saveUser()
+    {
+        val json: String? = _jsonController?.serialize(_userModel)
+        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor: SharedPreferences.Editor? = preferences?.edit()
+        editor?.putString(UserModel::class.java.simpleName, json)
+        editor?.apply()
     }
 
     private fun initNotification()
     {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val token = preferences.getString("DeviceId", null)
+        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(this)
+        val token = preferences?.getString("DeviceId", null)
         val msg = token ?: ""
         Log.d(_tag, msg)
         if (token != null && token != "")
         {
-            _apiController?.post("jobaymax/me/device/$token?type=ANDROID", null, ::jobaymaxMeDeviceTokenReply, this)
+            _apiController?.post("users/device/$token?os=ANDROID", null, ::jobaymaxMeDeviceTokenReply, this)
         }
     }
 
