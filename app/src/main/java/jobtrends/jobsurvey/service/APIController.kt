@@ -55,7 +55,7 @@ class APIController
         }, Response.ErrorListener { s ->
             val jsonController: JsonController = serviceController!!.getInstance()
             val bodyModel: BodyModel? = jsonController.deserialize(String(s.networkResponse.data))
-            callback(s.networkResponse.statusCode, bodyModel?.message?.get() ?: "No message available")
+            callback(s.networkResponse.statusCode, bodyModel?.message?.get() ?: "Nous rencontrons des soucis avec nos serveurs, veuillez nous excuser de la gêne occasionnée.")
         })
         {
 
@@ -98,7 +98,7 @@ class APIController
                 }, Response.ErrorListener { s ->
                     val jsonController: JsonController = serviceController!!.getInstance()
                     val bodyModel: BodyModel? = jsonController.deserialize(String(s.networkResponse.data))
-                    callback(s.networkResponse.statusCode, bodyModel?.message?.get() ?: "No message available")
+                    callback(s.networkResponse.statusCode, bodyModel?.message?.get() ?: "Nous rencontrons des soucis avec nos serveurs, veuillez nous excuser de la gêne occasionnée.")
                 })
         {
             override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>
@@ -138,7 +138,7 @@ class APIController
                 }, Response.ErrorListener { s ->
                     val jsonController: JsonController = serviceController!!.getInstance()
                     val bodyModel: BodyModel? = jsonController.deserialize(String(s.networkResponse.data))
-                    callback(s.networkResponse.statusCode, bodyModel?.message?.get() ?: "No message available")
+                    callback(s.networkResponse.statusCode, bodyModel?.message?.get() ?: "Nous rencontrons des soucis avec nos serveurs, veuillez nous excuser de la gêne occasionnée.")
                 })
         {
             override fun parseNetworkResponse(response: NetworkResponse?): Response<String?>

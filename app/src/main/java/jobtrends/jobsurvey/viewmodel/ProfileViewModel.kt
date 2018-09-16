@@ -30,6 +30,7 @@ class ProfileViewModel : Fragment
     private var _stop: Boolean?
     private val _tmpUserModel: UserModel?
     val oldPassword: ObservableField<String?>?
+    private val _oldPassword: String?
 
     constructor() : super()
     {
@@ -46,6 +47,7 @@ class ProfileViewModel : Fragment
         _tmpUserModel = UserModel(_userModel)
         _tmpUserModel.password?.set("")
         _tmpUserModel.passwordProtection?.set("")
+        _oldPassword = _userModel?.password?.get()
 
         _appBarBtn?.setBackgroundResource(R.drawable.ic_arrow_back_orange_512dp)
         _appBarBtn?.setOnClickListener { onNavBack() }
@@ -77,7 +79,7 @@ class ProfileViewModel : Fragment
                    _errorModel?.emailMsg)
         checkInput(_tmpUserModel?.password?.get(), "^[a-zA-Z0-9]+$", _errorModel?.passwordMsg)
         checkInput(_tmpUserModel?.job?.get(), "^[a-zA-Z ,.'-]+$", _errorModel?.jobMsg)
-        checkInput(_tmpUserModel?.birthday?.get(), "[0-9]{2}/[0-9]{2}/[0-9]{4}", _errorModel?.birthdayMsg)
+        checkInput(_tmpUserModel?.birthday?.get(), "[0-9]{2}-[0-9]{2}-[0-9]{4}", _errorModel?.birthdayMsg)
         checkPassword()
     }
 
@@ -96,7 +98,7 @@ class ProfileViewModel : Fragment
     {
         if (isNull(oldPassword?.get(), _errorModel?.oldPassword) == false)
         {
-            if (oldPassword?.get() != _userModel?.passwordProtection?.get())
+            if (oldPassword?.get() != _oldPassword)
             {
                 _stop = true
                 _errorModel?.oldPassword?.set("Ce mot de passe ne correspond pas à l'ancien mot de passe")

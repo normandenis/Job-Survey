@@ -2,6 +2,7 @@ package jobtrends.jobsurvey.service
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonSyntaxException
 
 class JsonController
 {
@@ -13,13 +14,27 @@ class JsonController
     }
 
 
-    inline fun <reified T> deserialize(str: String?): T
+    inline fun <reified T> deserialize(str: String?): T?
     {
-        return gson.fromJson(str, T::class.java)
+        try
+        {
+            return gson.fromJson(str, T::class.java)
+        }
+        catch (exception: JsonSyntaxException)
+        {
+            return null
+        }
     }
 
     fun <T> serialize(obj: T): String?
     {
-        return gson.toJson(obj)
+        try
+        {
+            return gson.toJson(obj)
+        }
+        catch (exception: JsonSyntaxException)
+        {
+            return null
+        }
     }
 }

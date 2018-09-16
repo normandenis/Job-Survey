@@ -163,7 +163,7 @@ class SignUpViewModel : AppCompatActivity
     private fun singIn()
     {
         val bodySend: MutableMap<String?, String?>? = mutableMapOf()
-        bodySend?.set("username", _userModel?.email?.get())
+        bodySend?.set("email", _userModel?.email?.get())
         bodySend?.set("password", _userModel?.password?.get())
         val bodySerialized = _jsonController?.serialize(bodySend)
         _apiController?.post("login", bodySerialized, ::authLoginReply, this)
