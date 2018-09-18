@@ -2,6 +2,7 @@ package jobtrends.jobsurvey.viewmodel
 
 import android.app.Dialog
 import android.content.Intent
+import android.content.SharedPreferences
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -121,7 +122,7 @@ class SettingViewModel : Fragment
     fun onNotifYes()
     {
         val json = _jsonController?.serialize(_userModel)
-        _apiController?.put("users", json, ::authUserReply, context)
+        _apiController?.patch("users", json, ::authUserReply, context)
     }
 
 
@@ -130,10 +131,11 @@ class SettingViewModel : Fragment
         val msg = "$code: $body"
         Log.d(_tag, msg)
         val json = _jsonController?.serialize(_userModel)
-        val preferences = PreferenceManager.getDefaultSharedPreferences(activity)
-        val editor = preferences.edit()
-        editor.putString(UserModel::class.java.simpleName, json)
-        editor.apply()
+        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(activity)
+        val editor: SharedPreferences.Editor? = preferences?.edit()
+        editor?.putString("email", _userModel?.email?.get())
+        editor?.putString(_userModel?.email?.get(), json)
+        editor?.apply()
         _dialog?.hide()
     }
 
@@ -146,10 +148,10 @@ class SettingViewModel : Fragment
     {
         _userModel?.reset()
         _apiController?.resetToken()
-        val preferences = PreferenceManager.getDefaultSharedPreferences(activity)
-        val editor = preferences.edit()
-        editor.putString(UserModel::class.java.simpleName, "")
-        editor.apply()
+        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(activity)
+        val editor: SharedPreferences.Editor? = preferences?.edit()
+        editor?.putString("email", "")
+        editor?.apply()
         val intent = Intent(activity, SignInViewModel::class.java)
         startActivity(intent)
     }

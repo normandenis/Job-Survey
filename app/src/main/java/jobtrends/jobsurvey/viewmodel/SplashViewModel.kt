@@ -1,8 +1,10 @@
 package jobtrends.jobsurvey.viewmodel
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
@@ -72,9 +74,9 @@ class SplashViewModel : AppCompatActivity
     private fun initUser()
     {
         initNotification()
-        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val json = preferences.getString(UserModel::class.java.simpleName, null)
-        Log.d(_tag, json ?: "")
+        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(this)
+        val email: String? = preferences?.getString("email", null)
+        val json = preferences?.getString(email, null)
         if (json != null && json != "")
         {
             signInUser(json)
@@ -87,7 +89,7 @@ class SplashViewModel : AppCompatActivity
 
     private fun signInUser(json: String?)
     {
-        val user = _jsonController?.deserialize<UserModel?>(json)
+        val user: UserModel? = _jsonController?.deserialize(json)
         if (user == null)
         {
             navToSignInView()

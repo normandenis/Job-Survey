@@ -1,8 +1,10 @@
 package jobtrends.jobsurvey.viewmodel
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import jobtrends.jobsurvey.R
@@ -60,6 +62,10 @@ class SignInViewModel : AppCompatActivity
             return
         }
         _errorModel?.reset()
+        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(this)
+        val json = preferences?.getString(_userModel?.email?.get(), null)
+        val user: UserModel? = _jsonController?.deserialize(json)
+        serviceController?.register(user, true)
         val intent = Intent(this, HomeViewModel::class.java)
         startActivity(intent)
     }

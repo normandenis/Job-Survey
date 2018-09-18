@@ -26,22 +26,23 @@ android {
     }
     buildTypes {
         release {
+            minifyEnabled false
+            useProguard false
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.config
             debuggable false
             jniDebuggable false
             renderscriptDebuggable false
-            minifyEnabled false
             pseudoLocalesEnabled false
             zipAlignEnabled false
         }
         debug {
             debuggable true
             jniDebuggable true
-            signingConfig signingConfigs.config
             renderscriptDebuggable true
-            useProguard false
+            signingConfig signingConfigs.config
             minifyEnabled false
+            useProguard false
             pseudoLocalesEnabled false
             zipAlignEnabled false
         }

@@ -32,7 +32,6 @@ class HomeViewModel : AppCompatActivity
         _userModel = serviceController?.getInstance()
     }
 
-    @SuppressLint("CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -50,12 +49,13 @@ class HomeViewModel : AppCompatActivity
         saveUser()
     }
 
-    fun saveUser()
+    private fun saveUser()
     {
         val json: String? = _jsonController?.serialize(_userModel)
         val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(this)
         val editor: SharedPreferences.Editor? = preferences?.edit()
-        editor?.putString(UserModel::class.java.simpleName, json)
+        editor?.putString("email", _userModel?.email?.get())
+        editor?.putString(_userModel?.email?.get(), json)
         editor?.apply()
     }
 

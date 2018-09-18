@@ -1,5 +1,6 @@
 package jobtrends.jobsurvey.viewmodel
 
+import android.content.SharedPreferences
 import android.databinding.DataBindingUtil
 import android.databinding.ObservableField
 import android.os.Bundle
@@ -145,8 +146,9 @@ class ProfileViewModel : Fragment
         {
             return
         }
+        _tmpUserModel?.password?.set(_oldPassword)
         val json = _jsonController?.serialize(_tmpUserModel)
-        _apiController?.put("users", json, ::authUserReply, context)
+        _apiController?.patch("users", json, ::authUserReply, context)
     }
 
     private fun authUserReply(code: Int?, body: String?)
@@ -158,13 +160,15 @@ class ProfileViewModel : Fragment
             _errorModel?.mainMsg?.set(body)
             return
         }
+        _tmpUserModel?.password?.set(_tmpUserModel.passwordProtection?.get())
         serviceController?.register(_tmpUserModel, true)
         val json = _jsonController?.serialize(_tmpUserModel)
 
-        val preferences = PreferenceManager.getDefaultSharedPreferences(activity)
-        val editor = preferences.edit()
-        editor.putString(UserModel::class.java.simpleName, json)
-        editor.apply()
+        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(activity)
+        val editor: SharedPreferences.Editor? = preferences?.edit()
+        editor?.putString("email", _userModel?.email?.get())
+        editor?.putString(_userModel?.email?.get(), json)
+        editor?.apply()
 
         val fragment = SettingViewModel()
         val transaction = fragmentManager?.beginTransaction()

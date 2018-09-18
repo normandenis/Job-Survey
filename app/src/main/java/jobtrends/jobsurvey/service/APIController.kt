@@ -89,11 +89,11 @@ class APIController
         queue.add(stringRequest)
     }
 
-    fun put(url: String?, json: String?, callback: (Int?, String?) -> Unit?, context: Context?)
+    fun patch(url: String?, json: String?, callback: (Int?, String?) -> Unit?, context: Context?)
     {
         val queue = Volley.newRequestQueue(context)
         val stringRequest = object :
-                StringRequest(Request.Method.PUT, urlBase + url, Response.Listener<String?> { s ->
+                StringRequest(Request.Method.PATCH, urlBase + url, Response.Listener<String?> { s ->
                     callback(statusCode!!, s)
                 }, Response.ErrorListener { s ->
                     val jsonController: JsonController = serviceController!!.getInstance()

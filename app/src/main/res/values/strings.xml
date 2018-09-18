@@ -46,7 +46,7 @@
 
   <string name="sign_up_view_txt_3">Prénom</string>
 
-  <string name="sign_up_view_txt_4">Date de naissance</string>
+  <string name="sign_up_view_txt_4">Mois-Jour-Année</string>
 
   <string name="sign_up_view_txt_5">Email</string>
 
@@ -115,7 +115,7 @@
 
   <string name="profile_view_3">Prénom</string>
 
-  <string name="profile_view_4">Date de naissance</string>
+  <string name="profile_view_4">Mois-Jour-Année</string>
 
   <string name="profile_view_5">Email</string>
 
