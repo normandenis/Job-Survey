@@ -25,7 +25,7 @@ class UserModel
     var password: ObservableField<String?>?
 
     @Expose(serialize = true, deserialize = true)
-    @SerializedName("new_password")
+    @SerializedName("newPassword")
     @JsonAdapter(ObservableStringAdapter::class)
     var passwordProtection: ObservableField<String?>?
 
