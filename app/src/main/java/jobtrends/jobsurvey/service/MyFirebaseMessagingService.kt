@@ -16,56 +16,45 @@ import com.google.firebase.messaging.RemoteMessage
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.viewmodel.HomeViewModel
 
-abstract class MyFirebaseMessagingService : FirebaseMessagingService
-{
+abstract class MyFirebaseMessagingService : FirebaseMessagingService {
     private val _tag: String?
 
-    constructor() : super()
-    {
+    constructor() : super() {
         _tag = "MyFirebaseMsgService"
     }
 
-    override fun onMessageReceived(remoteMessage: RemoteMessage?)
-    {
+    override fun onMessageReceived(remoteMessage: RemoteMessage?) {
         val msg = "From: ${remoteMessage!!.from!!}"
         Log.d(_tag, msg)
 
-        if (remoteMessage.data.isNotEmpty())
-        {
+        if (remoteMessage.data.isNotEmpty()) {
             Log.d(_tag, "MessageModel data payload: ${remoteMessage.data}")
 
-            if (true)
-            {
+            if (true) {
                 scheduleJob()
-            }
-            else
-            {
+            } else {
                 handleNow()
             }
 
         }
-        if (remoteMessage.notification != null)
-        {
+        if (remoteMessage.notification != null) {
             Log.d(_tag, "MessageModel Notification Body: ${remoteMessage.notification!!.body}")
         }
 
     }
 
-    private fun scheduleJob()
-    {
+    private fun scheduleJob() {
         val dispatcher = FirebaseJobDispatcher(GooglePlayDriver(this))
         val myJob = dispatcher.newJobBuilder().setService(MyJobService::class.java).setTag("my-job-tag")
                 .build()
         dispatcher.schedule(myJob)
     }
 
-    private fun handleNow()
-    {
+    private fun handleNow() {
         Log.d(_tag, "Short lived task is done.")
     }
 
-    private fun sendNotification(messageBody: String?)
-    {
+    private fun sendNotification(messageBody: String?) {
         val intent = Intent(this, HomeViewModel::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent
@@ -80,10 +69,9 @@ abstract class MyFirebaseMessagingService : FirebaseMessagingService
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-        {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(channelId, "Channel human readable title",
-                                              NotificationManager.IMPORTANCE_DEFAULT)
+                    NotificationManager.IMPORTANCE_DEFAULT)
             notificationManager.createNotificationChannel(channel)
         }
 

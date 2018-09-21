@@ -18,8 +18,7 @@ import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.serviceController
 import jobtrends.jobsurvey.viewmodel.SurveyViewModel
 
-class ThemeAdapter : BaseAdapter
-{
+class ThemeAdapter : BaseAdapter {
     private val _apiController: APIController?
     private val _jsonController: JsonController?
     private var _inflater: LayoutInflater?
@@ -28,8 +27,7 @@ class ThemeAdapter : BaseAdapter
     private val _tag: String?
     private val _list: List<ThemeModel?>?
 
-    constructor(list: List<ThemeModel?>?, fragmentManager: FragmentManager?) : super()
-    {
+    constructor(list: List<ThemeModel?>?, fragmentManager: FragmentManager?) : super() {
         _list = list
         _fragmentManager = fragmentManager
         _tag = "ThemeAdapter"
@@ -40,10 +38,8 @@ class ThemeAdapter : BaseAdapter
     }
 
     @SuppressLint("ViewHolder")
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View?
-    {
-        if (_inflater == null)
-        {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
+        if (_inflater == null) {
             _inflater = parent?.context?.getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         }
@@ -57,29 +53,27 @@ class ThemeAdapter : BaseAdapter
         return _view
     }
 
-    override fun getItem(position: Int): Any?
-    {
+    override fun getItem(position: Int): Any? {
         return _list?.get(position)
     }
 
-    override fun getItemId(position: Int): Long
-    {
+    override fun getItemId(position: Int): Long {
         return position.toLong()
     }
 
-    override fun getCount(): Int
-    {
-        return _list?.size!!
+    override fun getCount(): Int {
+        if (_list?.size == null) {
+            return 0
+        }
+        return _list.size
     }
 
-    fun onClickTheme(theme: ThemeModel)
-    {
+    fun onClickTheme(theme: ThemeModel) {
         val id = theme.surveyId?.get()
         _apiController?.get("surveys/$id", ::jobaymaxSurveyIdReply, _view?.context)
     }
 
-    private fun jobaymaxSurveyIdReply(code: Int?, body: String?)
-    {
+    private fun jobaymaxSurveyIdReply(code: Int?, body: String?) {
         val msg = "$code: $body"
         Log.d(_tag, msg)
         val survey: SurveyModel? = _jsonController?.deserialize(body)
@@ -91,8 +85,7 @@ class ThemeAdapter : BaseAdapter
         transaction?.commit()
     }
 
-    fun isVisible(open: Boolean?): Int?
-    {
+    fun isVisible(open: Boolean?): Int? {
         return if (open == true) View.INVISIBLE else View.VISIBLE
     }
 }

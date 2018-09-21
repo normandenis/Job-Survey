@@ -21,8 +21,7 @@ import jobtrends.jobsurvey.service.APIController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.serviceController
 
-class SettingViewModel : Fragment
-{
+class SettingViewModel : Fragment {
     private val _appBarBtn: Button?
     private val _homeModel: HomeModel?
     private val _jsonController: JsonController?
@@ -34,8 +33,7 @@ class SettingViewModel : Fragment
     private var _news: Boolean?
     private var _jobaymax: Boolean?
 
-    constructor() : super()
-    {
+    constructor() : super() {
         _tag = "SettingViewModel"
         _news = false
         _jobaymax = false
@@ -52,8 +50,7 @@ class SettingViewModel : Fragment
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View?
-    {
+                              savedInstanceState: Bundle?): View? {
         val binding: SettingViewBinding = DataBindingUtil
                 .inflate(inflater, R.layout.setting_view, container, false)
         binding.vm = this
@@ -70,13 +67,11 @@ class SettingViewModel : Fragment
         return _view
     }
 
-    private fun onNavStartSurvey()
-    {
+    private fun onNavStartSurvey() {
         _apiController?.get("me", ::jobaymaxMeReply, context)
     }
 
-    private fun jobaymaxMeReply(code: Int?, body: String?)
-    {
+    private fun jobaymaxMeReply(code: Int?, body: String?) {
         val msg = "$code: $body"
         Log.d(_tag, msg)
         val startSurveyModel: HomeModel? = _jsonController?.deserialize(body)
@@ -88,8 +83,7 @@ class SettingViewModel : Fragment
         transaction?.commit()
     }
 
-    fun onClick()
-    {
+    fun onClick() {
         val fragment = ProfileViewModel()
         val transaction = fragmentManager?.beginTransaction()
         transaction?.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
@@ -97,8 +91,7 @@ class SettingViewModel : Fragment
         transaction?.commit()
     }
 
-    fun onNavFAQ()
-    {
+    fun onNavFAQ() {
         val fragment = FAQViewModel()
         val transaction = fragmentManager?.beginTransaction()
         transaction?.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
@@ -106,52 +99,44 @@ class SettingViewModel : Fragment
         transaction?.commit()
     }
 
-    fun onNavNotif()
-    {
+    fun onNavNotif() {
         _jobaymax = false
         _news = false
         val bind: NotificationPopupViewBinding = DataBindingUtil
                 .inflate(LayoutInflater.from(context), R.layout.notification_popup_view,
-                         _view as ViewGroup, false)
+                        _view as ViewGroup, false)
         bind.vm = this
         bind.userModel = _userModel
         _dialog?.setContentView(bind.root)
         _dialog?.show()
     }
 
-    fun onNotifYes()
-    {
-        val json = _jsonController?.serialize(_userModel)
-        _apiController?.patch("users", json, ::authUserReply, context)
+    fun onNotifYes() {
+//        val json = _jsonController?.serialize(_userModel)
+//        _apiController?.patch("users", json, ::authUserReply, context)
+        authUserReply(null, null)
     }
 
 
-    private fun authUserReply(code: Int?, body: String?)
-    {
-        val msg = "$code: $body"
-        Log.d(_tag, msg)
-        val json = _jsonController?.serialize(_userModel)
-        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(activity)
-        val editor: SharedPreferences.Editor? = preferences?.edit()
-        editor?.putString("email", _userModel?.email?.get())
-        editor?.putString(_userModel?.email?.get(), json)
-        editor?.apply()
+    private fun authUserReply(code: Int?, body: String?) {
+//        val msg = "$code: $body"
+//        Log.d(_tag, msg)
+//        val json = _jsonController?.serialize(_userModel)
+//        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(activity)
+//        val editor: SharedPreferences.Editor? = preferences?.edit()
+//        editor?.putString("email", _userModel?.email?.get())
+//        editor?.putString(_userModel?.email?.get(), json)
+//        editor?.apply()
         _dialog?.hide()
     }
 
-    fun onNotifNo()
-    {
+    fun onNotifNo() {
         _dialog?.hide()
     }
 
-    fun onNavSignIn()
-    {
-        _userModel?.reset()
-        _apiController?.resetToken()
-        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(activity)
-        val editor: SharedPreferences.Editor? = preferences?.edit()
-        editor?.putString("email", "")
-        editor?.apply()
+    fun onNavSignIn() {
+        serviceController?.deleteUser(activity)
+
         val intent = Intent(activity, SignInViewModel::class.java)
         startActivity(intent)
     }

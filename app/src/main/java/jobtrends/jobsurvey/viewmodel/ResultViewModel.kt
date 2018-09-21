@@ -16,16 +16,14 @@ import jobtrends.jobsurvey.service.APIController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.serviceController
 
-class ResultViewModel : Fragment
-{
+class ResultViewModel : Fragment {
     private val _appBarBtn: Button?
     private val _jsonController: JsonController?
     private val _apiController: APIController?
     private val _resultModel: ResultModel?
     private val _tag: String?
 
-    constructor()
-    {
+    constructor() {
         _tag = "ResultViewModel"
         _appBarBtn = serviceController?.getInstance()
         _jsonController = serviceController?.getInstance()
@@ -34,8 +32,7 @@ class ResultViewModel : Fragment
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View
-    {
+                              savedInstanceState: Bundle?): View {
         val binding: ResultViewBinding? = DataBindingUtil.inflate(inflater, R.layout.result_view, container, false)
         binding?.vm = this
         _appBarBtn?.setBackgroundResource(R.drawable.ic_close_orange_32dp)
@@ -43,21 +40,24 @@ class ResultViewModel : Fragment
         return binding?.root!!
     }
 
-    fun onValidateSurvey()
-    {
+    fun onValidateSurvey() {
         val endSurveySerialiazed = _jsonController?.serialize(_resultModel)
         _apiController?.post("results/${_resultModel?.id?.get()}", endSurveySerialiazed, ::jobaymaxResultReply, context)
     }
 
-    private fun jobaymaxResultReply(code: Int?, body: String?)
-    {
+    private fun jobaymaxResultReply(code: Int?, body: String?) {
+        if (code == null || body == null) {
+            return
+        }
         val msg = "$code: $body"
         Log.i(_tag, msg)
         _apiController?.get("me", ::jobaymaxMeReply, context)
     }
 
-    private fun jobaymaxMeReply(code: Int?, body: String?)
-    {
+    private fun jobaymaxMeReply(code: Int?, body: String?) {
+        if (code == null || body == null) {
+            return
+        }
         val msg = "$code: $body"
         Log.i(_tag, msg)
         val startSurveyModel = _jsonController?.deserialize<HomeModel>(body)

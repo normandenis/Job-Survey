@@ -1,10 +1,7 @@
 package jobtrends.jobsurvey.viewmodel
 
-import android.annotation.SuppressLint
-import android.content.SharedPreferences
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
@@ -18,22 +15,19 @@ import jobtrends.jobsurvey.service.APIController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.serviceController
 
-class HomeViewModel : AppCompatActivity
-{
+class HomeViewModel : AppCompatActivity {
     private val _tag = "HomeViewModel"
     private val _jsonController: JsonController?
     private val _apiController: APIController?
     private val _userModel: UserModel?
 
-    constructor()
-    {
+    constructor() {
         _jsonController = serviceController?.getInstance()
         _apiController = serviceController?.getInstance()
         _userModel = serviceController?.getInstance()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: HomeViewBinding = DataBindingUtil.setContentView(this, R.layout.home_view)
         binding.vm = this
@@ -43,46 +37,47 @@ class HomeViewModel : AppCompatActivity
         serviceController?.register(findViewById<Button>(R.id.btn), true)
         serviceController?.register(binding.root, true)
 
-        _apiController?.get("me", ::jobaymaxMeRepley, this)
+        _apiController?.get("me", ::jobaymaxMeReply, this)
 
-        initNotification()
-        saveUser()
+//        initNotification()
+//        _apiController?.get("users/me", ::saveUser, this)
+        serviceController?.saveUser(this)
     }
 
-    private fun saveUser()
-    {
-        val json: String? = _jsonController?.serialize(_userModel)
-        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(this)
-        val editor: SharedPreferences.Editor? = preferences?.edit()
-        editor?.putString("email", _userModel?.email?.get())
-        editor?.putString(_userModel?.email?.get(), json)
-        editor?.apply()
-    }
+//    private fun saveUser(code: Int?, body: String?) {
+//        if (code != 200 || code != 201) {
+//            return
+//        }
+//        val json: String? = _jsonController?.serialize(_userModel)
+//        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(this)
+//        val editor: SharedPreferences.Editor? = preferences?.edit()
+//        editor?.putString("email", _userModel?.email?.get())
+//        editor?.putString(_userModel?.email?.get(), json)
+//        editor?.apply()
+//    }
 
-    private fun initNotification()
-    {
-        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(this)
-        val token = preferences?.getString("DeviceId", null)
-        val msg = token ?: ""
-        Log.d(_tag, msg)
-        if (token != null && token != "")
-        {
-            _apiController?.post("users/device/$token?os=ANDROID", null, ::jobaymaxMeDeviceTokenReply, this)
+//    private fun initNotification() {
+//        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(this)
+//        val token = preferences?.getString("DeviceId", null)
+//        val msg = token ?: ""
+//        Log.d(_tag, msg)
+//        if (token != null && token != "") {
+//            _apiController?.post("users/device/$token?os=ANDROID", null, ::jobaymaxMeDeviceTokenReply, this)
+//        }
+//    }
+
+//    private fun jobaymaxMeDeviceTokenReply(code: Int?, body: String?) {
+//        val msg = "$code: $body"
+//        Log.d(_tag, msg)
+//    }
+
+    private fun jobaymaxMeReply(code: Int?, body: String?) {
+        if (code == null || body == null) {
+            return
         }
-    }
-
-    private fun jobaymaxMeDeviceTokenReply(code: Int?, body: String?)
-    {
-        val msg = "$code: $body"
-        Log.d(_tag, msg)
-    }
-
-    private fun jobaymaxMeRepley(code: Int?, body: String?)
-    {
         val msg = "$code: $body"
         Log.i(_tag, msg)
-        if (code != 200 && code != 201)
-        {
+        if (code != 200 && code != 201) {
             return
         }
         val homeModel: HomeModel? = _jsonController?.deserialize(body)

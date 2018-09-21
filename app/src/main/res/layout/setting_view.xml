@@ -222,11 +222,11 @@
                                   android:text="@string/setting_view_txt_7"
                                   android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-                        <TextView android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:layout_marginTop="@dimen/margin_top"
-                                  android:text="@string/setting_view_txt_8"
-                                  android:textAppearance="?android:attr/textAppearanceSmall"/>
+                        <!--<TextView android:layout_width="match_parent"-->
+                                  <!--android:layout_height="wrap_content"-->
+                                  <!--android:layout_marginTop="@dimen/margin_top"-->
+                                  <!--android:text="@string/setting_view_txt_8"-->
+                                  <!--android:textAppearance="?android:attr/textAppearanceSmall"/>-->
 
                     </LinearLayout>
 

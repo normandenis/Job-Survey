@@ -1,10 +1,8 @@
 package jobtrends.jobsurvey.viewmodel
 
-import android.content.SharedPreferences
 import android.databinding.DataBindingUtil
 import android.databinding.ObservableField
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,8 +17,7 @@ import jobtrends.jobsurvey.service.APIController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.serviceController
 
-class ProfileViewModel : Fragment
-{
+class ProfileViewModel : Fragment {
     private val _userModel: UserModel?
     private val _user: UserModel?
     private val _errorModel: ErrorModel?
@@ -33,8 +30,7 @@ class ProfileViewModel : Fragment
     val oldPassword: ObservableField<String?>?
     private val _oldPassword: String?
 
-    constructor() : super()
-    {
+    constructor() : super() {
         _tag = "ProfileViewModel"
         _stop = false
         _userModel = serviceController?.getInstance()
@@ -55,8 +51,7 @@ class ProfileViewModel : Fragment
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View?
-    {
+                              savedInstanceState: Bundle?): View? {
         val binding: ProfileViewBinding? = DataBindingUtil
                 .inflate(inflater, R.layout.profile_view, container, false)
         binding?.vm = this
@@ -65,85 +60,71 @@ class ProfileViewModel : Fragment
         return binding?.root
     }
 
-    private fun onNavBack()
-    {
+    private fun onNavBack() {
         fragmentManager?.popBackStack()
     }
 
-    private fun checkInput()
-    {
+    private fun checkInput() {
         _stop = false
         _errorModel?.reset()
         checkInput(_tmpUserModel?.firstName?.get(), "^[a-zA-Z ,.'-]+$", _errorModel?.firstnameMsg)
         checkInput(_tmpUserModel?.lastName?.get(), "^[a-zA-Z ,.'-]+$", _errorModel?.lastnameMsg)
         checkInput(_tmpUserModel?.email?.get(), "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
-                   _errorModel?.emailMsg)
+                _errorModel?.emailMsg)
         checkInput(_tmpUserModel?.password?.get(), "^[a-zA-Z0-9]+$", _errorModel?.passwordMsg)
         checkInput(_tmpUserModel?.job?.get(), "^[a-zA-Z ,.'-]+$", _errorModel?.jobMsg)
         checkInput(_tmpUserModel?.birthday?.get(), "[0-9]{2}-[0-9]{2}-[0-9]{4}", _errorModel?.birthdayMsg)
         checkPassword()
     }
 
-    private fun isNull(str: String?, error: ObservableField<String?>?): Boolean?
-    {
-        if (str == null || str == "")
-        {
+    private fun isNull(str: String?, error: ObservableField<String?>?): Boolean? {
+        if (str == null || str == "") {
             _stop = true
             error?.set("Ce champ ne peut pas être vide")
             return true
         }
+        str.length
         return false
     }
 
-    private fun checkPassword()
-    {
-        if (isNull(oldPassword?.get(), _errorModel?.oldPassword) == false)
-        {
-            if (oldPassword?.get() != _oldPassword)
-            {
+    private fun checkPassword() {
+        if (isNull(oldPassword?.get(), _errorModel?.oldPassword) == false) {
+            if (oldPassword?.get() != _oldPassword) {
                 _stop = true
                 _errorModel?.oldPassword?.set("Ce mot de passe ne correspond pas à l'ancien mot de passe")
             }
         }
         if (isNull(_tmpUserModel?.password?.get(), _errorModel?.passwordMsg) == false
-            && isNull(_tmpUserModel?.passwordProtection?.get(), _errorModel?.passwordBisMsg) == false)
-        {
-            if (_tmpUserModel?.password?.get()?.length!! < 8)
-            {
+                && isNull(_tmpUserModel?.passwordProtection?.get(), _errorModel?.passwordBisMsg) == false) {
+            if (_tmpUserModel?.password?.get()?.length!! < 8) {
                 _stop = true
                 _errorModel?.passwordMsg?.set("Votre mot de passe est inférieur à 8 charactères")
             }
-            if (_tmpUserModel.password?.get() != _tmpUserModel.passwordProtection?.get())
-            {
+            if (_tmpUserModel.password?.get() != _tmpUserModel.passwordProtection?.get()) {
                 _stop = true
                 _errorModel?.passwordBisMsg?.set("Ce mot de passe est différent du premier")
             }
         }
     }
 
-    private fun checkInput(input: String?, pattern: String?, error: ObservableField<String?>?)
-    {
-        if (input == null || input == "")
-        {
+    private fun checkInput(input: String?, pattern: String?, error: ObservableField<String?>?) {
+        if (input == null || input == "") {
             error?.set("Ce champ ne peut pas être vide")
             _stop = true
             return
         }
         val regex = Regex(pattern!!)
         val result = input.matches(regex)
-        if (!result)
-        {
+        if (!result) {
             error?.set("Ce champ est invalide")
             _stop = true
         }
     }
 
 
-    fun onClick()
-    {
+    fun onClick() {
         checkInput()
-        if (_stop == true)
-        {
+        if (_stop == true) {
             return
         }
         _tmpUserModel?.password?.set(_oldPassword)
@@ -151,24 +132,27 @@ class ProfileViewModel : Fragment
         _apiController?.patch("users", json, ::authUserReply, context)
     }
 
-    private fun authUserReply(code: Int?, body: String?)
-    {
+    private fun authUserReply(code: Int?, body: String?) {
+        if (code == null || body == null) {
+            return
+        }
         val msg = "$code: $body"
         Log.i(_tag, msg)
-        if (code != 200 && code != 201)
-        {
+        if (code != 200 && code != 201) {
             _errorModel?.mainMsg?.set(body)
             return
         }
-        _tmpUserModel?.password?.set(_tmpUserModel.passwordProtection?.get())
-        serviceController?.register(_tmpUserModel, true)
-        val json = _jsonController?.serialize(_tmpUserModel)
+//        _tmpUserModel?.password?.set(_tmpUserModel.passwordProtection?.get())
+//        serviceController?.register(_tmpUserModel, true)
+//        val json = _jsonController?.serialize(_tmpUserModel)
 
-        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(activity)
-        val editor: SharedPreferences.Editor? = preferences?.edit()
-        editor?.putString("email", _userModel?.email?.get())
-        editor?.putString(_userModel?.email?.get(), json)
-        editor?.apply()
+//        val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(activity)
+//        val editor: SharedPreferences.Editor? = preferences?.edit()
+//        editor?.putString("email", _userModel?.email?.get())
+//        editor?.putString(_userModel?.email?.get(), json)
+//        editor?.apply()
+
+        serviceController?.saveUser(activity)
 
         val fragment = SettingViewModel()
         val transaction = fragmentManager?.beginTransaction()

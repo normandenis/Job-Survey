@@ -107,7 +107,6 @@
                       android:focusable="true"
                       android:hint="@string/sign_up_view_txt_4"
                       android:inputType="date"
-                      android:onClick="@{() -> vm.onDatePickerClick()}"
                       android:text="@={userModel.birthday}"
                       android:textAppearance="?android:attr/textAppearanceSmall"
                       app:errorText="@{errorModel.birthdayMsg}"/>

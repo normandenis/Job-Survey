@@ -15,8 +15,7 @@ import jobtrends.jobsurvey.model.HomeModel
 import jobtrends.jobsurvey.service.serviceController
 
 @SuppressLint("ValidFragment")
-class ThemeViewModel : Fragment
-{
+class ThemeViewModel : Fragment {
     private var _themeAdapter: ThemeAdapter?
     private var _homeModel: HomeModel?
     private var _view: View?
@@ -24,8 +23,7 @@ class ThemeViewModel : Fragment
     private val _tag: String?
 
     @SuppressLint("ValidFragment")
-    constructor(homeModel: HomeModel?) : super()
-    {
+    constructor(homeModel: HomeModel?) : super() {
         _tag = "ThemeViewModel"
         _themeAdapter = null
         _view = null
@@ -34,8 +32,7 @@ class ThemeViewModel : Fragment
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View?
-    {
+                              savedInstanceState: Bundle?): View? {
 
         val binding: ThemeViewBinding? = DataBindingUtil.inflate(inflater, R.layout.theme_view, container, false)
         _view = binding?.root
@@ -52,8 +49,7 @@ class ThemeViewModel : Fragment
         return _view
     }
 
-    private fun onNavSetting()
-    {
+    private fun onNavSetting() {
         val fragment = SettingViewModel()
         val transaction = fragmentManager?.beginTransaction()
         transaction?.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)

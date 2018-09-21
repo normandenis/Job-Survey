@@ -1,13 +1,7 @@
 package jobtrends.jobsurvey.viewmodel
 
-import android.annotation.SuppressLint
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.content.Intent
 import android.content.SharedPreferences
-import android.os.Build
-import android.os.Build.VERSION
-import android.os.Build.VERSION_CODES
 import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
@@ -20,50 +14,40 @@ import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.ServiceController
 import jobtrends.jobsurvey.service.serviceController
 
-class SplashViewModel : AppCompatActivity
-{
+class SplashViewModel : AppCompatActivity {
     private val _jsonController: JsonController?
     private val _apiController: APIController?
     private val _delayMillis: Long?
     private val _tag = "SplashViewModel"
 
-    constructor() : super()
-    {
+    constructor() : super() {
         _delayMillis = 1000
         serviceController = ServiceController()
         _jsonController = serviceController?.getInstance()
         _apiController = serviceController?.getInstance()
     }
 
-    private fun initNotification()
-    {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-        {
-            val channelId = getString(R.string.default_notification_channel_id)
-            val channelName = getString(R.string.default_notification_channel_name)
-            val notificationManager = if (VERSION.SDK_INT >= VERSION_CODES.M)
-            {
-                getSystemService(NotificationManager::class.java)
-            }
-            else
-            {
-                TODO("VERSION.SDK_INT < M")
-            }
-            notificationManager.createNotificationChannel(
-                    NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH))
-        }
-        if (intent.extras != null)
-        {
-            for (key in intent.extras.keySet())
-            {
-                val value = intent.extras.get(key)
-                Log.d(_tag, "Key: $key Value: $value")
-            }
-        }
-    }
+//    private fun initNotification() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            val channelId = getString(R.string.default_notification_channel_id)
+//            val channelName = getString(R.string.default_notification_channel_name)
+//            val notificationManager = if (VERSION.SDK_INT >= VERSION_CODES.M) {
+//                getSystemService(NotificationManager::class.java)
+//            } else {
+//                TODO("VERSION.SDK_INT < M")
+//            }
+//            notificationManager.createNotificationChannel(
+//                    NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH))
+//        }
+//        if (intent.extras != null) {
+//            for (key in intent.extras.keySet()) {
+//                val value = intent.extras.get(key)
+//                Log.d(_tag, "Key: $key Value: $value")
+//            }
+//        }
+//    }
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_view)
         serviceController?.register(resources)
@@ -71,27 +55,21 @@ class SplashViewModel : AppCompatActivity
         Handler().postDelayed(::initUser, _delayMillis!!)
     }
 
-    private fun initUser()
-    {
-        initNotification()
+    private fun initUser() {
+//        initNotification()
         val preferences: SharedPreferences? = PreferenceManager.getDefaultSharedPreferences(this)
-        val email: String? = preferences?.getString("email", null)
-        val json = preferences?.getString(email, null)
-        if (json != null && json != "")
-        {
+        val json: String? = preferences?.getString(UserModel::class.java.simpleName, null)
+//        val json = preferences?.getString(email, null)
+        if (json != null && json != "") {
             signInUser(json)
-        }
-        else
-        {
+        } else {
             navToSignInView()
         }
     }
 
-    private fun signInUser(json: String?)
-    {
+    private fun signInUser(json: String?) {
         val user: UserModel? = _jsonController?.deserialize(json)
-        if (user == null)
-        {
+        if (user == null || user?.password?.get() == null) {
             navToSignInView()
         }
         serviceController?.register(user, true)
@@ -102,26 +80,22 @@ class SplashViewModel : AppCompatActivity
         _apiController?.post("login", tmpSerialized, ::authLoginReply, this)
     }
 
-    private fun authLoginReply(code: Int?, body: String?)
-    {
+    private fun authLoginReply(code: Int?, body: String?) {
         val msg = "$code: $body"
         Log.d(_tag, msg)
-        if (code != 200 && code != 201)
-        {
+        if (code != 200 && code != 201) {
             navToSignInView()
             return
         }
         navToHomeView()
     }
 
-    private fun navToSignInView()
-    {
+    private fun navToSignInView() {
         val intent = Intent(this, SignInViewModel::class.java)
         startActivity(intent)
     }
 
-    private fun navToHomeView()
-    {
+    private fun navToHomeView() {
         val intent = Intent(this, HomeViewModel::class.java)
         startActivity(intent)
     }

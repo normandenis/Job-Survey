@@ -2,8 +2,7 @@ package jobtrends.jobsurvey.model
 
 import android.databinding.ObservableField
 
-class ErrorModel
-{
+class ErrorModel {
     var lastnameMsg: ObservableField<String?>?
     var firstnameMsg: ObservableField<String?>?
     var birthdayMsg: ObservableField<String?>?
@@ -14,8 +13,7 @@ class ErrorModel
     var passwordBisMsg: ObservableField<String?>?
     var mainMsg: ObservableField<String?>?
 
-    constructor()
-    {
+    constructor() {
         lastnameMsg = ObservableField()
         firstnameMsg = ObservableField()
         birthdayMsg = ObservableField()
@@ -27,16 +25,15 @@ class ErrorModel
         mainMsg = ObservableField()
     }
 
-    fun reset()
-    {
-        lastnameMsg?.set("")
-        firstnameMsg?.set("")
-        birthdayMsg?.set("")
-        emailMsg?.set("")
-        jobMsg?.set("")
-        oldPassword?.set("")
-        passwordMsg?.set("")
-        passwordBisMsg?.set("")
-        mainMsg?.set("")
+    fun reset() {
+        lastnameMsg?.set(null)
+        firstnameMsg?.set(null)
+        birthdayMsg?.set(null)
+        emailMsg?.set(null)
+        jobMsg?.set(null)
+        oldPassword?.set(null)
+        passwordMsg?.set(null)
+        passwordBisMsg?.set(null)
+        mainMsg?.set(null)
     }
 }

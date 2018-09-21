@@ -14,16 +14,14 @@ import jobtrends.jobsurvey.model.QuestionModel
 import jobtrends.jobsurvey.model.UserAnswerModel
 
 @SuppressLint("ValidFragment")
-class QuestionViewModel : Fragment
-{
+class QuestionViewModel : Fragment {
     private val _questionModel: QuestionModel?
     private val _userAnswerModel: UserAnswerModel?
     private val _answerAdapter: AnswerAdapter?
     private var _view: View?
 
     @SuppressLint("ValidFragment")
-    constructor(userAnswerModel: UserAnswerModel?, questionModel: QuestionModel?) : super()
-    {
+    constructor(userAnswerModel: UserAnswerModel?, questionModel: QuestionModel?) : super() {
         _questionModel = questionModel
         _userAnswerModel = userAnswerModel
 
@@ -34,8 +32,7 @@ class QuestionViewModel : Fragment
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View?
-    {
+                              savedInstanceState: Bundle?): View? {
         val binding: QuestionViewBinding? = DataBindingUtil.inflate(inflater, R.layout.question_view, container, false)
         _view = binding?.root
         binding?.vm = this

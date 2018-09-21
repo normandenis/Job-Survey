@@ -22,8 +22,7 @@ import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.PagerAdapterController
 import jobtrends.jobsurvey.service.serviceController
 
-class SurveyViewModel : Fragment
-{
+class SurveyViewModel : Fragment {
     private var _view: View?
     private var _pagerAdapterController: PagerAdapterController?
     var survey: SurveyModel?
@@ -34,8 +33,7 @@ class SurveyViewModel : Fragment
     private val _appBarBtn: Button?
     private val _tag: String?
 
-    constructor() : super()
-    {
+    constructor() : super() {
         _view = null
         _pagerAdapterController = null
         survey = null
@@ -47,52 +45,51 @@ class SurveyViewModel : Fragment
         _tag = "SurveyViewModel"
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
-    {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _appBarBtn?.setBackgroundResource(R.drawable.ic_close_orange_32dp)
-        _appBarBtn?.setOnClickListener { onCloseSurvey() }
+        if (survey?.questions?.size == 1) {
+            _appBarBtn?.setBackgroundResource(R.drawable.ic_check_orange_32dp)
+            _appBarBtn?.setOnClickListener { onValidateSurvey() }
+        } else {
+            _appBarBtn?.setBackgroundResource(R.drawable.ic_close_orange_32dp)
+            _appBarBtn?.setOnClickListener { onCloseSurvey() }
+        }
 
         val list: MutableList<Fragment> = mutableListOf()
         _resultModel?.id?.set(survey?.id?.get())
         _resultModel?.answers = mutableListOf()
+        if (survey?.questions?.size == null) {
+            return
+        }
         survey?.questions?.mapTo(list, ::newInstance)
         _pagerAdapterController = PagerAdapterController(fragmentManager, list)
         val pager: ViewPager? = getView()?.findViewById(R.id.pager)
         pager?.offscreenPageLimit = survey?.questions?.size!!
         pager?.adapter = _pagerAdapterController
-        pager?.addOnPageChangeListener(object : OnPageChangeListener
-                                       {
-                                           override fun onPageScrollStateChanged(state: Int)
-                                           {
-                                           }
+        pager?.addOnPageChangeListener(object : OnPageChangeListener {
+            override fun onPageScrollStateChanged(state: Int) {
+            }
 
-                                           override fun onPageScrolled(position: Int,
-                                                                       positionOffset: Float,
-                                                                       positionOffsetPixels: Int)
-                                           {
-                                           }
+            override fun onPageScrolled(position: Int,
+                                        positionOffset: Float,
+                                        positionOffsetPixels: Int) {
+            }
 
-                                           override fun onPageSelected(position: Int)
-                                           {
-                                               if (position == list.size - 1)
-                                               {
-                                                   _appBarBtn?.setBackgroundResource(R.drawable.ic_check_orange_32dp)
-                                                   _appBarBtn?.setOnClickListener { onValidateSurvey() }
-                                               }
-                                               else
-                                               {
-                                                   _appBarBtn?.setBackgroundResource(R.drawable.ic_close_orange_32dp)
-                                                   _appBarBtn?.setOnClickListener { onCloseSurvey() }
-                                               }
-                                           }
-                                       })
+            override fun onPageSelected(position: Int) {
+                if (position == list.size - 1) {
+                    _appBarBtn?.setBackgroundResource(R.drawable.ic_check_orange_32dp)
+                    _appBarBtn?.setOnClickListener { onValidateSurvey() }
+                } else {
+                    _appBarBtn?.setBackgroundResource(R.drawable.ic_close_orange_32dp)
+                    _appBarBtn?.setOnClickListener { onCloseSurvey() }
+                }
+            }
+        })
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View?
-    {
+                              savedInstanceState: Bundle?): View? {
         val binding: SurveyViewBinding = DataBindingUtil.inflate(inflater, R.layout.survey_view, container, false)
         binding.vm = this
         _dialog = Dialog(context)
@@ -101,8 +98,7 @@ class SurveyViewModel : Fragment
         return _view
     }
 
-    private fun newInstance(questionModel: QuestionModel?): Fragment
-    {
+    private fun newInstance(questionModel: QuestionModel?): Fragment {
         val userAnswerModel: UserAnswerModel? = UserAnswerModel()
         userAnswerModel?.question?.set(questionModel?.id?.get())
         val fragment = QuestionViewModel(userAnswerModel, questionModel)
@@ -111,28 +107,25 @@ class SurveyViewModel : Fragment
         return fragment
     }
 
-    fun onValidateSurvey()
-    {
+    fun onValidateSurvey() {
         val bind: ValidatePopupViewBinding? = DataBindingUtil
                 .inflate(LayoutInflater.from(context), R.layout.validate_popup_view,
-                         _view as ViewGroup, false)
+                        _view as ViewGroup, false)
         bind?.vm = this
         _dialog?.setContentView(bind?.root)
         _dialog?.show()
     }
 
-    fun onCloseSurvey()
-    {
+    fun onCloseSurvey() {
         val bind: CancelPopupViewBinding? = DataBindingUtil
                 .inflate(LayoutInflater.from(context), R.layout.cancel_popup_view,
-                         _view as ViewGroup, false)
+                        _view as ViewGroup, false)
         bind?.vm = this
         _dialog?.setContentView(bind?.root)
         _dialog?.show()
     }
 
-    fun onValideYes()
-    {
+    fun onValideYes() {
         _dialog?.hide()
         val fragment: ResultViewModel? = ResultViewModel()
         val transaction: FragmentTransaction? = fragmentManager?.beginTransaction()
@@ -141,19 +134,16 @@ class SurveyViewModel : Fragment
         transaction?.commit()
     }
 
-    fun onValideNo()
-    {
+    fun onValideNo() {
         _dialog?.hide()
     }
 
-    fun onCloseYes()
-    {
+    fun onCloseYes() {
         _dialog?.hide()
         _apiController?.get("me", ::jobaymaxMeReply, context)
     }
 
-    private fun jobaymaxMeReply(code: Int?, body: String?)
-    {
+    private fun jobaymaxMeReply(code: Int?, body: String?) {
         val msg = "$code: $body"
         Log.i(_tag, msg)
         val homeModel: HomeModel? = _jsonController?.deserialize(body)
@@ -165,8 +155,7 @@ class SurveyViewModel : Fragment
         transaction?.commit()
     }
 
-    fun onCloseNo()
-    {
+    fun onCloseNo() {
         _dialog?.hide()
     }
 }

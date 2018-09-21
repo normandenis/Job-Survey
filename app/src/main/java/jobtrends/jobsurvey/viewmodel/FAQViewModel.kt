@@ -14,15 +14,13 @@ import jobtrends.jobsurvey.service.APIController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.serviceController
 
-class FAQViewModel : Fragment
-{
+class FAQViewModel : Fragment {
     val faqAdapter: FAQAdapter?
     val model: ListFAQModel?
     private val _apiController: APIController?
     private val _jsonController: JsonController?
 
-    constructor() : super()
-    {
+    constructor() : super() {
         _apiController = serviceController?.getInstance()
         _jsonController = serviceController?.getInstance()
         val strQuestions = _apiController?.getFAQQuestion()
@@ -32,15 +30,13 @@ class FAQViewModel : Fragment
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View?
-    {
+                              savedInstanceState: Bundle?): View? {
         val binding: FaqViewBinding? = DataBindingUtil.inflate(inflater, R.layout.faq_view, container, false)
         binding?.vm = this
         return binding?.root
     }
 
-    fun onTextChanged(s: CharSequence, start: Int?, before: Int?, count: Int?)
-    {
+    fun onTextChanged(s: CharSequence, start: Int?, before: Int?, count: Int?) {
         start as Any
         before as Any
         count as Any
