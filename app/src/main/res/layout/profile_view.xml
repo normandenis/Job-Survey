@@ -47,7 +47,7 @@
                     android:gravity="center"
                     android:text="@string/profile_view_1"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/primary"
                     android:textStyle="bold"/>
 
           <EditText android:layout_width="match_parent"
@@ -57,7 +57,7 @@
                     android:inputType="textPersonName"
                     android:text="@={userModel.lastName}"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/primary"
                     app:errorText="@{errorModel.lastnameMsg}"/>
 
           <EditText android:layout_width="match_parent"
@@ -67,7 +67,7 @@
                     android:inputType="textPersonName"
                     android:text="@={userModel.firstName}"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/primary"
                     app:errorText="@{errorModel.firstnameMsg}"/>
 
           <EditText android:layout_width="match_parent"
@@ -77,7 +77,7 @@
                     android:inputType="date"
                     android:text="@={userModel.birthday}"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/primary"
                     app:errorText="@{errorModel.birthdayMsg}"/>
 
           <EditText android:layout_width="match_parent"
@@ -87,7 +87,7 @@
                     android:inputType="textEmailAddress"
                     android:text="@={userModel.email}"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/primary"
                     app:errorText="@{errorModel.emailMsg}"/>
 
           <EditText android:layout_width="match_parent"
@@ -97,7 +97,7 @@
                     android:inputType="text"
                     android:text="@={userModel.job}"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/primary"
                     app:errorText="@{errorModel.jobMsg}"/>
 
           <EditText android:layout_width="match_parent"
@@ -107,7 +107,7 @@
                     android:inputType="textPassword"
                     android:text="@={vm.oldPassword}"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/primary"
                     app:errorText="@{errorModel.oldPassword}"/>
 
           <EditText android:layout_width="match_parent"
@@ -117,7 +117,7 @@
                     android:inputType="textPassword"
                     android:text="@={userModel.password}"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/primary"
                     app:errorText="@{errorModel.passwordMsg}"/>
 
           <EditText android:layout_width="match_parent"
@@ -127,7 +127,7 @@
                     android:inputType="textPassword"
                     android:text="@={userModel.passwordProtection}"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/primary"
                     app:errorText="@{errorModel.passwordBisMsg}"/>
 
         </LinearLayout>
@@ -151,7 +151,7 @@
               android:paddingRight="32dp"
               android:text="@string/profile_view_10"
               android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textColor="@color/colorButtonLight"/>
+              android:textColor="@color/white"/>
 
     </LinearLayout>
 

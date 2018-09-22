@@ -20,7 +20,7 @@
               android:hint="@string/faq_view_1"
               android:onTextChanged="@{vm::onTextChanged}"
               android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textColor="@color/colorAccent"
+              android:textColor="@color/primary"
               android:inputType="text"/>
 
     <ListView android:layout_width="match_parent"

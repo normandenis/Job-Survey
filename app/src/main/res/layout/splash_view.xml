@@ -4,13 +4,13 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/colorPrimary"
+              android:background="@drawable/banner"
               tools:context="jobtrends.jobsurvey.viewmodel.SplashViewModel">
 
-	<ImageView android:layout_width="0dp"
-	           android:layout_height="wrap_content"
-	           android:layout_gravity="center"
-	           android:src="@drawable/logo_white"
-	           android:layout_weight="1"/>
+  <ImageView android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:src="@drawable/logo_white"
+             android:layout_weight="1"/>
 
 </LinearLayout>

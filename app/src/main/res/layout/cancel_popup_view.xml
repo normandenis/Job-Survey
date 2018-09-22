@@ -20,7 +20,7 @@
               android:gravity="center"
               android:text="@string/cancel_popup_view_txt_0"
               android:textAppearance="?android:attr/textAppearanceLarge"
-              android:textColor="@color/colorAccent"/>
+              android:textColor="@color/primary"/>
 
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
               android:onClick="@{() -> vm.onCloseNo()}"
               android:text="@string/cancel_popup_view_txt_1"
               android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textColor="@color/colorButtonDark"/>
+              android:textColor="@color/black"/>
 
       <Button android:layout_width="wrap_content"
               android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
               android:onClick="@{() -> vm.onCloseYes()}"
               android:text="@string/cancel_popup_view_txt_2"
               android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textColor="@color/colorButtonLight"/>
+              android:textColor="@color/white"/>
 
     </LinearLayout>
 

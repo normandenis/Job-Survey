@@ -68,7 +68,7 @@
               android:onClick="@{() -> vm.onNotifNo()}"
               android:text="Annuler"
               android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textColor="@color/colorButtonDark"/>
+              android:textColor="@color/black"/>
 
       <Button android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
               android:singleLine="true"
               android:text="Valider"
               android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textColor="@color/colorButtonLight"/>
+              android:textColor="@color/white"/>
 
     </LinearLayout>
 

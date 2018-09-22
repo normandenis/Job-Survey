@@ -26,7 +26,7 @@
               android:onClick="@{() -> vm.onClickTheme(m)}"
               android:text="@{m.name}"
               android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textColor="@color/colorAccent"
+              android:textColor="@color/primary"
               android:textStyle="bold"/>
 
     <TextView android:layout_width="match_parent"
@@ -37,7 +37,7 @@
               android:gravity="center"
               android:text="@{@string/listview_start_survey_view_txt_1 + m.level}"
               android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textColor="@color/colorAccent"/>
+              android:textColor="@color/primary"/>
 
     <ImageView android:layout_width="match_parent"
                android:layout_height="wrap_content"

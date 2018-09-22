@@ -45,7 +45,7 @@
                     android:gravity="center"
                     android:text="@{question.content}"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/primary"
                     android:textStyle="bold"/>
 
           <ListView android:layout_width="match_parent"

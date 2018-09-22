@@ -31,7 +31,7 @@
                       android:gravity="center"
                       android:text="@={userModel.firstName}"
                       android:textAppearance="?android:attr/textAppearanceMedium"
-                      android:textColor="@color/colorAccent"
+                      android:textColor="@color/primary"
                       android:textStyle="bold"/>
 
             <TextView android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                       android:gravity="center"
                       android:text="@={userModel.job}"
                       android:textAppearance="?android:attr/textAppearanceSmall"
-                      android:textColor="@color/colorPrimary"/>
+                      android:textColor="@color/primary"/>
 
             <android.support.v7.widget.GridLayout android:layout_width="match_parent"
                                                   android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
                           android:gravity="center"
                           android:text="@{homeModel.score.toString() + @string/start_survey_view_txt_1}"
                           android:textAppearance="?android:attr/textAppearanceSmall"
-                          android:textColor="@color/colorPrimary"
+                          android:textColor="@color/primary"
                           android:textStyle="bold"
                           app:layout_column="0"
                           app:layout_gravity="center"
@@ -99,7 +99,7 @@
                                                     android:clickable="true"
                                                     android:focusable="true"
                                                     android:onClick="@{() -> vm.onClick()}"
-                                                    app:cardBackgroundColor="@color/colorAccent"
+                                                    app:cardBackgroundColor="@color/primary"
                                                     app:cardCornerRadius="8dp"
                                                     app:cardElevation="8dp"
                                                     app:layout_columnWeight="1"
@@ -124,7 +124,7 @@
                                   android:layout_marginTop="@dimen/margin_top"
                                   android:text="@string/setting_view_txt_3"
                                   android:textAppearance="?android:attr/textAppearanceSmall"
-                                  android:textColor="@color/colorButtonLight"/>
+                                  android:textColor="@color/white"/>
 
                         <TextView android:layout_width="match_parent"
                                   android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
                                   android:singleLine="true"
                                   android:text="@={userModel.email}"
                                   android:textAppearance="?android:attr/textAppearanceSmall"
-                                  android:textColor="@color/colorButtonLight"/>
+                                  android:textColor="@color/white"/>
 
                     </LinearLayout>
 
@@ -196,7 +196,7 @@
                                                     android:clickable="true"
                                                     android:focusable="true"
                                                     android:onClick="@{() -> vm.onNavSignIn()}"
-                                                    app:cardBackgroundColor="@color/colorCardView"
+                                                    app:cardBackgroundColor="@color/grey_300"
                                                     app:cardCornerRadius="8dp"
                                                     app:cardElevation="8dp"
                                                     app:layout_columnWeight="1"

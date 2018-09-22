@@ -21,7 +21,7 @@
               android:gravity="center"
               android:text="@string/end_survey_view_txt_0"
               android:textAppearance="?android:attr/textAppearanceMedium"
-              android:textColor="@color/colorAccent"/>
+              android:textColor="@color/primary"/>
 
     <ImageView android:layout_width="160dp"
                android:layout_height="160dp"
@@ -53,7 +53,7 @@
             android:paddingRight="32dp"
             android:text="@string/end_survey_view_txt_3"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/colorButtonLight"/>
+            android:textColor="@color/white"/>
 
     <Space android:layout_width="match_parent"
            android:layout_height="wrap_content"

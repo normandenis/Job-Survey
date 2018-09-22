@@ -14,174 +14,250 @@
   </data>
 
   <ScrollView android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="@drawable/banner">
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="vertical">
+    <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                 android:layout_height="wrap_content"
+                                                 android:orientation="vertical"
+                                                 android:paddingBottom="@dimen/margin_bottom"
+                                                 android:paddingEnd="@dimen/margin_right"
+                                                 android:paddingStart="@dimen/margin_left"
+                                                 android:paddingTop="@dimen/margin_top">
 
-      <LinearLayout android:layout_width="match_parent"
+      <ImageView android:id="@+id/my_imageview_0"
+                 android:layout_width="24dp"
+                 android:layout_height="24dp"
+                 android:layout_gravity="center"
+                 android:clickable="true"
+                 android:focusable="true"
+                 android:onClick="@{() -> vm.onNavBack()}"
+                 app:layout_constraintLeft_toLeftOf="parent"
+                 app:layout_constraintTop_toTopOf="parent"
+                 android:src="@drawable/ic_arrow_back_orange_512dp"
+                 tools:ignore="ContentDescription,VectorDrawableCompat"/>
+
+      <TextView android:id="@+id/my_textview_0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/sign_up_view_txt_0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/white"/>
+
+      <android.support.v7.widget.CardView android:id="@+id/my_cardview_0"
+                                          android:layout_width="match_parent"
+                                          android:layout_height="wrap_content"
+                                          android:layout_marginTop="@dimen/divider_top"
+                                          app:layout_constraintTop_toBottomOf="@id/my_textview_0"
+                                          app:layout_constraintRight_toRightOf="parent"
+                                          app:layout_constraintLeft_toLeftOf="parent"
+                                          app:cardCornerRadius="8dp"
+                                          app:cardElevation="8dp">
+
+        <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                     android:layout_height="match_parent"
+                                                     android:paddingBottom="@dimen/margin_bottom"
+                                                     android:paddingEnd="@dimen/margin_right"
+                                                     android:paddingStart="@dimen/margin_left"
+                                                     android:paddingTop="@dimen/margin_top">
+
+          <TextView android:id="@+id/my_textview_1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/margin_bottom"
-                    android:paddingEnd="@dimen/margin_right"
-                    android:paddingStart="@dimen/margin_left"
-                    android:paddingTop="@dimen/margin_top"
-                    tools:ignore="UnusedAttribute,UseCompoundDrawables">
+                    android:gravity="center"
+                    android:text="@string/sign_up_view_txt_1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/primary"/>
 
-        <ImageView android:layout_width="24dp"
-                   android:layout_height="24dp"
-                   android:layout_gravity="center"
-                   android:clickable="true"
-                   android:focusable="true"
-                   android:onClick="@{() -> vm.onNavBack()}"
-                   android:src="@drawable/ic_arrow_back_orange_512dp"
-                   tools:ignore="ContentDescription,VectorDrawableCompat"/>
-
-        <TextView android:id="@+id/sign_up_view_id_0"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center"
-                  android:text="@string/sign_up_view_txt_0"
-                  android:textAppearance="?android:attr/textAppearanceLarge"
-                  android:textColor="@color/colorAccent"/>
-
-
-      </LinearLayout>
-
-      <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingBottom="@dimen/margin_bottom"
-                    android:paddingEnd="@dimen/margin_right"
-                    android:paddingStart="@dimen/margin_left"
-                    android:paddingTop="@dimen/margin_top">
-
-        <android.support.v7.widget.CardView android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginBottom="@dimen/margin_bottom"
-                                            android:layout_marginEnd="@dimen/margin_right"
-                                            android:layout_marginStart="@dimen/margin_left"
-                                            android:layout_marginTop="@dimen/margin_top"
-                                            app:cardCornerRadius="8dp"
-                                            app:cardElevation="8dp">
-
-          <LinearLayout android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:paddingBottom="@dimen/margin_bottom"
-                        android:paddingEnd="@dimen/margin_right"
-                        android:paddingStart="@dimen/margin_left"
-                        android:paddingTop="@dimen/margin_top">
-
-            <TextView android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:gravity="center"
-                      android:text="@string/sign_up_view_txt_1"
-                      android:textAppearance="?android:attr/textAppearanceMedium"
-                      android:textColor="@color/colorAccent"/>
+          <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_0"
+                                                         android:layout_width="match_parent"
+                                                         android:layout_height="wrap_content"
+                                                         android:layout_marginTop="@dimen/margin_top"
+                                                         app:layout_constraintTop_toBottomOf="@id/my_textview_1">
 
             <EditText android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:layout_marginTop="@dimen/margin_top"
                       android:hint="@string/sign_up_view_txt_2"
                       android:inputType="textPersonName"
+                      android:shadowColor="@color/primary"
+                      android:textColorLink="@color/primary"
+                      android:textColor="@color/primary"
+                      android:textColorHighlight="@color/primary"
+                      android:textColorHint="@color/primary"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                       android:text="@={userModel.lastName}"
-                      android:textAppearance="?android:attr/textAppearanceSmall"
                       app:errorText="@{errorModel.lastnameMsg}"/>
+
+          </android.support.design.widget.TextInputLayout>
+
+          <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_1"
+                                                         android:layout_width="match_parent"
+                                                         android:layout_height="wrap_content"
+                                                         android:layout_marginTop="@dimen/margin_top"
+                                                         app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_0">
 
             <EditText android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:layout_marginTop="@dimen/margin_top"
                       android:hint="@string/sign_up_view_txt_3"
                       android:inputType="textPersonName"
+                      android:shadowColor="@color/primary"
+                      android:textColorLink="@color/primary"
+                      android:textColor="@color/primary"
+                      android:textColorHighlight="@color/primary"
+                      android:textColorHint="@color/primary"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                       android:text="@={userModel.firstName}"
-                      android:textAppearance="?android:attr/textAppearanceSmall"
                       app:errorText="@{errorModel.firstnameMsg}"/>
+
+          </android.support.design.widget.TextInputLayout>
+
+          <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_2"
+                                                         android:layout_width="match_parent"
+                                                         android:layout_height="wrap_content"
+                                                         android:layout_marginTop="@dimen/margin_top"
+                                                         app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_1">
 
             <EditText android:id="@+id/sign_up_view_id_4"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:layout_marginTop="@dimen/margin_top"
-                      android:clickable="true"
-                      android:focusable="true"
                       android:hint="@string/sign_up_view_txt_4"
                       android:inputType="date"
+                      android:shadowColor="@color/primary"
+                      android:textColorLink="@color/primary"
+                      android:textColor="@color/primary"
+                      android:textColorHighlight="@color/primary"
+                      android:textColorHint="@color/primary"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                       android:text="@={userModel.birthday}"
-                      android:textAppearance="?android:attr/textAppearanceSmall"
                       app:errorText="@{errorModel.birthdayMsg}"/>
 
+          </android.support.design.widget.TextInputLayout>
+
+          <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_3"
+                                                         android:layout_width="match_parent"
+                                                         android:layout_height="wrap_content"
+                                                         android:layout_marginTop="@dimen/margin_top"
+                                                         app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_2">
+
             <EditText android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:layout_marginTop="@dimen/margin_top"
                       android:hint="@string/sign_up_view_txt_5"
                       android:inputType="textEmailAddress"
+                      android:shadowColor="@color/primary"
+                      android:textColorLink="@color/primary"
+                      android:textColor="@color/primary"
+                      android:textColorHighlight="@color/primary"
+                      android:textColorHint="@color/primary"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                       android:text="@={userModel.email}"
-                      android:textAppearance="?android:attr/textAppearanceSmall"
                       app:errorText="@{errorModel.emailMsg}"/>
 
+          </android.support.design.widget.TextInputLayout>
+
+          <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_4"
+                                                         android:layout_width="match_parent"
+                                                         android:layout_height="wrap_content"
+                                                         android:layout_marginTop="@dimen/margin_top"
+                                                         app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_3">
+
             <EditText android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:layout_marginTop="@dimen/margin_top"
                       android:hint="@string/sign_up_view_txt_6"
                       android:inputType="text"
+                      android:shadowColor="@color/primary"
+                      android:textColorLink="@color/primary"
+                      android:textColor="@color/primary"
+                      android:textColorHighlight="@color/primary"
+                      android:textColorHint="@color/primary"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                       android:text="@={userModel.job}"
-                      android:textAppearance="?android:attr/textAppearanceSmall"
                       app:errorText="@{errorModel.jobMsg}"/>
 
+          </android.support.design.widget.TextInputLayout>
+
+          <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_5"
+                                                         android:layout_width="match_parent"
+                                                         android:layout_height="wrap_content"
+                                                         android:layout_marginTop="@dimen/margin_top"
+                                                         app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_4">
             <EditText android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:layout_marginTop="@dimen/margin_top"
                       android:hint="@string/sign_up_view_txt_7"
                       android:inputType="textPassword"
+                      android:shadowColor="@color/primary"
+                      android:textColorLink="@color/primary"
+                      android:textColor="@color/primary"
+                      android:textColorHighlight="@color/primary"
+                      android:textColorHint="@color/primary"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                       android:text="@={userModel.password}"
-                      android:textAppearance="?android:attr/textAppearanceSmall"
                       app:errorText="@{errorModel.passwordMsg}"/>
+
+          </android.support.design.widget.TextInputLayout>
+
+          <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_6"
+                                                         android:layout_width="match_parent"
+                                                         android:layout_height="wrap_content"
+                                                         android:layout_marginTop="@dimen/margin_top"
+                                                         app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_5">
 
             <EditText android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:layout_marginTop="@dimen/margin_top"
                       android:hint="@string/sign_up_view_txt_8"
                       android:inputType="textPassword"
+                      android:shadowColor="@color/primary"
+                      android:textColorLink="@color/primary"
+                      android:textColor="@color/primary"
+                      android:textColorHighlight="@color/primary"
+                      android:textColorHint="@color/primary"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                       android:text="@={userModel.passwordProtection}"
-                      android:textAppearance="?android:attr/textAppearanceSmall"
                       app:errorText="@{errorModel.passwordBisMsg}"/>
 
-            <TextView android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_marginTop="@dimen/margin_top"
-                      android:gravity="center"
-                      android:text="@string/sign_up_view_txt_9"
-                      android:textAppearance="?android:attr/textAppearanceSmall"/>
+          </android.support.design.widget.TextInputLayout>
 
+          <TextView android:id="@+id/my_textview_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:gravity="center"
+                    android:text="@string/sign_up_view_txt_9"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_6"/>
 
-          </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
 
-        </android.support.v7.widget.CardView>
+      </android.support.v7.widget.CardView>
 
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center"
-                  android:text="@={errorModel.mainMsg}"
-                  android:textAppearance="?android:attr/textAppearanceSmall"
-                  android:textColor="@android:color/holo_red_light"/>
-
-        <Button android:layout_width="wrap_content"
+      <TextView android:id="@+id/my_textview_2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/margin_bottom"
+                android:gravity="center"
+                android:text="@={errorModel.mainMsg}"
                 android:layout_marginTop="@dimen/margin_top"
-                android:background="@drawable/rounded_layout"
-                android:onClick="@{() -> vm.onClick()}"
-                android:paddingLeft="@dimen/button_padding"
-                android:paddingRight="@dimen/button_padding"
-                android:text="@string/sign_up_view_txt_10"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/colorButtonLight"/>
+                android:visibility="gone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="@android:color/holo_red_light"
+                app:layout_constraintTop_toBottomOf="@id/my_cardview_0"/>
 
-      </LinearLayout>
+      <android.support.v7.widget.AppCompatButton android:id="@+id/my_appcompatbutton_0"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="wrap_content"
+                                                 android:layout_marginTop="@dimen/divider_top"
+                                                 android:background="@drawable/rounded_layout"
+                                                 android:onClick="@{() -> vm.onClick()}"
+                                                 android:text="@string/sign_up_view_txt_10"
+                                                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                                                 android:textColor="@color/accent"
+                                                 app:layout_constraintTop_toBottomOf="@id/my_textview_2"
+                                                 app:layout_constraintRight_toRightOf="parent"
+                                                 app:layout_constraintLeft_toLeftOf="parent"/>
 
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
   </ScrollView>
 

@@ -15,7 +15,7 @@
     <android.support.design.widget.AppBarLayout android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:background="@android:color/white"
-                                                android:theme="@style/AppTheme">
+                                                android:theme="@style/theme">
 
       <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
                                          android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                                          app:contentInsetLeft="0dp"
                                          app:contentInsetRight="0dp"
                                          app:contentInsetStart="0dp"
-                                         app:popupTheme="@style/AppTheme">
+                                         app:popupTheme="@style/theme">
 
         <android.support.v7.widget.GridLayout android:layout_width="match_parent"
                                               android:layout_height="match_parent"
@@ -50,7 +50,7 @@
                     android:gravity="center"
                     android:text="Job Survey"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/primary"
                     android:textStyle="bold"
                     app:layout_column="0"
                     app:layout_gravity="center"
