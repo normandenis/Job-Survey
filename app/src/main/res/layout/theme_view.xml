@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/id_start_view"
         tools:context="jobtrends.jobsurvey.viewmodel.ThemeViewModel">
 
   <data>
@@ -14,66 +13,60 @@
               type="jobtrends.jobsurvey.model.HomeModel"/>
   </data>
 
-  <ScrollView android:layout_width="match_parent"
-              android:layout_height="match_parent">
+  <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                               android:layout_height="match_parent"
+                                               android:orientation="vertical"
+                                               android:background="@drawable/banner"
+                                               android:paddingBottom="@dimen/margin_bottom"
+                                               android:paddingEnd="@dimen/margin_right"
+                                               android:paddingStart="@dimen/margin_left"
+                                               android:paddingTop="@dimen/margin_top">
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="vertical"
-                  android:paddingBottom="@dimen/margin_bottom"
-                  android:paddingEnd="@dimen/margin_right"
-                  android:paddingStart="@dimen/margin_left"
-                  android:paddingTop="@dimen/margin_top"
-                  android:weightSum="2">
+    <ProgressBar android:id="@+id/my_progressbar_0"
+                 style="?android:attr/progressBarStyleHorizontal"
+                 android:layout_width="128dp"
+                 android:layout_height="128dp"
+                 android:background="@drawable/circle_shape"
+                 android:indeterminate="false"
+                 android:max="100"
+                 android:progress="@{homeModel.score}"
+                 android:progressDrawable="@drawable/circular_progress_bar"
+                 app:layout_constraintLeft_toLeftOf="parent"
+                 app:layout_constraintRight_toRightOf="parent"
+                 app:layout_constraintTop_toTopOf="parent"/>
 
-      <android.support.v7.widget.GridLayout android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            app:columnOrderPreserved="false"
-                                            app:rowOrderPreserved="false">
+    <TextView android:id="@+id/my_textview_0"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:text="@{homeModel.score.toString() + @string/start_survey_view_txt_1}"
+              android:textAppearance="@style/TextAppearance.AppCompat.Title"
+              android:textColor="@color/primary"
+              app:layout_constraintBottom_toBottomOf="@id/my_progressbar_0"
+              app:layout_constraintLeft_toLeftOf="@id/my_progressbar_0"
+              app:layout_constraintRight_toRightOf="@id/my_progressbar_0"
+              app:layout_constraintTop_toTopOf="@id/my_progressbar_0"/>
 
-        <ProgressBar android:id="@+id/myProgressBar"
-                     style="?android:attr/progressBarStyleHorizontal"
-                     android:layout_width="128dp"
-                     android:layout_height="128dp"
-                     android:background="@drawable/circle_shape"
-                     android:indeterminate="false"
-                     android:max="100"
-                     android:progress="@{homeModel.score}"
-                     android:progressDrawable="@drawable/circular_progress_bar"
-                     app:layout_column="0"
-                     app:layout_gravity="center"
-                     app:layout_row="0"/>
+    <ListView android:id="@+id/my_listview_0"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/divider_top"
+              app:adapter="@{themeAdapter}"
+              app:layout_constraintLeft_toLeftOf="parent"
+              app:layout_constraintRight_toRightOf="parent"
+              app:layout_constraintTop_toBottomOf="@id/my_progressbar_0"/>
 
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center"
-                  android:text="@{homeModel.score.toString() + @string/start_survey_view_txt_1}"
-                  android:textAppearance="?android:attr/textAppearanceSmall"
-                  android:textColor="@color/primary"
-                  android:textStyle="bold"
-                  app:layout_column="0"
-                  app:layout_gravity="center"
-                  app:layout_row="0"/>
-      </android.support.v7.widget.GridLayout>
+    <TextView android:id="@+id/my_textview_1"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/divider_top"
+              android:gravity="center"
+              android:text="@string/start_survey_view_txt_2"
+              android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintLeft_toLeftOf="parent"
+              app:layout_constraintRight_toRightOf="parent"/>
 
-      <ListView android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginTop="@dimen/margin_top"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:focusable="false"
-                app:adapter="@{themeAdapter}"/>
-
-      <TextView android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_top"
-                android:gravity="center"
-                android:text="@string/start_survey_view_txt_2"
-                android:textAppearance="?android:attr/textAppearanceSmall"/>
-
-    </LinearLayout>
-
-  </ScrollView>
+  </android.support.constraint.ConstraintLayout>
 
 </layout>

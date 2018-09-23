@@ -4,8 +4,10 @@
         tools:context="jobtrends.jobsurvey.adapter.ThemeAdapter">
 
   <data>
-    <variable name="vm" type="jobtrends.jobsurvey.adapter.ThemeAdapter"/>
-    <variable name="m" type="jobtrends.jobsurvey.model.ThemeModel"/>
+    <variable name="vm"
+              type="jobtrends.jobsurvey.adapter.ThemeAdapter"/>
+    <variable name="m"
+              type="jobtrends.jobsurvey.model.ThemeModel"/>
   </data>
 
   <LinearLayout android:layout_width="match_parent"
@@ -25,9 +27,8 @@
               android:gravity="center"
               android:onClick="@{() -> vm.onClickTheme(m)}"
               android:text="@{m.name}"
-              android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textColor="@color/primary"
-              android:textStyle="bold"/>
+              android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+              android:textColor="@color/accent"/>
 
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -36,8 +37,8 @@
               android:layout_weight="1"
               android:gravity="center"
               android:text="@{@string/listview_start_survey_view_txt_1 + m.level}"
-              android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textColor="@color/primary"/>
+              android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+              android:textColor="@color/accent"/>
 
     <ImageView android:layout_width="match_parent"
                android:layout_height="wrap_content"

@@ -51,7 +51,7 @@
                                                   app:columnOrderPreserved="false"
                                                   app:rowOrderPreserved="false">
 
-                <ProgressBar android:id="@+id/myProgressBar"
+                <ProgressBar android:id="@+id/my_progressbar_0"
                              style="?android:attr/progressBarStyleHorizontal"
                              android:layout_width="128dp"
                              android:layout_height="128dp"
