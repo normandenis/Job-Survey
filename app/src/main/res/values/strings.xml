@@ -1,214 +1,197 @@
 <resources>
 
-  <string name="app_name">Job Survey</string>
+    <string name="app_name">Job Survey</string>
 
-  <string name="default_notification_channel_id"
-          translatable="false">fcm_default_channel
-  </string>
+    <!--activity_sign_in-->
 
-  <string name="default_notification_channel_name"
-          translatable="true">News
-  </string>
 
+    <string name="sign_in_view_txt_0">
+        <b>Job Survey</b>
+    </string>
 
-  <!--sign_in_view-->
+    <string name="sign_in_view_txt_1">Email</string>
 
+    <string name="sign_in_view_txt_2">Mot de passe</string>
 
-  <string name="sign_in_view_txt_0">
-    <b>Job Survey</b>
-  </string>
+    <string name="sign_in_view_txt_3">
+        <b>Se connecter</b>
+    </string>
 
-  <string name="sign_in_view_txt_1">Email</string>
+    <string name="sign_in_view_txt_4">
+        <b>Vous n\'avez pas encore de compte ? Créez-en un</b>
+    </string>
 
-  <string name="sign_in_view_txt_2">Mot de passe</string>
 
-  <string name="sign_in_view_txt_3">
-    <b>Se connecter</b>
-  </string>
+    <!--activity_sign_up-->
 
-  <string name="sign_in_view_txt_4">
-    <b>Vous n\'avez pas encore de compte ? Créez-en un</b>
-  </string>
 
+    <string name="sign_up_view_txt_0">
+        <b>Job Survey</b>
+    </string>
 
-  <!--sign_up_view-->
+    <string name="sign_up_view_txt_1">
+        <b>Créer un compte</b>
+    </string>
 
+    <string name="sign_up_view_txt_2">Nom</string>
 
-  <string name="sign_up_view_txt_0">
-    <b>Job Survey</b>
-  </string>
+    <string name="sign_up_view_txt_3">Prénom</string>
 
-  <string name="sign_up_view_txt_1">
-    <b>Créer un compte</b>
-  </string>
+    <string name="sign_up_view_txt_4">Mois-Jour-Année</string>
 
-  <string name="sign_up_view_txt_2">Nom</string>
+    <string name="sign_up_view_txt_5">Email</string>
 
-  <string name="sign_up_view_txt_3">Prénom</string>
+    <string name="sign_up_view_txt_6">Profession</string>
 
-  <string name="sign_up_view_txt_4">Mois-Jour-Année</string>
+    <string name="sign_up_view_txt_7">Mot de passe</string>
 
-  <string name="sign_up_view_txt_5">Email</string>
+    <string name="sign_up_view_txt_8">Confirmation de mot de passe</string>
 
-  <string name="sign_up_view_txt_6">Profession</string>
+    <string name="sign_up_view_txt_9">En créant votre compte vous acceptez nos <b>Conditions d’Utilisation
+    </b> et notre
+        <b>Privacy Policy</b>
+    </string>
 
-  <string name="sign_up_view_txt_7">Mot de passe</string>
+    <string name="sign_up_view_txt_10">
+        <b>S\'inscrire</b>
+    </string>
 
-  <string name="sign_up_view_txt_8">Confirmation de mot de passe</string>
 
-  <string name="sign_up_view_txt_9">En créant votre compte vous acceptez nos <b>Conditions d’Utilisation
-  </b> et notre
-    <b>Privacy Policy</b>
-  </string>
+    <!--fragment_setting-->
 
-  <string name="sign_up_view_txt_10">
-    <b>S\'inscrire</b>
-  </string>
 
+    <string name="setting_view_txt_0">
+        <b>PARAMÈTRES</b>
+    </string>
 
-  <!--setting_view-->
+    <string name="setting_view_txt_1">
+        <b>Félix Marcotte-Ruffin</b>
+    </string>
 
+    <string name="setting_view_txt_2">Chef de Projet</string>
 
-  <string name="setting_view_txt_0">
-    <b>PARAMÈTRES</b>
-  </string>
+    <string name="setting_view_txt_3">
+        <b>Modifier</b>
+    </string>
 
-  <string name="setting_view_txt_1">
-    <b>Félix Marcotte-Ruffin</b>
-  </string>
+    <string name="setting_view_txt_4">felix@jobtrends.io</string>
 
-  <string name="setting_view_txt_2">Chef de Projet</string>
+    <string name="setting_view_txt_5">
+        <b>Notifications</b>
+    </string>
 
-  <string name="setting_view_txt_3">
-    <b>Modifier</b>
-  </string>
+    <string name="setting_view_txt_6">Toutes</string>
 
-  <string name="setting_view_txt_4">felix@jobtrends.io</string>
+    <string name="setting_view_txt_7">
+        <b>Déconnexion</b>
+    </string>
 
-  <string name="setting_view_txt_5">
-    <b>Notifications</b>
-  </string>
+    <string name="setting_view_txt_8">None</string>
 
-  <string name="setting_view_txt_6">Toutes</string>
+    <string name="setting_view_txt_9">
+        <b>FAQ</b>
+    </string>
 
-  <string name="setting_view_txt_7">
-    <b>Déconnexion</b>
-  </string>
+    <string name="setting_view_txt_10">Questions?</string>
 
-  <string name="setting_view_txt_8">None</string>
 
-  <string name="setting_view_txt_9">
-    <b>FAQ</b>
-  </string>
+    <!--fragment_profile-->
 
-  <string name="setting_view_txt_10">Questions?</string>
 
+    <string name="profile_view_0">Compte</string>
 
-  <!--profile_view-->
+    <string name="profile_view_1">Modification</string>
 
+    <string name="profile_view_2">Nom</string>
 
-  <string name="profile_view_0">Compte</string>
+    <string name="profile_view_3">Prénom</string>
 
-  <string name="profile_view_1">Modification</string>
+    <string name="profile_view_4">Mois-Jour-Année</string>
 
-  <string name="profile_view_2">Nom</string>
+    <string name="profile_view_5">Email</string>
 
-  <string name="profile_view_3">Prénom</string>
+    <string name="profile_view_6">Profession</string>
 
-  <string name="profile_view_4">Mois-Jour-Année</string>
+    <string name="profile_view_7">Ancien mot de passe</string>
 
-  <string name="profile_view_5">Email</string>
+    <string name="profile_view_8">Nouveau mot de passe</string>
 
-  <string name="profile_view_6">Profession</string>
+    <string name="profile_view_9">Confirmation du mot de passe</string>
 
-  <string name="profile_view_7">Ancien mot de passe</string>
+    <string name="profile_view_10">Sauvegarder</string>
 
-  <string name="profile_view_8">Nouveau mot de passe</string>
 
-  <string name="profile_view_9">Confirmation du mot de passe</string>
+    <!--fragment_theme-->
 
-  <string name="profile_view_10">Sauvegarder</string>
 
+    <string name="start_survey_view_0">
+        <b>DÉMARRER LE SONDAGE ?</b>
+    </string>
 
-  <!--theme_view-->
+    <string name="start_survey_view_txt_1">&#160;%</string>
 
+    <string name="start_survey_view_txt_2">Vous serez averti lorsque de nouveau sondages seront disponible, merci de
+        votre contribution !
+    </string>
 
-  <string name="start_survey_view_0">
-    <b>DÉMARRER LE SONDAGE ?</b>
-  </string>
 
-  <string name="start_survey_view_txt_1">&#160;%</string>
+    <!--adapter_theme-->
 
-  <string name="start_survey_view_txt_2">Vous serez averti lorsque de nouveau sondages seront disponible, merci de votre
-    contribution !
-  </string>
 
+    <string name="listview_start_survey_view_txt_0">Thème&#160;</string>
 
-  <!--theme_adapter_view-->
+    <string name="listview_start_survey_view_txt_1">Niveau&#160;</string>
 
 
-  <string name="listview_start_survey_view_txt_0">Thème&#160;</string>
+    <!--fragment_result-->
 
-  <string name="listview_start_survey_view_txt_1">Niveau&#160;</string>
 
+    <string name="end_survey_view_txt_0">
+        <b>Merci d\'avoir répondu</b>
+    </string>
 
-  <!--result_view-->
+    <string name="end_survey_view_txt_1">De la part de toute l’équipe</string>
 
+    <string name="end_survey_view_txt_2">Votre participation nous permettra de vous proposer un outil gratuit et
+        toujours plus adapté
+    </string>
 
-  <string name="end_survey_view_txt_0">
-    <b>Merci d\'avoir répondu</b>
-  </string>
+    <string name="end_survey_view_txt_3">
+        <b>Terminer</b>
+    </string>
 
-  <string name="end_survey_view_txt_1">De la part de toute l’équipe</string>
 
-  <string name="end_survey_view_txt_2">Votre participation nous permettra de vous proposer un outil gratuit et toujours
-    plus adapté
-  </string>
+    <!--dialog_validate-->
 
-  <string name="end_survey_view_txt_3">
-    <b>Terminer</b>
-  </string>
 
+    <string name="validate_popup_view_txt_0">
+        <b>Vous êtes sur le point de valider le questionnaire, est ce que c’est ce que vous vouliez faire ?
+        </b>
+    </string>
 
-  <!--faq_view-->
+    <string name="validate_popup_view_txt_1">
+        <b>Non</b>
+    </string>
 
+    <string name="validate_popup_view_txt_2">
+        <b>Oui</b>
+    </string>
 
-  <string name="faq_view_0">FAQ</string>
 
-  <string name="faq_view_1">Search</string>
+    <!--dialog_cancel-->
 
 
-  <!--validate_popup_view-->
+    <string name="cancel_popup_view_txt_0">
+        <b>Vous êtes sur le point de quitter le questionnaire, toutes avancées seront perdues. Quitter ?
+        </b>
+    </string>
 
+    <string name="cancel_popup_view_txt_1">
+        <b>Non</b>
+    </string>
 
-  <string name="validate_popup_view_txt_0">
-    <b>Vous êtes sur le point de valider le questionnaire, est ce que c’est ce que vous vouliez faire ?
-    </b>
-  </string>
-
-  <string name="validate_popup_view_txt_1">
-    <b>Non</b>
-  </string>
-
-  <string name="validate_popup_view_txt_2">
-    <b>Oui</b>
-  </string>
-
-
-  <!--cancel_popup_view-->
-
-
-  <string name="cancel_popup_view_txt_0">
-    <b>Vous êtes sur le point de quitter le questionnaire, toutes avancées seront perdues. Quitter ?
-    </b>
-  </string>
-
-  <string name="cancel_popup_view_txt_1">
-    <b>Non</b>
-  </string>
-
-  <string name="cancel_popup_view_txt_2">
-    <b>Oui</b>
-  </string>
+    <string name="cancel_popup_view_txt_2">
+        <b>Oui</b>
+    </string>
 
 </resources>

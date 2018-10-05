@@ -5,47 +5,35 @@ import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
 
-class ObservableStringAdapter : TypeAdapter<ObservableField<String?>?>
-{
-    constructor()
+class ObservableStringAdapter : TypeAdapter<ObservableField<String?>?>() {
 
-    override fun write(json: JsonWriter?, value: ObservableField<String?>?)
-    {
+    override fun write(json: JsonWriter?, value: ObservableField<String?>?) {
         json?.value(value?.get())
     }
 
-    override fun read(json: JsonReader?): ObservableField<String?>?
-    {
+    override fun read(json: JsonReader?): ObservableField<String?>? {
         return ObservableField(json?.nextString())
     }
 }
 
-class ObservableIntAdapter : TypeAdapter<ObservableField<Int?>?>
-{
-    constructor()
+class ObservableIntAdapter : TypeAdapter<ObservableField<Int?>?>() {
 
-    override fun write(json: JsonWriter?, value: ObservableField<Int?>?)
-    {
+    override fun write(json: JsonWriter?, value: ObservableField<Int?>?) {
         json?.value(value?.get())
     }
 
-    override fun read(json: JsonReader?): ObservableField<Int?>?
-    {
+    override fun read(json: JsonReader?): ObservableField<Int?>? {
         return ObservableField(json?.nextInt())
     }
 }
 
-class ObservableBooleanAdapter : TypeAdapter<ObservableField<Boolean?>?>
-{
-    constructor()
+class ObservableBooleanAdapter : TypeAdapter<ObservableField<Boolean?>?>() {
 
-    override fun write(json: JsonWriter?, value: ObservableField<Boolean?>?)
-    {
+    override fun write(json: JsonWriter?, value: ObservableField<Boolean?>?) {
         json?.value(value?.get())
     }
 
-    override fun read(json: JsonReader?): ObservableField<Boolean?>?
-    {
+    override fun read(json: JsonReader?): ObservableField<Boolean?>? {
         return ObservableField(json?.nextBoolean())
     }
 }

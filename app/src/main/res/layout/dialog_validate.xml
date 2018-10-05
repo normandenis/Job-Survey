@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context="jobtrends.jobsurvey.fragment.SurveyFragment">
+
+  <data>
+    <variable name="surveyFragment"
+              type="jobtrends.jobsurvey.fragment.SurveyFragment"/>
+  </data>
+
+  <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                               android:layout_height="match_parent"
+                                               android:orientation="vertical"
+                                               android:padding="@dimen/divider_all">
+
+    <TextView android:id="@+id/my_textview_0"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintRight_toRightOf="parent"
+              android:gravity="center"
+              app:layout_constraintLeft_toLeftOf="parent"
+              android:text="@string/validate_popup_view_txt_0"
+              android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+    <Button android:id="@+id/my_button_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/outline_layout"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginTop="@dimen/divider_top"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/my_textview_0"
+            app:layout_constraintRight_toLeftOf="@id/my_button_1"
+            android:onClick="@{() -> surveyFragment.onValideNo()}"
+            android:text="@string/validate_popup_view_txt_1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textColor="@color/black"/>
+
+    <Button android:id="@+id/my_button_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_layout"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginTop="@dimen/divider_top"
+            app:layout_constraintTop_toBottomOf="@id/my_textview_0"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/my_button_0"
+            android:onClick="@{() -> surveyFragment.onValideYes()}"
+            android:text="@string/validate_popup_view_txt_2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textColor="@color/white"/>
+
+  </android.support.constraint.ConstraintLayout>
+
+</layout>

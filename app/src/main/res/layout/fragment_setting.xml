@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="jobtrends.jobsurvey.fragment.SettingFragment">
+
+  <data>
+    <variable name="settingFragment"
+              type="jobtrends.jobsurvey.fragment.SettingFragment"/>
+    <variable name="homeModel"
+              type="jobtrends.jobsurvey.model.HomeModel"/>
+    <variable name="userModel"
+              type="jobtrends.jobsurvey.model.UserModel"/>
+  </data>
+
+  <ScrollView android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+                  android:orientation="vertical"
+                  android:paddingBottom="@dimen/margin_bottom"
+                  android:paddingEnd="@dimen/margin_right"
+                  android:paddingStart="@dimen/margin_left"
+                  android:paddingTop="@dimen/margin_top">
+
+      <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@={userModel.firstName}"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/primary"
+                android:textStyle="bold"/>
+
+      <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                android:gravity="center"
+                android:text="@={userModel.job}"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/primary"/>
+
+      <android.support.v7.widget.GridLayout android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:paddingBottom="@dimen/margin_bottom"
+                                            android:paddingEnd="@dimen/margin_right"
+                                            android:paddingStart="@dimen/margin_left"
+                                            android:paddingTop="@dimen/margin_top"
+                                            app:columnOrderPreserved="false"
+                                            app:rowOrderPreserved="false">
+
+        <ProgressBar android:id="@+id/my_progressbar_0"
+                     style="?android:attr/progressBarStyleHorizontal"
+                     android:layout_width="128dp"
+                     android:layout_height="128dp"
+                     android:background="@drawable/circle_shape"
+                     android:indeterminate="false"
+                     android:max="100"
+                     android:progress="@{homeModel.score}"
+                     android:progressDrawable="@drawable/circular_progress_bar"
+                     app:layout_column="0"
+                     app:layout_gravity="center"
+                     app:layout_row="0"/>
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:text="@{homeModel.score.toString() + @string/start_survey_view_txt_1}"
+                  android:textAppearance="?android:attr/textAppearanceSmall"
+                  android:textColor="@color/primary"
+                  android:textStyle="bold"
+                  app:layout_column="0"
+                  app:layout_gravity="center"
+                  app:layout_row="0"/>
+
+      </android.support.v7.widget.GridLayout>
+
+      <android.support.v7.widget.GridLayout android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="bottom"
+                                            android:paddingBottom="@dimen/margin_bottom"
+                                            android:paddingEnd="@dimen/margin_right"
+                                            android:paddingStart="@dimen/margin_left"
+                                            android:paddingTop="@dimen/margin_top"
+                                            app:alignmentMode="alignBounds"
+                                            app:columnCount="2"
+                                            app:rowCount="2">
+
+        <!-- Row 0 -->
+        <!-- Column 0 -->
+        <android.support.v7.widget.CardView android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="@dimen/margin_bottom"
+                                            android:layout_marginEnd="@dimen/margin_right"
+                                            android:layout_marginStart="@dimen/margin_left"
+                                            android:layout_marginTop="@dimen/margin_top"
+                                            android:clickable="true"
+                                            android:focusable="true"
+                                            android:onClick="@{() -> settingFragment.onNavToProfile()}"
+                                            app:cardBackgroundColor="@color/primary"
+                                            app:cardCornerRadius="8dp"
+                                            app:cardElevation="8dp"
+                                            app:layout_columnWeight="1"
+                                            app:layout_gravity="fill"
+                                            app:layout_rowWeight="1">
+
+          <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/margin_bottom"
+                        android:paddingEnd="@dimen/margin_right"
+                        android:paddingStart="@dimen/margin_left"
+                        android:paddingTop="@dimen/margin_top">
+
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/ic_edit_white_16dp"
+                       tools:ignore="ContentDescription"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/margin_top"
+                      android:text="@string/setting_view_txt_3"
+                      android:textAppearance="?android:attr/textAppearanceSmall"
+                      android:textColor="@color/white"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/margin_top"
+                      android:singleLine="true"
+                      android:text="@={userModel.email}"
+                      android:textAppearance="?android:attr/textAppearanceSmall"
+                      android:textColor="@color/white"/>
+
+          </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <!-- Row 1 -->
+        <!-- Column 0 -->
+        <android.support.v7.widget.CardView android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="@dimen/margin_bottom"
+                                            android:layout_marginEnd="@dimen/margin_right"
+                                            android:layout_marginStart="@dimen/margin_left"
+                                            android:layout_marginTop="@dimen/margin_top"
+                                            android:clickable="true"
+                                            android:focusable="true"
+                                            android:onClick="@{() -> settingFragment.onNavSignIn()}"
+                                            app:cardBackgroundColor="@color/grey_300"
+                                            app:cardCornerRadius="8dp"
+                                            app:cardElevation="8dp"
+                                            app:layout_columnWeight="1"
+                                            app:layout_gravity="fill"
+                                            app:layout_rowWeight="1">
+
+          <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/margin_bottom"
+                        android:paddingEnd="@dimen/margin_right"
+                        android:paddingStart="@dimen/margin_left"
+                        android:paddingTop="@dimen/margin_top">
+
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/ic_exit_to_app_black_16dp"
+                       tools:ignore="ContentDescription"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/margin_top"
+                      android:text="@string/setting_view_txt_7"
+                      android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+          </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+      </android.support.v7.widget.GridLayout>
+
+    </LinearLayout>
+
+  </ScrollView>
+
+</layout>

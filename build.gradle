@@ -2,26 +2,32 @@
 
 buildscript {
     ext {
-        kotlin_version = "1.2.61"
-        android_support = "27.1.1"
-        google_service = "15.0.1"
-        gradle_version = "3.1.4"
+        kotlin_version = "1.2.71"
+        android_support = "28.0.0"
+        compiler_version = "3.2.0"
+        dagger_version = "2.17"
     }
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$gradle_version"
+        classpath "com.android.tools.build:gradle:$compiler_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.gms:google-services:3.2.0"
+        classpath "com.netflix.nebula:gradle-lint-plugin:10.1.2"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
+
 allprojects {
+    apply plugin: "nebula.lint"
+    gradleLint.criticalRules += "dependency-parentheses"
+    gradleLint.criticalRules += "dependency-tuple"
+    gradleLint.criticalRules += "unused-dependency"
     repositories {
         google()
         jcenter()
