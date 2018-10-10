@@ -280,7 +280,7 @@
 
   <!-- Colors for the app -->
   <color name="jobtrends">#144C60</color>
-  <color name="jobtrends_dark">#114158</color>
+  <color name="jobtrends_dark">#103C4C</color>
   <color name="primary">@color/jobtrends</color>
   <color name="primary_dark">@color/jobtrends_dark</color>
   <color name="accent">@color/white</color>

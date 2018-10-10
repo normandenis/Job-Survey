@@ -20,10 +20,7 @@
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                  android:layout_height="wrap_content"
                                                  android:orientation="vertical"
-                                                 android:paddingBottom="@dimen/margin_bottom"
-                                                 android:paddingEnd="@dimen/margin_right"
-                                                 android:paddingStart="@dimen/margin_left"
-                                                 android:paddingTop="@dimen/margin_top">
+                                                 android:padding="@dimen/divider">
 
       <ImageView android:id="@+id/my_imageview_0"
                  android:layout_width="24dp"
@@ -34,7 +31,7 @@
                  android:onClick="@{() -> signUpActivity.onNavBack()}"
                  app:layout_constraintLeft_toLeftOf="parent"
                  app:layout_constraintTop_toTopOf="parent"
-                 android:src="@drawable/ic_arrow_back_orange_512dp"
+                 android:src="@drawable/ic_arrow_back_accent_512dp"
                  tools:ignore="ContentDescription,VectorDrawableCompat"/>
 
       <TextView android:id="@+id/my_textview_0"
@@ -51,7 +48,7 @@
       <android.support.v7.widget.CardView android:id="@+id/my_cardview_0"
                                           android:layout_width="match_parent"
                                           android:layout_height="wrap_content"
-                                          android:layout_marginTop="@dimen/divider_top"
+                                          android:layout_marginTop="@dimen/divider"
                                           app:layout_constraintTop_toBottomOf="@id/my_textview_0"
                                           app:layout_constraintRight_toRightOf="parent"
                                           app:layout_constraintLeft_toLeftOf="parent"
@@ -60,10 +57,7 @@
 
         <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                      android:layout_height="match_parent"
-                                                     android:paddingBottom="@dimen/margin_bottom"
-                                                     android:paddingEnd="@dimen/margin_right"
-                                                     android:paddingStart="@dimen/margin_left"
-                                                     android:paddingTop="@dimen/margin_top">
+                                                     android:padding="@dimen/divider">
 
           <TextView android:id="@+id/my_textview_1"
                     android:layout_width="match_parent"
@@ -76,7 +70,7 @@
           <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_0"
                                                          android:layout_width="match_parent"
                                                          android:layout_height="wrap_content"
-                                                         android:layout_marginTop="@dimen/margin_top"
+                                                         android:layout_marginTop="@dimen/margin"
                                                          app:layout_constraintTop_toBottomOf="@id/my_textview_1">
 
             <EditText android:layout_width="match_parent"
@@ -97,7 +91,7 @@
           <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_1"
                                                          android:layout_width="match_parent"
                                                          android:layout_height="wrap_content"
-                                                         android:layout_marginTop="@dimen/margin_top"
+                                                         android:layout_marginTop="@dimen/margin"
                                                          app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_0">
 
             <EditText android:layout_width="match_parent"
@@ -118,7 +112,7 @@
           <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_2"
                                                          android:layout_width="match_parent"
                                                          android:layout_height="wrap_content"
-                                                         android:layout_marginTop="@dimen/margin_top"
+                                                         android:layout_marginTop="@dimen/margin"
                                                          app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_1">
 
             <EditText android:id="@+id/sign_up_view_id_4"
@@ -140,7 +134,7 @@
           <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_3"
                                                          android:layout_width="match_parent"
                                                          android:layout_height="wrap_content"
-                                                         android:layout_marginTop="@dimen/margin_top"
+                                                         android:layout_marginTop="@dimen/margin"
                                                          app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_2">
 
             <EditText android:layout_width="match_parent"
@@ -161,7 +155,7 @@
           <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_4"
                                                          android:layout_width="match_parent"
                                                          android:layout_height="wrap_content"
-                                                         android:layout_marginTop="@dimen/margin_top"
+                                                         android:layout_marginTop="@dimen/margin"
                                                          app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_3">
 
             <EditText android:layout_width="match_parent"
@@ -182,7 +176,7 @@
           <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_5"
                                                          android:layout_width="match_parent"
                                                          android:layout_height="wrap_content"
-                                                         android:layout_marginTop="@dimen/margin_top"
+                                                         android:layout_marginTop="@dimen/margin"
                                                          app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_4">
             <EditText android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -202,7 +196,7 @@
           <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_6"
                                                          android:layout_width="match_parent"
                                                          android:layout_height="wrap_content"
-                                                         android:layout_marginTop="@dimen/margin_top"
+                                                         android:layout_marginTop="@dimen/margin"
                                                          app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_5">
 
             <EditText android:layout_width="match_parent"
@@ -223,7 +217,7 @@
           <TextView android:id="@+id/my_textview_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_top"
+                    android:layout_marginTop="@dimen/margin"
                     android:gravity="center"
                     android:text="@string/sign_up_view_txt_9"
                     android:textAppearance="@style/TextAppearance.AppCompat.Caption"
@@ -238,7 +232,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@={errorModel.mainMsg}"
-                android:layout_marginTop="@dimen/margin_top"
+                android:layout_marginTop="@dimen/margin"
                 android:visibility="gone"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                 android:textColor="@android:color/holo_red_light"
@@ -247,7 +241,7 @@
       <android.support.v7.widget.AppCompatButton android:id="@+id/my_appcompatbutton_0"
                                                  android:layout_width="match_parent"
                                                  android:layout_height="wrap_content"
-                                                 android:layout_marginTop="@dimen/divider_top"
+                                                 android:layout_marginTop="@dimen/divider"
                                                  android:background="@drawable/rounded_layout"
                                                  android:onClick="@{() -> signUpActivity.onClick()}"
                                                  android:text="@string/sign_up_view_txt_10"

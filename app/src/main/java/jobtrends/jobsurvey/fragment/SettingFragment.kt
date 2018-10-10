@@ -13,6 +13,7 @@ import android.widget.Button
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.activity.SignInActivity
 import jobtrends.jobsurvey.adapter.displayError
+import jobtrends.jobsurvey.dagger.App
 import jobtrends.jobsurvey.databinding.FragmentSettingBinding
 import jobtrends.jobsurvey.model.HomeModel
 import jobtrends.jobsurvey.model.UserModel
@@ -34,6 +35,7 @@ class SettingFragment : Fragment() {
     private val userModel: UserModel
 
     init {
+        App.component.inject(this)
         appBarBtn = serviceController.getInstance()
         homeModel = serviceController.getInstance()
         userModel = serviceController.getInstance()
@@ -46,7 +48,7 @@ class SettingFragment : Fragment() {
         binding.settingFragment = this
         binding.homeModel = homeModel
         binding.userModel = userModel
-        appBarBtn.setBackgroundResource(R.drawable.ic_close_orange_32dp)
+        appBarBtn.setBackgroundResource(R.drawable.ic_close_accent_32dp)
         appBarBtn.setOnClickListener { onNavStartSurvey() }
         return binding.root
     }

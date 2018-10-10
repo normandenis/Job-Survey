@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.adapter.ThemeAdapter
+import jobtrends.jobsurvey.dagger.App
 import jobtrends.jobsurvey.databinding.FragmentThemeBinding
 import jobtrends.jobsurvey.model.HomeModel
 import jobtrends.jobsurvey.service.ServiceController
@@ -25,6 +26,7 @@ class ThemeFragment : Fragment() {
     private val appBarBtn: Button
 
     init {
+        App.component.inject(this)
         homeModel = serviceController.getInstance()
         appBarBtn = serviceController.getInstance()
     }
@@ -33,7 +35,7 @@ class ThemeFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val binding: FragmentThemeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_theme, container, false)
         themeAdapter = ThemeAdapter(homeModel.themes, fragmentManager)
-        appBarBtn.setBackgroundResource(R.drawable.ic_person_orange_32dp)
+        appBarBtn.setBackgroundResource(R.drawable.ic_person_accent_32dp)
         appBarBtn.setOnClickListener { onNavSetting() }
         binding.themeFragment = this
         binding.homeModel = homeModel

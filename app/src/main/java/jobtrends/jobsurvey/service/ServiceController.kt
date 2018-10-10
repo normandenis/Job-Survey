@@ -6,6 +6,7 @@ import android.preference.PreferenceManager
 import jobtrends.jobsurvey.dagger.App
 import jobtrends.jobsurvey.model.UserModel
 import javax.inject.Inject
+import javax.inject.Provider
 
 
 class ServiceController {
@@ -13,10 +14,9 @@ class ServiceController {
     @Inject
     lateinit var context: Context
     @Inject
-    lateinit var apiController: ApiController
-    @Inject
     lateinit var jsonController: JsonController
 
+    lateinit var apiController: ApiController
     val instances: MutableMap<Any?, Any?>
 
     init {
@@ -63,6 +63,12 @@ class ServiceController {
     }
 
     inline fun <reified T> getInstance(): T {
-        return instances[T::class] as T
+        return try {
+            instances[T::class] as T
+        } catch (exception: Exception) {
+            val obj = T::class.java.newInstance()
+            register(obj)
+            obj
+        }
     }
 }

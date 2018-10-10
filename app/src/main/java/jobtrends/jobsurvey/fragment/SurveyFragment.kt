@@ -15,6 +15,7 @@ import android.widget.Button
 import jobtrends.jobsurvey.R
 import jobtrends.jobsurvey.adapter.PagerAdapter
 import jobtrends.jobsurvey.adapter.displayError
+import jobtrends.jobsurvey.dagger.App
 import jobtrends.jobsurvey.databinding.DialogCancelBinding
 import jobtrends.jobsurvey.databinding.DialogValidateBinding
 import jobtrends.jobsurvey.databinding.FragmentSurveyBinding
@@ -42,7 +43,9 @@ class SurveyFragment : Fragment() {
     private val appBarBtn: Button
 
     init {
-        resultModel = serviceController.getInstance()
+        App.component.inject(this)
+        resultModel = ResultModel()
+        serviceController.register(resultModel, true)
         appBarBtn = serviceController.getInstance()
     }
 
@@ -50,10 +53,10 @@ class SurveyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (survey.questions?.size == 1) {
-            appBarBtn.setBackgroundResource(R.drawable.ic_check_orange_32dp)
+            appBarBtn.setBackgroundResource(R.drawable.ic_check_accent_32dp)
             appBarBtn.setOnClickListener { onValidateSurvey() }
         } else {
-            appBarBtn.setBackgroundResource(R.drawable.ic_close_orange_32dp)
+            appBarBtn.setBackgroundResource(R.drawable.ic_close_accent_32dp)
             appBarBtn.setOnClickListener { onCloseSurvey() }
         }
 
@@ -79,10 +82,10 @@ class SurveyFragment : Fragment() {
 
             override fun onPageSelected(position: Int) {
                 if (position == list.size - 1) {
-                    appBarBtn.setBackgroundResource(R.drawable.ic_check_orange_32dp)
+                    appBarBtn.setBackgroundResource(R.drawable.ic_check_accent_32dp)
                     appBarBtn.setOnClickListener { onValidateSurvey() }
                 } else {
-                    appBarBtn.setBackgroundResource(R.drawable.ic_close_orange_32dp)
+                    appBarBtn.setBackgroundResource(R.drawable.ic_close_accent_32dp)
                     appBarBtn.setOnClickListener { onCloseSurvey() }
                 }
             }

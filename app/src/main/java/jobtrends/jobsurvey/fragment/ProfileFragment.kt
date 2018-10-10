@@ -51,7 +51,7 @@ class ProfileFragment : Fragment() {
         tmpUserModel.passwordProtection?.set("")
         _oldPassword = userModel.password?.get() ?: ""
 
-        appBarBtn.setBackgroundResource(R.drawable.ic_arrow_back_orange_512dp)
+        appBarBtn.setBackgroundResource(R.drawable.ic_arrow_back_accent_512dp)
         appBarBtn.setOnClickListener { onNavBack() }
     }
 

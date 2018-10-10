@@ -1,6 +1,6 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
-    <option name="myName" value="Project" />
+    <option name="myName" value="Project Default" />
     <inspection_tool class="CatchMayIgnoreExceptionMerged" />
     <inspection_tool class="ConstantIfStatement" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ConstantStringIntern" enabled="true" level="ERROR" enabled_by_default="true" />

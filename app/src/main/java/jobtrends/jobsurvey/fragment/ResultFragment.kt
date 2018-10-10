@@ -16,6 +16,7 @@ import jobtrends.jobsurvey.service.ApiController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.ServiceController
 import jobtrends.jobsurvey.adapter.displayError
+import jobtrends.jobsurvey.dagger.App
 import jobtrends.jobsurvey.databinding.FragmentResultBinding
 import javax.inject.Inject
 
@@ -31,6 +32,7 @@ class ResultFragment : Fragment() {
     private val resultModel: ResultModel
 
     init {
+        App.component.inject(this)
         appBarBtn = serviceController.getInstance()
         resultModel = serviceController.getInstance()
     }
@@ -39,7 +41,7 @@ class ResultFragment : Fragment() {
                               savedInstanceState: Bundle?): View {
         val binding: FragmentResultBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_result, container, false)
         binding.resultFragment = this
-        appBarBtn.setBackgroundResource(R.drawable.ic_close_orange_32dp)
+        appBarBtn.setBackgroundResource(R.drawable.ic_close_accent_32dp)
         appBarBtn.setOnClickListener { onValidateSurvey() }
         return binding.root
     }

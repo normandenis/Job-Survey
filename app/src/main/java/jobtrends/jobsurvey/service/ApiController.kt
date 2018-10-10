@@ -30,22 +30,26 @@ class ApiController {
     @Inject
     lateinit var serviceController: ServiceController
 
-    private val userModel: UserModel
-    private lateinit var token: String
+    private var token: String
     private var statusCode: Int
     private val urlBase: String
     private val errorMessage: String
 
     init {
         App.component.inject(this)
-        userModel = serviceController.getInstance()
+        inject()
         statusCode = 0
+        token = ""
         errorMessage = "Nous rencontrons des soucis avec nos serveurs, veuillez nous excuser de la gêne occasionnée."
         if (BuildConfig.FLAVOR == "dev") {
             urlBase = "https://api.dev.jobtrends.io/v2/"
         } else {
             urlBase = "https://api.jobtrends.io/v2/"
         }
+    }
+
+    fun inject() {
+        serviceController.apiController = this
     }
 
     fun resetToken() {
