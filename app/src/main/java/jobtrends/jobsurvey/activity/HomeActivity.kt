@@ -43,11 +43,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding: ActivityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         binding.homeActivity = this
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-        setSupportActionBar(toolbar)
 
         serviceController.register(findViewById<Button>(R.id.btn), true)
-        serviceController.register(binding.root, true)
 
         apiController.get("me", ::jobaymaxMeReply)
 
@@ -57,7 +54,7 @@ class HomeActivity : AppCompatActivity() {
     private fun navTo(fragment: Fragment) {
         try {
             val transaction: FragmentTransaction = supportFragmentManager?.beginTransaction()!!
-            transaction.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
+            transaction.replace(R.id.my_framelayout_0, fragment)
             transaction.commit()
         } catch (exception: Exception) {
             Log.e(tag, exception.message)

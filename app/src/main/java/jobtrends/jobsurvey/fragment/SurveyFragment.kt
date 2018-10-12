@@ -53,10 +53,10 @@ class SurveyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (survey.questions?.size == 1) {
-            appBarBtn.setBackgroundResource(R.drawable.ic_check_accent_32dp)
+            appBarBtn.setBackgroundResource(R.drawable.check_accent)
             appBarBtn.setOnClickListener { onValidateSurvey() }
         } else {
-            appBarBtn.setBackgroundResource(R.drawable.ic_close_accent_32dp)
+            appBarBtn.setBackgroundResource(R.drawable.close_accent_36)
             appBarBtn.setOnClickListener { onCloseSurvey() }
         }
 
@@ -82,10 +82,10 @@ class SurveyFragment : Fragment() {
 
             override fun onPageSelected(position: Int) {
                 if (position == list.size - 1) {
-                    appBarBtn.setBackgroundResource(R.drawable.ic_check_accent_32dp)
+                    appBarBtn.setBackgroundResource(R.drawable.check_accent)
                     appBarBtn.setOnClickListener { onValidateSurvey() }
                 } else {
-                    appBarBtn.setBackgroundResource(R.drawable.ic_close_accent_32dp)
+                    appBarBtn.setBackgroundResource(R.drawable.close_accent_36)
                     appBarBtn.setOnClickListener { onCloseSurvey() }
                 }
             }
@@ -134,7 +134,7 @@ class SurveyFragment : Fragment() {
     private fun navTo(fragment: Fragment) {
         try {
             val transaction: FragmentTransaction = fragmentManager?.beginTransaction()!!
-            transaction.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
+            transaction.replace(R.id.my_framelayout_0, fragment)
             transaction.commit()
         } catch (exception: Exception) {
             Log.e(tag, exception.message)

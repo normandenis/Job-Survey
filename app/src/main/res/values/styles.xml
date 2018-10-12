@@ -12,21 +12,92 @@
 
   </style>
 
-  <style name="theme_dark"
-         parent="Theme.AppCompat.Light.NoActionBar">
-
-    <item name="colorPrimary">@color/white</item>
-
-    <item name="colorPrimaryDark">@color/white_dark</item>
-
-    <item name="colorAccent">@color/primary</item>
-
+  <style name="button"
+         parent="margin">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:textAppearance">@style/TextAppearance.AppCompat.Button</item>
+    <item name="android:background">@drawable/rounded_layout</item>
+    <item name="android:textColor">?attr/colorAccent</item>
   </style>
 
-  <style name="AppTheme.AppBarOverlay"
-         parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+  <style name="image"
+         parent="margin"/>
 
-  <style name="AppTheme.PopupOverlay"
-         parent="ThemeOverlay.AppCompat.Light"/>
+  <style name="text"
+         parent="margin">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:gravity">center</item>
+  </style>
+
+  <style name="textAccent"
+         parent="text">
+    <item name="android:textColor">?attr/colorAccent</item>
+  </style>
+
+  <style name="textPrimary"
+         parent="text">
+    <item name="android:textColor">?attr/colorPrimary</item>
+  </style>
+
+  <style name="padding">
+    <item name="android:paddingTop">@dimen/divider</item>
+    <item name="android:paddingStart">@dimen/margin</item>
+    <item name="android:paddingEnd">@dimen/margin</item>
+    <item name="android:paddingBottom">@dimen/divider</item>
+  </style>
+
+  <style name="margin">
+    <item name="android:layout_marginTop">@dimen/divider</item>
+    <item name="android:layout_marginStart">@dimen/margin</item>
+    <item name="android:layout_marginEnd">@dimen/margin</item>
+    <item name="android:layout_marginBottom">@dimen/divider</item>
+  </style>
+
+  <style name="layout"
+         parent="padding">
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:layout_width">match_parent</item>
+  </style>
+
+  <style name="editText"
+         parent="margin">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+
+  <style name="editTextAccent"
+         parent="editText">
+    <item name="colorControlNormal">?attr/colorAccent</item>
+    <item name="colorControlActivated">?attr/colorAccent</item>
+    <item name="colorControlHighlight">?attr/colorAccent</item>
+    <item name="android:shadowColor">?attr/colorAccent</item>
+    <item name="android:textColorLink">?attr/colorAccent</item>
+    <item name="android:textColor">?attr/colorAccent</item>
+    <item name="android:textColorHighlight">?attr/colorAccent</item>
+    <item name="android:textColorHint">?attr/colorAccent</item>
+    <item name="android:backgroundTint">?attr/colorAccent</item>
+  </style>
+
+  <style name="editTextPrimary"
+         parent="editText">
+    <item name="colorControlNormal">?attr/colorPrimary</item>
+    <item name="colorControlActivated">?attr/colorPrimary</item>
+    <item name="colorControlHighlight">?attr/colorPrimary</item>
+    <item name="android:shadowColor">?attr/colorPrimary</item>
+    <item name="android:textColorLink">?attr/colorPrimary</item>
+    <item name="android:textColor">?attr/colorPrimary</item>
+    <item name="android:textColorHighlight">?attr/colorPrimary</item>
+    <item name="android:textColorHint">?attr/colorPrimary</item>
+    <item name="android:backgroundTint">?attr/colorPrimary</item>
+  </style>
+
+  <style name="cardview"
+         parent="margin">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:background">?attr/colorAccent</item>
+  </style>
 
 </resources>

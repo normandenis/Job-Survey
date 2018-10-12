@@ -13,49 +13,64 @@
               type="jobtrends.jobsurvey.adapter.AnswerAdapter"/>
   </data>
 
-  <LinearLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/divider">
+  <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                               android:layout_height="match_parent"
+                                               android:orientation="vertical"
+                                               android:padding="@dimen/margin">
 
-    <android.support.v7.widget.CardView android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_gravity="center"
-                                        android:layout_marginTop="@dimen/divider"
-                                        android:layout_weight="2"
+    <android.support.v7.widget.CardView android:id="@+id/my_cardview_0"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginTop="@dimen/margin"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintLeft_toLeftOf="parent"
+                                        app:layout_constraintRight_toRightOf="parent"
+                                        app:layout_constraintBottom_toTopOf="@id/my_textview_1"
                                         app:cardElevation="8dp">
 
-      <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/divider">
+      <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:padding="@dimen/margin">
 
-        <TextView android:layout_width="match_parent"
+        <TextView android:id="@+id/my_textview_0"
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:gravity="center"
                   android:text="@{questionModel.content}"
-                  android:textAppearance="?android:attr/textAppearanceLarge"
+                  android:textAppearance="@style/TextAppearance.AppCompat.Title"
                   android:textColor="@color/primary"
-                  android:textStyle="bold"/>
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintRight_toRightOf="parent"
+                  app:layout_constraintLeft_toLeftOf="parent"
+                  app:layout_constraintBottom_toTopOf="@id/my_listview_0"/>
 
-        <ListView android:layout_width="match_parent"
+        <ListView android:id="@+id/my_listview_0"
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:layout_marginTop="@dimen/divider"
-                  android:divider="@null"
-                  android:dividerHeight="0dp"
+                  android:layout_marginTop="@dimen/margin"
+                  android:divider="@android:color/transparent"
+                  android:dividerHeight="@dimen/margin"
+                  app:layout_constraintTop_toBottomOf="@id/my_textview_0"
+                  app:layout_constraintLeft_toLeftOf="parent"
+                  app:layout_constraintRight_toRightOf="parent"
+                  app:layout_constraintBottom_toBottomOf="parent"
                   app:adapter="@{answerAdapter}"/>
 
-      </LinearLayout>
+      </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.CardView>
 
-    <TextView android:layout_width="match_parent"
+    <TextView android:id="@+id/my_textview_1"
+              android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:gravity="center"
               android:text="@{questionModel.description}"
-              android:textAppearance="?android:attr/textAppearanceSmall"/>
+              android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+              app:layout_constraintTop_toBottomOf="@id/my_cardview_0"
+              app:layout_constraintLeft_toLeftOf="parent"
+              app:layout_constraintRight_toRightOf="parent"
+              app:layout_constraintBottom_toBottomOf="parent"/>
 
-  </LinearLayout>
+  </android.support.constraint.ConstraintLayout>
 
 </layout>

@@ -47,7 +47,7 @@
     <ImageView android:id="@+id/my_imageview_0"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:src="@drawable/ic_lock_accent_16dp"
+               android:src="@drawable/lock_accent_18"
                android:visibility="@{themeAdapter.isVisible(themeModel.open)}"
                app:layout_constraintTop_toTopOf="parent"
                app:layout_constraintLeft_toRightOf="@id/my_textview_1"

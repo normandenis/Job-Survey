@@ -18,238 +18,189 @@
               android:background="@drawable/banner">
 
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
-                                                 android:layout_height="wrap_content"
-                                                 android:orientation="vertical"
-                                                 android:padding="@dimen/divider">
+                                                 android:layout_height="wrap_content">
 
-      <ImageView android:id="@+id/my_imageview_0"
-                 android:layout_width="24dp"
-                 android:layout_height="24dp"
-                 android:layout_gravity="center"
-                 android:clickable="true"
-                 android:focusable="true"
-                 android:onClick="@{() -> signUpActivity.onNavBack()}"
-                 app:layout_constraintLeft_toLeftOf="parent"
-                 app:layout_constraintTop_toTopOf="parent"
-                 android:src="@drawable/ic_arrow_back_accent_512dp"
-                 tools:ignore="ContentDescription,VectorDrawableCompat"/>
+      <android.support.constraint.ConstraintLayout android:id="@+id/my_constraintlayout_0"
+                                                   android:layout_width="0dp"
+                                                   android:layout_height="?attr/actionBarSize"
+                                                   android:background="@color/primary_dark"
+                                                   android:elevation="8dp"
+                                                   app:layout_constraintTop_toTopOf="parent"
+                                                   app:layout_constraintRight_toRightOf="parent"
+                                                   app:layout_constraintLeft_toLeftOf="parent"
+                                                   app:layout_constraintBottom_toTopOf="@id/my_constraintlayout_1">
 
-      <TextView android:id="@+id/my_textview_0"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/sign_up_view_txt_0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textColor="@color/white"/>
+        <android.support.v7.widget.AppCompatButton android:id="@+id/my_imageview_0"
+                                                        android:layout_width="0dp"
+                                                        android:layout_height="0dp"
+                                                        android:clickable="true"
+                                                        android:focusable="true"
+                                                        android:layout_margin="8dp"
+                                                        app:layout_constraintDimensionRatio="1:1"
+                                                        android:onClick="@{() -> signUpActivity.onNavBack()}"
+                                                        app:layout_constraintLeft_toLeftOf="parent"
+                                                        app:layout_constraintTop_toTopOf="parent"
+                                                        app:layout_constraintBottom_toBottomOf="parent"
+                                                        android:background="@drawable/arrow_back_accent_512"
+                                                        tools:ignore="ContentDescription,VectorDrawableCompat"/>
 
-      <android.support.v7.widget.CardView android:id="@+id/my_cardview_0"
-                                          android:layout_width="match_parent"
-                                          android:layout_height="wrap_content"
-                                          android:layout_marginTop="@dimen/divider"
-                                          app:layout_constraintTop_toBottomOf="@id/my_textview_0"
-                                          app:layout_constraintRight_toRightOf="parent"
-                                          app:layout_constraintLeft_toLeftOf="parent"
-                                          app:cardCornerRadius="8dp"
-                                          app:cardElevation="8dp">
+        <TextView android:id="@+id/my_textview_0"
+                  android:text="@string/sign_up_view_txt_0"
+                  android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                  app:layout_constraintLeft_toLeftOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintRight_toRightOf="parent"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  style="@style/textAccent"/>
 
-        <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
-                                                     android:layout_height="match_parent"
-                                                     android:padding="@dimen/divider">
+      </android.support.constraint.ConstraintLayout>
 
-          <TextView android:id="@+id/my_textview_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/sign_up_view_txt_1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                    android:textColor="@color/primary"/>
+      <android.support.constraint.ConstraintLayout android:id="@+id/my_constraintlayout_1"
+                                                   app:layout_constraintTop_toBottomOf="@id/my_constraintlayout_0"
+                                                   app:layout_constraintRight_toRightOf="parent"
+                                                   app:layout_constraintLeft_toLeftOf="parent"
+                                                   app:layout_constraintBottom_toBottomOf="parent"
+                                                   style="@style/layout">
 
-          <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_0"
-                                                         android:layout_width="match_parent"
-                                                         android:layout_height="wrap_content"
-                                                         android:layout_marginTop="@dimen/margin"
-                                                         app:layout_constraintTop_toBottomOf="@id/my_textview_1">
+        <android.support.v7.widget.CardView android:id="@+id/my_cardview_0"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:layout_constraintRight_toRightOf="parent"
+                                            app:layout_constraintLeft_toLeftOf="parent"
+                                            app:layout_constraintBottom_toTopOf="@id/my_appcompatbutton_0"
+                                            app:cardCornerRadius="8dp"
+                                            app:cardElevation="8dp"
+                                            style="@style/cardview">
 
-            <EditText android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:hint="@string/sign_up_view_txt_2"
-                      android:inputType="textPersonName"
-                      android:shadowColor="@color/primary"
-                      android:textColorLink="@color/primary"
-                      android:textColor="@color/primary"
-                      android:textColorHighlight="@color/primary"
-                      android:textColorHint="@color/primary"
-                      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                      android:text="@={userModel.lastName}"
-                      app:errorText="@{errorModel.lastnameMsg}"/>
+          <android.support.constraint.ConstraintLayout style="@style/layout">
 
-          </android.support.design.widget.TextInputLayout>
+            <TextView android:id="@+id/my_textview_1"
+                      android:text="@string/sign_up_view_txt_1"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                      app:layout_constraintTop_toTopOf="parent"
+                      app:layout_constraintLeft_toLeftOf="parent"
+                      app:layout_constraintRight_toRightOf="parent"
+                      app:layout_constraintBottom_toTopOf="@id/my_textinputlayout_0"
+                      style="@style/textPrimary"/>
 
-          <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_1"
-                                                         android:layout_width="match_parent"
-                                                         android:layout_height="wrap_content"
-                                                         android:layout_marginTop="@dimen/margin"
-                                                         app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_0">
+            <android.support.design.widget.TextInputEditText android:id="@+id/my_textinputlayout_0"
+                                                             android:textColorHint="@color/primary"
+                                                             android:inputType="textPersonName"
+                                                             android:hint="@string/sign_up_view_txt_2"
+                                                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                                             android:text="@={userModel.lastName}"
+                                                             app:layout_constraintBottom_toTopOf="@id/my_textinputlayout_1"
+                                                             app:layout_constraintTop_toBottomOf="@id/my_textview_1"
+                                                             app:layout_constraintLeft_toLeftOf="parent"
+                                                             app:layout_constraintRight_toRightOf="parent"
+                                                             app:errorText="@{errorModel.lastnameMsg}"
+                                                             style="@style/editTextPrimary"/>
 
-            <EditText android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:hint="@string/sign_up_view_txt_3"
-                      android:inputType="textPersonName"
-                      android:shadowColor="@color/primary"
-                      android:textColorLink="@color/primary"
-                      android:textColor="@color/primary"
-                      android:textColorHighlight="@color/primary"
-                      android:textColorHint="@color/primary"
-                      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                      android:text="@={userModel.firstName}"
-                      app:errorText="@{errorModel.firstnameMsg}"/>
+            <android.support.design.widget.TextInputEditText android:id="@+id/my_textinputlayout_1"
+                                                             android:hint="@string/sign_up_view_txt_3"
+                                                             android:inputType="textPersonName"
+                                                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                                             android:text="@={userModel.firstName}"
+                                                             app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_0"
+                                                             app:layout_constraintLeft_toLeftOf="parent"
+                                                             app:layout_constraintRight_toRightOf="parent"
+                                                             app:layout_constraintBottom_toTopOf="@id/my_textinputlayout_2"
+                                                             app:errorText="@{errorModel.firstnameMsg}"
+                                                             style="@style/editTextPrimary"/>
 
-          </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputEditText android:id="@+id/my_textinputlayout_2"
+                                                             app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_1"
+                                                             app:layout_constraintLeft_toLeftOf="parent"
+                                                             app:layout_constraintRight_toRightOf="parent"
+                                                             app:layout_constraintBottom_toTopOf="@id/my_textinputlayout_3"
+                                                             android:hint="@string/sign_up_view_txt_4"
+                                                             android:inputType="date"
+                                                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                                             android:text="@={userModel.birthday}"
+                                                             app:errorText="@{errorModel.birthdayMsg}"
+                                                             style="@style/editTextPrimary"/>
 
-          <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_2"
-                                                         android:layout_width="match_parent"
-                                                         android:layout_height="wrap_content"
-                                                         android:layout_marginTop="@dimen/margin"
-                                                         app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_1">
+            <android.support.design.widget.TextInputEditText android:id="@+id/my_textinputlayout_3"
+                                                             app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_2"
+                                                             app:layout_constraintLeft_toLeftOf="parent"
+                                                             app:layout_constraintRight_toRightOf="parent"
+                                                             app:layout_constraintBottom_toTopOf="@id/my_textinputlayout_4"
+                                                             android:hint="@string/sign_up_view_txt_5"
+                                                             android:inputType="textEmailAddress"
+                                                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                                             android:text="@={userModel.email}"
+                                                             app:errorText="@{errorModel.emailMsg}"
+                                                             style="@style/editTextPrimary"/>
 
-            <EditText android:id="@+id/sign_up_view_id_4"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:hint="@string/sign_up_view_txt_4"
-                      android:inputType="date"
-                      android:shadowColor="@color/primary"
-                      android:textColorLink="@color/primary"
-                      android:textColor="@color/primary"
-                      android:textColorHighlight="@color/primary"
-                      android:textColorHint="@color/primary"
-                      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                      android:text="@={userModel.birthday}"
-                      app:errorText="@{errorModel.birthdayMsg}"/>
+            <android.support.design.widget.TextInputEditText android:id="@+id/my_textinputlayout_4"
+                                                             app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_3"
+                                                             app:layout_constraintLeft_toLeftOf="parent"
+                                                             app:layout_constraintRight_toRightOf="parent"
+                                                             app:layout_constraintBottom_toTopOf="@id/my_textinputlayout_5"
+                                                             android:hint="@string/sign_up_view_txt_6"
+                                                             android:inputType="text"
+                                                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                                             android:text="@={userModel.job}"
+                                                             app:errorText="@{errorModel.jobMsg}"
+                                                             style="@style/editTextPrimary"/>
 
-          </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputEditText android:id="@+id/my_textinputlayout_5"
+                                                             app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_4"
+                                                             app:layout_constraintLeft_toLeftOf="parent"
+                                                             app:layout_constraintRight_toRightOf="parent"
+                                                             app:layout_constraintBottom_toTopOf="@id/my_textinputlayout_6"
+                                                             android:hint="@string/sign_up_view_txt_7"
+                                                             android:inputType="textPassword"
+                                                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                                             android:text="@={userModel.password}"
+                                                             app:errorText="@{errorModel.passwordMsg}"
+                                                             style="@style/editTextPrimary"/>
 
-          <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_3"
-                                                         android:layout_width="match_parent"
-                                                         android:layout_height="wrap_content"
-                                                         android:layout_marginTop="@dimen/margin"
-                                                         app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_2">
+            <android.support.design.widget.TextInputEditText android:id="@+id/my_textinputlayout_6"
+                                                             app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_5"
+                                                             app:layout_constraintLeft_toLeftOf="parent"
+                                                             app:layout_constraintRight_toRightOf="parent"
+                                                             app:layout_constraintBottom_toTopOf="@id/my_textview_3"
+                                                             android:hint="@string/sign_up_view_txt_8"
+                                                             android:inputType="textPassword"
+                                                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                                             android:text="@={userModel.passwordProtection}"
+                                                             app:errorText="@{errorModel.passwordBisMsg}"
+                                                             style="@style/editTextPrimary"/>
 
-            <EditText android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:hint="@string/sign_up_view_txt_5"
-                      android:inputType="textEmailAddress"
-                      android:shadowColor="@color/primary"
-                      android:textColorLink="@color/primary"
-                      android:textColor="@color/primary"
-                      android:textColorHighlight="@color/primary"
-                      android:textColorHint="@color/primary"
-                      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                      android:text="@={userModel.email}"
-                      app:errorText="@{errorModel.emailMsg}"/>
+            <TextView android:id="@+id/my_textview_3"
+                      android:text="@string/sign_up_view_txt_9"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                      app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_6"
+                      app:layout_constraintLeft_toLeftOf="parent"
+                      app:layout_constraintRight_toRightOf="parent"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      style="@style/textPrimary"/>
 
-          </android.support.design.widget.TextInputLayout>
+          </android.support.constraint.ConstraintLayout>
 
-          <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_4"
-                                                         android:layout_width="match_parent"
-                                                         android:layout_height="wrap_content"
-                                                         android:layout_marginTop="@dimen/margin"
-                                                         app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_3">
+        </android.support.v7.widget.CardView>
 
-            <EditText android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:hint="@string/sign_up_view_txt_6"
-                      android:inputType="text"
-                      android:shadowColor="@color/primary"
-                      android:textColorLink="@color/primary"
-                      android:textColor="@color/primary"
-                      android:textColorHighlight="@color/primary"
-                      android:textColorHint="@color/primary"
-                      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                      android:text="@={userModel.job}"
-                      app:errorText="@{errorModel.jobMsg}"/>
+        <!--<TextView android:id="@+id/my_textview_2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center"-->
+        <!--android:text="@={errorModel.mainMsg}"-->
+        <!--android:layout_marginTop="@dimen/margin"-->
+        <!--android:visibility="gone"-->
+        <!--android:textAppearance="@style/TextAppearance.AppCompat.Caption"-->
+        <!--android:textColor="@android:color/holo_red_light"-->
+        <!--app:layout_constraintTop_toBottomOf="@id/my_cardview_0"/>-->
 
-          </android.support.design.widget.TextInputLayout>
+        <android.support.v7.widget.AppCompatButton android:id="@+id/my_appcompatbutton_0"
+                                                   android:onClick="@{() -> signUpActivity.onClick()}"
+                                                   android:text="@string/sign_up_view_txt_10"
+                                                   app:layout_constraintTop_toBottomOf="@id/my_textview_2"
+                                                   app:layout_constraintRight_toRightOf="parent"
+                                                   app:layout_constraintLeft_toLeftOf="parent"
+                                                   app:layout_constraintBottom_toBottomOf="parent"
+                                                   style="@style/button"/>
 
-          <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_5"
-                                                         android:layout_width="match_parent"
-                                                         android:layout_height="wrap_content"
-                                                         android:layout_marginTop="@dimen/margin"
-                                                         app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_4">
-            <EditText android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:hint="@string/sign_up_view_txt_7"
-                      android:inputType="textPassword"
-                      android:shadowColor="@color/primary"
-                      android:textColorLink="@color/primary"
-                      android:textColor="@color/primary"
-                      android:textColorHighlight="@color/primary"
-                      android:textColorHint="@color/primary"
-                      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                      android:text="@={userModel.password}"
-                      app:errorText="@{errorModel.passwordMsg}"/>
-
-          </android.support.design.widget.TextInputLayout>
-
-          <android.support.design.widget.TextInputLayout android:id="@+id/my_textinputlayout_6"
-                                                         android:layout_width="match_parent"
-                                                         android:layout_height="wrap_content"
-                                                         android:layout_marginTop="@dimen/margin"
-                                                         app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_5">
-
-            <EditText android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:hint="@string/sign_up_view_txt_8"
-                      android:inputType="textPassword"
-                      android:shadowColor="@color/primary"
-                      android:textColorLink="@color/primary"
-                      android:textColor="@color/primary"
-                      android:textColorHighlight="@color/primary"
-                      android:textColorHint="@color/primary"
-                      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                      android:text="@={userModel.passwordProtection}"
-                      app:errorText="@{errorModel.passwordBisMsg}"/>
-
-          </android.support.design.widget.TextInputLayout>
-
-          <TextView android:id="@+id/my_textview_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin"
-                    android:gravity="center"
-                    android:text="@string/sign_up_view_txt_9"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                    app:layout_constraintTop_toBottomOf="@id/my_textinputlayout_6"/>
-
-        </android.support.constraint.ConstraintLayout>
-
-      </android.support.v7.widget.CardView>
-
-      <TextView android:id="@+id/my_textview_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@={errorModel.mainMsg}"
-                android:layout_marginTop="@dimen/margin"
-                android:visibility="gone"
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:textColor="@android:color/holo_red_light"
-                app:layout_constraintTop_toBottomOf="@id/my_cardview_0"/>
-
-      <android.support.v7.widget.AppCompatButton android:id="@+id/my_appcompatbutton_0"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="wrap_content"
-                                                 android:layout_marginTop="@dimen/divider"
-                                                 android:background="@drawable/rounded_layout"
-                                                 android:onClick="@{() -> signUpActivity.onClick()}"
-                                                 android:text="@string/sign_up_view_txt_10"
-                                                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                                                 android:textColor="@color/accent"
-                                                 app:layout_constraintTop_toBottomOf="@id/my_textview_2"
-                                                 app:layout_constraintRight_toRightOf="parent"
-                                                 app:layout_constraintLeft_toLeftOf="parent"/>
+      </android.support.constraint.ConstraintLayout>
 
     </android.support.constraint.ConstraintLayout>
 

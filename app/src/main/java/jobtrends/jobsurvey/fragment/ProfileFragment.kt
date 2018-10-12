@@ -51,7 +51,7 @@ class ProfileFragment : Fragment() {
         tmpUserModel.passwordProtection?.set("")
         _oldPassword = userModel.password?.get() ?: ""
 
-        appBarBtn.setBackgroundResource(R.drawable.ic_arrow_back_accent_512dp)
+        appBarBtn.setBackgroundResource(R.drawable.arrow_back_accent_512)
         appBarBtn.setOnClickListener { onNavBack() }
     }
 
@@ -139,7 +139,7 @@ class ProfileFragment : Fragment() {
     private fun navTo(fragment: Fragment) {
         try {
             val transaction: FragmentTransaction = fragmentManager?.beginTransaction()!!
-            transaction.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
+            transaction.replace(R.id.my_framelayout_0, fragment)
             transaction.commit()
         } catch (exception: Exception) {
             Log.e(tag, exception.message)

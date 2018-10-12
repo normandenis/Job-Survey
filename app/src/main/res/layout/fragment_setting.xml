@@ -95,31 +95,33 @@
                                                      android:paddingStart="@dimen/margin">
 
           <ImageView android:id="@+id/my_imageview_1"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     app:srcCompat="@drawable/ic_edit_accent_16dp"
+                     android:layout_width="0dp"
+                     android:layout_height="0dp"
+                     app:layout_constraintDimensionRatio="1:1"
+                     app:srcCompat="@drawable/edit_accent_18"
                      tools:ignore="ContentDescription"
                      app:layout_constraintTop_toTopOf="parent"
-                     app:layout_constraintBottom_toTopOf="@id/my_textview_4"/>
+                     app:layout_constraintBottom_toTopOf="@id/my_textview_4"
+                     style="@style/image"/>
 
           <TextView android:id="@+id/my_textview_4"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:text="@string/setting_view_txt_3"
                     android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                    android:textColor="@color/accent"
                     app:layout_constraintTop_toBottomOf="@id/my_imageview_1"
-                    app:layout_constraintBottom_toTopOf="@id/my_textview_5"/>
+                    app:layout_constraintBottom_toTopOf="@id/my_textview_5"
+                    style="@style/textAccent"/>
 
           <TextView android:id="@+id/my_textview_5"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:text="@{userModel.email}"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
-                    android:textColor="@color/accent"
                     app:layout_constraintTop_toBottomOf="@id/my_textview_4"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    style="@style/textAccent"/>
 
         </android.support.constraint.ConstraintLayout>
 
@@ -149,7 +151,7 @@
           <ImageView android:id="@+id/my_imageview_0"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     app:srcCompat="@drawable/ic_exit_to_app_accent_16dp"
+                     app:srcCompat="@drawable/exit_to_app_accent_18"
                      tools:ignore="ContentDescription"
                      android:textColor="@color/accent"
                      app:layout_constraintLeft_toLeftOf="parent"

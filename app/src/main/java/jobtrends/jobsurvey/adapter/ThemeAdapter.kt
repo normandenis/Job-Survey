@@ -93,7 +93,7 @@ class ThemeAdapter(private val list: List<ThemeModel?>?, fragmentManager: Fragme
     private fun navTo(fragment: Fragment) {
         try {
             val transaction: FragmentTransaction = fragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
+            transaction.replace(R.id.my_framelayout_0, fragment)
             transaction.commit()
         } catch (exception: Exception) {
             Log.e(tag, exception.message)

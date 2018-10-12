@@ -181,9 +181,4 @@ class ApiController {
         }
         queue.add(stringRequest)
     }
-
-    fun getFAQQuestion(): String {
-        val inputStream: InputStream = resources.openRawResource(R.raw.question_faq_example)
-        return IOUtils.toString(inputStream, StandardCharsets.UTF_8)
-    }
 }

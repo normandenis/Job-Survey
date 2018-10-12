@@ -41,7 +41,7 @@ class ResultFragment : Fragment() {
                               savedInstanceState: Bundle?): View {
         val binding: FragmentResultBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_result, container, false)
         binding.resultFragment = this
-        appBarBtn.setBackgroundResource(R.drawable.ic_close_accent_32dp)
+        appBarBtn.setBackgroundResource(R.drawable.close_accent_36)
         appBarBtn.setOnClickListener { onValidateSurvey() }
         return binding.root
     }
@@ -72,7 +72,7 @@ class ResultFragment : Fragment() {
     private fun navTo(fragment: Fragment) {
         try {
             val transaction: FragmentTransaction = fragmentManager?.beginTransaction()!!
-            transaction.replace(R.id.fragment_app_bar_nav_drawer_0, fragment)
+            transaction.replace(R.id.my_framelayout_0, fragment)
             transaction.commit()
         } catch (exception: Exception) {
             Log.e(tag, exception.message)
