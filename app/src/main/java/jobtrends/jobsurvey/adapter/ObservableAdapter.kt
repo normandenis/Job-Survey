@@ -23,7 +23,11 @@ class ObservableIntAdapter : TypeAdapter<ObservableField<Int?>?>() {
     }
 
     override fun read(json: JsonReader?): ObservableField<Int?>? {
-        return ObservableField(json?.nextInt())
+        return try {
+            ObservableField(json?.nextInt())
+        } catch (exception: Exception) {
+            ObservableField(json?.nextDouble()?.toInt())
+        }
     }
 }
 

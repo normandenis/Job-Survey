@@ -1,6 +1,6 @@
 <resources>
 
-  <dimen name="margin">8dp</dimen>
-  <dimen name="divider">16dp</dimen>
+  <dimen name="margin">16dp</dimen>
+  <dimen name="divider">32dp</dimen>
 
 </resources>

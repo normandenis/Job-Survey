@@ -42,17 +42,17 @@
   </style>
 
   <style name="padding">
-    <item name="android:paddingTop">@dimen/divider</item>
+    <item name="android:paddingTop">@dimen/margin</item>
     <item name="android:paddingStart">@dimen/margin</item>
     <item name="android:paddingEnd">@dimen/margin</item>
-    <item name="android:paddingBottom">@dimen/divider</item>
+    <item name="android:paddingBottom">@dimen/margin</item>
   </style>
 
   <style name="margin">
-    <item name="android:layout_marginTop">@dimen/divider</item>
+    <item name="android:layout_marginTop">@dimen/margin</item>
     <item name="android:layout_marginStart">@dimen/margin</item>
     <item name="android:layout_marginEnd">@dimen/margin</item>
-    <item name="android:layout_marginBottom">@dimen/divider</item>
+    <item name="android:layout_marginBottom">@dimen/margin</item>
   </style>
 
   <style name="layout"

@@ -18,12 +18,12 @@
 
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                  android:layout_height="wrap_content"
-                                                 android:padding="@dimen/margin">
+                                                 style="@style/layout">
 
       <TextView android:id="@+id/my_textview_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin"
+                android:layout_marginTop="@dimen/divider"
                 android:gravity="center"
                 android:text="@={userModel.firstName}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
@@ -50,7 +50,8 @@
       <ProgressBar android:id="@+id/my_progressbar_0"
                    style="?android:attr/progressBarStyleHorizontal"
                    android:layout_width="128dp"
-                   android:layout_marginTop="@dimen/margin"
+                   android:layout_marginTop="@dimen/divider"
+                   android:layout_marginBottom="@dimen/divider"
                    android:layout_height="128dp"
                    android:background="@drawable/circle_shape"
                    android:indeterminate="false"
@@ -59,7 +60,8 @@
                    android:progressDrawable="@drawable/circular_progress_bar"
                    app:layout_constraintTop_toBottomOf="@id/my_textview_1"
                    app:layout_constraintLeft_toLeftOf="parent"
-                   app:layout_constraintRight_toRightOf="parent"/>
+                   app:layout_constraintRight_toRightOf="parent"
+                   app:layout_constraintBottom_toTopOf="@id/my_layout_0"/>
 
       <TextView android:id="@+id/my_textview_2"
                 android:layout_width="wrap_content"
@@ -73,104 +75,115 @@
                 app:layout_constraintRight_toRightOf="@id/my_progressbar_0"
                 app:layout_constraintBottom_toBottomOf="@id/my_progressbar_0"/>
 
-      <android.support.v7.widget.CardView android:id="@+id/my_cardview_0"
-                                          android:layout_width="0dp"
-                                          android:layout_height="0dp"
-                                          android:clickable="true"
-                                          android:focusable="true"
-                                          android:layout_margin="@dimen/margin"
-                                          android:onClick="@{() -> settingFragment.onNavToProfile()}"
-                                          app:cardBackgroundColor="@color/primary_dark"
-                                          app:layout_constraintDimensionRatio="1:1"
-                                          app:cardCornerRadius="8dp"
-                                          app:cardElevation="8dp"
-                                          app:layout_constraintTop_toBottomOf="@id/my_progressbar_0"
-                                          app:layout_constraintLeft_toLeftOf="parent"
-                                          app:layout_constraintRight_toLeftOf="@id/my_cardview_1"
-                                          app:layout_constraintBottom_toBottomOf="parent">
+      <android.support.constraint.ConstraintLayout android:id="@+id/my_layout_0"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content"
+                                                   app:layout_constraintTop_toBottomOf="@id/my_progressbar_0"
+                                                   app:layout_constraintLeft_toLeftOf="parent"
+                                                   app:layout_constraintRight_toRightOf="parent"
+                                                   app:layout_constraintBottom_toBottomOf="parent">
 
-        <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
-                                                     android:layout_height="match_parent"
-                                                     android:paddingEnd="@dimen/margin"
-                                                     android:paddingStart="@dimen/margin">
+        <android.support.v7.widget.CardView android:id="@+id/my_cardview_0"
+                                            android:layout_width="0dp"
+                                            android:layout_height="0dp"
+                                            android:clickable="true"
+                                            android:focusable="true"
+                                            android:layout_margin="@dimen/margin"
+                                            android:onClick="@{() -> settingFragment.onNavToProfile()}"
+                                            app:cardBackgroundColor="@color/primary_dark"
+                                            app:layout_constraintDimensionRatio="1:1"
+                                            app:cardCornerRadius="8dp"
+                                            app:cardElevation="8dp"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:layout_constraintLeft_toLeftOf="parent"
+                                            app:layout_constraintRight_toLeftOf="@id/my_cardview_1"
+                                            app:layout_constraintBottom_toBottomOf="parent">
 
-          <ImageView android:id="@+id/my_imageview_1"
-                     android:layout_width="0dp"
-                     android:layout_height="0dp"
-                     app:layout_constraintDimensionRatio="1:1"
-                     app:srcCompat="@drawable/edit_accent_18"
-                     tools:ignore="ContentDescription"
-                     app:layout_constraintTop_toTopOf="parent"
-                     app:layout_constraintBottom_toTopOf="@id/my_textview_4"
-                     style="@style/image"/>
+          <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent"
+                                                       android:paddingEnd="@dimen/margin"
+                                                       android:paddingStart="@dimen/margin">
 
-          <TextView android:id="@+id/my_textview_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:text="@string/setting_view_txt_3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                    app:layout_constraintTop_toBottomOf="@id/my_imageview_1"
-                    app:layout_constraintBottom_toTopOf="@id/my_textview_5"
-                    style="@style/textAccent"/>
+            <ImageView android:id="@+id/my_imageview_1"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/edit_accent_18"
+                       app:layout_constraintLeft_toLeftOf="parent"
+                       app:layout_constraintTop_toTopOf="parent"
+                       app:layout_constraintBottom_toTopOf="@id/my_textview_4"
+                       tools:ignore="ContentDescription"/>
 
-          <TextView android:id="@+id/my_textview_5"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:text="@{userModel.email}"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
-                    app:layout_constraintTop_toBottomOf="@id/my_textview_4"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    style="@style/textAccent"/>
+            <TextView android:id="@+id/my_textview_4"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/setting_view_txt_3"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                      android:textColor="@color/accent"
+                      app:layout_constraintLeft_toLeftOf="parent"
+                      app:layout_constraintTop_toBottomOf="@id/my_imageview_1"
+                      app:layout_constraintBottom_toTopOf="@id/my_textview_5"/>
 
-        </android.support.constraint.ConstraintLayout>
+            <TextView android:id="@+id/my_textview_5"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:singleLine="true"
+                      android:text="@{userModel.email}"
+                      android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                      android:textColor="@color/accent"
+                      app:layout_constraintLeft_toLeftOf="parent"
+                      app:layout_constraintTop_toBottomOf="@id/my_textview_4"
+                      app:layout_constraintBottom_toBottomOf="parent"/>
 
-      </android.support.v7.widget.CardView>
+          </android.support.constraint.ConstraintLayout>
 
-      <android.support.v7.widget.CardView android:id="@+id/my_cardview_1"
-                                          android:layout_width="0dp"
-                                          android:layout_height="0dp"
-                                          android:clickable="true"
-                                          android:focusable="true"
-                                          android:layout_margin="@dimen/margin"
-                                          android:onClick="@{() -> settingFragment.onNavSignIn()}"
-                                          app:cardBackgroundColor="@color/primary_dark"
-                                          app:layout_constraintDimensionRatio="1:1"
-                                          app:cardCornerRadius="8dp"
-                                          app:cardElevation="8dp"
-                                          app:layout_constraintTop_toBottomOf="@id/my_progressbar_0"
-                                          app:layout_constraintRight_toRightOf="parent"
-                                          app:layout_constraintLeft_toRightOf="@id/my_cardview_0"
-                                          app:layout_constraintBottom_toBottomOf="parent">
+        </android.support.v7.widget.CardView>
 
-        <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
-                                                     android:layout_height="match_parent"
-                                                     android:paddingEnd="@dimen/margin"
-                                                     android:paddingStart="@dimen/margin">
+        <android.support.v7.widget.CardView android:id="@+id/my_cardview_1"
+                                            android:layout_width="0dp"
+                                            android:layout_height="0dp"
+                                            android:clickable="true"
+                                            android:focusable="true"
+                                            android:layout_margin="@dimen/margin"
+                                            android:onClick="@{() -> settingFragment.onNavSignIn()}"
+                                            app:cardBackgroundColor="@color/primary_dark"
+                                            app:layout_constraintDimensionRatio="1:1"
+                                            app:cardCornerRadius="8dp"
+                                            app:cardElevation="8dp"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:layout_constraintRight_toRightOf="parent"
+                                            app:layout_constraintLeft_toRightOf="@id/my_cardview_0"
+                                            app:layout_constraintBottom_toBottomOf="parent">
 
-          <ImageView android:id="@+id/my_imageview_0"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     app:srcCompat="@drawable/exit_to_app_accent_18"
-                     tools:ignore="ContentDescription"
-                     android:textColor="@color/accent"
-                     app:layout_constraintLeft_toLeftOf="parent"
-                     app:layout_constraintTop_toTopOf="parent"
-                     app:layout_constraintBottom_toTopOf="@id/my_textview_3"/>
+          <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent"
+                                                       android:paddingEnd="@dimen/margin"
+                                                       android:paddingStart="@dimen/margin">
 
-          <TextView android:id="@+id/my_textview_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/setting_view_txt_7"
-                    android:textColor="@color/accent"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                    app:layout_constraintTop_toBottomOf="@id/my_imageview_0"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+            <ImageView android:id="@+id/my_imageview_0"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/exit_to_app_accent_18"
+                       tools:ignore="ContentDescription"
+                       android:textColor="@color/accent"
+                       app:layout_constraintLeft_toLeftOf="parent"
+                       app:layout_constraintTop_toTopOf="parent"
+                       app:layout_constraintBottom_toTopOf="@id/my_textview_3"/>
 
-        </android.support.constraint.ConstraintLayout>
+            <TextView android:id="@+id/my_textview_3"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/setting_view_txt_7"
+                      android:textColor="@color/accent"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                      app:layout_constraintTop_toBottomOf="@id/my_imageview_0"
+                      app:layout_constraintLeft_toLeftOf="parent"
+                      app:layout_constraintBottom_toBottomOf="parent"/>
 
-      </android.support.v7.widget.CardView>
+          </android.support.constraint.ConstraintLayout>
+
+        </android.support.v7.widget.CardView>
+
+      </android.support.constraint.ConstraintLayout>
 
     </android.support.constraint.ConstraintLayout>
 

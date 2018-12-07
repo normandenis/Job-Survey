@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.ListAdapter
 import android.widget.ListView
+import android.widget.ProgressBar
 import kotlin.reflect.full.declaredMemberProperties
 import kotlin.reflect.full.primaryConstructor
 
@@ -23,7 +24,7 @@ fun setErrorMessage(editText: EditText, message: String?) {
 
 fun displayError(tag: String, message: String) {
     try {
-        throw UnknownError()
+        throw Exception()
     } catch (exception: Exception) {
         Log.e(tag, if (message == "") exception.message else message)
     }

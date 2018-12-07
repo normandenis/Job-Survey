@@ -4,8 +4,9 @@ buildscript {
     ext {
         kotlin_version = "1.2.71"
         android_support = "28.0.0"
-        compiler_version = "3.2.0"
+        compiler_version = "3.2.1"
         dagger_version = "2.17"
+        nav_version = "1.0.0-alpha06"
     }
     repositories {
         google()
@@ -16,6 +17,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.gms:google-services:3.2.0"
         classpath "com.netflix.nebula:gradle-lint-plugin:10.1.2"
+        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$nav_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
