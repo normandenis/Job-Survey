@@ -68,7 +68,8 @@ class ProfileFragment : Fragment() {
     }
 
     private fun onNavBack() {
-        fragmentManager?.popBackStack()
+        val fragment: Fragment = SettingFragment()
+        navTo(fragment)
     }
 
     private fun checkInput() {
