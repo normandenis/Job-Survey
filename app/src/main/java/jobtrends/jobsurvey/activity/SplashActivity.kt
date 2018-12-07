@@ -7,12 +7,12 @@ import android.os.Handler
 import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import jobtrends.jobsurvey.R
+import jobtrends.jobsurvey.adapter.displayError
 import jobtrends.jobsurvey.dagger.App
 import jobtrends.jobsurvey.model.UserModel
 import jobtrends.jobsurvey.service.ApiController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.ServiceController
-import jobtrends.jobsurvey.adapter.displayError
 import javax.inject.Inject
 
 class SplashActivity : AppCompatActivity() {

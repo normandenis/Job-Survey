@@ -31,9 +31,12 @@ class ThemeFragment : Fragment() {
         appBarBtn = serviceController.getInstance()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val binding: FragmentThemeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_theme, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding: FragmentThemeBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_theme, container, false)
         themeAdapter = ThemeAdapter(homeModel.themes, fragmentManager)
         appBarBtn.setBackgroundResource(R.drawable.person_accent)
         appBarBtn.setOnClickListener { onNavSetting() }

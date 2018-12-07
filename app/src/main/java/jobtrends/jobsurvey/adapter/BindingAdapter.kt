@@ -5,9 +5,6 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.ListAdapter
 import android.widget.ListView
-import android.widget.ProgressBar
-import kotlin.reflect.full.declaredMemberProperties
-import kotlin.reflect.full.primaryConstructor
 
 @BindingAdapter("app:adapter")
 fun bindItems(view: ListView, viewModel: ListAdapter?) {

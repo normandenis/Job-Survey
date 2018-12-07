@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import jobtrends.jobsurvey.R
+import jobtrends.jobsurvey.adapter.displayError
 import jobtrends.jobsurvey.dagger.App
 import jobtrends.jobsurvey.databinding.ActivitySignInBinding
 import jobtrends.jobsurvey.model.ErrorModel
@@ -12,7 +13,6 @@ import jobtrends.jobsurvey.model.UserModel
 import jobtrends.jobsurvey.service.ApiController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.ServiceController
-import jobtrends.jobsurvey.adapter.displayError
 import javax.inject.Inject
 
 class SignInActivity : AppCompatActivity() {
@@ -36,7 +36,8 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding: ActivitySignInBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
+        val binding: ActivitySignInBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
         binding.signInActivity = this
         binding.userModel = userModel
         binding.errorModel = errorModel

@@ -6,7 +6,6 @@ import android.preference.PreferenceManager
 import jobtrends.jobsurvey.dagger.App
 import jobtrends.jobsurvey.model.UserModel
 import javax.inject.Inject
-import javax.inject.Provider
 
 
 class ServiceController {

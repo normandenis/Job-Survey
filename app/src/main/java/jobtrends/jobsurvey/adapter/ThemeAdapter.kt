@@ -23,7 +23,8 @@ import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.ServiceController
 import javax.inject.Inject
 
-class ThemeAdapter(private val list: List<ThemeModel?>?, fragmentManager: FragmentManager?) : BaseAdapter() {
+class ThemeAdapter(private val list: List<ThemeModel?>?, fragmentManager: FragmentManager?) :
+    BaseAdapter() {
     @Inject
     lateinit var apiController: ApiController
     @Inject
@@ -48,10 +49,11 @@ class ThemeAdapter(private val list: List<ThemeModel?>?, fragmentManager: Fragme
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
         if (layoutInflater == null) {
             layoutInflater = parent?.context?.getSystemService(
-                    Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                Context.LAYOUT_INFLATER_SERVICE
+            ) as LayoutInflater
         }
         val binding: AdapterThemeBinding =
-                DataBindingUtil.inflate(layoutInflater!!, R.layout.adapter_theme, parent, false)
+            DataBindingUtil.inflate(layoutInflater!!, R.layout.adapter_theme, parent, false)
         binding.themeAdapter = this
         binding.themeModel = list?.get(position)
         return binding.root

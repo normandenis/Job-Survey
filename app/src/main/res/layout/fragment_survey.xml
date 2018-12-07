@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context="jobtrends.jobsurvey.fragment.SurveyFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="jobtrends.jobsurvey.fragment.SurveyFragment">
 
-  <data>
-    <variable name="surveyFragment"
-              type="jobtrends.jobsurvey.fragment.SurveyFragment"/>
-  </data>
+    <data>
 
-  <LinearLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fitsSystemWindows="true"
-                android:padding="@dimen/margin">
+        <variable
+            name="surveyFragment"
+            type="jobtrends.jobsurvey.fragment.SurveyFragment" />
+    </data>
 
-    <android.support.v4.view.ViewPager android:id="@+id/pager"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="match_parent"
-                                       app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:padding="@dimen/margin">
 
-  </LinearLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </LinearLayout>
 
 </layout>

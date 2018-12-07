@@ -6,14 +6,14 @@ import android.databinding.ObservableField
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import jobtrends.jobsurvey.R
+import jobtrends.jobsurvey.adapter.displayError
 import jobtrends.jobsurvey.dagger.App
+import jobtrends.jobsurvey.databinding.ActivitySignUpBinding
 import jobtrends.jobsurvey.model.ErrorModel
 import jobtrends.jobsurvey.model.UserModel
 import jobtrends.jobsurvey.service.ApiController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.ServiceController
-import jobtrends.jobsurvey.adapter.displayError
-import jobtrends.jobsurvey.databinding.ActivitySignUpBinding
 import javax.inject.Inject
 
 class SignUpActivity : AppCompatActivity() {
@@ -39,7 +39,8 @@ class SignUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding: ActivitySignUpBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
+        val binding: ActivitySignUpBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
         binding.signUpActivity = this
         binding.errorModel = errorModel
         binding.userModel = userModel
@@ -50,8 +51,10 @@ class SignUpActivity : AppCompatActivity() {
         errorModel.reset()
         checkInput(userModel.firstName?.get(), "^[a-zA-Z ,.'-]+$", errorModel.firstnameMsg)
         checkInput(userModel.lastName?.get(), "^[a-zA-Z ,.'-]+$", errorModel.lastnameMsg)
-        checkInput(userModel.email?.get(), "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
-                errorModel.emailMsg)
+        checkInput(
+            userModel.email?.get(), "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+            errorModel.emailMsg
+        )
         checkInput(userModel.password?.get(), "^[a-zA-Z0-9]+$", errorModel.passwordMsg)
         checkInput(userModel.job?.get(), "^[a-zA-Z ,.'-]+$", errorModel.jobMsg)
         checkInput(userModel.birthday?.get(), "[0-9]{2}-[0-9]{2}-[0-9]{4}", errorModel.birthdayMsg)
@@ -69,7 +72,8 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun checkPassword() {
         if (!isNull(userModel.password?.get(), errorModel.passwordMsg)
-                && !isNull(userModel.passwordProtection?.get(), errorModel.passwordBisMsg)) {
+            && !isNull(userModel.passwordProtection?.get(), errorModel.passwordBisMsg)
+        ) {
             if (userModel.password?.get()!!.length < 8) {
                 stop = true
                 errorModel.passwordMsg?.set("Votre mot de passe est inférieur à 8 charactères")

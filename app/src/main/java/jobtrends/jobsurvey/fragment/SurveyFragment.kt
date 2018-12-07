@@ -75,9 +75,11 @@ class SurveyFragment : Fragment() {
             override fun onPageScrollStateChanged(state: Int) {
             }
 
-            override fun onPageScrolled(position: Int,
-                                        positionOffset: Float,
-                                        positionOffsetPixels: Int) {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
             }
 
             override fun onPageSelected(position: Int) {
@@ -92,9 +94,12 @@ class SurveyFragment : Fragment() {
         })
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val binding: FragmentSurveyBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_survey, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding: FragmentSurveyBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_survey, container, false)
         binding.surveyFragment = this
         dialog = Dialog(context!!)
         return binding.root
@@ -109,8 +114,10 @@ class SurveyFragment : Fragment() {
 
     fun onValidateSurvey() {
         val bind: DialogValidateBinding = DataBindingUtil
-                .inflate(LayoutInflater.from(context), R.layout.dialog_validate,
-                        null, false)
+            .inflate(
+                LayoutInflater.from(context), R.layout.dialog_validate,
+                null, false
+            )
         bind.surveyFragment = this
         dialog.setContentView(bind.root)
         dialog.show()
@@ -118,8 +125,10 @@ class SurveyFragment : Fragment() {
 
     fun onCloseSurvey() {
         val bind: DialogCancelBinding = DataBindingUtil
-                .inflate(LayoutInflater.from(context), R.layout.dialog_cancel,
-                        null, false)
+            .inflate(
+                LayoutInflater.from(context), R.layout.dialog_cancel,
+                null, false
+            )
         bind.surveyFragment = this
         dialog.setContentView(bind.root)
         dialog.show()

@@ -11,14 +11,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import jobtrends.jobsurvey.R
+import jobtrends.jobsurvey.adapter.displayError
 import jobtrends.jobsurvey.dagger.App
+import jobtrends.jobsurvey.databinding.FragmentProfileBinding
 import jobtrends.jobsurvey.model.ErrorModel
 import jobtrends.jobsurvey.model.UserModel
 import jobtrends.jobsurvey.service.ApiController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.ServiceController
-import jobtrends.jobsurvey.adapter.displayError
-import jobtrends.jobsurvey.databinding.FragmentProfileBinding
 import javax.inject.Inject
 
 class ProfileFragment : Fragment() {
@@ -55,10 +55,12 @@ class ProfileFragment : Fragment() {
         appBarBtn.setOnClickListener { onNavBack() }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         val binding: FragmentProfileBinding = DataBindingUtil
-                .inflate(inflater, R.layout.fragment_profile, container, false)
+            .inflate(inflater, R.layout.fragment_profile, container, false)
         binding.profileFragment = this
         binding.userModel = tmpUserModel
         binding.errorModel = errorModel
@@ -74,11 +76,17 @@ class ProfileFragment : Fragment() {
         errorModel.reset()
         checkInput(tmpUserModel.firstName?.get(), "^[a-zA-Z ,.'-]+$", errorModel.firstnameMsg)
         checkInput(tmpUserModel.lastName?.get(), "^[a-zA-Z ,.'-]+$", errorModel.lastnameMsg)
-        checkInput(tmpUserModel.email?.get(), "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
-                errorModel.emailMsg)
+        checkInput(
+            tmpUserModel.email?.get(), "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+            errorModel.emailMsg
+        )
         checkInput(tmpUserModel.password?.get(), "^[a-zA-Z0-9]+$", errorModel.passwordMsg)
         checkInput(tmpUserModel.job?.get(), "^[a-zA-Z ,.'-]+$", errorModel.jobMsg)
-        checkInput(tmpUserModel.birthday?.get(), "[0-9]{2}-[0-9]{2}-[0-9]{4}", errorModel.birthdayMsg)
+        checkInput(
+            tmpUserModel.birthday?.get(),
+            "[0-9]{2}-[0-9]{2}-[0-9]{4}",
+            errorModel.birthdayMsg
+        )
         checkPassword()
     }
 
@@ -100,7 +108,8 @@ class ProfileFragment : Fragment() {
             }
         }
         if (!isNull(tmpUserModel.password?.get(), errorModel.passwordMsg)
-                && !isNull(tmpUserModel.passwordProtection?.get(), errorModel.passwordBisMsg)) {
+            && !isNull(tmpUserModel.passwordProtection?.get(), errorModel.passwordBisMsg)
+        ) {
             if (tmpUserModel.password?.get()?.length ?: 0 < 8) {
                 stop = true
                 errorModel.passwordMsg?.set("Votre mot de passe est inférieur à 8 charactères")

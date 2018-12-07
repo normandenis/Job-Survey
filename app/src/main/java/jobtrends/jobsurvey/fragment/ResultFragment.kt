@@ -10,14 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import jobtrends.jobsurvey.R
+import jobtrends.jobsurvey.adapter.displayError
+import jobtrends.jobsurvey.dagger.App
+import jobtrends.jobsurvey.databinding.FragmentResultBinding
 import jobtrends.jobsurvey.model.HomeModel
 import jobtrends.jobsurvey.model.ResultModel
 import jobtrends.jobsurvey.service.ApiController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.ServiceController
-import jobtrends.jobsurvey.adapter.displayError
-import jobtrends.jobsurvey.dagger.App
-import jobtrends.jobsurvey.databinding.FragmentResultBinding
 import javax.inject.Inject
 
 class ResultFragment : Fragment() {
@@ -37,9 +37,12 @@ class ResultFragment : Fragment() {
         resultModel = serviceController.getInstance()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-        val binding: FragmentResultBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_result, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val binding: FragmentResultBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_result, container, false)
         binding.resultFragment = this
         appBarBtn.setBackgroundResource(R.drawable.close_accent_36)
         appBarBtn.setOnClickListener { onValidateSurvey() }
@@ -48,7 +51,11 @@ class ResultFragment : Fragment() {
 
     fun onValidateSurvey() {
         val endSurveySerialiazed = jsonController.serialize(resultModel)
-        apiController.post("results/${resultModel.id?.get()}", endSurveySerialiazed, ::jobaymaxResultReply)
+        apiController.post(
+            "results/${resultModel.id?.get()}",
+            endSurveySerialiazed,
+            ::jobaymaxResultReply
+        )
     }
 
     private fun jobaymaxResultReply(code: Int, body: String) {

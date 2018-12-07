@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import jobtrends.jobsurvey.R
+import jobtrends.jobsurvey.adapter.displayError
 import jobtrends.jobsurvey.dagger.App
 import jobtrends.jobsurvey.databinding.ActivityHomeBinding
 import jobtrends.jobsurvey.fragment.ThemeFragment
@@ -18,7 +17,6 @@ import jobtrends.jobsurvey.model.UserModel
 import jobtrends.jobsurvey.service.ApiController
 import jobtrends.jobsurvey.service.JsonController
 import jobtrends.jobsurvey.service.ServiceController
-import jobtrends.jobsurvey.adapter.displayError
 import javax.inject.Inject
 
 class HomeActivity : AppCompatActivity() {
@@ -41,7 +39,8 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding: ActivityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
+        val binding: ActivityHomeBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_home)
         binding.homeActivity = this
 
         serviceController.register(findViewById<Button>(R.id.btn), true)

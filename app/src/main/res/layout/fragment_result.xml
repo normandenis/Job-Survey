@@ -1,83 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context="jobtrends.jobsurvey.fragment.ResultFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="jobtrends.jobsurvey.fragment.ResultFragment">
 
-  <data>
-    <variable name="resultFragment"
-              type="jobtrends.jobsurvey.fragment.ResultFragment"/>
-  </data>
+    <data>
 
-  <ScrollView android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@drawable/banner">
+        <variable
+            name="resultFragment"
+            type="jobtrends.jobsurvey.fragment.ResultFragment" />
+    </data>
 
-    <android.support.constraint.ConstraintLayout android:id="@+id/my_constraintlayout_0"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="wrap_content"
-                                                 android:layout_gravity="center"
-                                                 android:orientation="vertical"
-                                                 android:padding="@dimen/divider">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/banner">
 
-      <ImageView android:id="@+id/my_imageview_0"
-                 android:layout_width="160dp"
-                 android:layout_height="160dp"
-                 android:src="@drawable/logo_icon_accent"
-                 app:layout_constraintRight_toRightOf="parent"
-                 app:layout_constraintLeft_toLeftOf="parent"
-                 tools:ignore="ContentDescription"/>
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/my_constraintlayout_0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/divider">
 
-      <TextView android:id="@+id/my_textview_0"
+            <ImageView
+                android:id="@+id/my_imageview_0"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:src="@drawable/logo_icon_accent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/my_textview_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/end_survey_view_txt_0"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/accent"
-                app:layout_constraintTop_toBottomOf="@id/my_imageview_0"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/my_imageview_0" />
 
-      <TextView android:id="@+id/my_textview_1"
+            <TextView
+                android:id="@+id/my_textview_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/divider"
-                android:text="@string/end_survey_view_txt_1"
                 android:gravity="center"
-                android:textColor="@color/accent"
+                android:text="@string/end_survey_view_txt_1"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
-                app:layout_constraintTop_toBottomOf="@id/my_textview_0"
+                android:textColor="@color/accent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/my_textview_0" />
 
-      <TextView android:id="@+id/my_textview_2"
+            <TextView
+                android:id="@+id/my_textview_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/divider"
                 android:gravity="center"
                 android:text="@string/end_survey_view_txt_2"
-                android:textColor="@color/accent"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
-                app:layout_constraintTop_toBottomOf="@id/my_textview_1"
+                android:textColor="@color/accent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/my_textview_1" />
 
-      <android.support.v7.widget.AppCompatButton android:id="@+id/my_button_0"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="wrap_content"
-                                                 android:layout_marginTop="@dimen/divider"
-                                                 android:background="@drawable/rounded_layout"
-                                                 android:onClick="@{() -> resultFragment.onValidateSurvey()}"
-                                                 android:text="@string/end_survey_view_txt_3"
-                                                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                                                 android:textColor="@color/white"
-                                                 app:layout_constraintTop_toBottomOf="@id/my_textview_2"
-                                                 app:layout_constraintRight_toRightOf="parent"
-                                                 app:layout_constraintLeft_toLeftOf="parent"/>
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/my_button_0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/divider"
+                android:background="@drawable/rounded_layout"
+                android:onClick="@{() -> resultFragment.onValidateSurvey()}"
+                android:text="@string/end_survey_view_txt_3"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/my_textview_2" />
 
-    </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
 
-  </ScrollView>
+    </ScrollView>
 
 </layout>

@@ -28,9 +28,12 @@ class QuestionFragment : Fragment {
         answerAdapter = AnswerAdapter(this.questionModel.answers, this.userAnswerModel)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val binding: FragmentQuestionBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_question, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding: FragmentQuestionBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_question, container, false)
         binding.questionFragment = this
         binding.questionModel = questionModel
         binding.answerAdapter = answerAdapter

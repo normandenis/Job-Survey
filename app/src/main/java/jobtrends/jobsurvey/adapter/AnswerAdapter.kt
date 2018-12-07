@@ -18,9 +18,10 @@ import jobtrends.jobsurvey.model.UserAnswerModel
 import jobtrends.jobsurvey.service.ServiceController
 import javax.inject.Inject
 
-class AnswerAdapter(private val list: List<QuestionAnswerModel?>?,
-                    private var userAnswerModel: UserAnswerModel)
-    : BaseAdapter() {
+class AnswerAdapter(
+    private val list: List<QuestionAnswerModel?>?,
+    private var userAnswerModel: UserAnswerModel
+) : BaseAdapter() {
 
     @Inject
     lateinit var serviceController: ServiceController
@@ -41,10 +42,11 @@ class AnswerAdapter(private val list: List<QuestionAnswerModel?>?,
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
         if (layoutInflater == null) {
-            layoutInflater = parent?.context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            layoutInflater =
+                    parent?.context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         }
         val binding: AdapterQuestionBinding =
-                DataBindingUtil.inflate(layoutInflater!!, R.layout.adapter_question, parent, false)
+            DataBindingUtil.inflate(layoutInflater!!, R.layout.adapter_question, parent, false)
         binding.answerAdapter = this
         binding.questionAnswerModel = list?.get(position)
         return binding.root

@@ -1,13 +1,16 @@
 package jobtrends.jobsurvey.dagger
 
 import dagger.Component
-import jobtrends.jobsurvey.service.ApiController
-import jobtrends.jobsurvey.service.JsonController
-import jobtrends.jobsurvey.service.ServiceController
-import jobtrends.jobsurvey.activity.*
+import jobtrends.jobsurvey.activity.HomeActivity
+import jobtrends.jobsurvey.activity.SignInActivity
+import jobtrends.jobsurvey.activity.SignUpActivity
+import jobtrends.jobsurvey.activity.SplashActivity
 import jobtrends.jobsurvey.adapter.AnswerAdapter
 import jobtrends.jobsurvey.adapter.ThemeAdapter
 import jobtrends.jobsurvey.fragment.*
+import jobtrends.jobsurvey.service.ApiController
+import jobtrends.jobsurvey.service.JsonController
+import jobtrends.jobsurvey.service.ServiceController
 import javax.inject.Singleton
 
 @Component(modules = [AppModule::class])

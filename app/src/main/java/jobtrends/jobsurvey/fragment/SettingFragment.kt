@@ -41,10 +41,12 @@ class SettingFragment : Fragment() {
         userModel = serviceController.getInstance()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val binding: FragmentSettingBinding = DataBindingUtil
-                .inflate(inflater, R.layout.fragment_setting, container, false)
+            .inflate(inflater, R.layout.fragment_setting, container, false)
         binding.settingFragment = this
         binding.homeModel = homeModel
         binding.userModel = userModel
